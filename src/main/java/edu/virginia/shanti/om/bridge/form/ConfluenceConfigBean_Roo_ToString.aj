@@ -9,6 +9,8 @@ privileged aspect ConfluenceConfigBean_Roo_ToString {
     
     public String ConfluenceConfigBean.toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Timestamp: ").append(getTimestamp()).append(", ");
+        sb.append("User: ").append(getUser()).append(", ");
         sb.append("LocalContext: ").append(getLocalContext()).append(", ");
         sb.append("LocalSubContext: ").append(getLocalSubContext()).append(", ");
         sb.append("RemoteService: ").append(getRemoteService()).append(", ");

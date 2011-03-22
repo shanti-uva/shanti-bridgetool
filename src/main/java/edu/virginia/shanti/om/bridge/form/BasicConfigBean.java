@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 public class BasicConfigBean implements ConfigBean {
+	
+	private Long timestamp;
+	
+	private String user;
 
 	private String localContext;
 	
@@ -20,17 +24,19 @@ public class BasicConfigBean implements ConfigBean {
 		
 	}
 	
-	public BasicConfigBean(String siteId, String toolPlacementId,
-			String remoteService) {
+	public BasicConfigBean(String user, String siteId, String toolPlacementId,
+			String remoteService, Long timestamp) {
 		this();
 		setLocalContext(siteId);
 		setLocalSubContext(toolPlacementId);
 		setRemoteService(remoteService);
+		setUser(user);
+		setTimestamp(timestamp);
 	}
 
-	public static ConfigBean getInstance(String localContext, String localSubContext,
-			String remoteService) {
-		return new BasicConfigBean(localContext, localSubContext, remoteService);
+	public static ConfigBean getInstance(String user, String localContext, String localSubContext,
+			String remoteService, Long timestamp) {
+		return new BasicConfigBean(user, localContext, localSubContext, remoteService, timestamp);
 	}
 
 }

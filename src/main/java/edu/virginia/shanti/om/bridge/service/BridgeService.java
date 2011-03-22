@@ -87,10 +87,10 @@ public class BridgeService {
 	 * @param localContext
 	 * @return List of Bridges (can be empty).
 	 */
-	public List<Bridge> getBridges(String localContext) {
+	public List<Bridge> getBridges(String user, String localContext) {
 		// TODO: needs test
 
-		ConfigBean config = new ConfluenceConfigBean(localContext, null, null);
+		ConfigBean config = new ConfluenceConfigBean(user, localContext, null, null, System.currentTimeMillis());
 		return getBridges(config);
 	}
 

@@ -45,9 +45,9 @@ public class BridgeServiceTest {
 
 		// these should not be configured yet.
 		assertEquals("unconfigured",
-				bridgeService.checkConfig(BasicConfigBean.getInstance("firstLocalContext", null, "serviceName")));
+				bridgeService.checkConfig(BasicConfigBean.getInstance("ys2n","firstLocalContext", null, "serviceName",System.currentTimeMillis())));
 		assertEquals("unconfigured", bridgeService.checkConfig(BasicConfigBean.getInstance(
-				"secondLocalContext", "secondLocalSubContext", "serviceName")));
+				"ys2n","secondLocalContext", "secondLocalSubContext", "serviceName",System.currentTimeMillis())));
 	}
 
 	@Test
@@ -69,24 +69,24 @@ public class BridgeServiceTest {
 	public void testCheckConfigAgain() {
 
 		// these should not be configured yet.
-		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance("firstLocalContext", null, "serviceName")),
+		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance("ys2n","firstLocalContext", null, "serviceName", System.currentTimeMillis())),
 				equalTo("configured"));
-		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance("secondLocalContext",
-				"secondLocalSubContext", "serviceName")), equalTo("unconfigured"));
+		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance("ys2n","secondLocalContext",
+				"secondLocalSubContext", "serviceName", System.currentTimeMillis())), equalTo("unconfigured"));
 	}
 
 	@Test
 	public void getBridge() {
-		Bridge bridge = bridgeService.getBridge(BasicConfigBean.getInstance("firstLocalContext",
-				"firstLocalSubContext", "serviceName"));
+		Bridge bridge = bridgeService.getBridge(BasicConfigBean.getInstance("ys2n","firstLocalContext",
+				"firstLocalSubContext", "serviceName", System.currentTimeMillis()));
 		assertNotNull("Bridge was null.", bridge);
 		assertNotNull(bridge.getRemoteContext());
 	}
 
 	@Test
 	public void getBridges() {
-		List<Bridge> bridges = bridgeService.getBridges(BasicConfigBean.getInstance("firstLocalContext",
-				null, "serviceName"));
+		List<Bridge> bridges = bridgeService.getBridges(BasicConfigBean.getInstance("ys2n","firstLocalContext",
+				null, "serviceName", System.currentTimeMillis()));
 		assertNotNull("Bridge list was null.", bridges);
 		assertFalse("Bridge list was empty", bridges.isEmpty());
 	}

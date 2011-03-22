@@ -18,6 +18,16 @@
 			</tr>
 		</spring:hasBindErrors>
 		<tr>
+			<td>User</td>
+			<td><input name="user" path="user" /></td>
+		</tr>
+		
+		<tr>
+			<td>Time Stamp</td>
+			<td><input name="timestamp" path="timestamp" /></td>
+		</tr>
+		
+		<tr>
 			<td>Site Id</td>
 			<td><input name="siteId" path="siteId" /></td>
 		</tr>
