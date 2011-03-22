@@ -9,12 +9,7 @@ package edu.virginia.shanti.om.bridge.soap.confluence;
 
 public class ConfluenceSoapServiceServiceLocator extends org.apache.axis.client.Service implements edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceSoapServiceService {
 
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 2768983290819747797L;
-
-	public ConfluenceSoapServiceServiceLocator() {
+    public ConfluenceSoapServiceServiceLocator() {
     }
 
 

@@ -9,7 +9,7 @@
 <undeployment
     xmlns="http://xml.apache.org/axis/wsdd/">
 
-  <!-- Services from ConfluenceSoapServiceService WSDL service -->
+  <!-- Services from SudoSoapService WSDL service -->
 
-  <service name="confluenceservice-v1"/>
+  <service name="sudo"/>
 </undeployment>

@@ -77,11 +77,4 @@ public class VersionMismatchException  extends edu.virginia.shanti.om.bridge.soa
             _javaType, _xmlType, typeDesc);
     }
 
-
-    /**
-     * Writes the exception data to the faultDetails
-     */
-    public void writeDetails(javax.xml.namespace.QName qname, org.apache.axis.encoding.SerializationContext context) throws java.io.IOException {
-        context.serialize(qname, null, this);
-    }
 }
