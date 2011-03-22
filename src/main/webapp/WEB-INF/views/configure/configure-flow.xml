@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<action-state id="choose">
+		<evaluate expression="bridgeService.checkConfig(config)" />
+		<transition on="configured" to="edit" />
+		<transition on="unconfigured" to="newBridge" />
+	</action-state>
+
+	<action-state id="newBridge">
+		<evaluate expression="bridgeService.newBridge(config)"
+			result="flowScope.bridge" />
+		<transition to="bridgeForm" />
+	</action-state>
+
+	<action-state id="edit">
+		<evaluate expression="bridgeService.getBridge(config)"
+			result="flowScope.bridge" />
+		<transition to="bridgeForm" />
+	</action-state>
+
+	<view-state id="bridgeForm" model="bridge" view="configure/configure">
+		<on-entry>
+			<evaluate
+				expression="remoteServerService.getRemoteContexts(config.remoteService)"
+				result="flowScope.remoteContexts"></evaluate>
+		</on-entry>
+		<transition on="save" to="done">
+			<evaluate expression="bridgeService.save(bridge)" />
+		</transition>
+		<transition on="cancel" to="cancel" bind="false">
+		</transition>
+		<transition on="createSpace" to="createSpace" bind="false">
+		</transition>
+	</view-state>
+
+	<subflow-state id="createSpace" subflow="create">
+		<transition on="end-state" to="createSave">
+			<!--<evaluate expression="bridgeService.newBridge(config, newRemoteContext)" result="flowScope.bridge" />-->
+		</transition>
+		<transition on="cancel" to="done" />
+	</subflow-state>
+
+	<action-state id="createSave">
+		<evaluate expression="bridge.persist()" />
+		<transition to="done" />
+	</action-state>
+
+	<end-state id="done" />
+</flow>

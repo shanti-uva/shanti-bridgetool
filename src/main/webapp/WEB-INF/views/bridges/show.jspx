@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_edu_virginia_shanti_om_bridge_domain_Bridge" object="${bridge}" path="/bridges" z="loddzODJ1g2abkJuhS5O19UdNFI=">
+        
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <field:display field="localContext" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_localContext" object="${bridge}" z="naQ1ZSTFHnYCTXfA3cdVDJOla70="/>
+        <field:display field="localSubContext" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_localSubContext" object="${bridge}" z="tSrp6c+B9TDEFj3LXP51NBopW3M="/>
+        <field:display field="remoteContext" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_remoteContext" object="${bridge}" z="S2CZCq+V28axoRIxjMpp1/+dORs="/>
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    <field:display field="remoteName" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_remoteName" object="${bridge}" z="rigjaHam2+4xxUjDX9cUUhJnumQ="/>
+    </page:show>
+</div>

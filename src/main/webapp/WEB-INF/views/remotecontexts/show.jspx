@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_edu_virginia_shanti_om_bridge_domain_RemoteContext" object="${remotecontext}" path="/remotecontexts" z="zsLLt7LZhVNQs8nAX9xEzL5IDLk=">
+        
+        
+        
+    
+        
+        
+    
+    <field:display field="contextLabel" id="s_edu_virginia_shanti_om_bridge_domain_RemoteContext_contextLabel" object="${remotecontext}" z="gx3U29ztr9N+i8mvXVJ3ukZRNWM="/>
+        <field:display field="contextId" id="s_edu_virginia_shanti_om_bridge_domain_RemoteContext_contextId" object="${remotecontext}" z="NUUbHk27rWtcSUjHlD087tsghlg="/>
+        <field:display field="url" id="s_edu_virginia_shanti_om_bridge_domain_RemoteContext_url" object="${remotecontext}" z="4ollNe1iFdHIHeTSZt7kIVCdfgI="/>
+        
+    
+    <field:display field="remoteName" id="s_edu_virginia_shanti_om_bridge_domain_RemoteContext_remoteName" object="${remotecontext}" z="KvWEkLTd/cFZJ7kuQ0X7tZNX/nQ="/>
+    </page:show>
+</div>

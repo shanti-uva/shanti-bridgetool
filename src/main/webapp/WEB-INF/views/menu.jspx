@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8"/>
+	<jsp:output omit-xml-declaration="yes"/>
+
+<menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <menu:category id="c_bridge" z="AFNXgg35+/+qBlCeTeAzo8/t03o=">
+            <menu:item id="i_bridge_new" messageCode="global_menu_new" url="/bridges?form" z="LvuP8w1ACToaz6LJUV+UM2/MjBY="/>
+        <menu:item id="i_bridge_list" messageCode="global_menu_list" url="/bridges?page=1&amp;size=${empty param.size ? 10 : param.size}" z="mXMMKVFaSJ47ROo/f++nbFpJwhU="/>
+        
+        <menu:item id="fi_bridge_localcontext" messageCode="global_menu_find" url="/bridges?find=ByLocalContext&amp;form" z="1n49JCiMCku1YkkPSZlSkO8UEnQ="/>
+        </menu:category>
+    <menu:category id="c_flows" z="5igpkb/e+HPIN8iUErvmM38Eqqk=">
+        <menu:item id="i_flows_main" messageCode="webflow_menu_enter" url="/main" z="zHYL1dAje6D/blnzYJV4cPvpRGg="/>
+        <menu:item id="i_flows_configure" messageCode="webflow_menu_enter" url="/configure" z="yxZOXg9sB3BGSgUusk6wAXE6108="/>
+        <menu:item id="i_flows_sampleflow" messageCode="webflow_menu_enter" url="/sampleflow" z="JMM+dAVQySYHXliwJ5d5AQocPfk="/>
+        <menu:item id="i_flows_create" messageCode="webflow_menu_enter" url="/create" z="I1YK7YvdulXR02xIsnz1TZzi8GE="/>
+        </menu:category>
+    <menu:category id="c_remoteserver" z="user-managed">
+            <menu:item id="i_remoteserver_new" messageCode="global_menu_new" url="/remoteservers?form" z="user-managed"/>
+        <menu:item id="i_remoteserver_list" messageCode="global_menu_list" url="/remoteservers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="user-managed"/>
+        <menu:item id="fi_remoteserver_remotename" messageCode="global_menu_find" url="/remoteservers?find=ByRemoteName&amp;form" z="user-managed"/>
+        </menu:category>
+    <menu:category id="c_remotecontext" z="zRC4d1ILhdQbn5F/ndud5UKPVhY=">
+            <menu:item id="i_remotecontext_new" messageCode="global_menu_new" url="/remotecontexts?form" z="e31HQddQD+57lwg5uwMVbIHm7kk="/>
+        <menu:item id="i_remotecontext_list" messageCode="global_menu_list" url="/remotecontexts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="zZOD6TcOXN2rwbvDubcijO+yfDo="/>
+        </menu:category>
+    <menu:category id="c_remoteserver" z="nYOPQxgePqr2jnHNBiry1elwDo8=">
+            <menu:item id="i_remoteserver_new" messageCode="global_menu_new" url="/remoteservers?form" z="yn4yriiCzgaDCJcDG9Rn0WKjt6A="/>
+        <menu:item id="i_remoteserver_list" messageCode="global_menu_list" url="/remoteservers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="feOsn23BtJRBL6cn0BswvKgwfJ8="/>
+        <menu:item id="fi_remoteserver_remotename" messageCode="global_menu_find" url="/remoteservers?find=ByRemoteName&amp;form" z="D1bv8Xf3dYlG+XoD9zClTGdGrs0="/>
+        </menu:category>
+    </menu:menu>
+</div>

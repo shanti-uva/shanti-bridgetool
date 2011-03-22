@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	<on-start>
+		<evaluate expression="confluenceSpaceForm" result="flowScope.confluenceSpaceForm"></evaluate>
+		<evaluate
+			expression="confluenceSpaceForm.populate(config)"></evaluate>
+	</on-start>
+
+	<view-state id="createspaceform" view="create/createspaceform"
+		model="confluenceSpaceForm">
+		<transition on="create" to="success">
+			<evaluate
+				expression="remoteServerService.createRemoteContext(confluenceSpaceForm)"
+				result="flowScope.newRemoteContext"></evaluate>
+		</transition>
+		<transition on="cancel" to="cancel" />
+		<exception-handler bean="remoteConfluenceExceptionHandler"></exception-handler>
+	</view-state>
+
+	<!-- success message -->
+	<view-state id="success" view="create/success">
+		<on-entry>
+			<evaluate expression="bridgeService.createNewBridge(config, newRemoteContext)" result="flowScope.bridge" />
+		</on-entry>
+		<transition to="end-state" />
+	</view-state>
+
+	<!--  cancel -->
+	<end-state id="cancel">
+	</end-state>
+
+	<end-state id="end-state">
+		<output name="config" />
+		<output name="newRemoteContext" />
+	</end-state>
+</flow>

@@ -1,0 +1,45 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  <spring:message var="title" code="webflow_normalstate_title" />
+  <util:panel id="wiki" title="Wiki">
+    <form method="POST">
+      <div class="submit">
+      
+        <spring:message var="edit" code="context_edit" />
+      
+	
+      	<div>Visit: <a href="${bridge.remoteContext.url}" target="_blank">${bridge.remoteContext.contextLabel}</a>
+      	        <input style="float: right; margin-bottom: 2 em" type="submit" id="edit" name="_eventId_edit" value="${fn:escapeXml(edit)}" />
+      	    	
+      	</div>
+
+
+        <!--
+        <input type="submit" id="success" name="_eventId_success" value="${fn:escapeXml(proceed)}" />
+        -->
+      </div>
+    </form>
+
+
+	<div class="synopsis">
+		
+		<h3>Here is a synopsis.</h3>
+		
+		<ul>
+		<li>blah</li>
+		<li>booty booty</li>
+		<li>grindle spindle</li>
+		<li>hoity toity</li>
+		<li>muk muk</li>
+		<li>phooty calooty</li>
+		
+		</ul>
+  
+  	
+  	
+  	</div>
+  
+  </util:panel>
+
+</div>

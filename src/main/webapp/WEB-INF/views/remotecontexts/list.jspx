@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_edu_virginia_shanti_om_bridge_domain_RemoteContext" items="${remotecontexts}" z="qaWGFqIDn1P9QTiX2jQKBkhPwN0=">
+        <table:table data="${remotecontexts}" id="l_edu_virginia_shanti_om_bridge_domain_RemoteContext" path="/remotecontexts" z="UkW6dfky3DjlbVk5MeIqgfZmKvA=">
+            
+            
+            
+        
+            
+            
+        
+        <table:column id="c_edu_virginia_shanti_om_bridge_domain_RemoteContext_contextLabel" property="contextLabel" z="zBbnO/o6hFoXbVbLR14R9pHm+FA="/>
+            <table:column id="c_edu_virginia_shanti_om_bridge_domain_RemoteContext_contextId" property="contextId" z="L0xCrdHTUfMWzi481xBcgL8un+I="/>
+            <table:column id="c_edu_virginia_shanti_om_bridge_domain_RemoteContext_url" property="url" z="zsuohufMSxnGUqXP3kMqpSMZqcA="/>
+            
+        
+        <table:column id="c_edu_virginia_shanti_om_bridge_domain_RemoteContext_remoteName" property="remoteName" z="FzHEgf6qubuNz6+uG0eZy8lRSVc="/>
+        </table:table>
+    </page:list>
+</div>

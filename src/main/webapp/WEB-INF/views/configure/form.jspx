@@ -1,0 +1,52 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  <spring:message var="title" code="webflow_debug_title" />
+  <util:panel id="title" title="${title}">
+    <h1>${fn:escapeXml(title)}</h1>
+    <p>
+      <spring:message code="webflow_debug_message" />
+    </p>
+    <form method="POST">
+      <!-- 
+      <div class="submit">
+        <spring:message var="proceed" code="button_proceed" />
+        <input type="submit" id="proceed" name="_eventId_proceed" value="${fn:escapeXml(proceed)}" />
+      </div>
+      
+      -->
+    <table>
+	<tr>
+		<td>Search Criteria</td>
+	</tr>
+	<spring:hasBindErrors name="searchCriteria">
+	<tr>
+		<td colspan="2">
+			<div class="error">Please provide valid search criteria</div>
+		</td>
+	</tr>
+	</spring:hasBindErrors>
+	<tr>
+		<td>Site Id</td>
+		<td>
+			<input name="siteId" path="siteId" />
+		</td>
+	</tr>
+		<tr>
+		<td>Tool Placement Id</td>
+		<td>
+			<input name="toolPlacementId" path="toolPlacementId" />
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2" class="buttonBar">
+			<input type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}"/>
+			<input type="submit" class="button" name="_eventId_proceed" value="Proceed"/>
+		</td>
+	</tr>		
+</table>
+</form>
+    
+    
+  </util:panel>
+</div>

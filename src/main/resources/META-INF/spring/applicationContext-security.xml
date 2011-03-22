@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+	<!-- HTTP security configurations -->
+
+	<http entry-point-ref="containerAuthenticationEntryPoint"
+		access-decision-manager-ref="affirmativeBased">
+		<custom-filter ref="preauthenticationFilter" position="PRE_AUTH_FILTER" />
+		<logout invalidate-session="true" logout-success-url="/Shibboleth.sso/Logout"
+			logout-url="/logout" />
+		<intercept-url pattern="/error.htm" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN" />
+	</http>
+
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider ref="authenticationProvider" />
+	</authentication-manager>
+	
+	
+	<beans:bean id="containerAuthenticationEntryPoint" class="edu.virginia.shanti.om.bridge.auth.ContainerAuthenticationEntryPoint">
+  		<beans:property name="domainLogin" value="error.htm"/>
+	</beans:bean>
+
+	<beans:bean id="preauthenticationFilter"
+		class="org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter">
+		<beans:property name="principalRequestHeader" value="REMOTE_USER" />
+		<beans:property name="authenticationManager" ref="authenticationManager"></beans:property>
+		<beans:property name="credentialsRequestHeader" value="sakaisessionid"></beans:property>
+		<beans:property name="exceptionIfHeaderMissing" value="false"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="authenticationProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+		<beans:property name="preAuthenticatedUserDetailsService" ref="userDetailsService"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="userDetailsService" class="edu.virginia.shanti.om.bridge.auth.UserDetailsService"></beans:bean>
+	
+	<!-- Voters -->
+	<beans:bean id="affirmativeBased" class="org.springframework.security.access.vote.AffirmativeBased">
+		<beans:property name="decisionVoters">
+			<beans:list>
+				<beans:ref bean="roleVoter" />
+				<beans:ref bean="authenticatedVoter" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	
+	<beans:bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter" />
+	<beans:bean id="authenticatedVoter" class="org.springframework.security.access.vote.AuthenticatedVoter" />
+	
+</beans:beans>
+

@@ -1,0 +1,135 @@
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-02-23 10:12:18
+project --topLevelPackage edu.virginia.shanti.om.bridge --projectName BridgeTool --java 6
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-02-23 10:12:19
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-02-23 10:12:22
+persistence setup --database HYPERSONIC_IN_MEMORY --provider HIBERNATE 
+entity --class ~.domain.Bridge
+// [failed] entity --class ~.domain.Bridge --testAutomatically 
+entity --class ~.domain.Bridge --testAutomatically 
+field string --fieldName label
+field string --fieldName implementation
+controller all --package ~.web
+web flow
+web flow --flowName main
+help
+security setup
+help
+help web flow
+help
+perform tests
+web flow --flowName configure
+poll now
+field string --class ~.domain.Bridge --fieldName context
+perform tests
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-02-28 11:38:56
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-02-28 15:14:04
+help
+class --class ~.service.ConfigurationService --rooAnnotations
+field string --class ~.domain.Bridge --fieldName siteId
+class --class ~.service.Config --rooAnnotations 
+finder list --class ~.domain.Bridge
+finder add --finderName findBridgesBySiteId
+// [failed] finder list --class ~.domain.Bridge
+// [failed] finder list --class ~.domain.Bridge
+poll now
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-02-28 16:07:47
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-02-28 16:09:12
+finder list --class ~.domain.Bridge
+finder add --finderName findBridgesByLocalContext
+help
+test integration
+test mock
+test stub 
+help test
+field string --fieldName nulltest --class ~.domain.Bridge --notNull 
+field string --fieldName nulltest --class ~.domain.Bridge --notNull --unique 
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-02-28 22:12:04
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-02-28 22:12:27
+perform test
+poll now
+poll now
+class --class ~.service.BridgeService --rooAnnotations 
+help test
+help
+test stub --entity ~.service.BridgeService
+test mock --entity ~.service.BridgeService
+poll now
+class --class ~.form.DebugForm --rooAnnotations
+poll now
+class --class ~.service.RemoteConfigService --rooAnnotations --abstract 
+class --class ~.service.ConfluenceConfigService --rooAnnotations --extends ~.service.RemoteConfigService
+class --class ~.service.RemoteConfiguration --rooAnnotations --abstract 
+// [failed] class --class ~.service.ConfluenceConfig --rooAnnotations --extends ~.service.RemoteConfig
+class --class ~.service.ConfluenceConfiguration --rooAnnotations --extends ~.service.RemoteConfiguration
+// [failed] entity --class ~.domain.RemoteConfiguration --testAutomatically true --abstract true
+entity --class ~.domain.RemoteConfiguration --abstract true
+// [failed] class --class ~.domain.ConfluenceConfig --rooAnnotations --extends ~.domain.RemoteConfig
+class --class ~.domain.ConfluenceConfiguration --rooAnnotations --extends ~.domain.RemoteConfiguration
+class --class ~.service.RemoteConfigService --rooAnnotations
+class --class ~.service.RemoteContext --rooAnnotations
+field string contextLabel
+field string contextId
+finder list --class ~.domain.RemoteConfiguration
+finder list --class ~.domain.RemoteConfiguration
+finder add --finderName findRemoteConfigurationsByRemoteName
+class --class ~.service.RemoteConnector --rooAnnotations
+class --class ~.remote.ConfluenceConnector
+class --class ~.remote.ConfluenceConnector --extends ~.remote.RemoteConnector --rooAnnotations 
+help test
+test stub --entity ~.service.RemoteConfigurationService
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-03 13:51:11
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-03 13:51:25
+poll now
+controller all --package ~.domain
+controller all --package ~.web
+poll now
+poll now
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-04 03:46:06
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-04 03:46:20
+controller all --package ~.web
+poll now
+help
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-05 20:52:14
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-05 20:52:32
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-08 21:16:46
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-09 10:37:56
+poll now
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-11 00:42:47
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-14 11:40:54
+web flow
+web flow --flowName create
+poll now
+poll now
+poll now
+finder add --class ~.service.RemoteService --finderName findRemoteServersByRemoteName
+// [failed] finder list --class ~.service.RemoteService
+// [failed] finder list --class ~.service.RemoteServerService
+// [failed] finder list --class ~.service.RemoteServerService
+// [failed] finder list --class ~.service.RemoteServer
+// [failed] finder list --class ~.domain.RemoteServer
+finder list --class ~.domain.RemoteServer
+// [failed] finder add --finderName findRemoteServersByRemoteName
+finder list --class ~.domain.RemoteServer
+poll now
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-14 14:24:08
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-14 14:24:21
+poll now
+finder add --class ~.domain.RemoteServer --finderName findRemoteServersByRemoteName
+controller all --package ~.web
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-14 14:50:44
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-14 14:50:56
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-15 12:25:13
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-15 12:25:23
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-17 09:28:15
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-17 20:03:38
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-17 20:03:52
+poll now
+// [failed] poll now
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-18 06:47:00
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-18 14:47:39
+help log
+logging setup --level DEBUG
+poll now
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-18 23:13:19
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-22 00:38:43
+poll now

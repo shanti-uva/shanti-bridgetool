@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" xmlns:intf="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://user.atlassian.com" xmlns:tns2="http://rpc.confluence.atlassian.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.2.1
+Built on Jun 14, 2005 (09:15:57 EDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://user.atlassian.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://rpc.confluence.atlassian.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="EntityException">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema targetNamespace="http://rpc.confluence.atlassian.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://user.atlassian.com"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="RemoteException">
+    <sequence/>
+   </complexType>
+   <complexType name="AuthenticationFailedException">
+    <complexContent>
+     <extension base="tns2:RemoteException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AlreadyExistsException">
+    <complexContent>
+     <extension base="tns2:RemoteException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="InvalidSessionException">
+    <complexContent>
+     <extension base="tns2:RemoteException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="VersionMismatchException">
+    <complexContent>
+     <extension base="tns2:RemoteException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="NotPermittedException">
+    <complexContent>
+     <extension base="tns2:RemoteException">
+      <sequence/>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="whoamiRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="RemoteException">
+
+      <wsdl:part name="fault" type="tns2:RemoteException"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="logoutResponse">
+
+      <wsdl:part name="logoutReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="canUseConfluenceRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+      <wsdl:part name="in1" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+      <wsdl:part name="in1" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="sudoRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+      <wsdl:part name="in1" type="xsd:string"/>
+
+      <wsdl:part name="in2" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="EntityException">
+
+      <wsdl:part name="fault" type="tns1:EntityException"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="logoutRequest">
+
+      <wsdl:part name="in0" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="whoamiResponse">
+
+      <wsdl:part name="whoamiReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="AuthenticationFailedException">
+
+      <wsdl:part name="fault" type="tns2:AuthenticationFailedException"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="sudoResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="loginResponse">
+
+      <wsdl:part name="loginReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="canUseConfluenceResponse">
+
+      <wsdl:part name="canUseConfluenceReturn" type="xsd:boolean"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SudoSoap">
+
+      <wsdl:operation name="canUseConfluence" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:canUseConfluenceRequest" name="canUseConfluenceRequest"/>
+
+         <wsdl:output message="impl:canUseConfluenceResponse" name="canUseConfluenceResponse"/>
+
+         <wsdl:fault message="impl:EntityException" name="EntityException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sudo" parameterOrder="in0 in1 in2">
+
+         <wsdl:input message="impl:sudoRequest" name="sudoRequest"/>
+
+         <wsdl:output message="impl:sudoResponse" name="sudoResponse"/>
+
+         <wsdl:fault message="impl:EntityException" name="EntityException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="whoami" parameterOrder="in0">
+
+         <wsdl:input message="impl:whoamiRequest" name="whoamiRequest"/>
+
+         <wsdl:output message="impl:whoamiResponse" name="whoamiResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login" parameterOrder="in0 in1">
+
+         <wsdl:input message="impl:loginRequest" name="loginRequest"/>
+
+         <wsdl:output message="impl:loginResponse" name="loginResponse"/>
+
+         <wsdl:fault message="impl:AuthenticationFailedException" name="AuthenticationFailedException"/>
+
+         <wsdl:fault message="impl:RemoteException" name="RemoteException"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="logout" parameterOrder="in0">
+
+         <wsdl:input message="impl:logoutRequest" name="logoutRequest"/>
+
+         <wsdl:output message="impl:logoutResponse" name="logoutResponse"/>
+
+         <wsdl:fault message="impl:RemoteException" name="RemoteException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="sudoSoapBinding" type="impl:SudoSoap">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="canUseConfluence">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="canUseConfluenceRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sudo.confluence.adaptavist.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="canUseConfluenceResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EntityException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="EntityException" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="sudo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="sudoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sudo.confluence.adaptavist.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="sudoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="EntityException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="EntityException" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="whoami">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="whoamiRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://sudo.confluence.adaptavist.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="whoamiResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://rpc.confluence.atlassian.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="AuthenticationFailedException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="AuthenticationFailedException" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="RemoteException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="RemoteException" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="logout">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="logoutRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://rpc.confluence.atlassian.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="logoutResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="RemoteException">
+
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="RemoteException" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SudoSoapService">
+
+      <wsdl:port binding="impl:sudoSoapBinding" name="sudo">
+
+         <wsdlsoap:address location="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

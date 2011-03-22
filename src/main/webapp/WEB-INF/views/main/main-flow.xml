@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	
+	<on-start>
+		<evaluate expression="confluenceConfigBean" result="conversationScope.config" />
+	</on-start>
+	
+	<action-state id="setup">
+		<evaluate expression="remoteServerService.getAllRemoteServers()"
+			result="flowScope.remoteServers" />
+		<transition to="debug" />
+	</action-state>
+
+	<view-state id="debug" view="main/debug-entry" model="config">
+		<transition to="checkConfig">
+		</transition>
+		<!-- regardless of the result, lets checkConfig -->
+	</view-state>
+
+	<action-state id="checkConfig">
+		<evaluate
+			expression="bridgeService.checkConfig(config)" />
+		<transition to="configure" on="unconfigured" />
+		<transition to="normal" on="configured" />
+	</action-state>
+
+	<subflow-state id="configure" subflow="configure">
+		<!--  always check the config -->
+		<transition to="checkConfig" />
+	</subflow-state>
+
+	<!-- the normal configured state -->
+	<view-state id="normal" view="main/normal">
+		<on-entry>
+			<evaluate
+				expression="bridgeService.getBridge(config)"
+				result="flowScope.bridge"></evaluate>
+		</on-entry>
+		<transition to="configure" on="edit" />
+	</view-state>
+</flow>

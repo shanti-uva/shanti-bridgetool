@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_edu_virginia_shanti_om_bridge_domain_RemoteServer" object="${remoteserver}" path="/remoteservers" z="lsBmztH+fDcJoV6rikHE4ahaVWs=">
+        <field:display field="implementationName" id="s_edu_virginia_shanti_om_bridge_domain_RemoteServer_implementationName" object="${remoteserver}" z="19e0SWZA8SuUfbRPe88bSjSFrdw="/>
+        
+        <field:display field="remoteName" id="s_edu_virginia_shanti_om_bridge_domain_RemoteServer_remoteName" object="${remoteserver}" z="0i7CZpHx4hzBXXl269nyHMRPfrk="/>
+    <field:display field="remoteUrl" id="s_edu_virginia_shanti_om_bridge_domain_RemoteServer_remoteUrl" object="${remoteserver}" z="fhFGXjA/nJuaJV9LF25efFYfS2I="/>
+    </page:show>
+</div>
