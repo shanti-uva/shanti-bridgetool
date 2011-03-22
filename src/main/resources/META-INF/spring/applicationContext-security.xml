@@ -12,7 +12,8 @@
 		<custom-filter ref="preauthenticationFilter" position="PRE_AUTH_FILTER" />
 		<logout invalidate-session="true" logout-success-url="/Shibboleth.sso/Logout"
 			logout-url="/logout" />
-		<intercept-url pattern="/error.htm" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/error.htm" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN" />
 	</http>
 

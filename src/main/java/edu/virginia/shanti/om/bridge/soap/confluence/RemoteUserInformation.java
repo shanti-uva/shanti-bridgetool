@@ -7,18 +7,8 @@
 
 package edu.virginia.shanti.om.bridge.soap.confluence;
 
-import org.springframework.roo.addon.javabean.RooJavaBean;
-import org.springframework.roo.addon.tostring.RooToString;
-
-@RooJavaBean
-@RooToString
 public class RemoteUserInformation  implements java.io.Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = -1874123754398777544L;
-
-	private java.lang.String content;
+    private java.lang.String content;
 
     private java.util.Calendar creationDate;
 

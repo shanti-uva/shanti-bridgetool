@@ -7,48 +7,10 @@
 
 package edu.virginia.shanti.om.bridge.soap.confluence;
 
-import java.rmi.RemoteException;
-
 public class SudoSoapServiceTestCase extends junit.framework.TestCase {
-    private String session;
-
-	public SudoSoapServiceTestCase(java.lang.String name) {
+    public SudoSoapServiceTestCase(java.lang.String name) {
         super(name);
     }
-    
-    public void setUp() {
-        edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceserviceV1SoapBindingStub binding;
-        try {
-            binding = (edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceserviceV1SoapBindingStub)
-                          new edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceSoapServiceServiceLocator().getConfluenceserviceV1();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
-                jre.getLinkedCause().printStackTrace();
-            throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
-        }
-        assertNotNull("binding is null", binding);
-
-        // Time out after a minute
-        binding.setTimeout(60000);
-
-        // Test operation
-        try {
-            java.lang.String value = null;
-            value = binding.login("admin", "XXXXXX");
-            this.session = value;
-        }
-        catch (edu.virginia.shanti.om.bridge.soap.confluence.AuthenticationFailedException e1) {
-            throw new junit.framework.AssertionFailedError("AuthenticationFailedException Exception caught: " + e1);
-        }
-        catch (edu.virginia.shanti.om.bridge.soap.confluence.RemoteException e2) {
-            throw new junit.framework.AssertionFailedError("RemoteException Exception caught: " + e2);
-        } catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    }
-    
 
     public void testsudoWSDL() throws Exception {
         javax.xml.rpc.ServiceFactory serviceFactory = javax.xml.rpc.ServiceFactory.newInstance();
@@ -76,8 +38,7 @@ public class SudoSoapServiceTestCase extends junit.framework.TestCase {
         // Test operation
         try {
             boolean value = false;
-            value = binding.canUseConfluence(session, "ys2n");
-            assertTrue(value);
+            value = binding.canUseConfluence(new java.lang.String(), new java.lang.String());
         }
         catch (edu.virginia.shanti.om.bridge.soap.confluence.EntityException e1) {
             throw new junit.framework.AssertionFailedError("EntityException Exception caught: " + e1);
@@ -103,7 +64,7 @@ public class SudoSoapServiceTestCase extends junit.framework.TestCase {
 
         // Test operation
         try {
-            binding.sudo(session, "ys2n", "ys2n");
+            binding.sudo(new java.lang.String(), new java.lang.String(), new java.lang.String());
         }
         catch (edu.virginia.shanti.om.bridge.soap.confluence.EntityException e1) {
             throw new junit.framework.AssertionFailedError("EntityException Exception caught: " + e1);
@@ -129,10 +90,8 @@ public class SudoSoapServiceTestCase extends junit.framework.TestCase {
 
         // Test operation
         java.lang.String value = null;
-        value = binding.whoami(session);
+        value = binding.whoami(new java.lang.String());
         // TBD - validate results
-        
-        System.err.println(value);
     }
 
     public void test4sudoLogin() throws Exception {
@@ -154,7 +113,7 @@ public class SudoSoapServiceTestCase extends junit.framework.TestCase {
         // Test operation
         try {
             java.lang.String value = null;
-            value = binding.login("admin", "XXXXX");
+            value = binding.login(new java.lang.String(), new java.lang.String());
         }
         catch (edu.virginia.shanti.om.bridge.soap.confluence.AuthenticationFailedException e1) {
             throw new junit.framework.AssertionFailedError("AuthenticationFailedException Exception caught: " + e1);

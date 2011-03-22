@@ -7,14 +7,8 @@
 
 package edu.virginia.shanti.om.bridge.soap.confluence;
 
-import org.springframework.roo.addon.tostring.RooToString;
-
-@RooToString
 public class RemoteSpaceSummary  implements java.io.Serializable {
-
-	private static final long serialVersionUID = -6284219288820104149L;
-
-	private java.lang.String key;
+    private java.lang.String key;
 
     private java.lang.String name;
 
