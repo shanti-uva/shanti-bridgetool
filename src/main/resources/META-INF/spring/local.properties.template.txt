@@ -1,0 +1,3 @@
+# adjust these and copy to local.properties
+adminUser=<confluence admin user>
+adminPassword=<confluence password>
