@@ -1,16 +1,25 @@
 package edu.virginia.shanti.om.bridge.soap.confluence;
 
+import static org.hamcrest.Matchers.hasItem;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 import java.rmi.RemoteException;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import javax.xml.rpc.ServiceException;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/META-INF/spring/applicationContext*.xml" })
 public class ConfluenceSoapServiceIntegrationTest {
 
 	private ConfluenceSoapServiceServiceLocator locator;
@@ -19,6 +28,12 @@ public class ConfluenceSoapServiceIntegrationTest {
 	private String session;
 	private SudoSoapServiceLocator sudolocator;
 	private SudoSoap sudo;
+	
+	@Value(value="${adminUser}")
+	private String adminUser;
+	
+	@Value(value="${adminPassword}")
+	private String adminPassword;
 
 	@Before
 	public void setUp() throws Exception {
@@ -35,8 +50,18 @@ public class ConfluenceSoapServiceIntegrationTest {
 		sudo = sudolocator.getsudo();
 		((SudoSoapBindingStub) sudo).setTimeout(60000);
 
-		session = confluence.login("admin", "XXXXXX");
+		
+		
+		if (adminUser != null && adminPassword != null) {
+			System.err.println("adminUser = " + adminUser + " adminPassword is " + adminPassword.length() + " chars long");
+		session = confluence.login(adminUser, adminPassword);
 		assertNotNull(session);
+		} else {
+			throw new RuntimeException("admin user and password not set!");
+		}
+		
+		
+		
 	}
 
 	@Test
@@ -107,4 +132,37 @@ public class ConfluenceSoapServiceIntegrationTest {
 		
 	}
 
+	
+	@Test
+	public void getGroups() throws NotPermittedException, edu.virginia.shanti.om.bridge.soap.confluence.RemoteException, RemoteException{
+		String[] groups = confluence.getGroups(session);
+		
+		for (int i = 0; i < groups.length; i++) {
+			String string = groups[i];
+			
+			if (string.startsWith("roster-")) {
+				System.err.println(string);
+				confluence.removeGroup(session,	string, null);
+			}
+			
+		}	
+	}
+	
+	@Test
+	public void addRemoveGroup() throws InvalidSessionException, NotPermittedException, edu.virginia.shanti.om.bridge.soap.confluence.RemoteException, RemoteException {
+		String testGroup = "yuji_test_group";
+		
+		confluence.addGroup(session, testGroup);
+		
+		String[] groups = confluence.getGroups(session);
+		
+		assertThat(Arrays.asList(groups), hasItem(testGroup));
+		
+		confluence.removeGroup(session,testGroup, null);
+		
+	}
+	
+	
 }
+
+

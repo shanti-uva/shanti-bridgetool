@@ -19,6 +19,7 @@ public class ConfluenceSoapServiceServiceTestCase extends junit.framework.TestCa
         assertTrue(service != null);
     }
 
+    /*
     public void test1ConfluenceserviceV1GetPermissions() throws Exception {
         edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceserviceV1SoapBindingStub binding;
         try {
@@ -3681,5 +3682,7 @@ public class ConfluenceSoapServiceServiceTestCase extends junit.framework.TestCa
         }
             // TBD - validate results
     }
+    
+    */
 
 }

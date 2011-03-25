@@ -5,17 +5,15 @@ package edu.virginia.shanti.om.bridge.form;
 
 import java.lang.String;
 
-privileged aspect ConfluenceConfigBean_Roo_ToString {
+privileged aspect GestaltBean_Roo_ToString {
     
-    public String ConfluenceConfigBean.toString() {
+    public String GestaltBean.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Timestamp: ").append(getTimestamp()).append(", ");
         sb.append("User: ").append(getUser()).append(", ");
         sb.append("LocalContext: ").append(getLocalContext()).append(", ");
         sb.append("LocalSubContext: ").append(getLocalSubContext()).append(", ");
-        sb.append("RemoteService: ").append(getRemoteService()).append(", ");
-        sb.append("SiteId: ").append(getSiteId()).append(", ");
-        sb.append("ToolPlacementId: ").append(getToolPlacementId());
+        sb.append("RemoteService: ").append(getRemoteService());
         return sb.toString();
     }
     

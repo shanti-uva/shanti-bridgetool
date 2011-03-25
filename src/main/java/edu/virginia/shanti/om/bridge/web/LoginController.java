@@ -1,13 +1,24 @@
 package edu.virginia.shanti.om.bridge.web;
 
+import javax.servlet.http.HttpSession;
+
+import junit.framework.Assert;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.virginia.shanti.om.bridge.form.GestaltBean;
+
 @RequestMapping("/login")
 @Controller
 public class LoginController {
+	
+	/* session-scoped gestalt bean */
+	@Autowired
+	private GestaltBean gestalt;
 	
 // ?user=ys2n&
 //	internaluser=ys2n&
@@ -21,21 +32,35 @@ public class LoginController {
 //	sign=e368c04c9862ce7f5978df0f88e8d02280c0182a
 	
     @RequestMapping(method = RequestMethod.GET)
-    public String login(@RequestParam(value = "user", required = true) String user,
+    public String login(
+    		@RequestParam(value = "user", required = true) String user,
     		@RequestParam(value = "site", required = true) String site,
     		@RequestParam(value = "placement", required = true) String placement,
-    		@RequestParam(value = "time", required = true) Long time ) {
+    		HttpSession session) {
     	
     	System.err.println(" user = " + user);
     	System.err.println(" site = " + site);
     	System.err.println(" placement = " + placement);
-    	System.err.println(" time = " + time);
     	
-        return "redirect:/main";
-        
+    	// sanity check
+    	Assert.assertTrue("illegal character in username", user.matches("[\\S]+"));
+    	Assert.assertTrue("username too long: " + user.length(), user.length() < 64);
+    	Assert.assertTrue("illegal characeter in site", site.matches("[A-z0-9\\-]+"));
+    	Assert.assertTrue("site too long: " + site.length(), site.length() < 64);
+    	Assert.assertTrue("placement too long: " + placement.length(), placement.length() < 64);
+    	
+    	
+    	System.err.println("Gestalt before setting: " + gestalt);
+    	
+    	gestalt.setLocalContext(site);
+    	gestalt.setLocalSubContext(placement);
+    	gestalt.setUser(user);
+    	gestalt.setTimestamp(System.currentTimeMillis());
+    	gestalt.setRemoteService("shanti-wiki"); // TODO: hmm hardcoded.
+    	
+    	System.err.println("Gestalt after setting: " + gestalt);
+    	
+        return "redirect:/main";   
     }
-	
-	
-	
-	
+
 }

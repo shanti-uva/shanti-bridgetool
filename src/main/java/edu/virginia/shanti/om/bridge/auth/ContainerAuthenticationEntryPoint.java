@@ -29,7 +29,7 @@ public class ContainerAuthenticationEntryPoint implements
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-			Assert.hasLength(domainLogin, "DomainLogin must be specified.");
+			// Assert.hasLength(domainLogin, "DomainLogin must be specified.");
 	}
 
 	@Override

@@ -3,9 +3,26 @@
 
 package edu.virginia.shanti.om.bridge.form;
 
+import java.lang.Long;
 import java.lang.String;
 
 privileged aspect BasicConfigBean_Roo_JavaBean {
+    
+    public Long BasicConfigBean.getTimestamp() {
+        return this.timestamp;
+    }
+    
+    public void BasicConfigBean.setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
+    
+    public String BasicConfigBean.getUser() {
+        return this.user;
+    }
+    
+    public void BasicConfigBean.setUser(String user) {
+        this.user = user;
+    }
     
     public String BasicConfigBean.getLocalContext() {
         return this.localContext;
