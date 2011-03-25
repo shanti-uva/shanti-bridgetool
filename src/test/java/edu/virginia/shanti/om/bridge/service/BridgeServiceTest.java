@@ -21,7 +21,7 @@ import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.form.BasicConfigBean;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/META-INF/spring/applicationContext.xml" })
+@ContextConfiguration(locations = { "/META-INF/spring/applicationContext*.xml" })
 public class BridgeServiceTest {
 
 	@Autowired

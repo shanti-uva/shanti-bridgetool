@@ -20,10 +20,11 @@
 	<authentication-manager alias="authenticationManager">
 		<authentication-provider ref="authenticationProvider" />
 	</authentication-manager>
-	
-	
-	<beans:bean id="containerAuthenticationEntryPoint" class="edu.virginia.shanti.om.bridge.auth.ContainerAuthenticationEntryPoint">
-  		<beans:property name="domainLogin" value="error.htm"/>
+
+
+	<beans:bean id="containerAuthenticationEntryPoint"
+		class="edu.virginia.shanti.om.bridge.auth.ContainerAuthenticationEntryPoint">
+		<beans:property name="domainLogin" value="error.htm" />
 	</beans:bean>
 
 	<beans:bean id="preauthenticationFilter"
@@ -33,15 +34,19 @@
 		<beans:property name="credentialsRequestHeader" value="sakaisessionid"></beans:property>
 		<beans:property name="exceptionIfHeaderMissing" value="false"></beans:property>
 	</beans:bean>
-	
-	<beans:bean id="authenticationProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
-		<beans:property name="preAuthenticatedUserDetailsService" ref="userDetailsService"></beans:property>
+
+	<beans:bean id="authenticationProvider"
+		class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+		<beans:property name="preAuthenticatedUserDetailsService"
+			ref="userDetailsService"></beans:property>
 	</beans:bean>
-	
-	<beans:bean id="userDetailsService" class="edu.virginia.shanti.om.bridge.auth.UserDetailsService"></beans:bean>
-	
+
+	<beans:bean id="userDetailsService"
+		class="edu.virginia.shanti.om.bridge.auth.UserDetailsService"></beans:bean>
+
 	<!-- Voters -->
-	<beans:bean id="affirmativeBased" class="org.springframework.security.access.vote.AffirmativeBased">
+	<beans:bean id="affirmativeBased"
+		class="org.springframework.security.access.vote.AffirmativeBased">
 		<beans:property name="decisionVoters">
 			<beans:list>
 				<beans:ref bean="roleVoter" />
@@ -49,9 +54,15 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-	
-	<beans:bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter" />
-	<beans:bean id="authenticatedVoter" class="org.springframework.security.access.vote.AuthenticatedVoter" />
-	
+
+	<beans:bean id="roleVoter"
+		class="org.springframework.security.access.vote.RoleVoter" />
+	<beans:bean id="authenticatedVoter"
+		class="org.springframework.security.access.vote.AuthenticatedVoter" />
+
+	<!-- <beans:bean id="appConfiguration" class="edu.virginia.shanti.om.bridge.util.AppConfiguration"> 
+		<beans:property name="adminUser" value="${adminUser}" /> <beans:property 
+		name="adminPassword" value="${adminPassword}" /> </beans:bean> -->
+
 </beans:beans>
 

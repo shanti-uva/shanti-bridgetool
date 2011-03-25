@@ -18,6 +18,8 @@ public class SudoSoapServiceTestCase extends junit.framework.TestCase {
         javax.xml.rpc.Service service = serviceFactory.createService(url, new edu.virginia.shanti.om.bridge.soap.confluence.SudoSoapServiceLocator().getServiceName());
         assertTrue(service != null);
     }
+    
+    /*
 
     public void test1sudoCanUseConfluence() throws Exception {
         edu.virginia.shanti.om.bridge.soap.confluence.SudoSoapBindingStub binding;
@@ -150,5 +152,5 @@ public class SudoSoapServiceTestCase extends junit.framework.TestCase {
         }
             // TBD - validate results
     }
-
+	*/
 }
