@@ -148,3 +148,5 @@ poll now
 // Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-24 15:11:55
 // Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-24 15:12:03
 poll now
+persistence setup --provider HIBERNATE --database MYSQL --jndiDataSource bridgetool
+persistence setup --provider HIBERNATE --database MYSQL --databaseName bridgetool --userName bridgeuser --password 52pickUP

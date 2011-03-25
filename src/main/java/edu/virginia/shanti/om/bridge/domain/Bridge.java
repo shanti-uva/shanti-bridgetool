@@ -40,6 +40,7 @@ public class Bridge implements Serializable {
     private String localSubContext;
 
     /** remote context: e.g. confluence space identifier */
+    @Column(columnDefinition="BLOB")
     private RemoteContext remoteContext;
 
 }
