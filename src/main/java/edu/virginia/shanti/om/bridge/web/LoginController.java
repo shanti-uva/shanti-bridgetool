@@ -16,10 +16,6 @@ import edu.virginia.shanti.om.bridge.form.GestaltBean;
 @Controller
 public class LoginController {
 	
-	/* session-scoped gestalt bean */
-	@Autowired
-	private GestaltBean gestalt;
-	
 // ?user=ys2n&
 //	internaluser=ys2n&
 //	site=remoteauth&
@@ -49,18 +45,7 @@ public class LoginController {
     	Assert.assertTrue("site too long: " + site.length(), site.length() < 64);
     	Assert.assertTrue("placement too long: " + placement.length(), placement.length() < 64);
     	
-    	
-    	System.err.println("Gestalt before setting: " + gestalt);
-    	
-    	gestalt.setLocalContext(site);
-    	gestalt.setLocalSubContext(placement);
-    	gestalt.setUser(user);
-    	gestalt.setTimestamp(System.currentTimeMillis());
-    	gestalt.setRemoteService("shanti-wiki"); // TODO: hmm hardcoded.
-    	
-    	System.err.println("Gestalt after setting: " + gestalt);
-    	
-        return "redirect:/main";   
+        return "redirect:/" + site + "/" + placement + "/" + user + "/main";   
     }
 
 }

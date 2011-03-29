@@ -3,6 +3,7 @@ package edu.virginia.shanti.om.bridge.service;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -12,11 +13,13 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
 import org.springframework.stereotype.Service;
+import org.springframework.webflow.execution.RequestContext;
 
 import edu.virginia.shanti.om.bridge.domain.Bridge;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
-import edu.virginia.shanti.om.bridge.form.ConfluenceConfigBean;
 import edu.virginia.shanti.om.bridge.form.ConfigBean;
+import edu.virginia.shanti.om.bridge.form.ConfluenceConfigBean;
+import edu.virginia.shanti.om.bridge.form.GestaltBean;
 
 @RooJavaBean
 @RooToString
@@ -29,7 +32,7 @@ public class BridgeService {
 
 	@Autowired
 	private RemoteServerService remoteServerService;
-	
+
 	private Log log = LogFactory.getLog(BridgeService.class);
 
 	/**
@@ -90,7 +93,8 @@ public class BridgeService {
 	public List<Bridge> getBridges(String user, String localContext) {
 		// TODO: needs test
 
-		ConfigBean config = new ConfluenceConfigBean(user, localContext, null, null, System.currentTimeMillis());
+		ConfigBean config = new ConfluenceConfigBean(user, localContext, null,
+				null, System.currentTimeMillis());
 		return getBridges(config);
 	}
 
@@ -125,7 +129,7 @@ public class BridgeService {
 	public Bridge newBridge(ConfigBean config) {
 		return newBridge(config, null);
 	}
-	
+
 	public Bridge newBridge(ConfigBean config, RemoteContext remoteContext) {
 		Bridge bridge = new Bridge();
 		bridge.setLocalContext(config.getLocalContext());
@@ -136,13 +140,13 @@ public class BridgeService {
 		}
 		return bridge;
 	}
-	
+
 	public Bridge createNewBridge(ConfigBean config, RemoteContext remoteContext) {
-			Bridge newBridge = newBridge(config, remoteContext);
-			newBridge.persist();
-			return newBridge;
+		Bridge newBridge = newBridge(config, remoteContext);
+		newBridge.persist();
+		return newBridge;
 	}
-	
+
 	public void save(Bridge bridge) {
 		if (bridge.getId() != null) {
 			log.info("merging bridge: " + bridge);
@@ -150,5 +154,67 @@ public class BridgeService {
 		}
 		bridge.persist();
 	}
-	
+
+	public ConfigBean populateConfigFromContext(RequestContext request) {
+		return populateConfigFromContext(request, new ConfluenceConfigBean());
+	}
+
+	public ConfigBean populateConfigFromContext(RequestContext request,
+			ConfigBean config) {
+		// TODO: should sanitize!
+		//
+		// log.warn("populateConfigFromContext()");
+		//
+		// log.warn("Attributes: " + request.getAttributes());
+		//
+		// String user = null;
+		//
+		// GestaltBean gestalt = (GestaltBean) request.getExternalContext()
+		// .getGlobalSessionMap().get("gestalt");
+		//
+		// if (user == null && request.getAttributes() != null) {
+		// user = request.getAttributes().getString("user");
+		// }
+		//
+		// if (user == null && gestalt != null) {
+		// user = gestalt.getUser();
+		// }
+		//
+		// if (user == null && request.getExternalContext() != null) {
+		// user = (String) request.getExternalContext().getRequestMap()
+		// .get("user");
+		// }
+		//
+		// if (user != null) {
+		// config.setUser(user);
+		// }
+		//
+		// System.err.println("user = " + user);
+
+		if (config.getTimestamp() == null) {
+			config.setTimestamp(System.currentTimeMillis());
+		}
+
+		if (config.getUser() == null) {
+			config.setUser((String) request.getExternalContext()
+					.getRequestMap().get("user"));
+		}
+
+		if (config.getLocalContext() == null) {
+			config.setLocalContext((String) request.getExternalContext()
+					.getRequestMap().get("localContext"));
+		}
+
+		if (config.getLocalSubContext() == null) {
+			config.setLocalSubContext((String) request.getExternalContext()
+					.getRequestMap().get("localSubContext"));
+		}
+		
+		if (config.getRemoteService() == null) {
+			// TODO: need to populate remote service intelligently
+			config.setRemoteService("shanti-wiki");
+		}
+
+		return config;
+	}
 }

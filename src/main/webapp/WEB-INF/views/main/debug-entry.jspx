@@ -17,23 +17,25 @@
 				</td>
 			</tr>
 		</spring:hasBindErrors>
+		
 		<tr>
 			<td>User</td>
-			<td><input name="user" path="user" /></td>
+			<td><input name="user" path="user" value="${config.user}"/></td>
+		
 		</tr>
 		
 		<tr>
 			<td>Time Stamp</td>
-			<td><input name="timestamp" path="timestamp" /></td>
+			<td><input name="timestamp" path="timestamp" value="${config.timestamp}" /></td>
 		</tr>
 		
 		<tr>
 			<td>Site Id</td>
-			<td><input name="siteId" path="siteId" /></td>
+			<td><input name="siteId" path="siteId" value="${config.siteId}" /></td>
 		</tr>
 		<tr>
 			<td>Tool Placement Id</td>
-			<td><input name="toolPlacementId" path="toolPlacementId" /></td>
+			<td><input name="toolPlacementId" path="toolPlacementId" value="${config.toolPlacementId}" /></td>
 		</tr>
 		<tr>
 			<td>Remote Service</td>
@@ -42,6 +44,7 @@
 				 <form:options items='${remoteServers}' itemLabel='remoteName'
 					itemValue='remoteName' /> 
 			</form:select>
+			=== ${config.remoteService}   ===
 			</td>
 			<!--  <td><input name="remoteService" path="remoteService" /></td> -->
 			

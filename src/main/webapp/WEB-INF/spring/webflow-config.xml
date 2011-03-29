@@ -10,13 +10,19 @@
 	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
 		<property name="order" value="0" />
 		<property name="flowRegistry" ref="flowRegistry" />
+		<property name="flowUrlHandler" ref="flowUrlHandler" />
 	</bean>
 
 	<!-- Dispatches requests mapped to flows to FlowHandler implementations -->
 	<bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
 		<property name="flowExecutor" ref="flowExecutor" />
-	</bean>
-
+		<property name="flowUrlHandler" ref="flowUrlHandler" />
+	</bean>	
+		
+	<bean id="flowUrlHandler" class="edu.virginia.shanti.om.bridge.webflow.BridgeToolFlowUrlHandler" /> 
+	
+	<!-- <bean id="flowUrlHandler" class="org.springframework.webflow.context.servlet.FilenameFlowUrlHandler" /> -->
+	
 	<!--Dispatches requests mapped to POJO @Controllers implementations-->
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
 
@@ -27,12 +33,13 @@
 	<!--  <webflow:flow-executor id="flowExecutor" />
     -->
     
+    <!-- injecting a LoggingFlowExecutionListener to assist with logging/debugging -->
     <webflow:flow-executor id="flowExecutor">
 	   <webflow:flow-execution-listeners>
 	     <webflow:listener ref="loggingListener"/>
 	   </webflow:flow-execution-listeners>
 	</webflow:flow-executor>
-
+	
 	<bean class="edu.virginia.shanti.om.bridge.util.LoggingFlowExecutionListener" id="loggingListener" />
 	
 	<!-- The registry of executable flow definitions -->
