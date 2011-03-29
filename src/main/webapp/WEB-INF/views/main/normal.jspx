@@ -21,23 +21,8 @@
       </div>
     </form>
 
-
 	<div class="synopsis">
-		
-		<h3>Here is a synopsis.</h3>
-		
-		<ul>
-		<li>blah</li>
-		<li>booty booty</li>
-		<li>grindle spindle</li>
-		<li>hoity toity</li>
-		<li>muk muk</li>
-		<li>phooty calooty</li>
-		
-		</ul>
-  
-  	
-  	
+		${markUp}
   	</div>
   
   </util:panel>

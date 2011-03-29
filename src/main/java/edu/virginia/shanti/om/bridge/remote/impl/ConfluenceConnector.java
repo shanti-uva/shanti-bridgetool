@@ -9,6 +9,7 @@ import javax.xml.rpc.ServiceException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -29,7 +30,10 @@ import edu.virginia.shanti.om.bridge.soap.confluence.SudoSoapServiceLocator;
 
 @Service
 @Component
+@RooSerializable
 public class ConfluenceConnector implements RemoteConnector {
+
+	private static final long serialVersionUID = 7461979436195181130L;
 
 	private Log log = LogFactory.getLog(ConfluenceConnector.class);
 
@@ -42,9 +46,9 @@ public class ConfluenceConnector implements RemoteConnector {
 	@Value("${adminPassword}")
 	public String adminPassword;
 
-	private ConfluenceSoapServiceServiceLocator confLocator;
+	transient private ConfluenceSoapServiceServiceLocator confLocator;
 
-	private SudoSoapServiceLocator sudoLocator;
+	transient private SudoSoapServiceLocator sudoLocator;
 
 	public ConfluenceConnector() {
 		super();
@@ -54,14 +58,21 @@ public class ConfluenceConnector implements RemoteConnector {
 
 	public ConfluenceConnector(String baseUrl) {
 		this();
-		confLocator.setConfluenceserviceV1EndpointAddress(baseUrl
+		getConfLocator().setConfluenceserviceV1EndpointAddress(baseUrl
 				+ "/rpc/soap-axis/confluenceservice-v1");
+	}
+
+	private ConfluenceSoapServiceServiceLocator getConfLocator() {
+		if (confLocator == null) {
+			confLocator = new ConfluenceSoapServiceServiceLocator();
+		}
+		return confLocator;
 	}
 
 	@Override
 	public List<RemoteContextChoice> getContexts(RemoteServer remoteServer) {
 		try {
-			ConfluenceSoapService conf = confLocator.getConfluenceserviceV1();
+			ConfluenceSoapService conf = getConfLocator().getConfluenceserviceV1();
 			String sess = login(conf);
 
 			RemoteSpaceSummary[] spaces = conf.getSpaces(sess);
@@ -115,7 +126,7 @@ public class ConfluenceConnector implements RemoteConnector {
 			// determine/verify
 			// which server to contact
 
-			ConfluenceSoapService conf = confLocator.getConfluenceserviceV1();
+			ConfluenceSoapService conf = getConfLocator().getConfluenceserviceV1();
 			String sess = login(conf);
 			RemoteSpace rs = new RemoteSpace();
 			rs.setKey(newContext.getContextId());
@@ -153,7 +164,7 @@ public class ConfluenceConnector implements RemoteConnector {
 	public String getSummaryMarkup(RemoteContext remoteContext) {
 		ConfluenceSoapService conf;
 		try {
-			conf = confLocator.getConfluenceserviceV1();
+			conf = getConfLocator().getConfluenceserviceV1();
 			String sess = login(conf);
 
 			String spacekey = remoteContext.getContextId();
@@ -185,7 +196,7 @@ public class ConfluenceConnector implements RemoteConnector {
 	public void removeRemoteContext(RemoteContext remoteContext) {
 		ConfluenceSoapService conf;
 		try {
-			conf = confLocator.getConfluenceserviceV1();
+			conf = getConfLocator().getConfluenceserviceV1();
 			String sess = login(conf);
 			conf.removeSpace(sess, remoteContext.getContextId());
 		} catch (Exception e) {

@@ -10,8 +10,7 @@ privileged aspect RemoteServerService_Roo_ToString {
     public String RemoteServerService.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("AllRemoteServers: ").append(getAllRemoteServers() == null ? "null" : getAllRemoteServers().size()).append(", ");
-        sb.append("ApplicationContext: ").append(getApplicationContext()).append(", ");
-        sb.append("CurrentUser: ").append(getCurrentUser());
+        sb.append("ApplicationContext: ").append(getApplicationContext());
         return sb.toString();
     }
     

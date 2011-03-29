@@ -2,14 +2,18 @@ package edu.virginia.shanti.om.bridge.form;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.roo.addon.javabean.RooJavaBean;
+import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.stereotype.Component;
 
 
 @RooJavaBean
+@RooSerializable
 @Component
 @Scope("prototype")
 public class BasicConfigBean implements ConfigBean {
 	
+	private static final long serialVersionUID = 7034676199472189866L;
+
 	private Long timestamp;
 	
 	private String user;

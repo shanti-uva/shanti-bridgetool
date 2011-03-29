@@ -3,7 +3,6 @@
 
 package edu.virginia.shanti.om.bridge.service;
 
-import edu.virginia.shanti.om.bridge.service.CurrentUser;
 import org.springframework.context.ApplicationContext;
 
 privileged aspect RemoteServerService_Roo_JavaBean {
@@ -14,14 +13,6 @@ privileged aspect RemoteServerService_Roo_JavaBean {
     
     public void RemoteServerService.setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
-    }
-    
-    public CurrentUser RemoteServerService.getCurrentUser() {
-        return this.currentUser;
-    }
-    
-    public void RemoteServerService.setCurrentUser(CurrentUser currentUser) {
-        this.currentUser = currentUser;
     }
     
 }

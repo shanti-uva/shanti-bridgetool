@@ -27,9 +27,6 @@ public class RemoteServerService {
 
 	@Autowired
 	private ApplicationContext applicationContext;
-	
-	@Autowired
-	private CurrentUser currentUser;  // this is request scoped
 
 	private static final long serialVersionUID = -2683260374906842765L;
 
@@ -83,12 +80,16 @@ public class RemoteServerService {
 		
 		System.err.println("Trying this config:  " + newContext);
 		
-		RemoteServer remoteServer = RemoteServer.findRemoteServersByRemoteName(newContext.getRemoteName()).getSingleResult();
-		
-		RemoteConnector connector = (RemoteConnector)applicationContext.getBean(remoteServer.getImplementationName());
+		RemoteConnector connector = findRemoteConnector(newContext);
 		RemoteContext newRemoteContext = connector.createRemoteContext(newContext);
 		return newRemoteContext;
 		
+	}
+
+	private RemoteConnector findRemoteConnector(RemoteContext newContext) {
+		RemoteServer remoteServer = RemoteServer.findRemoteServersByRemoteName(newContext.getRemoteName()).getSingleResult();
+		RemoteConnector connector = (RemoteConnector)applicationContext.getBean(remoteServer.getImplementationName());
+		return connector;
 	}
 	
 	public RemoteContext createRemoteContext(ConfluenceSpaceForm spaceForm) {
@@ -107,6 +108,11 @@ public class RemoteServerService {
 		config.setRemoteUrl(configUrl);
 		config.persist();
 
+	}
+	
+	public String getSummaryMarkup(RemoteContext remoteContext) {
+		RemoteConnector connector = findRemoteConnector(remoteContext);
+		return connector.getSummaryMarkup(remoteContext);
 	}
 	
 	

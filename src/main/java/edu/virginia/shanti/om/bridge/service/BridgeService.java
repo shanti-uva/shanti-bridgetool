@@ -25,7 +25,6 @@ import edu.virginia.shanti.om.bridge.form.GestaltBean;
 @RooToString
 @RooSerializable
 @Service
-@Configurable
 public class BridgeService {
 
 	private static final long serialVersionUID = 3808409343349062908L;
@@ -216,5 +215,9 @@ public class BridgeService {
 		}
 
 		return config;
+	}
+
+	public String getSummaryMarkup(Bridge bridge) {
+		return remoteServerService.getSummaryMarkup(bridge.getRemoteContext());
 	}
 }

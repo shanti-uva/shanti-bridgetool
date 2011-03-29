@@ -39,6 +39,8 @@
 		<on-entry>
 			<evaluate expression="bridgeService.getBridge(config)"
 				result="flowScope.bridge"></evaluate>
+			<evaluate expression="bridgeService.getSummaryMarkup(bridge)"
+				result="flowScope.markUp"></evaluate>
 		</on-entry>
 		<transition to="configure" on="edit" />
 	</view-state>
