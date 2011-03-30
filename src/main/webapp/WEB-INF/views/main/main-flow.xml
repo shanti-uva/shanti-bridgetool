@@ -9,7 +9,6 @@
 		<transition to="start" />
 	</action-state>
 
-
 	<action-state id="start">
 		<evaluate
 			expression="bridgeService.populateConfigFromContext(flowRequestContext)"

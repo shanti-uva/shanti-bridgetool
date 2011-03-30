@@ -174,14 +174,14 @@ public class ConfluenceConnector implements RemoteConnector {
 			long pageid = space.getHomePage();
 
 			HashMap<String, String> params = new HashMap<String, String>();
-			params.put("style", "clean");
+			// params.put("style", "clean");
 
 			String theme = ""; // "|theme=concise";
 
 			return conf.renderContent(sess, spacekey, pageid,
-					"{recently-updated:spaces=" + spacekey + theme + "}",
+					"{recently-updated-dashboard:spaces=" + spacekey + theme + "}",
 					params);
-
+			
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

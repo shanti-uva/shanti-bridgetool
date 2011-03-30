@@ -1,5 +1,6 @@
 package edu.virginia.shanti.om.bridge.remote;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.roo.addon.javabean.RooJavaBean;

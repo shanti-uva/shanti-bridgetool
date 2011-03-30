@@ -2,6 +2,8 @@ package edu.virginia.shanti.om.bridge.service;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.ApplicationContext;
@@ -27,6 +29,8 @@ public class RemoteServerService {
 
 	@Autowired
 	private ApplicationContext applicationContext;
+	
+	private Log log = LogFactory.getLog(RemoteServerService.class);
 
 	private static final long serialVersionUID = -2683260374906842765L;
 
@@ -40,8 +44,15 @@ public class RemoteServerService {
 	public RemoteServer getRemoteServer(String serviceName) {
 		// TODO: needs test
 		// looks up RemoteServer entity by serviceName
-		return RemoteServer.findRemoteServersByRemoteName(
-				serviceName).getSingleResult();
+		RemoteServer remoteServer = null;
+		try {
+			remoteServer = RemoteServer.findRemoteServersByRemoteName(
+					serviceName).getSingleResult();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			log.error("Error retrieving RemoteServer named \'" + serviceName +"\' : " + e.getMessage() + " Returning null.");
+		}
+		return remoteServer;
 	}
 
 	/**
@@ -72,7 +83,11 @@ public class RemoteServerService {
 	 */
 	public List<RemoteContextChoice> getRemoteContexts(String configurationName) {
 		System.err.println("getRemoteContexts( " + configurationName +" )"); 
-		return getRemoteContexts(getRemoteServer(configurationName));
+		RemoteServer remoteServer = getRemoteServer(configurationName);
+		if (remoteServer == null) {
+			throw new RuntimeException("Remote server \'" + configurationName + "\' is unknown.");
+		}
+		return getRemoteContexts(remoteServer);
 	}
 	
 	
