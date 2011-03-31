@@ -1,5 +1,6 @@
 package edu.virginia.shanti.om.bridge.service;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -10,6 +11,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -61,8 +64,7 @@ public class RemoteServerService {
 	 * @param remoteServer
 	 * @return List<RemoteContext> list of remote contexts
 	 */
-	public List<RemoteContextChoice> getRemoteContexts(
-			RemoteServer remoteServer) {
+	public List<RemoteContextChoice> getRemoteContexts(RemoteServer remoteServer) {
 
 		System.err.println("getRemoteContexts(): remoteServer = "
 				+ remoteServer);
@@ -72,7 +74,8 @@ public class RemoteServerService {
 		RemoteConnector remote = (RemoteConnector) applicationContext
 				.getBean(remoteServer.getImplementationName());
 		
-		return remote.getContexts(remoteServer);
+		Principal principal = getCurrentUser();
+		return remote.getContexts(principal, remoteServer);
 	}
 
 	/**
@@ -87,6 +90,11 @@ public class RemoteServerService {
 		if (remoteServer == null) {
 			throw new RuntimeException("Remote server \'" + configurationName + "\' is unknown.");
 		}
+		
+		// DEBUG
+		
+		log.warn("DEBUG:" + SecurityContextHolder.getContext().getAuthentication().getName());
+		
 		return getRemoteContexts(remoteServer);
 	}
 	
@@ -96,9 +104,15 @@ public class RemoteServerService {
 		System.err.println("Trying this config:  " + newContext);
 		
 		RemoteConnector connector = findRemoteConnector(newContext);
-		RemoteContext newRemoteContext = connector.createRemoteContext(newContext);
+		RemoteContext newRemoteContext = connector.createRemoteContext( getCurrentUser(), newContext);
 		return newRemoteContext;
 		
+	}
+
+	private Authentication getCurrentUser() {
+				
+		return SecurityContextHolder.getContext().getAuthentication();
+
 	}
 
 	private RemoteConnector findRemoteConnector(RemoteContext newContext) {
@@ -127,7 +141,8 @@ public class RemoteServerService {
 	
 	public String getSummaryMarkup(RemoteContext remoteContext) {
 		RemoteConnector connector = findRemoteConnector(remoteContext);
-		return connector.getSummaryMarkup(remoteContext);
+		Principal principal = getCurrentUser();
+		return connector.getSummaryMarkup(principal, remoteContext);
 	}
 	
 	

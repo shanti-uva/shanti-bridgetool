@@ -2,8 +2,11 @@ package edu.virginia.shanti.om.bridge.webflow;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.javabean.RooJavaBean;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.webflow.engine.RequestControlContext;
 
@@ -17,6 +20,8 @@ import edu.virginia.shanti.om.bridge.service.RemoteServerService;
 @RooJavaBean
 public class RemoteServerFlowService {
 	
+	private Log log = LogFactory.getLog(RemoteServerFlowService.class);
+	
 	@Autowired
 	RemoteServerService remoteServerService;
 
@@ -25,10 +30,12 @@ public class RemoteServerFlowService {
 	}
 
 	public List<RemoteContextChoice> getRemoteContexts(RemoteServer remoteServer) {
+		log.warn("DEBUG:" + SecurityContextHolder.getContext().getAuthentication().getName());
 		return remoteServerService.getRemoteContexts(remoteServer);
 	}
 
 	public List<RemoteContextChoice> getRemoteContexts(String configurationName) {
+		log.warn("DEBUG:" + SecurityContextHolder.getContext().getAuthentication().getName());
 		return remoteServerService.getRemoteContexts(configurationName);
 	}
 

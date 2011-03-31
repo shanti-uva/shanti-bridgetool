@@ -14,7 +14,7 @@
     <span>
       <spring:url value="/resources/j_spring_security_logout" var="logout"/>
       <a href="${logout}">
-        <spring:message code="security_logout"/>
+        <spring:message code="security_logout"/> (${pageContext['request'].userPrincipal.name})
       </a>
     </span>
   </c:if>

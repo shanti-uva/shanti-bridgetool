@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.junit.Before;
@@ -11,6 +12,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -21,6 +24,10 @@ import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/META-INF/spring/applicationContext*.xml" })
 public class ConfluenceConnectorTest {
+
+	private static final String MOCKUSER = "ys2n";
+
+	private static final String MOCKPASSWORD = "mockpassword";
 
 	@Autowired
 	private ApplicationContext applicationContext;
@@ -39,6 +46,12 @@ public class ConfluenceConnectorTest {
 		remoteServer.setImplementationName("confluenceConnector");
 		remoteServer.setRemoteUrl("https://wiki.shanti.virginia.edu");
 		remoteServer.setRemoteName("shanti-wiki");
+
+		SecurityContextHolder.getContext()
+		.setAuthentication(
+				new UsernamePasswordAuthenticationToken(MOCKUSER,
+						MOCKPASSWORD));
+		
 	}
 
 	@Test
@@ -60,8 +73,9 @@ public class ConfluenceConnectorTest {
 
 	@Test
 	public void testGetContexts() {
-
-		List<RemoteContextChoice> contexts = conf.getContexts(remoteServer);
+	
+		Principal principal = SecurityContextHolder.getContext().getAuthentication();
+		List<RemoteContextChoice> contexts = conf.getContexts(principal, remoteServer);
 
 		assertNotNull("getContexts() returned null!", contexts);
 
@@ -76,12 +90,15 @@ public class ConfluenceConnectorTest {
 	@Test
 	public void testCreateRemoteContext() {
 
+		Principal principal = SecurityContextHolder.getContext().getAuthentication();
+
+		
 		RemoteContext newContext = new RemoteContext();
 		newContext.setContextId("TESTTEST2");
 		newContext.setContextLabel("Yuji Test Space");
 		RemoteContext newRemoteContext = null;
 		try {
-			newRemoteContext = conf.createRemoteContext(newContext);
+			newRemoteContext = conf.createRemoteContext(principal, newContext);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,7 +106,7 @@ public class ConfluenceConnectorTest {
 
 		System.err.println(newRemoteContext);
 
-		conf.removeRemoteContext(newContext);
+		conf.removeRemoteContext(principal, newContext);
 
 		// fail("Need to implement checks");
 
@@ -98,9 +115,11 @@ public class ConfluenceConnectorTest {
 	@Test
 	public void testGetSummaryMarkup() {
 
+		Principal principal = SecurityContextHolder.getContext().getAuthentication();
+		
 		RemoteContext remoteContext = pickContext();
 
-		String summaryMarkup = conf.getSummaryMarkup(remoteContext);
+		String summaryMarkup = conf.getSummaryMarkup(principal, remoteContext);
 
 		System.out.println(summaryMarkup);
 
@@ -110,8 +129,8 @@ public class ConfluenceConnectorTest {
 	}
 
 	private RemoteContext pickContext() {
-
-		List<RemoteContextChoice> contexts = conf.getContexts(remoteServer);
+		Principal principal = SecurityContextHolder.getContext().getAuthentication();
+		List<RemoteContextChoice> contexts = conf.getContexts(principal, remoteServer);
 		RemoteContextChoice choice = contexts.get(0);
 		RemoteContext rc = new RemoteContext(choice);
 		return rc;

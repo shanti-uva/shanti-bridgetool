@@ -13,8 +13,8 @@
 		<logout invalidate-session="true" logout-success-url="/Shibboleth.sso/Logout"
 			logout-url="/logout" />
 		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/error.htm" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<!--  intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY,ROLE_USER,ROLE_ADMIN" /> -->
+		<intercept-url pattern="error.htm" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY" />
 	</http>
 
 	<authentication-manager alias="authenticationManager">
@@ -24,11 +24,14 @@
 
 	<beans:bean id="containerAuthenticationEntryPoint"
 		class="edu.virginia.shanti.om.bridge.auth.ContainerAuthenticationEntryPoint">
-		<beans:property name="domainLogin" value="error.htm" />
+		<beans:property name="domainLogin" value="/error.htm" />
 	</beans:bean>
 
+
+	<!-- The default implementation is "org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter" -->
+
 	<beans:bean id="preauthenticationFilter"
-		class="org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter">
+		class="edu.virginia.shanti.om.bridge.auth.BridgeToolAuthenticationFilter">
 		<beans:property name="principalRequestHeader" value="REMOTE_USER" />
 		<beans:property name="authenticationManager" ref="authenticationManager"></beans:property>
 		<beans:property name="credentialsRequestHeader" value="sakaisessionid"></beans:property>

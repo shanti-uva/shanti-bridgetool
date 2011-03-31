@@ -3,12 +3,10 @@ package edu.virginia.shanti.om.bridge.service;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -19,7 +17,6 @@ import edu.virginia.shanti.om.bridge.domain.Bridge;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.form.ConfigBean;
 import edu.virginia.shanti.om.bridge.form.ConfluenceConfigBean;
-import edu.virginia.shanti.om.bridge.form.GestaltBean;
 
 @RooJavaBean
 @RooToString

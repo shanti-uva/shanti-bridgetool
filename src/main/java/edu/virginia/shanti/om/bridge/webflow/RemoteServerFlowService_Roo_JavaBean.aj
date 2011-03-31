@@ -4,8 +4,17 @@
 package edu.virginia.shanti.om.bridge.webflow;
 
 import edu.virginia.shanti.om.bridge.service.RemoteServerService;
+import org.apache.commons.logging.Log;
 
 privileged aspect RemoteServerFlowService_Roo_JavaBean {
+    
+    public Log RemoteServerFlowService.getLog() {
+        return this.log;
+    }
+    
+    public void RemoteServerFlowService.setLog(Log log) {
+        this.log = log;
+    }
     
     public RemoteServerService RemoteServerFlowService.getRemoteServerService() {
         return this.remoteServerService;

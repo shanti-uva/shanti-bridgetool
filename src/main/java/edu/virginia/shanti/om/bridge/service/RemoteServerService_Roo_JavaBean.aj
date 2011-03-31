@@ -3,6 +3,7 @@
 
 package edu.virginia.shanti.om.bridge.service;
 
+import org.apache.commons.logging.Log;
 import org.springframework.context.ApplicationContext;
 
 privileged aspect RemoteServerService_Roo_JavaBean {
@@ -13,6 +14,14 @@ privileged aspect RemoteServerService_Roo_JavaBean {
     
     public void RemoteServerService.setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
+    }
+    
+    public Log RemoteServerService.getLog() {
+        return this.log;
+    }
+    
+    public void RemoteServerService.setLog(Log log) {
+        this.log = log;
     }
     
 }

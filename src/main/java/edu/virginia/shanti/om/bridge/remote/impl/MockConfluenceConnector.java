@@ -1,5 +1,6 @@
 package edu.virginia.shanti.om.bridge.remote.impl;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -21,29 +22,45 @@ import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
 @RooSerializable
 @Service
 public class MockConfluenceConnector implements RemoteConnector {
+
+	private static String MOCKUSER = "ys2n";
 	
+	public class MockPrincipal implements Principal {
+
+		@Override
+		public String getName() {
+			return MOCKUSER;
+		}
+
+	}
+
 	private static final long serialVersionUID = 6670877131155240894L;
-	private Map<String,LinkedList<RemoteContextChoice>> contextStore = new HashMap<String,LinkedList<RemoteContextChoice>>();
-	
+	private Map<String, LinkedList<RemoteContextChoice>> contextStore = new HashMap<String, LinkedList<RemoteContextChoice>>();
+
 	public MockConfluenceConnector() {
-		
+
+		Principal principal = new MockPrincipal();
+
 		RemoteServer remoteServer = new RemoteServer();
 		remoteServer.setImplementationName("mockConfluenceConnector");
 		remoteServer.setRemoteName("MockConfluence");
 		remoteServer.setRemoteUrl("https://wiki.shanti.virginia.edu");
-		contextStore.put(remoteServer.getRemoteName(), createMockContextList(remoteServer));
+		contextStore.put(MOCKUSER + ":" + remoteServer.getRemoteName(),
+				createMockContextList(principal, remoteServer));
 		remoteServer.setRemoteName("shanti-wiki");
-		contextStore.put(remoteServer.getRemoteName(), createMockContextList(remoteServer));
+		contextStore.put(MOCKUSER + ":" + remoteServer.getRemoteName(),
+				createMockContextList(principal, remoteServer));
 	}
 
-	private LinkedList<RemoteContextChoice> createMockContextList(RemoteServer config) {
+	private LinkedList<RemoteContextChoice> createMockContextList(
+			Principal principal, RemoteServer config) {
 		String[] wikiSlugs = { "OM", "SHANTI", "KB", "DML", "LINK", "SHTECH" };
-		
+
 		String serverBaseUrl = config.getRemoteUrl();
 		String remoteName = config.getRemoteName();
 
 		// need to pass authentication information
-		
+
 		// Mocked data
 		LinkedList<RemoteContextChoice> contextList = new LinkedList<RemoteContextChoice>();
 		for (int i = 0; i < wikiSlugs.length; i++) {
@@ -53,49 +70,47 @@ public class MockConfluenceConnector implements RemoteConnector {
 			contextList.add(rc);
 			System.err.println("adding " + rc);
 		}
-		
+
 		return contextList;
 	}
 
 	private RemoteContextChoice newRemoteContextChoice(String serverBaseUrl,
 			String remoteName, String slug) {
-		RemoteContextChoice rc  = new RemoteContextChoice();
+		RemoteContextChoice rc = new RemoteContextChoice();
 		rc.setContextId(slug);
 		rc.setContextLabel(slug + " wiki space");
-		rc.setUrl(serverBaseUrl+ "/display/" + slug);
+		rc.setUrl(serverBaseUrl + "/display/" + slug);
 		rc.setRemoteName(remoteName);
 		return rc;
 	}
-	
-	
 
 	@Override
-	public List<RemoteContextChoice> getContexts(RemoteServer config) {
-		return contextStore.get(config.getRemoteName());
+	public List<RemoteContextChoice> getContexts(Principal principal, RemoteServer config) {
+		return contextStore.get(principal.getName() + ":" + config.getRemoteName());
 	}
 
 	@Override
-	public RemoteContext createRemoteContext(RemoteContext newctx) {
-		
+	public RemoteContext createRemoteContext(Principal principal, RemoteContext newctx) {
+
 		RemoteContextChoice rcc = new RemoteContextChoice();
 		rcc.setContextId(newctx.getContextId());
 		rcc.setContextLabel(newctx.getContextLabel());
 		rcc.setUrl(newctx.getUrl());
-		contextStore.get(newctx.getRemoteName()).add(rcc);
-		
+		contextStore.get(principal + ":" + newctx.getRemoteName()).add(rcc);
+
 		RemoteContext rc = new RemoteContext();
 		rc.populate(rcc);
 		return rc;
 	}
 
 	@Override
-	public String getSummaryMarkup(RemoteContext remoteContext) {
+	public String getSummaryMarkup(Principal principal, RemoteContext remoteContext) {
 		return null;
 	}
-	
+
 	@Override
-	public RemotePermissions getRemotePermissions(RemoteContext remoteContext) {
-		return null;	
+	public RemotePermissions getRemotePermissions(Principal principal, RemoteContext remoteContext) {
+		return null;
 	}
 
 }

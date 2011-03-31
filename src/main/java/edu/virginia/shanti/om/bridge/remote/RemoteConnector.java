@@ -21,12 +21,12 @@ public interface RemoteConnector {
 	 * @param remoteServer 
 	 * @return List<RemoteContext>
 	 */
-	public List<RemoteContextChoice> getContexts(RemoteServer remoteServer);
+	public List<RemoteContextChoice> getContexts(Principal principal, RemoteServer remoteServer);
 	
-	public RemoteContext createRemoteContext(RemoteContext remoteContext);
+	public RemoteContext createRemoteContext(Principal principal, RemoteContext remoteContext);
 	
-	public String getSummaryMarkup(RemoteContext remoteContext);
+	public String getSummaryMarkup(Principal principal, RemoteContext remoteContext);
 	
-	public RemotePermissions getRemotePermissions(RemoteContext remoteContext);
+	public RemotePermissions getRemotePermissions(Principal principal, RemoteContext remoteContext);
 	
 }

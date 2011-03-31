@@ -35,9 +35,11 @@
     
     <!-- injecting a LoggingFlowExecutionListener to assist with logging/debugging -->
     <webflow:flow-executor id="flowExecutor">
+    <!--
 	   <webflow:flow-execution-listeners>
 	     <webflow:listener ref="loggingListener"/>
 	   </webflow:flow-execution-listeners>
+	-->
 	</webflow:flow-executor>
 	
 	<bean class="edu.virginia.shanti.om.bridge.util.LoggingFlowExecutionListener" id="loggingListener" />

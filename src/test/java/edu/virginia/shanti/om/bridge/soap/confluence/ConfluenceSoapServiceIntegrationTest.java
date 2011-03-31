@@ -1,6 +1,6 @@
 package edu.virginia.shanti.om.bridge.soap.confluence;
 
-import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -88,30 +88,6 @@ public class ConfluenceSoapServiceIntegrationTest {
 	}
 
 	@Test
-	public void getSpacesWithPermissions() throws EntityException,
-			RemoteException {
-
-		sudo.sudo(session, session, "ybf2u");
-
-		RemoteSpaceSummary[] spaces = confluence.getSpaces(session);
-
-		for (int i = 0; i < spaces.length; i++) {
-			RemoteSpaceSummary remoteSpaceSummary = spaces[i];
-			System.err.println(remoteSpaceSummary);
-
-			String key = remoteSpaceSummary.getKey();
-
-			String[] permissions = confluence.getPermissions(session, key);
-
-			for (int j = 0; j < permissions.length; j++) {
-				String perm = permissions[j];
-				System.err.println("\t" + perm);
-			}
-		}
-
-	}
-
-	@Test
 	public void getPages() throws InvalidSessionException,
 			edu.virginia.shanti.om.bridge.soap.confluence.RemoteException,
 			RemoteException {
@@ -160,6 +136,34 @@ public class ConfluenceSoapServiceIntegrationTest {
 		
 		confluence.removeGroup(session,testGroup, null);
 		
+		groups = confluence.getGroups(session);
+
+		assertThat(Arrays.asList(groups), not(hasItem(testGroup)));
+		
+	}
+	
+	@Test
+	public void getSpacesWithPermissions() throws EntityException,
+			RemoteException {
+
+		sudo.sudo(session, session, "ybf2u");
+
+		RemoteSpaceSummary[] spaces = confluence.getSpaces(session);
+
+		for (int i = 0; i < spaces.length; i++) {
+			RemoteSpaceSummary remoteSpaceSummary = spaces[i];
+			System.err.println(remoteSpaceSummary.getName());
+
+			String key = remoteSpaceSummary.getKey();
+
+			String[] permissions = confluence.getPermissions(session, key);
+
+			for (int j = 0; j < permissions.length; j++) {
+				String perm = permissions[j];
+				System.err.println("\t" + perm);
+			}
+		}
+
 	}
 	
 	
