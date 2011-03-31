@@ -34,7 +34,7 @@ public class RemoteServerServiceTest {
 	private static final String CONFIG_IMPLEMENTATION = "mockConfluenceConnector";
 	private static final String CONFIG_INSTANCE = "https://wiki-test.shanti.virginia.edu";
 
-	private static final String MOCKUSER = "mst3k";
+	private static final String MOCKUSER = "ys2n";
 	private static final String MOCKPASSWORD = "mockpassword";
 	private RemoteServerService remoteServerService = new RemoteServerService();
 
