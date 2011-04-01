@@ -3,6 +3,7 @@ package edu.virginia.shanti.om.bridge.domain;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
@@ -16,31 +17,32 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooToString
 @RooSerializable
 @RooEntity(finders = { "findBridgesByLocalContext" })
-@Table(name = "bridge", uniqueConstraints = { @UniqueConstraint(columnNames = { "localContext", "localSubContext" }) })
+@Table(name = "bridge", uniqueConstraints = { @UniqueConstraint(columnNames = {
+		"localContext", "localSubContext" }) })
 public class Bridge implements Serializable {
 
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 471402102713234589L;
 
-    /** adapter implementation of this bridge */
-    // private String implementationName;
-    
-    /** the name of the remote instance */
-    private String remoteName;
+	/** adapter implementation of this bridge */
+	// private String implementationName;
 
-    /** primary local context: e.g. Sakai siteId */
-    @NotNull
-    private String localContext;
+	/** the name of the remote instance */
+	private String remoteName;
 
-    /** local subcontext: e.g. Sakai toolPlacementId */
-    @NotNull
-    @Column(unique = true)
-    private String localSubContext;
+	/** primary local context: e.g. Sakai siteId */
+	@NotNull
+	private String localContext;
 
-    /** remote context: e.g. confluence space identifier */
-    @Column(columnDefinition="BLOB")
-    private RemoteContext remoteContext;
+	/** local subcontext: e.g. Sakai toolPlacementId */
+	@NotNull
+	@Column(unique = true)
+	private String localSubContext;
+
+	/** remote context: e.g. confluence space identifier */
+	@ManyToOne
+	private RemoteContext remoteContext;
 
 }

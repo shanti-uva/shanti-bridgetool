@@ -61,6 +61,7 @@ public class BridgeServiceTest {
 		remoteContext.setContextId("remotecontext");
 		remoteContext.setContextLabel("Remote Context");
 		remoteContext.setUrl("http://blah.blah.blah");
+		remoteContext.persist();
 		bridge.setRemoteContext(remoteContext);
 		bridge.persist();
 	}

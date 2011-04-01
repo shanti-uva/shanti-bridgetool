@@ -2,6 +2,8 @@ package edu.virginia.shanti.om.bridge.webflow;
 
 import java.io.IOException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.webflow.engine.FlowExecutionExceptionHandler;
@@ -12,6 +14,8 @@ import org.springframework.webflow.execution.FlowExecutionException;
 @Component
 public class RemoteConfluenceExceptionHandler implements FlowExecutionExceptionHandler {
 
+	private Log log = LogFactory.getLog(RemoteConfluenceExceptionHandler.class);
+	
     public boolean canHandle(FlowExecutionException ex) {
 	if (findBusinessException(ex) != null) {
 	    return true;
@@ -26,6 +30,8 @@ public class RemoteConfluenceExceptionHandler implements FlowExecutionExceptionH
 
 	Object testState = context.getCurrentState();
 
+	log.info(ex);
+	
 	if (testState instanceof ViewState) {
 	    ViewState viewState = (ViewState) testState;
 	    try {

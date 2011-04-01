@@ -34,9 +34,9 @@ public class LoginController {
     		@RequestParam(value = "placement", required = true) String placement,
     		HttpSession session) {
     	
-    	System.err.println(" user = " + user);
-    	System.err.println(" site = " + site);
-    	System.err.println(" placement = " + placement);
+//    	System.err.println(" user = " + user);
+//    	System.err.println(" site = " + site);
+//    	System.err.println(" placement = " + placement);
     	
     	// sanity check
     	Assert.assertTrue("illegal character in username", user.matches("[\\S]+"));

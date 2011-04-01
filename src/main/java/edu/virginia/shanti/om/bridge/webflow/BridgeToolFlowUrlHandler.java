@@ -1,13 +1,7 @@
 package edu.virginia.shanti.om.bridge.webflow;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
-import junit.framework.Assert;
-
-import org.springframework.web.util.WebUtils;
 import org.springframework.webflow.context.servlet.FilenameFlowUrlHandler;
 import org.springframework.webflow.core.collection.AttributeMap;
 
@@ -15,26 +9,26 @@ public class BridgeToolFlowUrlHandler extends FilenameFlowUrlHandler {
 
 	@Override
 	public String getFlowId(HttpServletRequest request) {
-		System.err.println("getFlowId()");
+//		System.err.println("getFlowId()");
 		return super.getFlowId(request);
 	}
 
 	@Override
 	public String createFlowDefinitionUrl(String flowId, AttributeMap input,
 			HttpServletRequest request) {
-		System.err.println("createFlowDefinitionUrl");
+//		System.err.println("createFlowDefinitionUrl");
 		return super.createFlowDefinitionUrl(flowId, input, request);
 	}
 
 	@Override
 	public void setEncodingScheme(String encodingScheme) {
-		System.err.println("setEncodingScheme()");
+//		System.err.println("setEncodingScheme()");
 		super.setEncodingScheme(encodingScheme);
 	}
 
 	@Override
 	public String getFlowExecutionKey(HttpServletRequest request) {
-		System.err.println("servletPath: " + request.getServletPath());
+//		System.err.println("servletPath: " + request.getServletPath());
 		
 		// path will be something like "/xxx/yyy/user/main" where xxx=contextId and yyy=subcontextId
 		
@@ -49,7 +43,7 @@ public class BridgeToolFlowUrlHandler extends FilenameFlowUrlHandler {
 			request.setAttribute("localSubContext",path[2]);
 			request.setAttribute("user", path[3]);
 			
-			System.err.println("Adding to request attributes: localContext=" + path[1] + " localSubContext=" + path[2] + " user=" + path[3]);
+//			System.err.println("Adding to request attributes: localContext=" + path[1] + " localSubContext=" + path[2] + " user=" + path[3]);
 		}
 		
 		return super.getFlowExecutionKey(request);
@@ -58,7 +52,7 @@ public class BridgeToolFlowUrlHandler extends FilenameFlowUrlHandler {
 	@Override
 	public String createFlowExecutionUrl(String flowId,
 			String flowExecutionKey, HttpServletRequest request) {
-		System.err.println("createFlowExecutionUrl()");
+//		System.err.println("createFlowExecutionUrl()");
 		return super.createFlowExecutionUrl(flowId, flowExecutionKey, request);
 	}
 	

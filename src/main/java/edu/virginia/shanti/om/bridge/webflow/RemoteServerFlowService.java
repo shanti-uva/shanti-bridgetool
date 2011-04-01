@@ -44,7 +44,7 @@ public class RemoteServerFlowService {
 		try {
 			remoteContext = remoteServerService.createRemoteContext(newConfig);
 		} catch (Exception e) {
-			System.err.println ("XXX: " + e.getMessage());
+//			System.err.println ("XXX: " + e.getMessage());
 			throw new RuntimeException(e);
 		}
 		return remoteContext;

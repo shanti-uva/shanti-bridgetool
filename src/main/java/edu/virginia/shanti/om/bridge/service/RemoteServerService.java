@@ -66,10 +66,10 @@ public class RemoteServerService {
 	 */
 	public List<RemoteContextChoice> getRemoteContexts(RemoteServer remoteServer) {
 
-		System.err.println("getRemoteContexts(): remoteServer = "
-				+ remoteServer);
-		System.err.println("getRemoteContexts(): applicationContext = "
-				+ applicationContext);
+//		System.err.println("getRemoteContexts(): remoteServer = "
+//				+ remoteServer);
+//		System.err.println("getRemoteContexts(): applicationContext = "
+//				+ applicationContext);
 
 		RemoteConnector remote = (RemoteConnector) applicationContext
 				.getBean(remoteServer.getImplementationName());
@@ -85,7 +85,7 @@ public class RemoteServerService {
 	 * @return List<RemoteContext> list of remote contexts
 	 */
 	public List<RemoteContextChoice> getRemoteContexts(String configurationName) {
-		System.err.println("getRemoteContexts( " + configurationName +" )"); 
+//		System.err.println("getRemoteContexts( " + configurationName +" )"); 
 		RemoteServer remoteServer = getRemoteServer(configurationName);
 		if (remoteServer == null) {
 			throw new RuntimeException("Remote server \'" + configurationName + "\' is unknown.");
@@ -101,7 +101,7 @@ public class RemoteServerService {
 	
 	public RemoteContext createRemoteContext(RemoteContext newContext) {
 		
-		System.err.println("Trying this config:  " + newContext);
+//		System.err.println("Trying this config:  " + newContext);
 		
 		RemoteConnector connector = findRemoteConnector(newContext);
 		RemoteContext newRemoteContext = connector.createRemoteContext( getCurrentUser(), newContext);

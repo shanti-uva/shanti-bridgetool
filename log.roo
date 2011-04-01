@@ -165,3 +165,6 @@ poll now
 // Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-30 14:27:01
 poll now
 // Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-03-30 22:39:36
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-31 22:00:12
+poll now
+finder add --class ~.domain.RemoteContext --finderName findRemoteContextsByRemoteNameAndContextId

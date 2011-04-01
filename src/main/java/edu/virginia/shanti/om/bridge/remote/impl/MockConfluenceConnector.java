@@ -68,7 +68,7 @@ public class MockConfluenceConnector implements RemoteConnector {
 			RemoteContextChoice rc = newRemoteContextChoice(serverBaseUrl,
 					remoteName, slug);
 			contextList.add(rc);
-			System.err.println("adding " + rc);
+			// System.err.println("adding " + rc);
 		}
 
 		return contextList;

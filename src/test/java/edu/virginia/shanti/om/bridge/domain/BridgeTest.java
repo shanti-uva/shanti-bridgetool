@@ -91,7 +91,12 @@ public class BridgeTest {
 		mock.setRemoteName("remoteName");
 		mock.setLocalContext("localContext");
 		mock.setLocalSubContext("localSubContext");
-		mock.setRemoteContext(new RemoteContext());
+		RemoteContext rc = new RemoteContext();
+		rc.setContextId("ctx");
+		rc.setContextLabel("lbl");
+		rc.setRemoteName("rn");
+		rc.persist();
+		mock.setRemoteContext(rc);
 		return mock;
 	}
 

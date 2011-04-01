@@ -170,8 +170,8 @@ public class ConfluenceConnector implements RemoteConnector {
 		
 		SudoSoap sudo = getSudoLocator().getsudo();
 		ConfluenceSoapService conf = getConfLocator().getConfluenceserviceV1();
-		System.err.println("XXXXXXXXXXXX  adminUser = " + adminUser);
-		log.info("Logging in using user = " + adminUser);
+		// System.err.println("XXXXXXXXXXXX  adminUser = " + adminUser);
+		log.info("Logging in using admin user = " + adminUser);
 		String sess = sudo.login(adminUser, adminPassword);
 		log.info("Got admin session = " + sess + " trying to sudo to " + principal.getName());
 		sudo.sudo(sess,sess, principal.getName());

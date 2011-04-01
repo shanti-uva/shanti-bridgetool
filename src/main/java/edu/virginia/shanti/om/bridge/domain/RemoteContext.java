@@ -5,44 +5,40 @@ import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
-
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 
 @RooJavaBean
 @RooToString
 @RooSerializable
-@RooEntity
-public class RemoteContext extends RemoteContextChoice {
+@RooEntity(finders = { "findRemoteContextsByRemoteNameAndContextId" })
+public class RemoteContext {
 
-	private static final long serialVersionUID = -6188634159320400849L;
+    private static final long serialVersionUID = -6188634159320400849L;
 
-	
-	
-	public RemoteContext(RemoteContextChoice choice) {
-		this();
-		populate(choice);
-	}
+    private String contextLabel;
 
-	public RemoteContext() {
-		super();
-	}
+    private String contextId;
 
-	public void populate(RemoteContextChoice choice) {
-		setRemoteName(choice.getRemoteName());
-		setContextId(choice.getContextId());
-		setContextLabel(choice.getContextLabel());
-		setUrl(choice.getUrl());
-	}
+    private String url;
 
-	public RemoteContextChoice getRemoteContextChoice() {
-		RemoteContextChoice rcc = new RemoteContextChoice();
-		
-		BeanUtils.copyProperties(this, rcc, new String[] { "id" });
-		
-//		rcc.setContextId(getContextId());
-//		rcc.setContextLabel(getContextLabel());
-//		rcc.setRemoteName(getRemoteName());
-//		rcc.setUrl(getUrl());
-		return rcc;
-	}
+    private String remoteName;
+
+    public RemoteContext(RemoteContextChoice choice) {
+        this();
+        populate(choice);
+    }
+
+    public RemoteContext() {
+        super();
+    }
+
+    public void populate(RemoteContextChoice choice) {
+        BeanUtils.copyProperties(choice, this, new String[] { "id" });
+    }
+
+    public RemoteContextChoice getRemoteContextChoice() {
+        RemoteContextChoice rcc = new RemoteContextChoice();
+        BeanUtils.copyProperties(this, rcc, new String[] { "id" });
+        return rcc;
+    }
 }
