@@ -139,26 +139,26 @@ public class BridgeService {
 
 	public Bridge createNewBridge(ConfigBean config, RemoteContext remoteContext) {
 		Bridge newBridge = newBridge(config, remoteContext);
-		newBridge.persist();
+		save(newBridge);
 		return newBridge;
 	}
 
 	public void save(Bridge bridge) {
 
 		log.info("Bridge before persisting or merging: " + bridge);
-
+		
 		RemoteContext rc = bridge.getRemoteContext();
-		// find and replace if necessary
 
+		// Update RemoteContext if it already exists, create if it doesn't
 		List<RemoteContext> list = RemoteContext
-				.findRemoteContextsByRemoteNameAndContextId(rc.getRemoteName(),
-						rc.getContextId()).getResultList();
+		.findRemoteContextsByRemoteNameAndContextId(rc.getRemoteName(),
+				rc.getContextId()).getResultList();
 
 		if (list.size() == 1) {
 			// let's replace it with the saved one
 			log.info("using existing RemoteContext " + rc);
-			rc = list.get(0);
-			bridge.setRemoteContext(rc.merge());
+			rc = list.get(0).merge();
+			bridge.setRemoteContext(rc);
 		} else if (list.size() == 0) {
 			log.info("persisting new RemoteContext " + rc);
 			rc.persist();
@@ -168,13 +168,23 @@ public class BridgeService {
 							+ rc.getRemoteName() + " contextId="
 							+ rc.getContextId());
 		}
-
-		if (bridge.getId() != null) {
-			log.info("merging bridge: " + bridge);
-			bridge = bridge.merge();
-		} else {
-			log.info("persisting new Bridge: " + bridge);
+		
+		// Update Bridge if it already exists, create if it doesn't
+		List<Bridge> blist = Bridge.findBridgesByLocalSubContext(bridge.getLocalSubContext()).getResultList();
+		if (blist.size() == 1) {
+			// let's replace it with the saved one
+			log.info("using existing Bridge " + bridge);
+			bridge = blist.get(0);
+			bridge.setRemoteContext(rc);
 			bridge.persist();
+		} else if (blist.size() == 0) {
+			log.info("persisting new Bridge " + bridge);
+			bridge.persist();
+		} else {
+			throw new RuntimeException(
+					"Too many RemoteContexts returned for remoteName="
+							+ rc.getRemoteName() + " contextId="
+							+ rc.getContextId());
 		}
 	}
 
