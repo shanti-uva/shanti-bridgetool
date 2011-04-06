@@ -17,6 +17,12 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+
+/**
+ * This is a wrapper for mock user purposes.
+ * @author ys2n
+ *
+ */
 public class MockRequestWrapper implements HttpServletRequest {
 	
 	private Log log = LogFactory.getLog(MockRequestWrapper.class);

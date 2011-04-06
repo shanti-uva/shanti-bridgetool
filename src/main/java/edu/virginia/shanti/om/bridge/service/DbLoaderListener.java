@@ -27,6 +27,8 @@ public class DbLoaderListener implements
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
+		// Whenever the Context is Refreshed, check to see if the data needs to be initialized.
+		
 		// it would be nice develop a file-based serialization of the data (xml
 		// or json), so that its a bit more flexible. Using a spring bean xml file
 		// might work.

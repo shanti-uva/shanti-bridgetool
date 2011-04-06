@@ -23,14 +23,14 @@ public class BridgeToolAuthenticationFilter extends
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 
-		// when running on localhost, use mockuser httprequestwrapper
+		// when running on localhost, use mockuser httpRequestWrapper
 
 		Assert.assertTrue("This class only applies to HttpServletRequests!",
 				request instanceof HttpServletRequest);
 
 		String username = overrideUserName(request);
 
-		// wrap the request if the username has been overriden
+		// wrap the request if the user name has been overridden
 		if (username != null) {
 			request = new MockRequestWrapper((HttpServletRequest) request,
 					username);
