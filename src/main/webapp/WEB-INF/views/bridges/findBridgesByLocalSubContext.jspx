@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:find finderName="ByLocalSubContext" id="ff_edu_virginia_shanti_om_bridge_domain_Bridge" path="/bridges" z="F/YqB6FnWHVdUnK+hgKQSOISwzE=">
+        <field:input disableFormBinding="true" field="localSubContext" id="f_edu_virginia_shanti_om_bridge_domain_Bridge_localSubContext" required="true" z="6eSKle5VuOSunz9IVg3r6ybFbWA="/>
+    </form:find>
+</div>

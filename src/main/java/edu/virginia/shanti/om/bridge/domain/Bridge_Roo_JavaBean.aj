@@ -3,6 +3,7 @@
 
 package edu.virginia.shanti.om.bridge.domain;
 
+import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import java.lang.String;
 
@@ -38,6 +39,14 @@ privileged aspect Bridge_Roo_JavaBean {
     
     public void Bridge.setRemoteContext(RemoteContext remoteContext) {
         this.remoteContext = remoteContext;
+    }
+    
+    public PermissionMap Bridge.getPermissionMap() {
+        return this.permissionMap;
+    }
+    
+    public void Bridge.setPermissionMap(PermissionMap permissionMap) {
+        this.permissionMap = permissionMap;
     }
     
 }

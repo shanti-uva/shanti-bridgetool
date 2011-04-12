@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
+import org.springframework.security.core.Authentication;
 
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
@@ -28,5 +29,7 @@ public interface RemoteConnector {
 	public String getSummaryMarkup(Principal principal, RemoteContext remoteContext);
 	
 	public RemotePermissions getRemotePermissions(Principal principal, RemoteContext remoteContext);
+	
+	public void setRemotePermissions(Principal principal, RemoteContext remoteContext, RemotePermissions remotePermissions);
 	
 }

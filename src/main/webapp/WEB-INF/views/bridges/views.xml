@@ -19,4 +19,7 @@
 <definition extends="default" name="bridges/findBridgesByLocalContext">
         <put-attribute name="body" value="/WEB-INF/views/bridges/findBridgesByLocalContext.jspx"/>
     </definition>
+<definition extends="default" name="bridges/findBridgesByLocalSubContext">
+        <put-attribute name="body" value="/WEB-INF/views/bridges/findBridgesByLocalSubContext.jspx"/>
+    </definition>
 </tiles-definitions>

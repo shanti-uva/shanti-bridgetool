@@ -81,6 +81,17 @@ privileged aspect RemoteContextController_Roo_Controller {
         return "redirect:/remotecontexts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
+    @RequestMapping(params = { "find=ByRemoteNameAndContextId", "form" }, method = RequestMethod.GET)
+    public String RemoteContextController.findRemoteContextsByRemoteNameAndContextIdForm(Model model) {
+        return "remotecontexts/findRemoteContextsByRemoteNameAndContextId";
+    }
+    
+    @RequestMapping(params = "find=ByRemoteNameAndContextId", method = RequestMethod.GET)
+    public String RemoteContextController.findRemoteContextsByRemoteNameAndContextId(@RequestParam("remoteName") String remoteName, @RequestParam("contextId") String contextId, Model model) {
+        model.addAttribute("remotecontexts", RemoteContext.findRemoteContextsByRemoteNameAndContextId(remoteName, contextId).getResultList());
+        return "remotecontexts/list";
+    }
+    
     String RemoteContextController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
         String enc = request.getCharacterEncoding();
         if (enc == null) {

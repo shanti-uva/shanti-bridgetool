@@ -4,7 +4,11 @@
 package edu.virginia.shanti.om.bridge.web;
 
 import edu.virginia.shanti.om.bridge.domain.Bridge;
+import edu.virginia.shanti.om.bridge.domain.ConfluencePermissionSet;
+import edu.virginia.shanti.om.bridge.domain.PermissionMap;
+import edu.virginia.shanti.om.bridge.domain.PermissionSet;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
+import edu.virginia.shanti.om.bridge.domain.SiteAlias;
 import java.lang.String;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
@@ -27,10 +31,46 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    Converter<ConfluencePermissionSet, String> ApplicationConversionServiceFactoryBean.getConfluencePermissionSetConverter() {
+        return new Converter<ConfluencePermissionSet, String>() {
+            public String convert(ConfluencePermissionSet source) {
+                return new StringBuilder().append(source.getGroupName()).toString();
+            }
+        };
+    }
+    
+    Converter<SiteAlias, String> ApplicationConversionServiceFactoryBean.getSiteAliasConverter() {
+        return new Converter<SiteAlias, String>() {
+            public String convert(SiteAlias source) {
+                return new StringBuilder().append(source.getAlias()).append(" ").append(source.getSiteId()).toString();
+            }
+        };
+    }
+    
+    Converter<PermissionMap, String> ApplicationConversionServiceFactoryBean.getPermissionMapConverter() {
+        return new Converter<PermissionMap, String>() {
+            public String convert(PermissionMap source) {
+                return new StringBuilder().append(source.getName()).append(" ").append(source.getMask()).toString();
+            }
+        };
+    }
+    
+    Converter<PermissionSet, String> ApplicationConversionServiceFactoryBean.getPermissionSetConverter() {
+        return new Converter<PermissionSet, String>() {
+            public String convert(PermissionSet source) {
+                return new StringBuilder().append(source.getGroupName()).toString();
+            }
+        };
+    }
+    
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getBridgeConverter());
         registry.addConverter(getRemoteServerConverter());
+        registry.addConverter(getConfluencePermissionSetConverter());
         registry.addConverter(getRemoteContextConverter());
+        registry.addConverter(getSiteAliasConverter());
+        registry.addConverter(getPermissionMapConverter());
+        registry.addConverter(getPermissionSetConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

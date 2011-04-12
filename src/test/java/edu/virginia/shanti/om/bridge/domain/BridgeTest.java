@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaSystemException;
 import org.springframework.roo.addon.test.RooIntegrationTest;
+import org.springframework.transaction.annotation.Transactional;
 
 @RooIntegrationTest(entity = Bridge.class)
 public class BridgeTest {
@@ -22,6 +23,7 @@ public class BridgeTest {
 	private BridgeDataOnDemand dod;
 
 	@Test (expected = JpaSystemException.class)
+	@Transactional
 	public void shouldOnlyAllowOneConfigPerFullContext() {
 
 		assertNotNull("Data On Demand not injected", dod);
@@ -40,9 +42,11 @@ public class BridgeTest {
 	}
 
 	@Test
+	@Transactional
 	public void shouldSaveConfigsForFullContext() {
 		
 		Bridge mb = createMock();
+		mb.setLocalContext("testLocalContext");
 		mb.persist();
 
 		Bridge singleResult = Bridge.findBridgesByLocalContext(
@@ -53,6 +57,7 @@ public class BridgeTest {
 	}
 
 	@Test(expected = ConstraintViolationException.class)
+	@Transactional
 	public void shouldNotAllowSavingConfigsWithoutLocalSubContext() {
 		Bridge bridge = createMock();
 		bridge.setLocalSubContext(null);
@@ -60,6 +65,7 @@ public class BridgeTest {
 	}
 
 	@Test
+	@Transactional
 	public void shouldReturnAllConfigsForLocalContext() {
 		
 		int NUM = 8;
@@ -76,12 +82,13 @@ public class BridgeTest {
 		
 		List<Bridge> resultList = Bridge.findBridgesByLocalContext(createMock().getLocalContext()).getResultList();
 		
-		assertEquals("Wrong number of bridges returned.", NUM, resultList.size());
 		
 		for (Iterator<Bridge> iterator = resultList.iterator(); iterator.hasNext();) {
 			Bridge bridge = (Bridge) iterator.next();
 			System.err.println(bridge);
 		}
+		
+		assertEquals("Wrong number of bridges returned.", NUM, resultList.size());
 		
 	}
 
@@ -89,8 +96,8 @@ public class BridgeTest {
 	protected Bridge createMock() {
 		Bridge mock = new Bridge();
 		mock.setRemoteName("remoteName");
-		mock.setLocalContext("localContext");
-		mock.setLocalSubContext("localSubContext");
+		mock.setLocalContext("mylocalContext");
+		mock.setLocalSubContext("mylocalSubContext");
 		RemoteContext rc = new RemoteContext();
 		rc.setContextId("ctx");
 		rc.setContextLabel("lbl");

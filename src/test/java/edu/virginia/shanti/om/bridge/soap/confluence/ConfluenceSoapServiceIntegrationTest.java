@@ -98,7 +98,7 @@ public class ConfluenceSoapServiceIntegrationTest {
 
 		for (RemotePageSummary remotePageSummary : pages) {
 			long id = remotePageSummary.getId();
-
+			
 			System.err.println("============");
 			System.err.println(confluence.renderContent(session, "OM", id,
 					"{recently-updated:spaces=OM|theme=concise}", params));
@@ -164,6 +164,11 @@ public class ConfluenceSoapServiceIntegrationTest {
 			}
 		}
 
+	}
+	
+	@Test
+	public void getSpacePermissions() throws edu.virginia.shanti.om.bridge.soap.confluence.RemoteException, RemoteException {
+		System.err.println(Arrays.toString(confluence.getSpaceLevelPermissions(session)));
 	}
 	
 	

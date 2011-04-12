@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_edu_virginia_shanti_om_bridge_domain_PermissionMap" object="${permissionmap}" path="/permissionmaps" z="044IAF2yIraGmcraeR24ODBptoA=">
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+        
+    <field:display field="permissionSets" id="s_edu_virginia_shanti_om_bridge_domain_PermissionMap_permissionSets" object="${permissionmap}" z="yVaw0HqlAYxFkd1V8tHpPojaCFY="/>
+    <field:display field="name" id="s_edu_virginia_shanti_om_bridge_domain_PermissionMap_name" object="${permissionmap}" z="yEjrbevMeDfN9lbHL0aTSyEThbg="/>
+        
+        
+    <field:display field="localContextType" id="s_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextType" object="${permissionmap}" z="VeJnHq1MppBlSI0fFm18waMbFRY="/>
+    <field:display field="mask" id="s_edu_virginia_shanti_om_bridge_domain_PermissionMap_mask" object="${permissionmap}" z="5f50aS2MllIeLgy7WTNTPMWWnjQ="/>
+    </page:show>
+</div>

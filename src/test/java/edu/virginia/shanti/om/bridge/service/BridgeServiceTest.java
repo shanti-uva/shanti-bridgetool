@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.virginia.shanti.om.bridge.domain.Bridge;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
@@ -22,6 +23,7 @@ import edu.virginia.shanti.om.bridge.form.BasicConfigBean;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/META-INF/spring/applicationContext*.xml" })
+@Transactional
 public class BridgeServiceTest {
 
 	@Autowired
@@ -64,10 +66,6 @@ public class BridgeServiceTest {
 		remoteContext.persist();
 		bridge.setRemoteContext(remoteContext);
 		bridge.persist();
-	}
-
-	@Test
-	public void testCheckConfigAgain() {
 
 		// these should not be configured yet.
 		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance("ys2n","firstLocalContext", null, "serviceName", System.currentTimeMillis())),
@@ -78,6 +76,9 @@ public class BridgeServiceTest {
 
 	@Test
 	public void getBridge() {
+		
+		testSaveBridge();
+		
 		Bridge bridge = bridgeService.getBridge(BasicConfigBean.getInstance("ys2n","firstLocalContext",
 				"firstLocalSubContext", "serviceName", System.currentTimeMillis()));
 		assertNotNull("Bridge was null.", bridge);
@@ -86,6 +87,9 @@ public class BridgeServiceTest {
 
 	@Test
 	public void getBridges() {
+		
+		testSaveBridge();
+		
 		List<Bridge> bridges = bridgeService.getBridges(BasicConfigBean.getInstance("ys2n","firstLocalContext",
 				null, "serviceName", System.currentTimeMillis()));
 		assertNotNull("Bridge list was null.", bridges);
@@ -96,8 +100,8 @@ public class BridgeServiceTest {
 	protected Bridge createMockBridge() {
 		Bridge mock = new Bridge();
 		mock.setRemoteName("remoteName");
-		mock.setLocalContext("localContext");
-		mock.setLocalSubContext("localSubContext");
+		mock.setLocalContext("yourLocalContext");
+		mock.setLocalSubContext("yourLocalSubContext");
 		RemoteContext rc = new RemoteContext();
 		rc.setContextId("contextId");
 		rc.setContextLabel("Context Label");

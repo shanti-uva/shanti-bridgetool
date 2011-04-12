@@ -13,4 +13,7 @@
 <definition extends="default" name="remotecontexts/update">
         <put-attribute name="body" value="/WEB-INF/views/remotecontexts/update.jspx"/>
     </definition>
+<definition extends="default" name="remotecontexts/findRemoteContextsByRemoteNameAndContextId">
+        <put-attribute name="body" value="/WEB-INF/views/remotecontexts/findRemoteContextsByRemoteNameAndContextId.jspx"/>
+    </definition>
 </tiles-definitions>

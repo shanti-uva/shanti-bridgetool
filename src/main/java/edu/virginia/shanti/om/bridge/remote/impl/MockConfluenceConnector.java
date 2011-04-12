@@ -113,4 +113,11 @@ public class MockConfluenceConnector implements RemoteConnector {
 		return null;
 	}
 
+	@Override
+	public void setRemotePermissions(Principal principal,
+			RemoteContext remoteContext, RemotePermissions remotePermissions) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

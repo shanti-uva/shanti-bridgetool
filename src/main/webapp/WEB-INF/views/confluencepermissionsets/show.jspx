@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet" object="${confluencepermissionset}" path="/confluencepermissionsets" z="R5harCNAZ+WlqtXM9iSI8lOz3aI=">
+        <field:display field="groupName" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_groupName" object="${confluencepermissionset}" z="PJDYr1Jp/UYyCtIjfyLybh9r0SI="/>
+        <field:display field="localGroupType" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_localGroupType" object="${confluencepermissionset}" z="SYotpZbhBkPT6M3bQgVfMAnOSGI="/>
+        <field:display field="viewSpace" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_viewSpace" object="${confluencepermissionset}" z="ar7o8Mube/hZPPvbIvLDVxww73o="/>
+        <field:display field="comment" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_comment" object="${confluencepermissionset}" z="yG54JJLDLfRsTI3W8CntjapTjG0="/>
+        <field:display field="editSpace" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_editSpace" object="${confluencepermissionset}" z="AmD1FQqUW00iMCgof+HrS9a5/9c="/>
+        <field:display field="setSpacePermissions" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_setSpacePermissions" object="${confluencepermissionset}" z="fDIN0YUQ69Urd+8wq/4m/X0lYpQ="/>
+        <field:display field="removePage" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_removePage" object="${confluencepermissionset}" z="bYmLQRExGf4w2gMVZuenSe2uG6s="/>
+        <field:display field="removeComment" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_removeComment" object="${confluencepermissionset}" z="nxgXVGHq4atbx4pyEETzxw9zll0="/>
+        <field:display field="removeBlog" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_removeBlog" object="${confluencepermissionset}" z="kUOTt9jNI7BPyLO6RHNUEoAIUu0="/>
+        <field:display field="createAttachment" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_createAttachment" object="${confluencepermissionset}" z="xEKmEJsYXyGhElFM3jwYKNuVatQ="/>
+        <field:display field="removeAttachment" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_removeAttachment" object="${confluencepermissionset}" z="3d5nThXGM9AZVspyCc3RqvGbKR8="/>
+        <field:display field="editBlog" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_editBlog" object="${confluencepermissionset}" z="xIacuGTEbzMRZsknDEuYTnMHYrw="/>
+        <field:display field="exportPage" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_exportPage" object="${confluencepermissionset}" z="RrERJ/WEt/rDj0fqjSfJkDZpayg="/>
+        <field:display field="exportSpace" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_exportSpace" object="${confluencepermissionset}" z="P/QfAayfOjaf/K2ekB2GgD5MJsQ="/>
+        <field:display field="removeMail" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_removeMail" object="${confluencepermissionset}" z="rtUwTj2hOWpJ1IHofMPN27EafOk="/>
+        <field:display field="setPagePermissions" id="s_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_setPagePermissions" object="${confluencepermissionset}" z="qiJ615y/fJ0fXKqfipy3lu3tahw="/>
+    </page:show>
+</div>

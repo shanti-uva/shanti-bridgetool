@@ -1,6 +1,7 @@
 package edu.virginia.shanti.om.bridge.remote.impl;
 
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,16 +20,17 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
+import edu.virginia.shanti.om.bridge.remote.ConfluenceRemotePermissions;
 import edu.virginia.shanti.om.bridge.remote.RemoteConnector;
 import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
 import edu.virginia.shanti.om.bridge.soap.confluence.AuthenticationFailedException;
 import edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceSoapService;
 import edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceSoapServiceServiceLocator;
+import edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException;
 import edu.virginia.shanti.om.bridge.soap.confluence.RemoteException;
 import edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpace;
 import edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpaceSummary;
 import edu.virginia.shanti.om.bridge.soap.confluence.SudoSoap;
-import edu.virginia.shanti.om.bridge.soap.confluence.SudoSoapService;
 import edu.virginia.shanti.om.bridge.soap.confluence.SudoSoapServiceLocator;
 
 @Service
@@ -61,9 +63,10 @@ public class ConfluenceConnector implements RemoteConnector {
 
 	public ConfluenceConnector(String baseUrl) {
 		this();
-		getConfLocator().setConfluenceserviceV1EndpointAddress(baseUrl
-				+ "/rpc/soap-axis/confluenceservice-v1");
-		getSudoLocator().setsudoEndpointAddress(baseUrl + "/rpc/soap-axis/sudo");
+		getConfLocator().setConfluenceserviceV1EndpointAddress(
+				baseUrl + "/rpc/soap-axis/confluenceservice-v1");
+		getSudoLocator()
+				.setsudoEndpointAddress(baseUrl + "/rpc/soap-axis/sudo");
 	}
 
 	private ConfluenceSoapServiceServiceLocator getConfLocator() {
@@ -72,7 +75,7 @@ public class ConfluenceConnector implements RemoteConnector {
 		}
 		return confLocator;
 	}
-	
+
 	private SudoSoapServiceLocator getSudoLocator() {
 		if (sudoLocator == null) {
 			sudoLocator = new SudoSoapServiceLocator();
@@ -81,10 +84,11 @@ public class ConfluenceConnector implements RemoteConnector {
 	}
 
 	@Override
-	public List<RemoteContextChoice> getContexts(Principal principal, RemoteServer remoteServer) {
+	public List<RemoteContextChoice> getContexts(Principal principal,
+			RemoteServer remoteServer) {
 		try {
-			ConfluenceSoapService conf = getConfLocator().getConfluenceserviceV1();
-			SudoSoap sudo = getSudoLocator().getsudo();
+			ConfluenceSoapService conf = getConfLocator()
+					.getConfluenceserviceV1();
 
 			String sess = login(principal);
 
@@ -132,14 +136,16 @@ public class ConfluenceConnector implements RemoteConnector {
 	 */
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	@Override
-	public RemoteContext createRemoteContext(Principal principal, RemoteContext newContext) {
+	public RemoteContext createRemoteContext(Principal principal,
+			RemoteContext newContext) {
 		try {
 
 			// TODO: use remote server attribute of new context to
 			// determine/verify
 			// which server to contact
 
-			ConfluenceSoapService conf = getConfLocator().getConfluenceserviceV1();
+			ConfluenceSoapService conf = getConfLocator()
+					.getConfluenceserviceV1();
 			String sess = login(principal);
 			RemoteSpace rs = new RemoteSpace();
 			rs.setKey(newContext.getContextId());
@@ -164,23 +170,29 @@ public class ConfluenceConnector implements RemoteConnector {
 		return newContext;
 	}
 
-	private String login(Principal principal)
-			throws java.rmi.RemoteException, AuthenticationFailedException,
-			RemoteException, ServiceException {
-		
+	private String login(Principal principal) throws java.rmi.RemoteException,
+			AuthenticationFailedException, RemoteException, ServiceException {
+
 		SudoSoap sudo = getSudoLocator().getsudo();
-		ConfluenceSoapService conf = getConfLocator().getConfluenceserviceV1();
-		// System.err.println("XXXXXXXXXXXX  adminUser = " + adminUser);
+		// ConfluenceSoapService conf = getConfLocator().getConfluenceserviceV1();
 		log.info("Logging in using admin user = " + adminUser);
 		String sess = sudo.login(adminUser, adminPassword);
-		log.info("Got admin session = " + sess + " trying to sudo to " + principal.getName());
-		sudo.sudo(sess,sess, principal.getName());
-		log.info("Sudo to " + principal.getName() + "successful for sess=" + sess);
+		
+		if (principal != null) {		
+			log.info("Got admin session = " + sess + " trying to sudo to "
+					+ principal.getName());
+			
+			
+			sudo.sudo(sess, sess, principal.getName());
+			log.info("Sudo to " + principal.getName() + "successful for sess="
+					+ sess);
+		}
 		return sess;
 	}
 
 	@Override
-	public String getSummaryMarkup(Principal principal, RemoteContext remoteContext) {
+	public String getSummaryMarkup(Principal principal,
+			RemoteContext remoteContext) {
 		ConfluenceSoapService conf;
 		try {
 			conf = getConfLocator().getConfluenceserviceV1();
@@ -198,30 +210,78 @@ public class ConfluenceConnector implements RemoteConnector {
 			String theme = ""; // "|theme=concise";
 
 			return conf.renderContent(sess, spacekey, pageid,
-					"{recently-updated-dashboard:spaces=" + spacekey + theme + "}",
-					params);
-			
+					"{recently-updated-dashboard:spaces=" + spacekey + theme
+							+ "}", params);
+
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
 	@Override
-	public RemotePermissions getRemotePermissions(Principal principal, RemoteContext remoteContext) {
-		// TODO Auto-generated method stub
-		return null;
+	public RemotePermissions getRemotePermissions(Principal principal,
+			RemoteContext remoteContext) {
+
+		try {
+			ConfluenceSoapService conf = getConfLocator()
+					.getConfluenceserviceV1();
+			String sess = login(null);
+		
+			
+			
+			String[] permissions 
+			
+			/* = conf.getPermissions(sess, remoteContext.getContextId()); */
+			
+			= conf.getPermissionsForUser(sess, remoteContext.getContextId(), principal.getName());
+			RemotePermissions rperms = new ConfluenceRemotePermissions(
+					permissions);
+			return rperms;
+		} catch (ServiceException e) {
+			throw new RuntimeException(e);
+		} catch (InvalidSessionException e) {
+			throw new RuntimeException(e);
+		} catch (RemoteException e) {
+			throw new RuntimeException(e);
+		} catch (java.rmi.RemoteException e) {
+			throw new RuntimeException(e);
+		}
+
 	}
 
-	public void removeRemoteContext(Principal principal, RemoteContext remoteContext) {
+	public void removeRemoteContext(Principal principal,
+			RemoteContext remoteContext) {
 		ConfluenceSoapService conf;
 		try {
 			conf = getConfLocator().getConfluenceserviceV1();
 			String sess = login(principal);
-			conf.removeSpace(sess, remoteContext.getContextId());
+			conf.removeSpace(sess, remoteContext.getContextId());			
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 
+	}
+
+	@Override
+	public void setRemotePermissions(Principal principal,
+			RemoteContext remoteContext, RemotePermissions remotePermissions) {
+		
+		
+		try {
+			ConfluenceSoapService conf = getConfLocator().getConfluenceserviceV1();
+			String sess = login(principal);
+			conf.removeSpace(sess, remoteContext.getContextId());	
+			
+			
+			
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		
+		
+		
+		
 	}
 
 }

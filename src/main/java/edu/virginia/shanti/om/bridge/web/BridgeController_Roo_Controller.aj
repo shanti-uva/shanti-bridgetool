@@ -4,6 +4,7 @@
 package edu.virginia.shanti.om.bridge.web;
 
 import edu.virginia.shanti.om.bridge.domain.Bridge;
+import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
@@ -93,6 +94,22 @@ privileged aspect BridgeController_Roo_Controller {
     public String BridgeController.findBridgesByLocalContext(@RequestParam("localContext") String localContext, Model model) {
         model.addAttribute("bridges", Bridge.findBridgesByLocalContext(localContext).getResultList());
         return "bridges/list";
+    }
+    
+    @RequestMapping(params = { "find=ByLocalSubContext", "form" }, method = RequestMethod.GET)
+    public String BridgeController.findBridgesByLocalSubContextForm(Model model) {
+        return "bridges/findBridgesByLocalSubContext";
+    }
+    
+    @RequestMapping(params = "find=ByLocalSubContext", method = RequestMethod.GET)
+    public String BridgeController.findBridgesByLocalSubContext(@RequestParam("localSubContext") String localSubContext, Model model) {
+        model.addAttribute("bridges", Bridge.findBridgesByLocalSubContext(localSubContext).getResultList());
+        return "bridges/list";
+    }
+    
+    @ModelAttribute("permissionmaps")
+    public Collection<PermissionMap> BridgeController.populatePermissionMaps() {
+        return PermissionMap.findAllPermissionMaps();
     }
     
     @ModelAttribute("remotecontexts")

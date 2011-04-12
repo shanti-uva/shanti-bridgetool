@@ -9,6 +9,7 @@
         <menu:item id="i_bridge_list" messageCode="global_menu_list" url="/bridges?page=1&amp;size=${empty param.size ? 10 : param.size}" z="mXMMKVFaSJ47ROo/f++nbFpJwhU="/>
         
         <menu:item id="fi_bridge_localcontext" messageCode="global_menu_find" url="/bridges?find=ByLocalContext&amp;form" z="1n49JCiMCku1YkkPSZlSkO8UEnQ="/>
+        <menu:item id="fi_bridge_localsubcontext" messageCode="global_menu_find" url="/bridges?find=ByLocalSubContext&amp;form" z="13rWp70fpWWNKrjbuvOGvjOk+Ls="/>
         </menu:category>
     <menu:category id="c_flows" z="5igpkb/e+HPIN8iUErvmM38Eqqk=">
         <menu:item id="i_flows_main" messageCode="webflow_menu_enter" url="/main" z="zHYL1dAje6D/blnzYJV4cPvpRGg="/>
@@ -24,11 +25,26 @@
     <menu:category id="c_remotecontext" z="zRC4d1ILhdQbn5F/ndud5UKPVhY=">
             <menu:item id="i_remotecontext_new" messageCode="global_menu_new" url="/remotecontexts?form" z="e31HQddQD+57lwg5uwMVbIHm7kk="/>
         <menu:item id="i_remotecontext_list" messageCode="global_menu_list" url="/remotecontexts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="zZOD6TcOXN2rwbvDubcijO+yfDo="/>
+        <menu:item id="fi_remotecontext_remotenameandcontextid" messageCode="global_menu_find" url="/remotecontexts?find=ByRemoteNameAndContextId&amp;form" z="Cd962DHf+94fZtYgalW15ught90="/>
         </menu:category>
     <menu:category id="c_remoteserver" z="nYOPQxgePqr2jnHNBiry1elwDo8=">
             <menu:item id="i_remoteserver_new" messageCode="global_menu_new" url="/remoteservers?form" z="yn4yriiCzgaDCJcDG9Rn0WKjt6A="/>
         <menu:item id="i_remoteserver_list" messageCode="global_menu_list" url="/remoteservers?page=1&amp;size=${empty param.size ? 10 : param.size}" z="feOsn23BtJRBL6cn0BswvKgwfJ8="/>
         <menu:item id="fi_remoteserver_remotename" messageCode="global_menu_find" url="/remoteservers?find=ByRemoteName&amp;form" z="D1bv8Xf3dYlG+XoD9zClTGdGrs0="/>
+        </menu:category>
+    <menu:category id="c_sitealias" z="f3UuhRRI+HaHCPScioejY47lkKQ=">
+            <menu:item id="i_sitealias_new" messageCode="global_menu_new" url="/sitealiases?form" z="1vaugAAI28ACz5baiEzjYUOBI7Y="/>
+        <menu:item id="i_sitealias_list" messageCode="global_menu_list" url="/sitealiases?page=1&amp;size=${empty param.size ? 10 : param.size}" z="s5rLruf6uRXnTf6BEqbLevjYf4s="/>
+        <menu:item id="fi_sitealias_siteid" messageCode="global_menu_find" url="/sitealiases?find=BySiteId&amp;form" z="7HwjFgxfPM3j+xnxkPPxSbY7n7A="/>
+        <menu:item id="fi_sitealias_alias" messageCode="global_menu_find" url="/sitealiases?find=ByAlias&amp;form" z="0qqrFzao1RpMLN8D5A/Z4RNOJIo="/>
+        </menu:category>
+    <menu:category id="c_permissionmap" z="qxhmDegXPrtGjCP0H2oFIK0x8eI=">
+            <menu:item id="i_permissionmap_new" messageCode="global_menu_new" url="/permissionmaps?form" z="V2XpUXgl8pSSnICAxBlUPxXCBOM="/>
+        <menu:item id="i_permissionmap_list" messageCode="global_menu_list" url="/permissionmaps?page=1&amp;size=${empty param.size ? 10 : param.size}" z="f7dTp5wKsX2cPtiPaLwPpFTa2k4="/>
+        </menu:category>
+    <menu:category id="c_confluencepermissionset" z="xtVw6zbNoyBsx3Z6/mIHwZFLDtw=">
+            <menu:item id="i_confluencepermissionset_new" messageCode="global_menu_new" url="/confluencepermissionsets?form" z="KCWtmeh7Ae1Lo+cuCHdNR+cCRiM="/>
+        <menu:item id="i_confluencepermissionset_list" messageCode="global_menu_list" url="/confluencepermissionsets?page=1&amp;size=${empty param.size ? 10 : param.size}" z="yCqfyeux5LMBlOgck7hVlfT/sbM="/>
         </menu:category>
     </menu:menu>
 </div>

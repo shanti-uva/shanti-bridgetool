@@ -12,7 +12,8 @@ privileged aspect Bridge_Roo_ToString {
         sb.append("RemoteName: ").append(getRemoteName()).append(", ");
         sb.append("LocalContext: ").append(getLocalContext()).append(", ");
         sb.append("LocalSubContext: ").append(getLocalSubContext()).append(", ");
-        sb.append("RemoteContext: ").append(getRemoteContext());
+        sb.append("RemoteContext: ").append(getRemoteContext()).append(", ");
+        sb.append("PermissionMap: ").append(getPermissionMap());
         return sb.toString();
     }
     

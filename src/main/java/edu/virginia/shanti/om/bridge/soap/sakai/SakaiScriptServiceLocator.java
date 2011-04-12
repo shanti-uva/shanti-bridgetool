@@ -22,7 +22,7 @@ public class SakaiScriptServiceLocator extends org.apache.axis.client.Service im
     }
 
     // Use to get a proxy class for SakaiScript
-    private java.lang.String SakaiScript_address = "https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws";
+    private java.lang.String SakaiScript_address = "https://collab.itc.virginia.edu/sakai-axis/SakaiScript.jws";
 
     public java.lang.String getSakaiScriptAddress() {
         return SakaiScript_address;

@@ -10,6 +10,7 @@ import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
+import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 
 @RooJavaBean
 @RooToString
@@ -38,4 +39,8 @@ public class Bridge implements Serializable {
     /** remote context: e.g. confluence space identifier */
     @ManyToOne
     private RemoteContext remoteContext;
+
+    /** permission map: sets of permissions that apply to this Bridged context */
+    @ManyToOne
+    private PermissionMap permissionMap;
 }

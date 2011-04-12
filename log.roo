@@ -168,3 +168,89 @@ poll now
 // Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-03-31 22:00:12
 poll now
 finder add --class ~.domain.RemoteContext --finderName findRemoteContextsByRemoteNameAndContextId
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-04-01 21:11:44
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-04-05 15:24:20
+entity --class ~.domain.SiteAlias
+field string --fieldName alias --notNull 
+// [failed] field string --fieldName alias --notNull 
+// [failed] field string --fieldName siteId --unique
+field string --fieldName siteId --unique
+finder list 
+finder add --finderName findSiteAliasesBySiteIdEquals
+finder list 
+finder add --finderName findSiteAliasesBySiteId
+finder list --class ~.domain.Bridge
+finder add --class ~.domain.Bridge --finderName findBridgesByLocalSubContext
+entity --class ~.domain.PermissionMap --serializable --testAutomatically
+field string --fieldName localContext
+field string --fieldName name
+enum type --class ~.domain.LocalGroup
+// [failed] enum constant --name ROLE
+// [failed] enum constant --name ROLE
+enum constant --name SAKAIROLE
+enum constant --name SAKAIGROUP
+enum constant --name SAKAIROSTER
+focus --class ~.domain.PermissionMap
+field enum --fieldName localGroupType --type ~.domain.LocalGroup
+entity --class ~.domain.Permission --serializable --testAutomatically
+field string --fieldName name
+// [failed] field boolean --fieldName value
+field boolean --fieldName value --permitReservedWords 
+focus --class ~.domain.PermissionMap
+// [failed] field set --fieldName permissions --type ~.domain.Permission
+// [failed] field set --fieldName permissions --type ~.domain.Permission
+field set --fieldName permissionSet --type ~.domain.Permission
+poll now
+controller all --package ~.domain
+controller all --package ~.web
+focus --class ~.domain.SiteAlias
+finder list 
+finder add --finderName findSiteAliasesByAlias
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-04-11 23:43:57
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-04-11 23:44:08
+poll now
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-04-12 00:37:00
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-04-12 00:37:10
+poll now
+controller all --package ~.web
+controller all --package ~.domain
+controller all --package ~.web
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-04-12 09:11:07
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-04-12 09:28:20
+focus --class ~.domain.PermissionMap
+field set --fieldName permissionSets --type ~.domain.PermissionSet
+poll now
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-04-12 09:46:06
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-04-12 09:46:15
+interface --class ~.domain.Permissions
+interface --class ~.domain.PermissionSet
+entity --class ~.domain.ConfluencePermissionSetImpl --extends ~.domain.PermissionSet
+poll now
+controller all --package ~.web
+// [failed] entity --class ~.domain.PermissionSet --serializable --testAutomatically 
+// [failed] entity --class ~.domain.PermissionSet --serializable --testAutomatically 
+// [failed] entity --class ~.domain.PermissionSet --serializable --testAutomatically 
+poll now
+entity --class ~.domain.PermissionSet --serializable --testAutomatically 
+controller all --package ~.web
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-04-12 10:49:29
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-04-12 10:49:36
+controller all --package ~.web
+controller all --package ~.web
+controller all --package ~.web
+controller all --package ~.web
+controller all --package ~.web
+controller all --package ~.web
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-04-12 11:21:26
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log opened at 2011-04-12 11:27:43
+poll now
+controller all --package ~.web
+controller all --package ~.web
+controller all --package ~.domain
+controller all --package ~.web
+poll now
+field reference --fieldName permissionMap --class ~.domain.Bridge --type ~.domain.PermissionMap
+controller all --package ~.web
+controller all --package ~.web
+controller all --package ~.web
+poll now

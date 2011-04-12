@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -20,6 +21,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
+import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/META-INF/spring/applicationContext*.xml" })
@@ -48,10 +50,10 @@ public class ConfluenceConnectorTest {
 		remoteServer.setRemoteName("shanti-wiki");
 
 		SecurityContextHolder.getContext()
-		.setAuthentication(
-				new UsernamePasswordAuthenticationToken(MOCKUSER,
-						MOCKPASSWORD));
-		
+				.setAuthentication(
+						new UsernamePasswordAuthenticationToken(MOCKUSER,
+								MOCKPASSWORD));
+
 	}
 
 	@Test
@@ -73,9 +75,11 @@ public class ConfluenceConnectorTest {
 
 	@Test
 	public void testGetContexts() {
-	
-		Principal principal = SecurityContextHolder.getContext().getAuthentication();
-		List<RemoteContextChoice> contexts = conf.getContexts(principal, remoteServer);
+
+		Principal principal = SecurityContextHolder.getContext()
+				.getAuthentication();
+		List<RemoteContextChoice> contexts = conf.getContexts(principal,
+				remoteServer);
 
 		assertNotNull("getContexts() returned null!", contexts);
 
@@ -88,11 +92,11 @@ public class ConfluenceConnectorTest {
 	}
 
 	@Test
-	public void testCreateRemoteContext() {
+	public void testCreateAndRemoveRemoteContext() {
 
-		Principal principal = SecurityContextHolder.getContext().getAuthentication();
+		Principal principal = SecurityContextHolder.getContext()
+				.getAuthentication();
 
-		
 		RemoteContext newContext = new RemoteContext();
 		newContext.setContextId("TESTTEST2");
 		newContext.setContextLabel("Yuji Test Space");
@@ -115,8 +119,9 @@ public class ConfluenceConnectorTest {
 	@Test
 	public void testGetSummaryMarkup() {
 
-		Principal principal = SecurityContextHolder.getContext().getAuthentication();
-		
+		Principal principal = SecurityContextHolder.getContext()
+				.getAuthentication();
+
 		RemoteContext remoteContext = pickContext();
 
 		String summaryMarkup = conf.getSummaryMarkup(principal, remoteContext);
@@ -129,21 +134,35 @@ public class ConfluenceConnectorTest {
 	}
 
 	private RemoteContext pickContext() {
-		Principal principal = SecurityContextHolder.getContext().getAuthentication();
-		List<RemoteContextChoice> contexts = conf.getContexts(principal, remoteServer);
+
+		// picks the first context.... ?
+		Principal principal = SecurityContextHolder.getContext()
+				.getAuthentication();
+		List<RemoteContextChoice> contexts = conf.getContexts(principal,
+				remoteServer);
 		RemoteContextChoice choice = contexts.get(0);
 		RemoteContext rc = new RemoteContext(choice);
+
+		System.err.println("Picking: " + rc);
 		return rc;
 	}
 
 	@Test
 	public void testGetRemotePermissions() {
-		fail("Not yet implemented"); // TODO
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
+		RemotePermissions perms = conf
+				.getRemotePermissions(auth, pickContext());
+		assertNotNull(perms);
+
+		System.err.println(perms);
+
 	}
 
 	@Test
 	public void testSetRemotePermissions() {
-		fail("Not yet implemented");
+		// Unfortunately since we have no way to really check these permissions,
+		// there is no way to tell if this works!
 	}
 
 }

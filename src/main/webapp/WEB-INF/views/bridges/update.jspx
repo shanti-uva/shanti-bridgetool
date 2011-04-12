@@ -27,5 +27,6 @@
     
     
     <field:input field="remoteName" id="c_edu_virginia_shanti_om_bridge_domain_Bridge_remoteName" z="SkaS2Z9PIGQTD21Pc2tqHVF6Jt0="/>
+    <field:select field="permissionMap" id="c_edu_virginia_shanti_om_bridge_domain_Bridge_permissionMap" itemValue="id" items="${permissionmaps}" path="/permissionmaps" z="dmawN3A0OiXNtukOMEHPw+xoo+s="/>
     </form:update>
 </div>

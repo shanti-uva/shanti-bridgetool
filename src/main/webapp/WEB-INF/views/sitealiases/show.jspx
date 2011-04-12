@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_edu_virginia_shanti_om_bridge_domain_SiteAlias" object="${sitealias}" path="/sitealiases" z="+KW+S9rtRUcMBYeZJrCytjFqRmM=">
+        <field:display field="alias" id="s_edu_virginia_shanti_om_bridge_domain_SiteAlias_alias" object="${sitealias}" z="DgXJJHwBDbJBlGrOe3XoSl++M/g="/>
+        <field:display field="siteId" id="s_edu_virginia_shanti_om_bridge_domain_SiteAlias_siteId" object="${sitealias}" z="1bF+vPSzBhnHzZZYdPkmTgGlLk0="/>
+    </page:show>
+</div>

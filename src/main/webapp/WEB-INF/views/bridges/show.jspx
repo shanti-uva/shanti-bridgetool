@@ -27,5 +27,6 @@
     
     
     <field:display field="remoteName" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_remoteName" object="${bridge}" z="rigjaHam2+4xxUjDX9cUUhJnumQ="/>
+    <field:display field="permissionMap" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_permissionMap" object="${bridge}" z="Ck/Nxuj/FzCiO/lc6m+ZwA9NrnA="/>
     </page:show>
 </div>

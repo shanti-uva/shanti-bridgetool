@@ -22,7 +22,7 @@ public class SakaiLoginServiceLocator extends org.apache.axis.client.Service imp
     }
 
     // Use to get a proxy class for SakaiLogin
-    private java.lang.String SakaiLogin_address = "https://sakai7.itc.virginia.edu/sakai-axis/SakaiLogin.jws";
+    private java.lang.String SakaiLogin_address = "https://collab.itc.virginia.edu/sakai-axis/SakaiLogin.jws";
 
     public java.lang.String getSakaiLoginAddress() {
         return SakaiLogin_address;

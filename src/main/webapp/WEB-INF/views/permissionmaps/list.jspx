@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_edu_virginia_shanti_om_bridge_domain_PermissionMap" items="${permissionmaps}" z="e85A46T9PIbbHNMf4CjPi5hyE0Y=">
+        <table:table data="${permissionmaps}" id="l_edu_virginia_shanti_om_bridge_domain_PermissionMap" path="/permissionmaps" z="qZerygKqSS/NQlqlwUrOQcUxLOA=">
+            
+            
+            
+            
+        
+            
+            
+        
+        
+            
+        <table:column id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_permissionSets" property="permissionSets" z="WPPmGYUmHWDF7fkm0zV8p5V3VDE="/>
+        <table:column id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_name" property="name" z="DDwf+FIaQEj4LquM87CqCP0C/Oc="/>
+            
+            
+        <table:column id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextType" property="localContextType" z="QetMOHCzAOIuXiB06q3qWL5ZHcQ="/>
+        <table:column id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_mask" property="mask" z="7udPdYwaDmb+N79Q0jQroFysFeI="/>
+        </table:table>
+    </page:list>
+</div>

@@ -22,6 +22,7 @@ privileged aspect BridgeDataOnDemand_Roo_DataOnDemand {
         obj.setLocalContext("localContext_" + index);
         obj.setLocalSubContext("localSubContext_" + index);
         obj.setRemoteContext(null);
+        obj.setPermissionMap(null);
         return obj;
     }
     
