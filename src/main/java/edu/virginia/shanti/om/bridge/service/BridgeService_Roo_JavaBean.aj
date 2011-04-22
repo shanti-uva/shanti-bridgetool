@@ -3,7 +3,9 @@
 
 package edu.virginia.shanti.om.bridge.service;
 
+import edu.virginia.shanti.om.bridge.service.PermissionMapService;
 import edu.virginia.shanti.om.bridge.service.RemoteServerService;
+import edu.virginia.shanti.om.bridge.service.SiteAliasService;
 import org.apache.commons.logging.Log;
 
 privileged aspect BridgeService_Roo_JavaBean {
@@ -14,6 +16,22 @@ privileged aspect BridgeService_Roo_JavaBean {
     
     public void BridgeService.setRemoteServerService(RemoteServerService remoteServerService) {
         this.remoteServerService = remoteServerService;
+    }
+    
+    public SiteAliasService BridgeService.getSiteAliasService() {
+        return this.siteAliasService;
+    }
+    
+    public void BridgeService.setSiteAliasService(SiteAliasService siteAliasService) {
+        this.siteAliasService = siteAliasService;
+    }
+    
+    public PermissionMapService BridgeService.getPermissionMapService() {
+        return this.permissionMapService;
+    }
+    
+    public void BridgeService.setPermissionMapService(PermissionMapService permissionMapService) {
+        this.permissionMapService = permissionMapService;
     }
     
     public Log BridgeService.getLog() {

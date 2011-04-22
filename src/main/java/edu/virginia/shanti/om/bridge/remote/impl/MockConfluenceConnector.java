@@ -11,6 +11,7 @@ import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
 import org.springframework.stereotype.Service;
 
+import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
@@ -105,18 +106,19 @@ public class MockConfluenceConnector implements RemoteConnector {
 
 	@Override
 	public String getSummaryMarkup(Principal principal, RemoteContext remoteContext) {
-		return null;
+		return "<html><body><html>crap</html></body></html>";
 	}
 
 	@Override
-	public RemotePermissions getRemotePermissions(Principal principal, RemoteContext remoteContext) {
+	public RemotePermissions getRemotePermissions(Principal principal, String localContext, RemoteContext remoteContext) {
 		return null;
-	}
+	}	
 
 	@Override
-	public void setRemotePermissions(Principal principal,
-			RemoteContext remoteContext, RemotePermissions remotePermissions) {
+	public void setRemotePermissions(Principal principal, String localContext, 
+			RemoteContext remoteContext, PermissionMap permissionMap) {
 		// TODO Auto-generated method stub
+		throw new RuntimeException("not yet implemented");
 		
 	}
 

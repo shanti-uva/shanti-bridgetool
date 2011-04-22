@@ -10,7 +10,8 @@ privileged aspect PermissionMap_Roo_ToString {
     public String PermissionMap.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Name: ").append(getName()).append(", ");
-        sb.append("Mask: ").append(getMask()).append(", ");
+        sb.append("LocalContextMask: ").append(getLocalContextMask()).append(", ");
+        sb.append("Service: ").append(getService()).append(", ");
         sb.append("LocalContextType: ").append(getLocalContextType()).append(", ");
         sb.append("PermissionSets: ").append(getPermissionSets() == null ? "null" : getPermissionSets().size());
         return sb.toString();

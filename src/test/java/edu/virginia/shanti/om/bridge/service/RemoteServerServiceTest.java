@@ -6,7 +6,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.junit.Assert;
@@ -19,10 +18,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
-import edu.virginia.shanti.om.bridge.form.ConfluenceSpaceForm;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 import edu.virginia.shanti.om.bridge.remote.RemoteConnector;
 
@@ -41,6 +40,7 @@ public class RemoteServerServiceTest {
 	private static final String MOCKPASSWORD = "mockpassword";
 	private RemoteServerService remoteServerService = new RemoteServerService();
 
+	@Transactional
 	public void testGetRemoteServer() {
 		Assert.fail("Test not implemented.");
 	}
@@ -67,10 +67,12 @@ public class RemoteServerServiceTest {
 
 	}
 
+	@Transactional
 	@Test
 	public void addRemoteServer() {
 		remoteServerService.addRemoteServer(CONFIG_NAME, CONFIG_IMPLEMENTATION,
 				CONFIG_INSTANCE);
+
 		RemoteServer server = remoteServerService.getRemoteServer(CONFIG_NAME);
 
 		assertThat(server.getImplementationName(),
@@ -78,6 +80,7 @@ public class RemoteServerServiceTest {
 
 	}
 
+	@Transactional
 	@Test
 	public void getRemoteConfiguration() {
 		RemoteServer configuration = remoteServerService
@@ -87,6 +90,7 @@ public class RemoteServerServiceTest {
 
 	}
 
+	@Transactional
 	@Test
 	public void getRemoteContexts() {
 		RemoteServer remoteConfiguration = remoteServerService
@@ -99,6 +103,7 @@ public class RemoteServerServiceTest {
 
 	}
 
+	@Transactional
 	@Test
 	public void getRemoteContextsByConfigName() {
 		List<RemoteContextChoice> remoteContexts = remoteServerService
@@ -107,6 +112,7 @@ public class RemoteServerServiceTest {
 		assertTrue(remoteContexts.size() > 0);
 	}
 
+	@Transactional
 	@Test
 	public void getAllRemoteServers() {
 		remoteServerService.addRemoteServer(CONFIG_NAME + "2",
@@ -120,19 +126,23 @@ public class RemoteServerServiceTest {
 
 	}
 
+	@Transactional
 	@Test
 	public void testAddRemoteServer() {
 		throw new RuntimeException("Test not implemented.");
 	}
 
+	@Transactional
 	@Test
 	public void testGetSummaryMarkup() {
 
-		RemoteServer remoteConfiguration = remoteServerService
+		RemoteServer remoteServer = remoteServerService
 				.getRemoteServer(CONFIG_NAME);
-		assertNotNull(remoteConfiguration);
+		assertNotNull(remoteServer);
 		List<RemoteContextChoice> remoteContexts = remoteServerService
-				.getRemoteContexts(remoteConfiguration);
+				.getRemoteContexts(remoteServer);
+
+		System.err.println("Remote Contexts = " + remoteContexts);
 
 		String summaryMarkup = remoteServerService
 				.getSummaryMarkup(new RemoteContext(remoteContexts.get(0)));
@@ -142,8 +152,15 @@ public class RemoteServerServiceTest {
 
 	}
 
+	@Transactional
 	@Test
 	public void testGetAllRemoteServers() {
+		throw new RuntimeException("Test not implemented.");
+	}
+
+	@Transactional
+	@Test
+	public void testSetRemotePermissions() {
 		throw new RuntimeException("Test not implemented.");
 	}
 

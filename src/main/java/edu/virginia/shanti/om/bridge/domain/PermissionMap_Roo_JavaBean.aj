@@ -18,12 +18,20 @@ privileged aspect PermissionMap_Roo_JavaBean {
         this.name = name;
     }
     
-    public String PermissionMap.getMask() {
-        return this.mask;
+    public String PermissionMap.getLocalContextMask() {
+        return this.localContextMask;
     }
     
-    public void PermissionMap.setMask(String mask) {
-        this.mask = mask;
+    public void PermissionMap.setLocalContextMask(String localContextMask) {
+        this.localContextMask = localContextMask;
+    }
+    
+    public String PermissionMap.getService() {
+        return this.service;
+    }
+    
+    public void PermissionMap.setService(String service) {
+        this.service = service;
     }
     
     public LocalContextType PermissionMap.getLocalContextType() {

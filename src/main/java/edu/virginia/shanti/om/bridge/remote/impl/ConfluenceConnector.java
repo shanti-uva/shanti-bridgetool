@@ -10,6 +10,7 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.stereotype.Component;
@@ -17,17 +18,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.virginia.shanti.om.bridge.domain.PermissionMap;
+import edu.virginia.shanti.om.bridge.domain.PermissionSet;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 import edu.virginia.shanti.om.bridge.remote.ConfluenceRemotePermissions;
 import edu.virginia.shanti.om.bridge.remote.RemoteConnector;
 import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
+import edu.virginia.shanti.om.bridge.service.SiteAliasService;
 import edu.virginia.shanti.om.bridge.soap.confluence.AuthenticationFailedException;
 import edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceSoapService;
 import edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceSoapServiceServiceLocator;
 import edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException;
 import edu.virginia.shanti.om.bridge.soap.confluence.RemoteException;
+import edu.virginia.shanti.om.bridge.soap.confluence.RemotePermission;
 import edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpace;
 import edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpaceSummary;
 import edu.virginia.shanti.om.bridge.soap.confluence.SudoSoap;
@@ -54,6 +59,9 @@ public class ConfluenceConnector implements RemoteConnector {
 	transient private ConfluenceSoapServiceServiceLocator confLocator;
 
 	transient private SudoSoapServiceLocator sudoLocator;
+
+	@Autowired
+	private SiteAliasService siteAliasService;
 
 	public ConfluenceConnector() {
 		super();
@@ -174,15 +182,15 @@ public class ConfluenceConnector implements RemoteConnector {
 			AuthenticationFailedException, RemoteException, ServiceException {
 
 		SudoSoap sudo = getSudoLocator().getsudo();
-		// ConfluenceSoapService conf = getConfLocator().getConfluenceserviceV1();
+		// ConfluenceSoapService conf =
+		// getConfLocator().getConfluenceserviceV1();
 		log.info("Logging in using admin user = " + adminUser);
 		String sess = sudo.login(adminUser, adminPassword);
-		
-		if (principal != null) {		
+
+		if (principal != null) {
 			log.info("Got admin session = " + sess + " trying to sudo to "
 					+ principal.getName());
-			
-			
+
 			sudo.sudo(sess, sess, principal.getName());
 			log.info("Sudo to " + principal.getName() + "successful for sess="
 					+ sess);
@@ -219,34 +227,12 @@ public class ConfluenceConnector implements RemoteConnector {
 	}
 
 	@Override
-	public RemotePermissions getRemotePermissions(Principal principal,
+	public RemotePermissions getRemotePermissions(Principal principal, String localContext,
 			RemoteContext remoteContext) {
 
-		try {
-			ConfluenceSoapService conf = getConfLocator()
-					.getConfluenceserviceV1();
-			String sess = login(null);
+		// unimplementable for confluence as there is no remote procedure call to retrieve this information
+		return null;
 		
-			
-			
-			String[] permissions 
-			
-			/* = conf.getPermissions(sess, remoteContext.getContextId()); */
-			
-			= conf.getPermissionsForUser(sess, remoteContext.getContextId(), principal.getName());
-			RemotePermissions rperms = new ConfluenceRemotePermissions(
-					permissions);
-			return rperms;
-		} catch (ServiceException e) {
-			throw new RuntimeException(e);
-		} catch (InvalidSessionException e) {
-			throw new RuntimeException(e);
-		} catch (RemoteException e) {
-			throw new RuntimeException(e);
-		} catch (java.rmi.RemoteException e) {
-			throw new RuntimeException(e);
-		}
-
 	}
 
 	public void removeRemoteContext(Principal principal,
@@ -255,7 +241,7 @@ public class ConfluenceConnector implements RemoteConnector {
 		try {
 			conf = getConfLocator().getConfluenceserviceV1();
 			String sess = login(principal);
-			conf.removeSpace(sess, remoteContext.getContextId());			
+			conf.removeSpace(sess, remoteContext.getContextId());
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -264,24 +250,50 @@ public class ConfluenceConnector implements RemoteConnector {
 
 	@Override
 	public void setRemotePermissions(Principal principal,
-			RemoteContext remoteContext, RemotePermissions remotePermissions) {
+			String localContext, RemoteContext remoteContext, PermissionMap permissionMap) {
 		
-		
+		if (permissionMap == null || permissionMap.getPermissionSets().isEmpty()) {
+			throw new IllegalArgumentException("PermissionMap cannot be null or empty. localContext=" + localContext + " remoteContext = " + remoteContext + " permissionMap = " + permissionMap);
+		}
+
 		try {
-			ConfluenceSoapService conf = getConfLocator().getConfluenceserviceV1();
+			ConfluenceSoapService conf = getConfLocator()
+					.getConfluenceserviceV1();
 			String sess = login(principal);
-			conf.removeSpace(sess, remoteContext.getContextId());	
-			
-			
-			
+
+			for (PermissionSet remotePermissions : permissionMap
+					.getPermissionSets()) {
+
+				String roleName = remotePermissions.getGroupName();
+				String spaceId = remoteContext.getContextId();
+				String spaceAlias = siteAliasService.getAliasForSiteId(localContext);
+				
+				String groupName = (spaceAlias +"/" + roleName).toLowerCase();
+				String[] permissions = remotePermissions.getPermissions();
+				
+				System.err.println("remotePerms: "
+						+ Arrays.toString(remotePermissions.getPermissions()));
+				System.err.println("groupName: " + groupName);
+				System.err.println("contextId: " + spaceId);
+				
+				if (!conf.hasGroup(sess, groupName)) {
+					conf.addGroup(sess, groupName);
+				}
+
+				boolean success = conf.addPermissionsToSpace(
+						sess, permissions, groupName, spaceId);
+
+				System.err.println("Call returned " + success);
+				
+				if (!success) {
+					throw new RuntimeException("addPermissionToSpace was unsuccessful!");
+				}
+			}
+
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		
-		
-		
-		
-		
+
 	}
 
 }

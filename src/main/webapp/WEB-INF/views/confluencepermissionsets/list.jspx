@@ -4,12 +4,18 @@
     <jsp:output omit-xml-declaration="yes"/>
     <page:list id="pl_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet" items="${confluencepermissionsets}" z="ZnWKRD2Gajbas46pcmJG9PIRU5U=">
         <table:table data="${confluencepermissionsets}" id="l_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet" path="/confluencepermissionsets" z="IJ+nOYkmU33ljmNxn1Lt5cYROTM=">
-            <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_groupName" property="groupName" z="teletY6g3trTQkYWca3KZUZqs6I="/>
-            <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_localGroupType" property="localGroupType" z="M4Zo8yJaBmaGiP27MBGE6liJJvw="/>
+            
+            
             <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_viewSpace" property="viewSpace" z="l/49au6wXiDl25xw1DcMC2gfP/w="/>
             <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_comment" property="comment" z="FLxXYXYzemzEUDK7+HAN1txGeKs="/>
             <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_editSpace" property="editSpace" z="h5Ju/2UYaYcK274C/vIms4kOM20="/>
             <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_setSpacePermissions" property="setSpacePermissions" z="OpKBnvdj5M34AAK6+opKJOlt5J4="/>
+        
+        
+        
+            
+        <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_groupName" property="groupName" z="teletY6g3trTQkYWca3KZUZqs6I="/>
+            <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_localGroupType" property="localGroupType" z="M4Zo8yJaBmaGiP27MBGE6liJJvw="/>
         </table:table>
     </page:list>
 </div>

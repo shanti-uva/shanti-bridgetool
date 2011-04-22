@@ -6,6 +6,7 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 public interface RemotePermissions {
 
 	boolean hasPermission(String perm);
+	void setPermission(String perm, boolean bool);
 	String[] getPermissions();
 	String[] possiblePermissions();
 

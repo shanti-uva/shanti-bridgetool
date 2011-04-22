@@ -29,6 +29,9 @@
         
         
     <field:display field="localContextType" id="s_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextType" object="${permissionmap}" z="VeJnHq1MppBlSI0fFm18waMbFRY="/>
-    <field:display field="mask" id="s_edu_virginia_shanti_om_bridge_domain_PermissionMap_mask" object="${permissionmap}" z="5f50aS2MllIeLgy7WTNTPMWWnjQ="/>
+    
+    
+    <field:display field="localContextMask" id="s_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextMask" object="${permissionmap}" z="RHkAeP6Tcn+nAAzTc7QlcuhPlmc="/>
+    <field:display field="service" id="s_edu_virginia_shanti_om_bridge_domain_PermissionMap_service" object="${permissionmap}" z="YBN52LT7vRu6LPP3M656zB9SdVk="/>
     </page:show>
 </div>

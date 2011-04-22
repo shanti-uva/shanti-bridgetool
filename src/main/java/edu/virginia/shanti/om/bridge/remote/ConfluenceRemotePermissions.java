@@ -39,4 +39,9 @@ public class ConfluenceRemotePermissions implements RemotePermissions {
 		return possiblePermissions;
 	}
 
+	@Override
+	public void setPermission(String perm, boolean bool) {
+		throw new UnsupportedOperationException("RemotePermissions.setRemotePermission() is not supported by this implementation.");
+	}
+
 }

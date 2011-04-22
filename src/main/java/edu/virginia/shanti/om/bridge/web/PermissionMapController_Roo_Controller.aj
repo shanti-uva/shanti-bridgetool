@@ -86,6 +86,51 @@ privileged aspect PermissionMapController_Roo_Controller {
         return "redirect:/permissionmaps?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
     }
     
+    @RequestMapping(params = { "find=ByLocalContextType", "form" }, method = RequestMethod.GET)
+    public String PermissionMapController.findPermissionMapsByLocalContextTypeForm(Model model) {
+        model.addAttribute("localcontexttypes", java.util.Arrays.asList(LocalContextType.class.getEnumConstants()));
+        return "permissionmaps/findPermissionMapsByLocalContextType";
+    }
+    
+    @RequestMapping(params = "find=ByLocalContextType", method = RequestMethod.GET)
+    public String PermissionMapController.findPermissionMapsByLocalContextType(@RequestParam("localContextType") LocalContextType localContextType, Model model) {
+        model.addAttribute("permissionmaps", PermissionMap.findPermissionMapsByLocalContextType(localContextType).getResultList());
+        return "permissionmaps/list";
+    }
+    
+    @RequestMapping(params = { "find=ByName", "form" }, method = RequestMethod.GET)
+    public String PermissionMapController.findPermissionMapsByNameForm(Model model) {
+        return "permissionmaps/findPermissionMapsByName";
+    }
+    
+    @RequestMapping(params = "find=ByName", method = RequestMethod.GET)
+    public String PermissionMapController.findPermissionMapsByName(@RequestParam("name") String name, Model model) {
+        model.addAttribute("permissionmaps", PermissionMap.findPermissionMapsByName(name).getResultList());
+        return "permissionmaps/list";
+    }
+    
+    @RequestMapping(params = { "find=ByLocalContextMask", "form" }, method = RequestMethod.GET)
+    public String PermissionMapController.findPermissionMapsByLocalContextMaskForm(Model model) {
+        return "permissionmaps/findPermissionMapsByLocalContextMask";
+    }
+    
+    @RequestMapping(params = "find=ByLocalContextMask", method = RequestMethod.GET)
+    public String PermissionMapController.findPermissionMapsByLocalContextMask(@RequestParam("localContextMask") String localContextMask, Model model) {
+        model.addAttribute("permissionmaps", PermissionMap.findPermissionMapsByLocalContextMask(localContextMask).getResultList());
+        return "permissionmaps/list";
+    }
+    
+    @RequestMapping(params = { "find=ByLocalContextMaskAndService", "form" }, method = RequestMethod.GET)
+    public String PermissionMapController.findPermissionMapsByLocalContextMaskAndServiceForm(Model model) {
+        return "permissionmaps/findPermissionMapsByLocalContextMaskAndService";
+    }
+    
+    @RequestMapping(params = "find=ByLocalContextMaskAndService", method = RequestMethod.GET)
+    public String PermissionMapController.findPermissionMapsByLocalContextMaskAndService(@RequestParam("localContextMask") String localContextMask, @RequestParam("service") String service, Model model) {
+        model.addAttribute("permissionmaps", PermissionMap.findPermissionMapsByLocalContextMaskAndService(localContextMask, service).getResultList());
+        return "permissionmaps/list";
+    }
+    
     @ModelAttribute("localcontexttypes")
     public Collection<LocalContextType> PermissionMapController.populateLocalContextTypes() {
         return Arrays.asList(LocalContextType.class.getEnumConstants());

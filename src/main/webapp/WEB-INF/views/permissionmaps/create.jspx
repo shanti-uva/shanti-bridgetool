@@ -29,7 +29,10 @@
         
         
     <field:select field="localContextType" id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextType" items="${localcontexttypes}" path="localcontexttypes" z="I+iHpCjJhI1T8iBTTRlwpRmeoc4="/>
-    <field:input field="mask" id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_mask" z="tOFtVuuX4KsHTuePINvc7q1spPs="/>
+    
+    
+    <field:input field="localContextMask" id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextMask" z="D4wtI2AvM+ve93GWkNLXmkyd2cc="/>
+    <field:input field="service" id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_service" z="YbB5UIkgeVFVhYYuplAzwNWCtu8="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_virginia_shanti_om_bridge_domain_PermissionMap" render="${not empty dependencies}" z="UEN3x5jZKWfxOjcWxYFocB0+zjw="/>
 </div>

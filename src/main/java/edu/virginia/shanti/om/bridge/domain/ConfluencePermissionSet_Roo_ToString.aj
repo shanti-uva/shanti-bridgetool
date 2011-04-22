@@ -9,6 +9,7 @@ privileged aspect ConfluencePermissionSet_Roo_ToString {
     
     public String ConfluencePermissionSet.toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Permissions: ").append(java.util.Arrays.toString(getPermissions())).append(", ");
         sb.append("Id: ").append(getId()).append(", ");
         sb.append("Version: ").append(getVersion()).append(", ");
         sb.append("GroupName: ").append(getGroupName()).append(", ");

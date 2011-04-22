@@ -34,7 +34,7 @@ public class SitePropertyServiceTest {
 
 	private static final String MOCKUSER = "ys2n";
 
-	private static final String MOCKPASSWORD = "Thun_pok";
+	private static final String MOCKPASSWORD = "XXXXX";
 
 	private static final String SERVERID = "sakai11";
 

@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.virginia.shanti.om.bridge.domain.Bridge;
 import edu.virginia.shanti.om.bridge.domain.SiteAlias;
 import edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptServiceLocator;
 import edu.virginia.shanti.om.bridge.soap.sakai.SakaiScript_PortType;
@@ -27,6 +28,9 @@ public class SiteAliasService {
 
 	transient private SakaiScriptServiceLocator sakaiScriptServiceLocator = new SakaiScriptServiceLocator();
 
+	@Autowired
+	private SitePropertyService sitePropertyService;
+	
 	public String getAliasForSiteId(String siteId) {
 		SiteAlias siteAlias = findSiteAliasBySiteId(siteId);
 		if (siteAlias == null) {
@@ -43,7 +47,7 @@ public class SiteAliasService {
 		return siteAlias.getSiteId();
 	}
 
-	private SiteAlias findSiteAliasBySiteId(String siteId) {
+	public SiteAlias findSiteAliasBySiteId(String siteId) {
 		List<SiteAlias> list = SiteAlias.findSiteAliasesBySiteId(siteId)
 				.getResultList();
 		try {
@@ -55,7 +59,7 @@ public class SiteAliasService {
 		}
 	}
 
-	private SiteAlias findSiteAliasBySiteAlias(String alias) {
+	public SiteAlias findSiteAliasBySiteAlias(String alias) {
 		List<SiteAlias> list = SiteAlias.findSiteAliasesByAlias(alias)
 				.getResultList();
 		try {
@@ -95,10 +99,10 @@ public class SiteAliasService {
 	public String suggestSiteAliasString(String title, String siteId) {
 
 		// TODO: refactor this into an implementation class
-		StringBuilder sb = new StringBuilder(title.replaceAll("\\W+", "_")
+		StringBuilder sb = new StringBuilder("collab:" + title.replaceAll("\\W+","-")
 				.replaceAll("&", "and").toLowerCase());
-		sb.append("_");
-		sb.append(siteId.substring(0, 5));
+		sb.append("-");
+		sb.append(siteId.substring(0, 4));
 		return sb.toString();
 
 	}
@@ -132,6 +136,16 @@ public class SiteAliasService {
 			throw new RuntimeException(e);
 		}
 
+	}
+
+	public void registerAlias(SiteAlias siteAlias, String service) {
+		// TODO Refactor this out of this service class
+		sitePropertyService.setSiteProperty(siteAlias.getSiteId(), "shib-" + service, siteAlias.getAlias());
+	}
+
+	public void registerAlias(SiteAlias siteAlias, Bridge bridge) {
+		System.err.println("Registering alias " + siteAlias + " for bridge remoteName: " + bridge.getRemoteName());
+		registerAlias(siteAlias, bridge.getRemoteName());
 	}
 
 }

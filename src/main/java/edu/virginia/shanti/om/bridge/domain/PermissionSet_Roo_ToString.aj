@@ -9,6 +9,7 @@ privileged aspect PermissionSet_Roo_ToString {
     
     public String PermissionSet.toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Permissions: ").append(java.util.Arrays.toString(getPermissions())).append(", ");
         sb.append("GroupName: ").append(getGroupName()).append(", ");
         sb.append("LocalGroupType: ").append(getLocalGroupType());
         return sb.toString();

@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.form.ConfluenceSpaceForm;
@@ -32,7 +33,7 @@ public class RemoteServerService {
 
 	@Autowired
 	private ApplicationContext applicationContext;
-	
+
 	private Log log = LogFactory.getLog(RemoteServerService.class);
 
 	private static final long serialVersionUID = -2683260374906842765L;
@@ -41,8 +42,7 @@ public class RemoteServerService {
 	 * Return the remote configuration for this service name
 	 * 
 	 * @param serviceName
-	 * @return RemoteServer the RemoteServer object for this
-	 *         service name.
+	 * @return RemoteServer the RemoteServer object for this service name.
 	 */
 	public RemoteServer getRemoteServer(String serviceName) {
 		// TODO: needs test
@@ -53,7 +53,8 @@ public class RemoteServerService {
 					serviceName).getSingleResult();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			log.error("Error retrieving RemoteServer named \'" + serviceName +"\' : " + e.getMessage() + " Returning null.");
+			log.error("Error retrieving RemoteServer named \'" + serviceName
+					+ "\' : " + e.getMessage() + " Returning null.");
 		}
 		return remoteServer;
 	}
@@ -66,14 +67,14 @@ public class RemoteServerService {
 	 */
 	public List<RemoteContextChoice> getRemoteContexts(RemoteServer remoteServer) {
 
-//		System.err.println("getRemoteContexts(): remoteServer = "
-//				+ remoteServer);
-//		System.err.println("getRemoteContexts(): applicationContext = "
-//				+ applicationContext);
+		// System.err.println("getRemoteContexts(): remoteServer = "
+		// + remoteServer);
+		// System.err.println("getRemoteContexts(): applicationContext = "
+		// + applicationContext);
 
 		RemoteConnector remote = (RemoteConnector) applicationContext
 				.getBean(remoteServer.getImplementationName());
-		
+
 		Principal principal = getCurrentUser();
 		return remote.getContexts(principal, remoteServer);
 	}
@@ -85,51 +86,56 @@ public class RemoteServerService {
 	 * @return List<RemoteContext> list of remote contexts
 	 */
 	public List<RemoteContextChoice> getRemoteContexts(String configurationName) {
-//		System.err.println("getRemoteContexts( " + configurationName +" )"); 
+		// System.err.println("getRemoteContexts( " + configurationName +" )");
 		RemoteServer remoteServer = getRemoteServer(configurationName);
 		if (remoteServer == null) {
-			throw new RuntimeException("Remote server \'" + configurationName + "\' is unknown.");
+			throw new RuntimeException("Remote server \'" + configurationName
+					+ "\' is unknown.");
 		}
-		
+
 		// DEBUG
-		
-		log.warn("DEBUG:" + SecurityContextHolder.getContext().getAuthentication().getName());
-		
+
+		log.warn("DEBUG:"
+				+ SecurityContextHolder.getContext().getAuthentication()
+						.getName());
+
 		return getRemoteContexts(remoteServer);
 	}
-	
-	
+
 	public RemoteContext createRemoteContext(RemoteContext newContext) {
-		
-//		System.err.println("Trying this config:  " + newContext);
-		
+
+		// System.err.println("Trying this config:  " + newContext);
+
 		RemoteConnector connector = findRemoteConnector(newContext);
-		RemoteContext newRemoteContext = connector.createRemoteContext( getCurrentUser(), newContext);
+		RemoteContext newRemoteContext = connector.createRemoteContext(
+				getCurrentUser(), newContext);
 		return newRemoteContext;
-		
+
 	}
 
 	private Authentication getCurrentUser() {
-				
+
 		return SecurityContextHolder.getContext().getAuthentication();
 
 	}
 
 	private RemoteConnector findRemoteConnector(RemoteContext newContext) {
-		RemoteServer remoteServer = RemoteServer.findRemoteServersByRemoteName(newContext.getRemoteName()).getSingleResult();
-		RemoteConnector connector = (RemoteConnector)applicationContext.getBean(remoteServer.getImplementationName());
+		RemoteServer remoteServer = RemoteServer.findRemoteServersByRemoteName(
+				newContext.getRemoteName()).getSingleResult();
+		RemoteConnector connector = (RemoteConnector) applicationContext
+				.getBean(remoteServer.getImplementationName());
 		return connector;
 	}
-	
+
 	public RemoteContext createRemoteContext(ConfluenceSpaceForm spaceForm) {
 		RemoteContext rc = new RemoteContext();
 		rc.populate(spaceForm);
 		return createRemoteContext(rc);
 	}
-	
+
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
-	public void addRemoteServer(String configName,
-			String configImplementation, String configUrl) {
+	public void addRemoteServer(String configName, String configImplementation,
+			String configUrl) {
 
 		RemoteServer config = new RemoteServer();
 		config.setRemoteName(configName);
@@ -138,15 +144,27 @@ public class RemoteServerService {
 		config.persist();
 
 	}
-	
+
 	public String getSummaryMarkup(RemoteContext remoteContext) {
 		RemoteConnector connector = findRemoteConnector(remoteContext);
 		Principal principal = getCurrentUser();
 		return connector.getSummaryMarkup(principal, remoteContext);
 	}
-	
-	
+
 	public List<RemoteServer> getAllRemoteServers() {
 		return RemoteServer.findAllRemoteServers();
 	}
+
+	public void writePermissionMap(String localContext, RemoteContext remoteContext,
+			PermissionMap permissionMap) {
+		
+		System.err.println("===>" + remoteContext);
+		
+		RemoteConnector connector = findRemoteConnector(remoteContext);
+		Authentication principal = getCurrentUser();
+
+		connector.setRemotePermissions(principal, localContext, remoteContext, permissionMap);
+
+	}
+
 }

@@ -17,14 +17,14 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-
 /**
  * This is a wrapper for mock user purposes.
+ * 
  * @author ys2n
- *
+ * 
  */
 public class MockRequestWrapper implements HttpServletRequest {
-	
+
 	private Log log = LogFactory.getLog(MockRequestWrapper.class);
 
 	private String mockUser;
@@ -81,13 +81,15 @@ public class MockRequestWrapper implements HttpServletRequest {
 	}
 
 	public String getHeader(String name) {
-		
-		log.warn("getHeader(" + name+ ") called.");
-		
+
+		log.warn("getHeader(" + name + ") called.");
+
 		if ("REMOTE_USER".equals(name)) {
 			return mockUser;
 		} else if ("sakaisessionid".equals(name)) {
-			return "xxxfakesessionid";
+			if (wrappedRequest.getHeader("sakaisessionid") == null) {
+				return "09234b66-f928-4aa8-8ffd-13d437180fa4.sakai14";
+			}
 		}
 		return wrappedRequest.getHeader(name);
 	}
@@ -182,7 +184,7 @@ public class MockRequestWrapper implements HttpServletRequest {
 		return wrappedRequest.getReader();
 	}
 
-	@SuppressWarnings({ "deprecation"})
+	@SuppressWarnings({ "deprecation" })
 	@Override
 	public String getRealPath(String path) {
 		return wrappedRequest.getRealPath(path);
@@ -297,7 +299,7 @@ public class MockRequestWrapper implements HttpServletRequest {
 			throws UnsupportedEncodingException {
 		wrappedRequest.setCharacterEncoding(env);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "[MockRequestWrapper mockUser=" + mockUser + "]";

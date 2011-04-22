@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.webflow.execution.RequestContext;
 
 import edu.virginia.shanti.om.bridge.domain.Bridge;
+import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
+import edu.virginia.shanti.om.bridge.domain.SiteAlias;
 import edu.virginia.shanti.om.bridge.form.ConfigBean;
 import edu.virginia.shanti.om.bridge.form.ConfluenceConfigBean;
 
@@ -28,8 +30,15 @@ public class BridgeService {
 
 	@Autowired
 	private RemoteServerService remoteServerService;
+	
+	@Autowired
+	private SiteAliasService siteAliasService;
 
+	@Autowired
+	private PermissionMapService permissionMapService;
+	
 	private Log log = LogFactory.getLog(BridgeService.class);
+
 
 	/**
 	 * Tells whether the localContext and localSubContext are configured
@@ -176,15 +185,40 @@ public class BridgeService {
 			log.info("using existing Bridge " + bridge);
 			bridge = blist.get(0);
 			bridge.setRemoteContext(rc);
+			fixPermissionMap(bridge);
 			bridge.persist();
 		} else if (blist.size() == 0) {
 			log.info("persisting new Bridge " + bridge);
+			fixPermissionMap(bridge);
 			bridge.persist();
 		} else {
 			throw new RuntimeException(
 					"Too many RemoteContexts returned for remoteName="
 							+ rc.getRemoteName() + " contextId="
 							+ rc.getContextId());
+		}
+		
+		
+		// find and/or establish site alias
+		SiteAlias siteAlias = siteAliasService.findSiteAliasBySiteId(bridge.getLocalContext());
+		if (siteAlias == null) {
+			siteAlias = siteAliasService.suggestSiteAlias(bridge.getLocalContext());
+			siteAlias.persist();
+			System.err.println("generated alias: " + siteAlias);
+		}
+
+		System.err.println("using alias: " + siteAlias);
+		siteAliasService.registerAlias(siteAlias, bridge);
+
+		//
+		remoteServerService.writePermissionMap(bridge.getLocalContext(), bridge.getRemoteContext(), bridge.getPermissionMap());
+
+	}
+
+	private void fixPermissionMap(Bridge bridge) {
+		if (bridge.getPermissionMap() == null) {
+			PermissionMap pm = permissionMapService.getPermissionMap(bridge);
+			bridge.setPermissionMap(pm);
 		}
 	}
 

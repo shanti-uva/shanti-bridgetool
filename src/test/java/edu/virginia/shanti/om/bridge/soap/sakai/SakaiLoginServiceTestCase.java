@@ -42,7 +42,7 @@ public class SakaiLoginServiceTestCase extends junit.framework.TestCase {
 
         // Test operation
         java.lang.String value = null;
-        value = binding.login("ys2n", "Thun_pok");
+        value = binding.login("ys2n", "XXXXX");
         // TBD - validate results
     }
 

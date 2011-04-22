@@ -13,4 +13,16 @@
 <definition extends="default" name="permissionmaps/update">
         <put-attribute name="body" value="/WEB-INF/views/permissionmaps/update.jspx"/>
     </definition>
+<definition extends="default" name="permissionmaps/findPermissionMapsByLocalContextType">
+        <put-attribute name="body" value="/WEB-INF/views/permissionmaps/findPermissionMapsByLocalContextType.jspx"/>
+    </definition>
+<definition extends="default" name="permissionmaps/findPermissionMapsByName">
+        <put-attribute name="body" value="/WEB-INF/views/permissionmaps/findPermissionMapsByName.jspx"/>
+    </definition>
+<definition extends="default" name="permissionmaps/findPermissionMapsByLocalContextMask">
+        <put-attribute name="body" value="/WEB-INF/views/permissionmaps/findPermissionMapsByLocalContextMask.jspx"/>
+    </definition>
+<definition extends="default" name="permissionmaps/findPermissionMapsByLocalContextMaskAndService">
+        <put-attribute name="body" value="/WEB-INF/views/permissionmaps/findPermissionMapsByLocalContextMaskAndService.jspx"/>
+    </definition>
 </tiles-definitions>

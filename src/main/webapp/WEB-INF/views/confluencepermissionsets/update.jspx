@@ -3,8 +3,8 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet" modelAttribute="confluencePermissionSet" path="/confluencepermissionsets" z="X5RsYP3pqRnGTSeeX6J5M6vBYrA=">
-        <field:input field="groupName" id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_groupName" z="1AkcPaZZd52vubmMS2HDSVMs8Mo="/>
-        <field:select field="localGroupType" id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_localGroupType" items="${localgrouptypes}" path="localgrouptypes" z="zgGbqjA6CwYCeOK7vscWfVw3Ii4="/>
+        
+        
         <field:checkbox field="viewSpace" id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_viewSpace" z="Qwp4LqhvszW5SWgoUthlV/iCWLY="/>
         <field:checkbox field="comment" id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_comment" z="eNdzKaS0SwQNNv+6j9LYQd2mgwM="/>
         <field:checkbox field="editSpace" id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_editSpace" z="48P5FBLeMOdKFiidSF5/yqX18kk="/>
@@ -19,5 +19,8 @@
         <field:checkbox field="exportSpace" id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_exportSpace" z="UUy3rFy4VtdWsbClRcT7Xg3aTuI="/>
         <field:checkbox field="removeMail" id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_removeMail" z="1MQWrrmEK+atuqNnJeqTjM3ecH8="/>
         <field:checkbox field="setPagePermissions" id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_setPagePermissions" z="QLt61WmPIUDQVeegwhntlNr03RY="/>
+    
+    <field:input field="groupName" id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_groupName" z="1AkcPaZZd52vubmMS2HDSVMs8Mo="/>
+        <field:select field="localGroupType" id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_localGroupType" items="${localgrouptypes}" path="localgrouptypes" z="zgGbqjA6CwYCeOK7vscWfVw3Ii4="/>
     </form:update>
 </div>

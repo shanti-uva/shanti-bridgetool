@@ -19,7 +19,8 @@ privileged aspect PermissionMapDataOnDemand_Roo_DataOnDemand {
     public PermissionMap PermissionMapDataOnDemand.getNewTransientPermissionMap(int index) {
         edu.virginia.shanti.om.bridge.domain.PermissionMap obj = new edu.virginia.shanti.om.bridge.domain.PermissionMap();
         obj.setName("name_" + index);
-        obj.setMask("mask_" + index);
+        obj.setLocalContextMask("localContextMask_" + index);
+        obj.setService("service_" + index);
         obj.setLocalContextType(null);
         return obj;
     }

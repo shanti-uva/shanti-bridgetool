@@ -122,7 +122,7 @@ public class SiteAliasServiceTest {
 		
 		// login and get session
 		SakaiLogin_PortType sakaiLogin = new SakaiLoginServiceLocator().getSakaiLogin(new URL("https://"+ serverId + ".itc.virginia.edu/sakai-axis/SakaiLogin.jws"));
-		String session = sakaiLogin.login("ys2n","Thun_pok").concat("." + serverId);
+		String session = sakaiLogin.login("ys2n","XXXXXX").concat("." + serverId);
 		System.err.println(session);
 		
 		SecurityContextHolder.getContext()

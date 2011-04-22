@@ -10,6 +10,8 @@ privileged aspect BridgeService_Roo_ToString {
     public String BridgeService.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("RemoteServerService: ").append(getRemoteServerService()).append(", ");
+        sb.append("SiteAliasService: ").append(getSiteAliasService()).append(", ");
+        sb.append("PermissionMapService: ").append(getPermissionMapService()).append(", ");
         sb.append("Log: ").append(getLog());
         return sb.toString();
     }

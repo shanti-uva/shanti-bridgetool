@@ -2,7 +2,6 @@ package edu.virginia.shanti.om.bridge.remote.impl;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.security.Principal;
 import java.util.List;
@@ -17,11 +16,17 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
+import edu.virginia.shanti.om.bridge.domain.ConfluencePermissionSet;
+import edu.virginia.shanti.om.bridge.domain.LocalContextType;
+import edu.virginia.shanti.om.bridge.domain.LocalGroupType;
+import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
+import edu.virginia.shanti.om.bridge.service.PermissionMapService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/META-INF/spring/applicationContext*.xml" })
@@ -33,10 +38,12 @@ public class ConfluenceConnectorTest {
 
 	@Autowired
 	private ApplicationContext applicationContext;
-
+	
 	private ConfluenceConnector conf;
 
 	private RemoteServer remoteServer;
+	
+	private PermissionMapService permissionMapService;
 
 	@Before
 	public void setUp() {
@@ -48,6 +55,7 @@ public class ConfluenceConnectorTest {
 		remoteServer.setImplementationName("confluenceConnector");
 		remoteServer.setRemoteUrl("https://wiki.shanti.virginia.edu");
 		remoteServer.setRemoteName("shanti-wiki");
+		permissionMapService = applicationContext.getBean(PermissionMapService.class);
 
 		SecurityContextHolder.getContext()
 				.setAuthentication(
@@ -78,6 +86,7 @@ public class ConfluenceConnectorTest {
 
 		Principal principal = SecurityContextHolder.getContext()
 				.getAuthentication();
+		
 		List<RemoteContextChoice> contexts = conf.getContexts(principal,
 				remoteServer);
 
@@ -86,7 +95,7 @@ public class ConfluenceConnectorTest {
 		for (RemoteContextChoice remoteContextChoice : contexts) {
 			System.err.println("=======>" + remoteContextChoice);
 		}
-
+		
 		// fail("Need to implement checks");
 
 	}
@@ -152,17 +161,53 @@ public class ConfluenceConnectorTest {
 		Authentication auth = SecurityContextHolder.getContext()
 				.getAuthentication();
 		RemotePermissions perms = conf
-				.getRemotePermissions(auth, pickContext());
+				.getRemotePermissions(auth, "mockLocalContext", pickContext());
 		assertNotNull(perms);
 
 		System.err.println(perms);
 
 	}
 
+	@Transactional
 	@Test
 	public void testSetRemotePermissions() {
-		// Unfortunately since we have no way to really check these permissions,
-		// there is no way to tell if this works!
+		// Unfortunately since we have no way to check these permissions programmatically
+		// you must login to confluence via the web and check the permissions...
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+				
+		// create the permissions we want to write
+		PermissionMap permMap = new PermissionMap();
+		permMap.setLocalContextType(LocalContextType.COLLABORATION);
+		
+		String[] roles = new String[] { "Instructor", "Student", "Secondary Instructor" };
+		for (int i = 0; i < roles.length; i++) {
+			ConfluencePermissionSet pset1 = new ConfluencePermissionSet();
+			pset1.setComment(true);
+			pset1.setGroupName(roles[i]);
+			pset1.setLocalGroupType(LocalGroupType.SAKAIROLE);
+			pset1.setCreateAttachment(true);
+			pset1.setViewSpace(true);
+			pset1.persist();
+			permMap.addPermissionSet(pset1);
+		}
+		permMap.persist();
+		
+		// pick a space
+		RemoteContext remoteContext = pickContext();
+		
+		String localContext = "mockLocalContext";
+		
+		// lookup the permissionMap we created earlier
+		PermissionMap permissionMap = permissionMapService.getPermissionMap(LocalContextType.COLLABORATION);
+		
+		assertNotNull("Couldn't retrieve permissionMap!",permissionMap);		
+		
+		// remotely set the permissions
+		conf.setRemotePermissions(auth, localContext, remoteContext, permissionMap);
+		
+		System.err.println("Auth="+ auth + "\n=" + remoteContext + "\npermissionMap="+permissionMap);
+		
 	}
 
 }
