@@ -3,7 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:find finderName="ByRemoteNameAndContextId" id="ff_edu_virginia_shanti_om_bridge_domain_RemoteContext" path="/remotecontexts" z="Bwr8orBogupcP9sFaY1012+v38I=">
-        <field:input disableFormBinding="true" field="remoteName" id="f_edu_virginia_shanti_om_bridge_domain_RemoteContext_remoteName" z="dGdX7yQitomCOWU2xAf3IgcXO74="/>
-        <field:input disableFormBinding="true" field="contextId" id="f_edu_virginia_shanti_om_bridge_domain_RemoteContext_contextId" z="9xSHJ3t6rI52ro6A4Bi3+kYol6w="/>
+        <field:input disableFormBinding="true" field="remoteName" id="f_edu_virginia_shanti_om_bridge_domain_RemoteContext_remoteName" required="true" z="tIjmWmduq644u3NSHJmH4yLtrRs="/>
+        <field:input disableFormBinding="true" field="contextId" id="f_edu_virginia_shanti_om_bridge_domain_RemoteContext_contextId" required="true" z="06Qv6dp+kq87GHNeF1LFShXb5XE="/>
     </form:find>
 </div>

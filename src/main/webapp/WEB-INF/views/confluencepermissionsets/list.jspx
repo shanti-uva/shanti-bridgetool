@@ -14,8 +14,10 @@
         
         
             
-        <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_groupName" property="groupName" z="teletY6g3trTQkYWca3KZUZqs6I="/>
-            <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_localGroupType" property="localGroupType" z="M4Zo8yJaBmaGiP27MBGE6liJJvw="/>
+        
+            
+        <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_removePage" property="removePage" z="09bXrXxe9YBKbwkpK6IlwiBWxgs="/>
+            <table:column id="c_edu_virginia_shanti_om_bridge_domain_ConfluencePermissionSet_removeComment" property="removeComment" z="qnY7MLVLADfUk1JYSAtrkgs1jkc="/>
         </table:table>
     </page:list>
 </div>

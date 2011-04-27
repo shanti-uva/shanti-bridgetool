@@ -2,19 +2,10 @@
 <div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <form:update id="fu_edu_virginia_shanti_om_bridge_domain_RemoteContext" modelAttribute="remoteContext" path="/remotecontexts" z="/Sb/tyalYIwdkjxPvdVfiwsFJlg=">
-        
-        
-        
-    
-        
-        
-    
-    <field:input field="contextLabel" id="c_edu_virginia_shanti_om_bridge_domain_RemoteContext_contextLabel" z="OFn12jZq7KgvgXG8idE8wyHsN6w="/>
+    <form:update id="fu_edu_virginia_shanti_om_bridge_domain_RemoteContext" modelAttribute="remoteContext" path="/remotecontexts" versionField="Version" z="kCKiVALGLRNG2zrLMZne8QTkQpY=">
+        <field:input field="contextLabel" id="c_edu_virginia_shanti_om_bridge_domain_RemoteContext_contextLabel" z="OFn12jZq7KgvgXG8idE8wyHsN6w="/>
         <field:input field="contextId" id="c_edu_virginia_shanti_om_bridge_domain_RemoteContext_contextId" z="a80nVILQb5dGAPTbYLlKuVupcSI="/>
         <field:input field="url" id="c_edu_virginia_shanti_om_bridge_domain_RemoteContext_url" z="BgwLW4a7zcOkY4wImoT93DPTOIs="/>
-        
-    
-    <field:input field="remoteName" id="c_edu_virginia_shanti_om_bridge_domain_RemoteContext_remoteName" z="q/B1A3PGpIe22XSaYu8y0OCFQ4k="/>
+        <field:input field="remoteName" id="c_edu_virginia_shanti_om_bridge_domain_RemoteContext_remoteName" z="q/B1A3PGpIe22XSaYu8y0OCFQ4k="/>
     </form:update>
 </div>

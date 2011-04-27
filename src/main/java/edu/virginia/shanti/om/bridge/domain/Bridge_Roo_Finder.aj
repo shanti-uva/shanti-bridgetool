@@ -13,7 +13,7 @@ privileged aspect Bridge_Roo_Finder {
     public static TypedQuery<Bridge> Bridge.findBridgesByLocalContext(String localContext) {
         if (localContext == null || localContext.length() == 0) throw new IllegalArgumentException("The localContext argument is required");
         EntityManager em = Bridge.entityManager();
-        TypedQuery<Bridge> q = em.createQuery("SELECT Bridge FROM Bridge AS bridge WHERE bridge.localContext = :localContext", Bridge.class);
+        TypedQuery<Bridge> q = em.createQuery("SELECT o FROM Bridge AS o WHERE o.localContext = :localContext", Bridge.class);
         q.setParameter("localContext", localContext);
         return q;
     }
@@ -21,7 +21,7 @@ privileged aspect Bridge_Roo_Finder {
     public static TypedQuery<Bridge> Bridge.findBridgesByLocalSubContext(String localSubContext) {
         if (localSubContext == null || localSubContext.length() == 0) throw new IllegalArgumentException("The localSubContext argument is required");
         EntityManager em = Bridge.entityManager();
-        TypedQuery<Bridge> q = em.createQuery("SELECT Bridge FROM Bridge AS bridge WHERE bridge.localSubContext = :localSubContext", Bridge.class);
+        TypedQuery<Bridge> q = em.createQuery("SELECT o FROM Bridge AS o WHERE o.localSubContext = :localSubContext", Bridge.class);
         q.setParameter("localSubContext", localSubContext);
         return q;
     }

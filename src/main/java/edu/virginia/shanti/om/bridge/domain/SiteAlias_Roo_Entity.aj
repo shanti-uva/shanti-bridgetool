@@ -73,6 +73,12 @@ privileged aspect SiteAlias_Roo_Entity {
     }
     
     @Transactional
+    public void SiteAlias.clear() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        this.entityManager.clear();
+    }
+    
+    @Transactional
     public SiteAlias SiteAlias.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         SiteAlias merged = this.entityManager.merge(this);
@@ -87,11 +93,11 @@ privileged aspect SiteAlias_Roo_Entity {
     }
     
     public static long SiteAlias.countSiteAliases() {
-        return entityManager().createQuery("select count(o) from SiteAlias o", Long.class).getSingleResult();
+        return entityManager().createQuery("SELECT COUNT(o) FROM SiteAlias o", Long.class).getSingleResult();
     }
     
     public static List<SiteAlias> SiteAlias.findAllSiteAliases() {
-        return entityManager().createQuery("select o from SiteAlias o", SiteAlias.class).getResultList();
+        return entityManager().createQuery("SELECT o FROM SiteAlias o", SiteAlias.class).getResultList();
     }
     
     public static SiteAlias SiteAlias.findSiteAlias(Long id) {
@@ -100,7 +106,7 @@ privileged aspect SiteAlias_Roo_Entity {
     }
     
     public static List<SiteAlias> SiteAlias.findSiteAliasEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from SiteAlias o", SiteAlias.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery("SELECT o FROM SiteAlias o", SiteAlias.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

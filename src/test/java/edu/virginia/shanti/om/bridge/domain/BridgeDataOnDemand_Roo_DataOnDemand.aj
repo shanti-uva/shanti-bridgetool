@@ -4,8 +4,10 @@
 package edu.virginia.shanti.om.bridge.domain;
 
 import edu.virginia.shanti.om.bridge.domain.Bridge;
+import edu.virginia.shanti.om.bridge.domain.PermissionMapDataOnDemand;
 import java.util.List;
 import java.util.Random;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 privileged aspect BridgeDataOnDemand_Roo_DataOnDemand {
@@ -16,14 +18,42 @@ privileged aspect BridgeDataOnDemand_Roo_DataOnDemand {
     
     private List<Bridge> BridgeDataOnDemand.data;
     
+    @Autowired
+    private PermissionMapDataOnDemand BridgeDataOnDemand.permissionMapDataOnDemand;
+    
     public Bridge BridgeDataOnDemand.getNewTransientBridge(int index) {
         edu.virginia.shanti.om.bridge.domain.Bridge obj = new edu.virginia.shanti.om.bridge.domain.Bridge();
-        obj.setRemoteName("remoteName_" + index);
-        obj.setLocalContext("localContext_" + index);
-        obj.setLocalSubContext("localSubContext_" + index);
-        obj.setRemoteContext(null);
-        obj.setPermissionMap(null);
+        setRemoteName(obj, index);
+        setLocalContext(obj, index);
+        setLocalSubContext(obj, index);
+        setRemoteContext(obj, index);
+        setPermissionMap(obj, index);
         return obj;
+    }
+    
+    private void BridgeDataOnDemand.setRemoteName(Bridge obj, int index) {
+        java.lang.String remoteName = "remoteName_" + index;
+        obj.setRemoteName(remoteName);
+    }
+    
+    private void BridgeDataOnDemand.setLocalContext(Bridge obj, int index) {
+        java.lang.String localContext = "localContext_" + index;
+        obj.setLocalContext(localContext);
+    }
+    
+    private void BridgeDataOnDemand.setLocalSubContext(Bridge obj, int index) {
+        java.lang.String localSubContext = "localSubContext_" + index;
+        obj.setLocalSubContext(localSubContext);
+    }
+    
+    private void BridgeDataOnDemand.setRemoteContext(Bridge obj, int index) {
+        edu.virginia.shanti.om.bridge.domain.RemoteContext remoteContext = null;
+        obj.setRemoteContext(remoteContext);
+    }
+    
+    private void BridgeDataOnDemand.setPermissionMap(Bridge obj, int index) {
+        edu.virginia.shanti.om.bridge.domain.PermissionMap permissionMap = permissionMapDataOnDemand.getRandomPermissionMap();
+        obj.setPermissionMap(permissionMap);
     }
     
     public Bridge BridgeDataOnDemand.getSpecificBridge(int index) {

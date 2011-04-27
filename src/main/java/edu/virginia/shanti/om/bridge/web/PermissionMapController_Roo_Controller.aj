@@ -27,108 +27,66 @@ import org.springframework.web.util.WebUtils;
 privileged aspect PermissionMapController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String PermissionMapController.create(@Valid PermissionMap permissionMap, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("permissionMap", permissionMap);
+    public String PermissionMapController.create(@Valid PermissionMap permissionMap, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("permissionMap", permissionMap);
             return "permissionmaps/create";
         }
+        uiModel.asMap().clear();
         permissionMap.persist();
-        return "redirect:/permissionmaps/" + encodeUrlPathSegment(permissionMap.getId().toString(), request);
+        return "redirect:/permissionmaps/" + encodeUrlPathSegment(permissionMap.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String PermissionMapController.createForm(Model model) {
-        model.addAttribute("permissionMap", new PermissionMap());
+    public String PermissionMapController.createForm(Model uiModel) {
+        uiModel.addAttribute("permissionMap", new PermissionMap());
         return "permissionmaps/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String PermissionMapController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("permissionmap", PermissionMap.findPermissionMap(id));
-        model.addAttribute("itemId", id);
+    public String PermissionMapController.show(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("permissionmap", PermissionMap.findPermissionMap(id));
+        uiModel.addAttribute("itemId", id);
         return "permissionmaps/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String PermissionMapController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String PermissionMapController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            model.addAttribute("permissionmaps", PermissionMap.findPermissionMapEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            uiModel.addAttribute("permissionmaps", PermissionMap.findPermissionMapEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) PermissionMap.countPermissionMaps() / sizeNo;
-            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            model.addAttribute("permissionmaps", PermissionMap.findAllPermissionMaps());
+            uiModel.addAttribute("permissionmaps", PermissionMap.findAllPermissionMaps());
         }
         return "permissionmaps/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String PermissionMapController.update(@Valid PermissionMap permissionMap, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("permissionMap", permissionMap);
+    public String PermissionMapController.update(@Valid PermissionMap permissionMap, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("permissionMap", permissionMap);
             return "permissionmaps/update";
         }
+        uiModel.asMap().clear();
         permissionMap.merge();
-        return "redirect:/permissionmaps/" + encodeUrlPathSegment(permissionMap.getId().toString(), request);
+        return "redirect:/permissionmaps/" + encodeUrlPathSegment(permissionMap.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String PermissionMapController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("permissionMap", PermissionMap.findPermissionMap(id));
+    public String PermissionMapController.updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("permissionMap", PermissionMap.findPermissionMap(id));
         return "permissionmaps/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String PermissionMapController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String PermissionMapController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         PermissionMap.findPermissionMap(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/permissionmaps?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
-    }
-    
-    @RequestMapping(params = { "find=ByLocalContextType", "form" }, method = RequestMethod.GET)
-    public String PermissionMapController.findPermissionMapsByLocalContextTypeForm(Model model) {
-        model.addAttribute("localcontexttypes", java.util.Arrays.asList(LocalContextType.class.getEnumConstants()));
-        return "permissionmaps/findPermissionMapsByLocalContextType";
-    }
-    
-    @RequestMapping(params = "find=ByLocalContextType", method = RequestMethod.GET)
-    public String PermissionMapController.findPermissionMapsByLocalContextType(@RequestParam("localContextType") LocalContextType localContextType, Model model) {
-        model.addAttribute("permissionmaps", PermissionMap.findPermissionMapsByLocalContextType(localContextType).getResultList());
-        return "permissionmaps/list";
-    }
-    
-    @RequestMapping(params = { "find=ByName", "form" }, method = RequestMethod.GET)
-    public String PermissionMapController.findPermissionMapsByNameForm(Model model) {
-        return "permissionmaps/findPermissionMapsByName";
-    }
-    
-    @RequestMapping(params = "find=ByName", method = RequestMethod.GET)
-    public String PermissionMapController.findPermissionMapsByName(@RequestParam("name") String name, Model model) {
-        model.addAttribute("permissionmaps", PermissionMap.findPermissionMapsByName(name).getResultList());
-        return "permissionmaps/list";
-    }
-    
-    @RequestMapping(params = { "find=ByLocalContextMask", "form" }, method = RequestMethod.GET)
-    public String PermissionMapController.findPermissionMapsByLocalContextMaskForm(Model model) {
-        return "permissionmaps/findPermissionMapsByLocalContextMask";
-    }
-    
-    @RequestMapping(params = "find=ByLocalContextMask", method = RequestMethod.GET)
-    public String PermissionMapController.findPermissionMapsByLocalContextMask(@RequestParam("localContextMask") String localContextMask, Model model) {
-        model.addAttribute("permissionmaps", PermissionMap.findPermissionMapsByLocalContextMask(localContextMask).getResultList());
-        return "permissionmaps/list";
-    }
-    
-    @RequestMapping(params = { "find=ByLocalContextMaskAndService", "form" }, method = RequestMethod.GET)
-    public String PermissionMapController.findPermissionMapsByLocalContextMaskAndServiceForm(Model model) {
-        return "permissionmaps/findPermissionMapsByLocalContextMaskAndService";
-    }
-    
-    @RequestMapping(params = "find=ByLocalContextMaskAndService", method = RequestMethod.GET)
-    public String PermissionMapController.findPermissionMapsByLocalContextMaskAndService(@RequestParam("localContextMask") String localContextMask, @RequestParam("service") String service, Model model) {
-        model.addAttribute("permissionmaps", PermissionMap.findPermissionMapsByLocalContextMaskAndService(localContextMask, service).getResultList());
-        return "permissionmaps/list";
+        uiModel.asMap().clear();
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/permissionmaps";
     }
     
     @ModelAttribute("localcontexttypes")
@@ -136,13 +94,18 @@ privileged aspect PermissionMapController_Roo_Controller {
         return Arrays.asList(LocalContextType.class.getEnumConstants());
     }
     
+    @ModelAttribute("permissionmaps")
+    public java.util.Collection<PermissionMap> PermissionMapController.populatePermissionMaps() {
+        return PermissionMap.findAllPermissionMaps();
+    }
+    
     @ModelAttribute("permissionsets")
-    public Collection<PermissionSet> PermissionMapController.populatePermissionSets() {
+    public java.util.Collection<PermissionSet> PermissionMapController.populatePermissionSets() {
         return PermissionSet.findAllPermissionSets();
     }
     
-    String PermissionMapController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
-        String enc = request.getCharacterEncoding();
+    String PermissionMapController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

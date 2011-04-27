@@ -9,11 +9,11 @@ privileged aspect RemoteContext_Roo_ToString {
     
     public String RemoteContext.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("RemoteContextChoice: ").append(getRemoteContextChoice()).append(", ");
-        sb.append("ContextLabel: ").append(getContextLabel()).append(", ");
         sb.append("ContextId: ").append(getContextId()).append(", ");
-        sb.append("Url: ").append(getUrl()).append(", ");
-        sb.append("RemoteName: ").append(getRemoteName());
+        sb.append("ContextLabel: ").append(getContextLabel()).append(", ");
+        sb.append("RemoteContextChoice: ").append(getRemoteContextChoice()).append(", ");
+        sb.append("RemoteName: ").append(getRemoteName()).append(", ");
+        sb.append("Url: ").append(getUrl());
         return sb.toString();
     }
     

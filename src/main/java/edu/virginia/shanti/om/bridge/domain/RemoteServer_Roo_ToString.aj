@@ -10,8 +10,8 @@ privileged aspect RemoteServer_Roo_ToString {
     public String RemoteServer.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("ImplementationName: ").append(getImplementationName()).append(", ");
-        sb.append("RemoteUrl: ").append(getRemoteUrl()).append(", ");
-        sb.append("RemoteName: ").append(getRemoteName());
+        sb.append("RemoteName: ").append(getRemoteName()).append(", ");
+        sb.append("RemoteUrl: ").append(getRemoteUrl());
         return sb.toString();
     }
     

@@ -8,10 +8,12 @@ import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
+import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,78 +24,75 @@ import org.springframework.web.util.WebUtils;
 privileged aspect RemoteContextController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String RemoteContextController.create(@Valid RemoteContext remoteContext, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("remoteContext", remoteContext);
+    public String RemoteContextController.create(@Valid RemoteContext remoteContext, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("remoteContext", remoteContext);
             return "remotecontexts/create";
         }
+        uiModel.asMap().clear();
         remoteContext.persist();
-        return "redirect:/remotecontexts/" + encodeUrlPathSegment(remoteContext.getId().toString(), request);
+        return "redirect:/remotecontexts/" + encodeUrlPathSegment(remoteContext.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String RemoteContextController.createForm(Model model) {
-        model.addAttribute("remoteContext", new RemoteContext());
+    public String RemoteContextController.createForm(Model uiModel) {
+        uiModel.addAttribute("remoteContext", new RemoteContext());
         return "remotecontexts/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String RemoteContextController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("remotecontext", RemoteContext.findRemoteContext(id));
-        model.addAttribute("itemId", id);
+    public String RemoteContextController.show(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("remotecontext", RemoteContext.findRemoteContext(id));
+        uiModel.addAttribute("itemId", id);
         return "remotecontexts/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String RemoteContextController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String RemoteContextController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            model.addAttribute("remotecontexts", RemoteContext.findRemoteContextEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            uiModel.addAttribute("remotecontexts", RemoteContext.findRemoteContextEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) RemoteContext.countRemoteContexts() / sizeNo;
-            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            model.addAttribute("remotecontexts", RemoteContext.findAllRemoteContexts());
+            uiModel.addAttribute("remotecontexts", RemoteContext.findAllRemoteContexts());
         }
         return "remotecontexts/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String RemoteContextController.update(@Valid RemoteContext remoteContext, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("remoteContext", remoteContext);
+    public String RemoteContextController.update(@Valid RemoteContext remoteContext, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("remoteContext", remoteContext);
             return "remotecontexts/update";
         }
+        uiModel.asMap().clear();
         remoteContext.merge();
-        return "redirect:/remotecontexts/" + encodeUrlPathSegment(remoteContext.getId().toString(), request);
+        return "redirect:/remotecontexts/" + encodeUrlPathSegment(remoteContext.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String RemoteContextController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("remoteContext", RemoteContext.findRemoteContext(id));
+    public String RemoteContextController.updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("remoteContext", RemoteContext.findRemoteContext(id));
         return "remotecontexts/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String RemoteContextController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String RemoteContextController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         RemoteContext.findRemoteContext(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/remotecontexts?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+        uiModel.asMap().clear();
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/remotecontexts";
     }
     
-    @RequestMapping(params = { "find=ByRemoteNameAndContextId", "form" }, method = RequestMethod.GET)
-    public String RemoteContextController.findRemoteContextsByRemoteNameAndContextIdForm(Model model) {
-        return "remotecontexts/findRemoteContextsByRemoteNameAndContextId";
+    @ModelAttribute("remotecontexts")
+    public Collection<RemoteContext> RemoteContextController.populateRemoteContexts() {
+        return RemoteContext.findAllRemoteContexts();
     }
     
-    @RequestMapping(params = "find=ByRemoteNameAndContextId", method = RequestMethod.GET)
-    public String RemoteContextController.findRemoteContextsByRemoteNameAndContextId(@RequestParam("remoteName") String remoteName, @RequestParam("contextId") String contextId, Model model) {
-        model.addAttribute("remotecontexts", RemoteContext.findRemoteContextsByRemoteNameAndContextId(remoteName, contextId).getResultList());
-        return "remotecontexts/list";
-    }
-    
-    String RemoteContextController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
-        String enc = request.getCharacterEncoding();
+    String RemoteContextController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

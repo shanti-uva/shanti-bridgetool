@@ -73,6 +73,12 @@ privileged aspect PermissionMap_Roo_Entity {
     }
     
     @Transactional
+    public void PermissionMap.clear() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        this.entityManager.clear();
+    }
+    
+    @Transactional
     public PermissionMap PermissionMap.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         PermissionMap merged = this.entityManager.merge(this);
@@ -87,11 +93,11 @@ privileged aspect PermissionMap_Roo_Entity {
     }
     
     public static long PermissionMap.countPermissionMaps() {
-        return entityManager().createQuery("select count(o) from PermissionMap o", Long.class).getSingleResult();
+        return entityManager().createQuery("SELECT COUNT(o) FROM PermissionMap o", Long.class).getSingleResult();
     }
     
     public static List<PermissionMap> PermissionMap.findAllPermissionMaps() {
-        return entityManager().createQuery("select o from PermissionMap o", PermissionMap.class).getResultList();
+        return entityManager().createQuery("SELECT o FROM PermissionMap o", PermissionMap.class).getResultList();
     }
     
     public static PermissionMap PermissionMap.findPermissionMap(Long id) {
@@ -100,7 +106,7 @@ privileged aspect PermissionMap_Roo_Entity {
     }
     
     public static List<PermissionMap> PermissionMap.findPermissionMapEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from PermissionMap o", PermissionMap.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery("SELECT o FROM PermissionMap o", PermissionMap.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

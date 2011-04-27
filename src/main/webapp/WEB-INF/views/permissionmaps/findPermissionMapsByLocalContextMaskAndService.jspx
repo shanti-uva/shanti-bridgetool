@@ -3,7 +3,7 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:find finderName="ByLocalContextMaskAndService" id="ff_edu_virginia_shanti_om_bridge_domain_PermissionMap" path="/permissionmaps" z="OnYj630JuumbJqnmLXRnQu86Hes=">
-        <field:input disableFormBinding="true" field="localContextMask" id="f_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextMask" z="DlNcHbvv3Kc0Tt5LZ5AlnnR+7NE="/>
-        <field:input disableFormBinding="true" field="service" id="f_edu_virginia_shanti_om_bridge_domain_PermissionMap_service" z="vxmb0WmOiFvkILaNuY/XeZxjw9c="/>
+        <field:input disableFormBinding="true" field="localContextMask" id="f_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextMask" required="true" z="p48ZXVyNkXsmhKN+Kxa/BAWgj2M="/>
+        <field:input disableFormBinding="true" field="service" id="f_edu_virginia_shanti_om_bridge_domain_PermissionMap_service" required="true" z="EqDbEeJ4g7gouetKDl+F725JW+s="/>
     </form:find>
 </div>

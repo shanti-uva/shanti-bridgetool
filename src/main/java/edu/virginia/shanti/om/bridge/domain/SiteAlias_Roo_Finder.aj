@@ -10,19 +10,19 @@ import javax.persistence.TypedQuery;
 
 privileged aspect SiteAlias_Roo_Finder {
     
-    public static TypedQuery<SiteAlias> SiteAlias.findSiteAliasesBySiteId(String siteId) {
-        if (siteId == null || siteId.length() == 0) throw new IllegalArgumentException("The siteId argument is required");
-        EntityManager em = SiteAlias.entityManager();
-        TypedQuery<SiteAlias> q = em.createQuery("SELECT SiteAlias FROM SiteAlias AS sitealias WHERE sitealias.siteId = :siteId", SiteAlias.class);
-        q.setParameter("siteId", siteId);
-        return q;
-    }
-    
     public static TypedQuery<SiteAlias> SiteAlias.findSiteAliasesByAlias(String alias) {
         if (alias == null || alias.length() == 0) throw new IllegalArgumentException("The alias argument is required");
         EntityManager em = SiteAlias.entityManager();
-        TypedQuery<SiteAlias> q = em.createQuery("SELECT SiteAlias FROM SiteAlias AS sitealias WHERE sitealias.alias = :alias", SiteAlias.class);
+        TypedQuery<SiteAlias> q = em.createQuery("SELECT o FROM SiteAlias AS o WHERE o.alias = :alias", SiteAlias.class);
         q.setParameter("alias", alias);
+        return q;
+    }
+    
+    public static TypedQuery<SiteAlias> SiteAlias.findSiteAliasesBySiteId(String siteId) {
+        if (siteId == null || siteId.length() == 0) throw new IllegalArgumentException("The siteId argument is required");
+        EntityManager em = SiteAlias.entityManager();
+        TypedQuery<SiteAlias> q = em.createQuery("SELECT o FROM SiteAlias AS o WHERE o.siteId = :siteId", SiteAlias.class);
+        q.setParameter("siteId", siteId);
         return q;
     }
     

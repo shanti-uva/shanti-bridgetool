@@ -73,6 +73,12 @@ privileged aspect PermissionSet_Roo_Entity {
     }
     
     @Transactional
+    public void PermissionSet.clear() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        this.entityManager.clear();
+    }
+    
+    @Transactional
     public PermissionSet PermissionSet.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         PermissionSet merged = this.entityManager.merge(this);
@@ -81,18 +87,17 @@ privileged aspect PermissionSet_Roo_Entity {
     }
     
     public static final EntityManager PermissionSet.entityManager() {
-        EntityManager em = new PermissionSet(){
-        }.entityManager;
+        EntityManager em = new PermissionSet().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
     
     public static long PermissionSet.countPermissionSets() {
-        return entityManager().createQuery("select count(o) from PermissionSet o", Long.class).getSingleResult();
+        return entityManager().createQuery("SELECT COUNT(o) FROM PermissionSet o", Long.class).getSingleResult();
     }
     
     public static List<PermissionSet> PermissionSet.findAllPermissionSets() {
-        return entityManager().createQuery("select o from PermissionSet o", PermissionSet.class).getResultList();
+        return entityManager().createQuery("SELECT o FROM PermissionSet o", PermissionSet.class).getResultList();
     }
     
     public static PermissionSet PermissionSet.findPermissionSet(Long id) {
@@ -101,7 +106,7 @@ privileged aspect PermissionSet_Roo_Entity {
     }
     
     public static List<PermissionSet> PermissionSet.findPermissionSetEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from PermissionSet o", PermissionSet.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery("SELECT o FROM PermissionSet o", PermissionSet.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

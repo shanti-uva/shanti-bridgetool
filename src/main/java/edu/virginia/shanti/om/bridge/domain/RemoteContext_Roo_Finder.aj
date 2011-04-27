@@ -14,7 +14,7 @@ privileged aspect RemoteContext_Roo_Finder {
         if (remoteName == null || remoteName.length() == 0) throw new IllegalArgumentException("The remoteName argument is required");
         if (contextId == null || contextId.length() == 0) throw new IllegalArgumentException("The contextId argument is required");
         EntityManager em = RemoteContext.entityManager();
-        TypedQuery<RemoteContext> q = em.createQuery("SELECT RemoteContext FROM RemoteContext AS remotecontext WHERE remotecontext.remoteName = :remoteName AND remotecontext.contextId = :contextId", RemoteContext.class);
+        TypedQuery<RemoteContext> q = em.createQuery("SELECT o FROM RemoteContext AS o WHERE o.remoteName = :remoteName AND o.contextId = :contextId", RemoteContext.class);
         q.setParameter("remoteName", remoteName);
         q.setParameter("contextId", contextId);
         return q;

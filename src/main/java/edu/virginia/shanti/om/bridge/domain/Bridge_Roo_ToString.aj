@@ -9,11 +9,11 @@ privileged aspect Bridge_Roo_ToString {
     
     public String Bridge.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("RemoteName: ").append(getRemoteName()).append(", ");
         sb.append("LocalContext: ").append(getLocalContext()).append(", ");
         sb.append("LocalSubContext: ").append(getLocalSubContext()).append(", ");
+        sb.append("PermissionMap: ").append(getPermissionMap()).append(", ");
         sb.append("RemoteContext: ").append(getRemoteContext()).append(", ");
-        sb.append("PermissionMap: ").append(getPermissionMap());
+        sb.append("RemoteName: ").append(getRemoteName());
         return sb.toString();
     }
     

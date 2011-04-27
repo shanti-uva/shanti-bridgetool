@@ -18,11 +18,31 @@ privileged aspect PermissionMapDataOnDemand_Roo_DataOnDemand {
     
     public PermissionMap PermissionMapDataOnDemand.getNewTransientPermissionMap(int index) {
         edu.virginia.shanti.om.bridge.domain.PermissionMap obj = new edu.virginia.shanti.om.bridge.domain.PermissionMap();
-        obj.setName("name_" + index);
-        obj.setLocalContextMask("localContextMask_" + index);
-        obj.setService("service_" + index);
-        obj.setLocalContextType(null);
+        setName(obj, index);
+        setLocalContextMask(obj, index);
+        setService(obj, index);
+        setLocalContextType(obj, index);
         return obj;
+    }
+    
+    private void PermissionMapDataOnDemand.setName(PermissionMap obj, int index) {
+        java.lang.String name = "name_" + index;
+        obj.setName(name);
+    }
+    
+    private void PermissionMapDataOnDemand.setLocalContextMask(PermissionMap obj, int index) {
+        java.lang.String localContextMask = "localContextMask_" + index;
+        obj.setLocalContextMask(localContextMask);
+    }
+    
+    private void PermissionMapDataOnDemand.setService(PermissionMap obj, int index) {
+        java.lang.String service = "service_" + index;
+        obj.setService(service);
+    }
+    
+    private void PermissionMapDataOnDemand.setLocalContextType(PermissionMap obj, int index) {
+        edu.virginia.shanti.om.bridge.domain.LocalContextType localContextType = edu.virginia.shanti.om.bridge.domain.LocalContextType.class.getEnumConstants()[0];
+        obj.setLocalContextType(localContextType);
     }
     
     public PermissionMap PermissionMapDataOnDemand.getSpecificPermissionMap(int index) {

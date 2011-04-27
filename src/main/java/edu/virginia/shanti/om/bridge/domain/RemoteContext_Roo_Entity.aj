@@ -73,6 +73,12 @@ privileged aspect RemoteContext_Roo_Entity {
     }
     
     @Transactional
+    public void RemoteContext.clear() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        this.entityManager.clear();
+    }
+    
+    @Transactional
     public RemoteContext RemoteContext.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         RemoteContext merged = this.entityManager.merge(this);
@@ -87,11 +93,11 @@ privileged aspect RemoteContext_Roo_Entity {
     }
     
     public static long RemoteContext.countRemoteContexts() {
-        return entityManager().createQuery("select count(o) from RemoteContext o", Long.class).getSingleResult();
+        return entityManager().createQuery("SELECT COUNT(o) FROM RemoteContext o", Long.class).getSingleResult();
     }
     
     public static List<RemoteContext> RemoteContext.findAllRemoteContexts() {
-        return entityManager().createQuery("select o from RemoteContext o", RemoteContext.class).getResultList();
+        return entityManager().createQuery("SELECT o FROM RemoteContext o", RemoteContext.class).getResultList();
     }
     
     public static RemoteContext RemoteContext.findRemoteContext(Long id) {
@@ -100,7 +106,7 @@ privileged aspect RemoteContext_Roo_Entity {
     }
     
     public static List<RemoteContext> RemoteContext.findRemoteContextEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from RemoteContext o", RemoteContext.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery("SELECT o FROM RemoteContext o", RemoteContext.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

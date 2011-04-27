@@ -3,6 +3,6 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <form:find finderName="ByLocalContextType" id="ff_edu_virginia_shanti_om_bridge_domain_PermissionMap" path="/permissionmaps" z="27zhLrIvC++P0EZOPT7syT/VoVE=">
-        <field:select disableFormBinding="true" field="localContextType" id="f_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextType" items="${localcontexttypes}" path="/localcontexttypes" z="mxbGf2Uc/1jonUc1E2amjZojCys="/>
+        <field:select disableFormBinding="true" field="localContextType" id="f_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextType" items="${localcontexttypes}" path="/localcontexttypes" required="true" z="8hVniwpPtZs8ljeTHcnyc5vlpZA="/>
     </form:find>
 </div>

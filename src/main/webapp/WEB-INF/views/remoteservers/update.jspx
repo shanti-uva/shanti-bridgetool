@@ -2,10 +2,9 @@
 <div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
-    <form:update id="fu_edu_virginia_shanti_om_bridge_domain_RemoteServer" modelAttribute="remoteServer" path="/remoteservers" z="xWx8jTbKIn9PUDG9lhfrvs/GiAw=">
+    <form:update id="fu_edu_virginia_shanti_om_bridge_domain_RemoteServer" modelAttribute="remoteServer" path="/remoteservers" versionField="Version" z="YS8giFYg8Vv01MkIRWzn0a4QSxA=">
         <field:input field="implementationName" id="c_edu_virginia_shanti_om_bridge_domain_RemoteServer_implementationName" z="xP4pTYcgjk9BHqc+tY6+YN2OpYU="/>
-        
+        <field:input field="remoteUrl" id="c_edu_virginia_shanti_om_bridge_domain_RemoteServer_remoteUrl" z="uDdzOFQG6+I5FuqYdqdkR+QNJgM="/>
         <field:input field="remoteName" id="c_edu_virginia_shanti_om_bridge_domain_RemoteServer_remoteName" required="true" z="ijTQDXkr1Su5d9WqtG0mI0TsgVk="/>
-    <field:input field="remoteUrl" id="c_edu_virginia_shanti_om_bridge_domain_RemoteServer_remoteUrl" z="uDdzOFQG6+I5FuqYdqdkR+QNJgM="/>
     </form:update>
 </div>

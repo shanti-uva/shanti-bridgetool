@@ -73,6 +73,12 @@ privileged aspect Bridge_Roo_Entity {
     }
     
     @Transactional
+    public void Bridge.clear() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        this.entityManager.clear();
+    }
+    
+    @Transactional
     public Bridge Bridge.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         Bridge merged = this.entityManager.merge(this);
@@ -87,11 +93,11 @@ privileged aspect Bridge_Roo_Entity {
     }
     
     public static long Bridge.countBridges() {
-        return entityManager().createQuery("select count(o) from Bridge o", Long.class).getSingleResult();
+        return entityManager().createQuery("SELECT COUNT(o) FROM Bridge o", Long.class).getSingleResult();
     }
     
     public static List<Bridge> Bridge.findAllBridges() {
-        return entityManager().createQuery("select o from Bridge o", Bridge.class).getResultList();
+        return entityManager().createQuery("SELECT o FROM Bridge o", Bridge.class).getResultList();
     }
     
     public static Bridge Bridge.findBridge(Long id) {
@@ -100,7 +106,7 @@ privileged aspect Bridge_Roo_Entity {
     }
     
     public static List<Bridge> Bridge.findBridgeEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from Bridge o", Bridge.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery("SELECT o FROM Bridge o", Bridge.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

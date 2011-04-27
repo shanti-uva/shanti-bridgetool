@@ -9,25 +9,25 @@ privileged aspect ConfluencePermissionSet_Roo_ToString {
     
     public String ConfluencePermissionSet.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Permissions: ").append(java.util.Arrays.toString(getPermissions())).append(", ");
-        sb.append("Id: ").append(getId()).append(", ");
-        sb.append("Version: ").append(getVersion()).append(", ");
-        sb.append("GroupName: ").append(getGroupName()).append(", ");
-        sb.append("LocalGroupType: ").append(getLocalGroupType()).append(", ");
-        sb.append("ViewSpace: ").append(getViewSpace()).append(", ");
         sb.append("Comment: ").append(getComment()).append(", ");
-        sb.append("EditSpace: ").append(getEditSpace()).append(", ");
-        sb.append("SetSpacePermissions: ").append(getSetSpacePermissions()).append(", ");
-        sb.append("RemovePage: ").append(getRemovePage()).append(", ");
-        sb.append("RemoveComment: ").append(getRemoveComment()).append(", ");
-        sb.append("RemoveBlog: ").append(getRemoveBlog()).append(", ");
         sb.append("CreateAttachment: ").append(getCreateAttachment()).append(", ");
-        sb.append("RemoveAttachment: ").append(getRemoveAttachment()).append(", ");
         sb.append("EditBlog: ").append(getEditBlog()).append(", ");
+        sb.append("EditSpace: ").append(getEditSpace()).append(", ");
         sb.append("ExportPage: ").append(getExportPage()).append(", ");
         sb.append("ExportSpace: ").append(getExportSpace()).append(", ");
+        sb.append("GroupName: ").append(getGroupName()).append(", ");
+        sb.append("Id: ").append(getId()).append(", ");
+        sb.append("LocalGroupType: ").append(getLocalGroupType()).append(", ");
+        sb.append("Permissions: ").append(java.util.Arrays.toString(getPermissions())).append(", ");
+        sb.append("RemoveAttachment: ").append(getRemoveAttachment()).append(", ");
+        sb.append("RemoveBlog: ").append(getRemoveBlog()).append(", ");
+        sb.append("RemoveComment: ").append(getRemoveComment()).append(", ");
         sb.append("RemoveMail: ").append(getRemoveMail()).append(", ");
-        sb.append("SetPagePermissions: ").append(getSetPagePermissions());
+        sb.append("RemovePage: ").append(getRemovePage()).append(", ");
+        sb.append("SetPagePermissions: ").append(getSetPagePermissions()).append(", ");
+        sb.append("SetSpacePermissions: ").append(getSetSpacePermissions()).append(", ");
+        sb.append("Version: ").append(getVersion()).append(", ");
+        sb.append("ViewSpace: ").append(getViewSpace());
         return sb.toString();
     }
     

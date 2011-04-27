@@ -8,10 +8,12 @@ import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
 import java.lang.String;
+import java.util.Collection;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,78 +24,75 @@ import org.springframework.web.util.WebUtils;
 privileged aspect RemoteServerController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String RemoteServerController.create(@Valid RemoteServer remoteServer, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("remoteServer", remoteServer);
+    public String RemoteServerController.create(@Valid RemoteServer remoteServer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("remoteServer", remoteServer);
             return "remoteservers/create";
         }
+        uiModel.asMap().clear();
         remoteServer.persist();
-        return "redirect:/remoteservers/" + encodeUrlPathSegment(remoteServer.getId().toString(), request);
+        return "redirect:/remoteservers/" + encodeUrlPathSegment(remoteServer.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String RemoteServerController.createForm(Model model) {
-        model.addAttribute("remoteServer", new RemoteServer());
+    public String RemoteServerController.createForm(Model uiModel) {
+        uiModel.addAttribute("remoteServer", new RemoteServer());
         return "remoteservers/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String RemoteServerController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("remoteserver", RemoteServer.findRemoteServer(id));
-        model.addAttribute("itemId", id);
+    public String RemoteServerController.show(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("remoteserver", RemoteServer.findRemoteServer(id));
+        uiModel.addAttribute("itemId", id);
         return "remoteservers/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String RemoteServerController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String RemoteServerController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            model.addAttribute("remoteservers", RemoteServer.findRemoteServerEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            uiModel.addAttribute("remoteservers", RemoteServer.findRemoteServerEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) RemoteServer.countRemoteServers() / sizeNo;
-            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            model.addAttribute("remoteservers", RemoteServer.findAllRemoteServers());
+            uiModel.addAttribute("remoteservers", RemoteServer.findAllRemoteServers());
         }
         return "remoteservers/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String RemoteServerController.update(@Valid RemoteServer remoteServer, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("remoteServer", remoteServer);
+    public String RemoteServerController.update(@Valid RemoteServer remoteServer, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("remoteServer", remoteServer);
             return "remoteservers/update";
         }
+        uiModel.asMap().clear();
         remoteServer.merge();
-        return "redirect:/remoteservers/" + encodeUrlPathSegment(remoteServer.getId().toString(), request);
+        return "redirect:/remoteservers/" + encodeUrlPathSegment(remoteServer.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String RemoteServerController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("remoteServer", RemoteServer.findRemoteServer(id));
+    public String RemoteServerController.updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("remoteServer", RemoteServer.findRemoteServer(id));
         return "remoteservers/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String RemoteServerController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String RemoteServerController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         RemoteServer.findRemoteServer(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/remoteservers?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+        uiModel.asMap().clear();
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/remoteservers";
     }
     
-    @RequestMapping(params = { "find=ByRemoteName", "form" }, method = RequestMethod.GET)
-    public String RemoteServerController.findRemoteServersByRemoteNameForm(Model model) {
-        return "remoteservers/findRemoteServersByRemoteName";
+    @ModelAttribute("remoteservers")
+    public Collection<RemoteServer> RemoteServerController.populateRemoteServers() {
+        return RemoteServer.findAllRemoteServers();
     }
     
-    @RequestMapping(params = "find=ByRemoteName", method = RequestMethod.GET)
-    public String RemoteServerController.findRemoteServersByRemoteName(@RequestParam("remoteName") String remoteName, Model model) {
-        model.addAttribute("remoteservers", RemoteServer.findRemoteServersByRemoteName(remoteName).getResultList());
-        return "remoteservers/list";
-    }
-    
-    String RemoteServerController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
-        String enc = request.getCharacterEncoding();
+    String RemoteServerController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

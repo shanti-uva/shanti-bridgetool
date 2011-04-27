@@ -26,99 +26,85 @@ import org.springframework.web.util.WebUtils;
 privileged aspect BridgeController_Roo_Controller {
     
     @RequestMapping(method = RequestMethod.POST)
-    public String BridgeController.create(@Valid Bridge bridge, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("bridge", bridge);
+    public String BridgeController.create(@Valid Bridge bridge, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("bridge", bridge);
             return "bridges/create";
         }
+        uiModel.asMap().clear();
         bridge.persist();
-        return "redirect:/bridges/" + encodeUrlPathSegment(bridge.getId().toString(), request);
+        return "redirect:/bridges/" + encodeUrlPathSegment(bridge.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(params = "form", method = RequestMethod.GET)
-    public String BridgeController.createForm(Model model) {
-        model.addAttribute("bridge", new Bridge());
+    public String BridgeController.createForm(Model uiModel) {
+        uiModel.addAttribute("bridge", new Bridge());
         return "bridges/create";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String BridgeController.show(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("bridge", Bridge.findBridge(id));
-        model.addAttribute("itemId", id);
+    public String BridgeController.show(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("bridge", Bridge.findBridge(id));
+        uiModel.addAttribute("itemId", id);
         return "bridges/show";
     }
     
     @RequestMapping(method = RequestMethod.GET)
-    public String BridgeController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String BridgeController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
-            model.addAttribute("bridges", Bridge.findBridgeEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
+            uiModel.addAttribute("bridges", Bridge.findBridgeEntries(page == null ? 0 : (page.intValue() - 1) * sizeNo, sizeNo));
             float nrOfPages = (float) Bridge.countBridges() / sizeNo;
-            model.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
+            uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            model.addAttribute("bridges", Bridge.findAllBridges());
+            uiModel.addAttribute("bridges", Bridge.findAllBridges());
         }
         return "bridges/list";
     }
     
     @RequestMapping(method = RequestMethod.PUT)
-    public String BridgeController.update(@Valid Bridge bridge, BindingResult result, Model model, HttpServletRequest request) {
-        if (result.hasErrors()) {
-            model.addAttribute("bridge", bridge);
+    public String BridgeController.update(@Valid Bridge bridge, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+        if (bindingResult.hasErrors()) {
+            uiModel.addAttribute("bridge", bridge);
             return "bridges/update";
         }
+        uiModel.asMap().clear();
         bridge.merge();
-        return "redirect:/bridges/" + encodeUrlPathSegment(bridge.getId().toString(), request);
+        return "redirect:/bridges/" + encodeUrlPathSegment(bridge.getId().toString(), httpServletRequest);
     }
     
     @RequestMapping(value = "/{id}", params = "form", method = RequestMethod.GET)
-    public String BridgeController.updateForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("bridge", Bridge.findBridge(id));
+    public String BridgeController.updateForm(@PathVariable("id") Long id, Model uiModel) {
+        uiModel.addAttribute("bridge", Bridge.findBridge(id));
         return "bridges/update";
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String BridgeController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model model) {
+    public String BridgeController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         Bridge.findBridge(id).remove();
-        model.addAttribute("page", (page == null) ? "1" : page.toString());
-        model.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/bridges?page=" + ((page == null) ? "1" : page.toString()) + "&size=" + ((size == null) ? "10" : size.toString());
+        uiModel.asMap().clear();
+        uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
+        uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+        return "redirect:/bridges";
     }
     
-    @RequestMapping(params = { "find=ByLocalContext", "form" }, method = RequestMethod.GET)
-    public String BridgeController.findBridgesByLocalContextForm(Model model) {
-        return "bridges/findBridgesByLocalContext";
-    }
-    
-    @RequestMapping(params = "find=ByLocalContext", method = RequestMethod.GET)
-    public String BridgeController.findBridgesByLocalContext(@RequestParam("localContext") String localContext, Model model) {
-        model.addAttribute("bridges", Bridge.findBridgesByLocalContext(localContext).getResultList());
-        return "bridges/list";
-    }
-    
-    @RequestMapping(params = { "find=ByLocalSubContext", "form" }, method = RequestMethod.GET)
-    public String BridgeController.findBridgesByLocalSubContextForm(Model model) {
-        return "bridges/findBridgesByLocalSubContext";
-    }
-    
-    @RequestMapping(params = "find=ByLocalSubContext", method = RequestMethod.GET)
-    public String BridgeController.findBridgesByLocalSubContext(@RequestParam("localSubContext") String localSubContext, Model model) {
-        model.addAttribute("bridges", Bridge.findBridgesByLocalSubContext(localSubContext).getResultList());
-        return "bridges/list";
+    @ModelAttribute("bridges")
+    public Collection<Bridge> BridgeController.populateBridges() {
+        return Bridge.findAllBridges();
     }
     
     @ModelAttribute("permissionmaps")
-    public Collection<PermissionMap> BridgeController.populatePermissionMaps() {
+    public java.util.Collection<PermissionMap> BridgeController.populatePermissionMaps() {
         return PermissionMap.findAllPermissionMaps();
     }
     
     @ModelAttribute("remotecontexts")
-    public Collection<RemoteContext> BridgeController.populateRemoteContexts() {
+    public java.util.Collection<RemoteContext> BridgeController.populateRemoteContexts() {
         return RemoteContext.findAllRemoteContexts();
     }
     
-    String BridgeController.encodeUrlPathSegment(String pathSegment, HttpServletRequest request) {
-        String enc = request.getCharacterEncoding();
+    String BridgeController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {
+        String enc = httpServletRequest.getCharacterEncoding();
         if (enc == null) {
             enc = WebUtils.DEFAULT_CHARACTER_ENCODING;
         }

@@ -9,11 +9,11 @@ privileged aspect GestaltBean_Roo_ToString {
     
     public String GestaltBean.toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Timestamp: ").append(getTimestamp()).append(", ");
-        sb.append("User: ").append(getUser()).append(", ");
         sb.append("LocalContext: ").append(getLocalContext()).append(", ");
         sb.append("LocalSubContext: ").append(getLocalSubContext()).append(", ");
-        sb.append("RemoteService: ").append(getRemoteService());
+        sb.append("RemoteService: ").append(getRemoteService()).append(", ");
+        sb.append("Timestamp: ").append(getTimestamp()).append(", ");
+        sb.append("User: ").append(getUser());
         return sb.toString();
     }
     

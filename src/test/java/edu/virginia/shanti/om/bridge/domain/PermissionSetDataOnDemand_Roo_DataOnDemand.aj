@@ -18,9 +18,19 @@ privileged aspect PermissionSetDataOnDemand_Roo_DataOnDemand {
     
     public PermissionSet PermissionSetDataOnDemand.getNewTransientPermissionSet(int index) {
         edu.virginia.shanti.om.bridge.domain.PermissionSet obj = new edu.virginia.shanti.om.bridge.domain.PermissionSet();
-        obj.setGroupName("groupName_" + index);
-        obj.setLocalGroupType(null);
+        setGroupName(obj, index);
+        setLocalGroupType(obj, index);
         return obj;
+    }
+    
+    private void PermissionSetDataOnDemand.setGroupName(PermissionSet obj, int index) {
+        java.lang.String groupName = "groupName_" + index;
+        obj.setGroupName(groupName);
+    }
+    
+    private void PermissionSetDataOnDemand.setLocalGroupType(PermissionSet obj, int index) {
+        edu.virginia.shanti.om.bridge.domain.LocalGroupType localGroupType = edu.virginia.shanti.om.bridge.domain.LocalGroupType.class.getEnumConstants()[0];
+        obj.setLocalGroupType(localGroupType);
     }
     
     public PermissionSet PermissionSetDataOnDemand.getSpecificPermissionSet(int index) {

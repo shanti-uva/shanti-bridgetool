@@ -73,6 +73,12 @@ privileged aspect RemoteServer_Roo_Entity {
     }
     
     @Transactional
+    public void RemoteServer.clear() {
+        if (this.entityManager == null) this.entityManager = entityManager();
+        this.entityManager.clear();
+    }
+    
+    @Transactional
     public RemoteServer RemoteServer.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
         RemoteServer merged = this.entityManager.merge(this);
@@ -87,11 +93,11 @@ privileged aspect RemoteServer_Roo_Entity {
     }
     
     public static long RemoteServer.countRemoteServers() {
-        return entityManager().createQuery("select count(o) from RemoteServer o", Long.class).getSingleResult();
+        return entityManager().createQuery("SELECT COUNT(o) FROM RemoteServer o", Long.class).getSingleResult();
     }
     
     public static List<RemoteServer> RemoteServer.findAllRemoteServers() {
-        return entityManager().createQuery("select o from RemoteServer o", RemoteServer.class).getResultList();
+        return entityManager().createQuery("SELECT o FROM RemoteServer o", RemoteServer.class).getResultList();
     }
     
     public static RemoteServer RemoteServer.findRemoteServer(Long id) {
@@ -100,7 +106,7 @@ privileged aspect RemoteServer_Roo_Entity {
     }
     
     public static List<RemoteServer> RemoteServer.findRemoteServerEntries(int firstResult, int maxResults) {
-        return entityManager().createQuery("select o from RemoteServer o", RemoteServer.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
+        return entityManager().createQuery("SELECT o FROM RemoteServer o", RemoteServer.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
 }

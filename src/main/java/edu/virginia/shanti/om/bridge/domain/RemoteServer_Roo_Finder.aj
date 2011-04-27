@@ -13,7 +13,7 @@ privileged aspect RemoteServer_Roo_Finder {
     public static TypedQuery<RemoteServer> RemoteServer.findRemoteServersByRemoteName(String remoteName) {
         if (remoteName == null || remoteName.length() == 0) throw new IllegalArgumentException("The remoteName argument is required");
         EntityManager em = RemoteServer.entityManager();
-        TypedQuery<RemoteServer> q = em.createQuery("SELECT RemoteServer FROM RemoteServer AS remoteserver WHERE remoteserver.remoteName = :remoteName", RemoteServer.class);
+        TypedQuery<RemoteServer> q = em.createQuery("SELECT o FROM RemoteServer AS o WHERE o.remoteName = :remoteName", RemoteServer.class);
         q.setParameter("remoteName", remoteName);
         return q;
     }
