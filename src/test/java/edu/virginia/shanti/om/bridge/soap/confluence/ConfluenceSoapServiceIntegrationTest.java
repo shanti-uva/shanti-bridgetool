@@ -23,7 +23,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ConfluenceSoapServiceIntegrationTest {
 
 	private ConfluenceSoapServiceServiceLocator locator;
-	private String server = "https://wiki-test.shanti.virginia.edu";
+	private String server = "https://wiki.shanti.virginia.edu";
 	private ConfluenceSoapService confluence;
 	private String session;
 	private SudoSoapServiceLocator sudolocator;

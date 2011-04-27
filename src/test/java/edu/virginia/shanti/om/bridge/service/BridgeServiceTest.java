@@ -40,6 +40,8 @@ import edu.virginia.shanti.om.bridge.soap.sakai.SakaiLogin_PortType;
 // @Transactional
 public class BridgeServiceTest {
 
+	private static final String TEST_REAL_USER_PASSWORD = "Thun_pok";
+
 	private static final String TEST_REAL_USER = "ys2n";
 
 	private static final String TEST_REAL_SITEID = "23e3d2d3-cad7-4dc5-89c2-666e2b1f1b18";
@@ -87,7 +89,7 @@ public class BridgeServiceTest {
 		
 		// login and get session
 		SakaiLogin_PortType sakaiLogin = new SakaiLoginServiceLocator().getSakaiLogin(new URL("https://"+ serverId + ".itc.virginia.edu/sakai-axis/SakaiLogin.jws"));
-		String session = sakaiLogin.login(TEST_REAL_USER,"XXXXXX").concat("." + serverId);
+		String session = sakaiLogin.login(TEST_REAL_USER,TEST_REAL_USER_PASSWORD).concat("." + serverId);
 		System.err.println(session);
 		
 		SecurityContextHolder.getContext()
@@ -118,7 +120,7 @@ public class BridgeServiceTest {
 	private void setupMockPermissionMap() {
 		// Setup a permission map for collaborations
 		PermissionMap pm = new PermissionMap();
-		pm.setLocalContextMask("");
+		pm.setLocalContextMask(TEST_REAL_USER_PASSWORD);
 		pm.setLocalContextType(LocalContextType.COLLABORATION);
 		pm.setName("oinko");
 		

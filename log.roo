@@ -291,3 +291,4 @@ finder list --class ~.domain.PermissionMap
 finder list --class ~.domain.PermissionMap --depth 2 --filter LocalContextMask,Service
 finder add --class ~.domain.PermissionMap --finderName findPermissionMapsByLocalContextMaskAndService
 poll now
+// Spring Roo 1.1.1.RELEASE [rev 156ccd6] log closed at 2011-04-25 20:34:14
