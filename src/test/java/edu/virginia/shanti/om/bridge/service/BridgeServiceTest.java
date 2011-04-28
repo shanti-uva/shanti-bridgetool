@@ -17,6 +17,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,10 +40,12 @@ import edu.virginia.shanti.om.bridge.soap.sakai.SakaiLogin_PortType;
 @ContextConfiguration(locations = { "/META-INF/spring/applicationContext*.xml" })
 // @Transactional
 public class BridgeServiceTest {
+	
+	@Value("${test.pass}")
+	private String TEST_REAL_USER_PASSWORD;
 
-	private static final String TEST_REAL_USER_PASSWORD = "Thun_pok";
-
-	private static final String TEST_REAL_USER = "ys2n";
+	@Value("${test.user}")
+	private String TEST_REAL_USER;
 
 	private static final String TEST_REAL_SITEID = "23e3d2d3-cad7-4dc5-89c2-666e2b1f1b18";
 
@@ -55,13 +58,6 @@ public class BridgeServiceTest {
 	public void pullConfigurationService() {
 		bridgeService = (BridgeService) applicationContext
 				.getBean("bridgeService");
-		
-		
-		
-
-		
-		
-		
 	}
 
 	@Test
@@ -89,6 +85,12 @@ public class BridgeServiceTest {
 		
 		// login and get session
 		SakaiLogin_PortType sakaiLogin = new SakaiLoginServiceLocator().getSakaiLogin(new URL("https://"+ serverId + ".itc.virginia.edu/sakai-axis/SakaiLogin.jws"));
+
+		assertNotNull("TEST_REAL_USER not set",TEST_REAL_USER);
+		assertNotNull("TEST_REAL_USER_PASSWORD not set",TEST_REAL_USER_PASSWORD);
+		
+		System.err.println("logging in with " + TEST_REAL_USER + " and password (" + TEST_REAL_USER_PASSWORD.length() + " chars)");
+		
 		String session = sakaiLogin.login(TEST_REAL_USER,TEST_REAL_USER_PASSWORD).concat("." + serverId);
 		System.err.println(session);
 		

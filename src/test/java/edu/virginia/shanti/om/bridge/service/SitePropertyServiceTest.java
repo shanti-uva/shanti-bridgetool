@@ -9,10 +9,13 @@ import java.rmi.RemoteException;
 
 import javax.xml.rpc.ServiceException;
 
+import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ContextConfiguration;
@@ -32,9 +35,11 @@ public class SitePropertyServiceTest {
 
 	private static final String USER = "~ys2n";
 
-	private static final String MOCKUSER = "ys2n";
+	@Value("${test.user}")
+	private String MOCKUSER;
 
-	private static final String MOCKPASSWORD = "XXXXX";
+	@Value("${test.pass}")
+	private String MOCKPASSWORD;
 
 	private static final String SERVERID = "sakai11";
 
@@ -49,11 +54,17 @@ public class SitePropertyServiceTest {
 				.getSakaiLogin(new URL("https://" + "sakai11"
 						+ ".itc.virginia.edu/sakai-axis/SakaiLogin.jws"));
 
+		System.err.println("MOCKUSER = " + MOCKUSER);
+		
+		Assert.assertNotNull("Didn't get a MOCKUSER!", MOCKUSER);
+		
 		String session = sakaiLogin.login(MOCKUSER, MOCKPASSWORD) + "."
 				+ SERVERID;
 
 		SecurityContextHolder.getContext().setAuthentication(
 				new UsernamePasswordAuthenticationToken(MOCKUSER, session));
+		
+		
 	}
 
 	@Test

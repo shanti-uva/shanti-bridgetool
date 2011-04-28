@@ -59,6 +59,26 @@ public class DbLoaderListener implements
 		if (PermissionMap
 				.findPermissionMapsByLocalContextType(
 						LocalContextType.COLLABORATION).getResultList().size() == 0) {
+
+			ConfluencePermissionSet p0 = new ConfluencePermissionSet();
+			p0.setGroupName("Owner");
+			p0.setLocalGroupType(LocalGroupType.SAKAIROLE);
+			p0.setComment(true);
+			p0.setCreateAttachment(true);
+			p0.setEditBlog(true);
+			p0.setEditSpace(true);
+			p0.setExportPage(true);
+			p0.setExportSpace(true);
+			p0.setRemoveAttachment(true);
+			p0.setRemoveBlog(true);
+			p0.setRemoveComment(true);
+			p0.setRemoveMail(true);
+			p0.setRemovePage(true);
+			p0.setSetPagePermissions(true);
+			p0.setSetSpacePermissions(true);
+			p0.setViewSpace(true);
+			p0.persist();
+			
 			ConfluencePermissionSet p1 = new ConfluencePermissionSet();
 			p1.setGroupName("Administrator");
 			p1.setLocalGroupType(LocalGroupType.SAKAIROLE);
@@ -85,6 +105,7 @@ public class DbLoaderListener implements
 			pm.setLocalContextType(LocalContextType.COLLABORATION);
 			pm.setName("generic collaboration");
 			pm.setService("shanti-wiki");
+			pm.addPermissionSet(p0);
 			pm.addPermissionSet(p1);
 			pm.addPermissionSet(p2);
 			pm.addPermissionSet(p3);

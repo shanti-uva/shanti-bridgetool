@@ -28,8 +28,8 @@ public class ApplicationConversionServiceFactoryBean extends
 	protected void installFormatters(FormatterRegistry registry) {
 		super.installFormatters(registry);
 		// Register application converters and formatters
-//		registry.addConverter(getRemoteContextEncoder());
-//		registry.addConverter(getRemoteContextConverter());
+		registry.addConverter(getRemoteContextEncoder());
+		registry.addConverter(getRemoteContextConverter());
 		registry.addConverter(getRemoteChoiceToContextConverter());
 	}
 
@@ -38,6 +38,7 @@ public class ApplicationConversionServiceFactoryBean extends
 
 			@Override
 			public String convert(RemoteContext source) {
+				logger.warn("XXXXXX: Converting to string: " + source);
 				return new JSONSerializer().serialize(source
 						.getRemoteContextChoice());
 			}

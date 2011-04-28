@@ -88,7 +88,7 @@ public class MockRequestWrapper implements HttpServletRequest {
 			return mockUser;
 		} else if ("sakaisessionid".equals(name)) {
 			if (wrappedRequest.getHeader("sakaisessionid") == null) {
-				return "97e64b7e-f97c-41d7-9691-a80fcf3ef967.sakai13";
+				return "84e19cc3-bf41-48fc-8e25-06543d9ca115.sakai10";
 			}
 		}
 		return wrappedRequest.getHeader(name);

@@ -9,6 +9,7 @@ import static org.junit.Assert.fail;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.util.Properties;
 import java.util.Random;
 
 import javax.xml.rpc.ServiceException;
@@ -17,6 +18,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,14 +33,23 @@ import edu.virginia.shanti.om.bridge.soap.sakai.SakaiLogin_PortType;
 @ContextConfiguration(locations = { "/META-INF/spring/applicationContext*.xml" })
 public class SiteAliasServiceTest {
 
-	private static final String TESTUSER = "ys2n";
 	@Autowired
 	SiteAliasService sas;
+	
+	@Value("${test.user}")
+	private String TESTUSER;
+	
+	@Value("${test.pass}")
+	private String TESTPASS;
+	
 	private Random random = new Random(System.currentTimeMillis());
 		
 	@Before
 	public void setUp() throws ServiceException, RemoteException {
 		
+		System.err.println("test.user = " + TESTUSER);
+		System.err.println("test.pass = ( " + TESTPASS.length() + "chars )");
+
 	}
 
 	@Test
@@ -122,7 +133,7 @@ public class SiteAliasServiceTest {
 		
 		// login and get session
 		SakaiLogin_PortType sakaiLogin = new SakaiLoginServiceLocator().getSakaiLogin(new URL("https://"+ serverId + ".itc.virginia.edu/sakai-axis/SakaiLogin.jws"));
-		String session = sakaiLogin.login("ys2n","XXXXXX").concat("." + serverId);
+		String session = sakaiLogin.login(TESTUSER,TESTPASS).concat("." + serverId);
 		System.err.println(session);
 		
 		SecurityContextHolder.getContext()

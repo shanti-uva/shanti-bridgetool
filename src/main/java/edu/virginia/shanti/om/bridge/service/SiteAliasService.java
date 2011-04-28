@@ -99,7 +99,7 @@ public class SiteAliasService {
 	public String suggestSiteAliasString(String title, String siteId) {
 
 		// TODO: refactor this into an implementation class
-		StringBuilder sb = new StringBuilder("collab:" + title.replaceAll("\\W+","-")
+		StringBuilder sb = new StringBuilder("~collab:" + title.replaceAll("\\W+","-")
 				.replaceAll("&", "and").toLowerCase());
 		sb.append("-");
 		sb.append(siteId.substring(0, 4));
