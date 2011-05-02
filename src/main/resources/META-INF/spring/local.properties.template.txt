@@ -3,3 +3,4 @@ adminUser=<confluence admin user>
 adminPassword=<confluence password>
 database.username=<db user>
 database.password=<db password>
+mockSession=<sakai session id>

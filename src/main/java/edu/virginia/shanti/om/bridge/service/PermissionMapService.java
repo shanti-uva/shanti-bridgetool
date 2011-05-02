@@ -79,11 +79,14 @@ public class PermissionMapService {
 			}
 			
 			log.info("sakaisession = " + sakaisession);
-
+		
 			String[] split = sakaisession.split("\\.");
-			String session = split[0];
-			String server = split[1] + ".itc.virginia.edu";
-
+			
+			if (split.length < 2) {
+				throw new RuntimeException ("sakaisession format exception!  Expected server extension. " + sakaisession );
+			}
+			 String session = split[0];
+			 String server = split[1] + ".itc.virginia.edu";
 			try {
 				SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 						.getSakaiScript(new URL("https://" + server

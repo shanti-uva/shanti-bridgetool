@@ -2,11 +2,13 @@ package edu.virginia.shanti.om.bridge.auth;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletInputStream;
@@ -16,6 +18,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * This is a wrapper for mock user purposes.
@@ -31,11 +34,25 @@ public class MockRequestWrapper implements HttpServletRequest {
 
 	private HttpServletRequest wrappedRequest;
 
+	private String mockSession;
+
 	public MockRequestWrapper(HttpServletRequest request, String username) {
+		this();
 		mockUser = username;
 		wrappedRequest = request;
 	}
 
+	public MockRequestWrapper() {
+		InputStream in = this.getClass().getClassLoader().getResourceAsStream("META-INF/spring/local.properties");
+		Properties result = new Properties();
+		try {
+			result.load(in);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		mockSession = result.getProperty("mockSession");
+	}
+	
 	@Override
 	public Object getAttribute(String name) {
 		if ("REMOTE_USER".equals(name)) {
@@ -88,7 +105,11 @@ public class MockRequestWrapper implements HttpServletRequest {
 			return mockUser;
 		} else if ("sakaisessionid".equals(name)) {
 			if (wrappedRequest.getHeader("sakaisessionid") == null) {
-				return "84e19cc3-bf41-48fc-8e25-06543d9ca115.sakai10";
+				if (mockSession != null) {
+					return mockSession;
+				} else {
+					throw new RuntimeException("No mockSession set.");
+				}
 			}
 		}
 		return wrappedRequest.getHeader(name);
