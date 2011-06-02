@@ -5,10 +5,12 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.tostring.RooToString;
 import javax.validation.constraints.NotNull;
 import javax.persistence.Column;
+import org.springframework.roo.addon.json.RooJson;
 
 @RooJavaBean
 @RooToString
 @RooEntity(finders = { "findSiteAliasesBySiteId", "findSiteAliasesByAlias" })
+@RooJson
 public class SiteAlias {
 
     @NotNull
