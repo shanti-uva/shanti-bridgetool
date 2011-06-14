@@ -3,6 +3,7 @@
   <jsp:output omit-xml-declaration="yes" />
   <spring:message var="title" code="webflow_normalstate_title" />
   <util:panel id="wiki" title="Wiki">
+    <base target="_blank" />
     <form method="POST">
       <div class="submit">
       
