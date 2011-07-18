@@ -116,7 +116,7 @@ public class ConfluenceSoapServiceIntegrationTest {
 		for (int i = 0; i < groups.length; i++) {
 			String string = groups[i];
 			
-			if (string.startsWith("roster-")) {
+			if (string.startsWith("~collab")) {
 				System.err.println(string);
 				confluence.removeGroup(session,	string, null);
 			}
