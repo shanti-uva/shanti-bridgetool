@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_edu_virginia_shanti_om_bridge_domain_PermissionSet" object="${permissionset}" path="/permissionsets" z="Wf8Vp/VwBuoT4OyG/NCfF0CBxrg=">
+        <field:display field="groupName" id="s_edu_virginia_shanti_om_bridge_domain_PermissionSet_groupName" object="${permissionset}" z="eMe2U+M+q7LlahZFkAYujFoaGr8="/>
+        <field:display field="localGroupType" id="s_edu_virginia_shanti_om_bridge_domain_PermissionSet_localGroupType" object="${permissionset}" z="1+srJZfbIK0qVbPnjwhkprU8jR8="/>
+    </page:show>
+</div>

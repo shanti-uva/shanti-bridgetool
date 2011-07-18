@@ -50,5 +50,9 @@
             <menu:item id="i_confluencepermissionset_new" messageCode="global_menu_new" url="/confluencepermissionsets?form" z="KCWtmeh7Ae1Lo+cuCHdNR+cCRiM="/>
         <menu:item id="i_confluencepermissionset_list" messageCode="global_menu_list" url="/confluencepermissionsets?page=1&amp;size=${empty param.size ? 10 : param.size}" z="yCqfyeux5LMBlOgck7hVlfT/sbM="/>
         </menu:category>
+    <menu:category id="c_permissionset" z="7yxgUdfZRmlua50it8RBwOoPFKY=">
+            <menu:item id="i_permissionset_new" messageCode="global_menu_new" url="/permissionsets?form" z="TMdd/rSeKk0Duz7Jx1gKwbAY98Y="/>
+        <menu:item id="i_permissionset_list" messageCode="global_menu_list" url="/permissionsets?page=1&amp;size=${empty param.size ? 10 : param.size}" z="v2MAiTIGA5gNdxh52EfpEwJL6J0="/>
+        </menu:category>
     </menu:menu>
 </div>

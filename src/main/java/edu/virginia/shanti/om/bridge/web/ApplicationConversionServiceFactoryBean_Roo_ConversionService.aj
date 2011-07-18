@@ -6,6 +6,7 @@ package edu.virginia.shanti.om.bridge.web;
 import edu.virginia.shanti.om.bridge.domain.Bridge;
 import edu.virginia.shanti.om.bridge.domain.ConfluencePermissionSet;
 import edu.virginia.shanti.om.bridge.domain.PermissionMap;
+import edu.virginia.shanti.om.bridge.domain.PermissionSet;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.domain.SiteAlias;
@@ -19,6 +20,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(new BridgeConverter());
         registry.addConverter(new ConfluencePermissionSetConverter());
         registry.addConverter(new PermissionMapConverter());
+        registry.addConverter(new PermissionSetConverter());
         registry.addConverter(new RemoteContextConverter());
         registry.addConverter(new RemoteServerConverter());
         registry.addConverter(new SiteAliasConverter());
@@ -46,6 +48,13 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     static class edu.virginia.shanti.om.bridge.web.ApplicationConversionServiceFactoryBean.PermissionMapConverter implements org.springframework.core.convert.converter.Converter<edu.virginia.shanti.om.bridge.domain.PermissionMap, java.lang.String>  {
         public String convert(PermissionMap permissionMap) {
         return new StringBuilder().append(permissionMap.getName()).append(" ").append(permissionMap.getLocalContextMask()).append(" ").append(permissionMap.getService()).toString();
+        }
+        
+    }
+    
+    static class edu.virginia.shanti.om.bridge.web.ApplicationConversionServiceFactoryBean.PermissionSetConverter implements org.springframework.core.convert.converter.Converter<edu.virginia.shanti.om.bridge.domain.PermissionSet, java.lang.String>  {
+        public String convert(PermissionSet permissionSet) {
+        return new StringBuilder().append(permissionSet.getGroupName()).toString();
         }
         
     }
