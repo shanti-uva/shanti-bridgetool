@@ -315,49 +315,4 @@ public class ConfluenceConnector implements RemoteConnector {
 
 	}
 
-	@Override
-	public void assureRemoteUser(Principal principal) {
-		try {
-			ConfluenceSoapService conf = getConfLocator()
-					.getConfluenceserviceV1();
-			String sess = loginAdmin();
-
-			RemoteUser user = null;
-			try {
-				user = conf.getUser(sess, principal.getName());
-			} catch (Exception rte) {
-				// if
-				// (rte.getCause().getMessage().contains("No user with username"))
-				// {
-				// user doesn't exist, create.
-
-				RemoteUser remoteUser = new RemoteUser();
-				remoteUser.setName(principal.getName());
-
-				remoteUser.setFullname("fake name");
-
-				conf.addUser(sess, remoteUser, "fakepass");
-
-				// retry and let it throw an exception
-				user = conf.getUser(sess, principal.getName());
-
-				System.err.println("user created: " + user.getName());
-
-				// }
-			}
-
-			System.err.println("user found: " + user.getName());
-
-		} catch (ServiceException e) {
-			throw new RuntimeException(e);
-		} catch (AuthenticationFailedException e) {
-			throw new RuntimeException(e);
-		} catch (RemoteException e) {
-			throw new RuntimeException(e);
-		} catch (java.rmi.RemoteException e) {
-			throw new RuntimeException(e);
-		}
-
-	}
-
 }
