@@ -51,9 +51,8 @@
 				<input type="submit" class="button" name="_eventId_save"
 					value="Choose" /> </span></td>
 			</tr>
-
+<!--
 			<td colspan="2"><util:panel title="debug" id="debug" openPane="false">
-				<!-- -->
 				<table>
 					<tr>
 						<td>Remote Name</td>
@@ -74,7 +73,7 @@
 
 			</util:panel></td>
 
-			<!-- -->
+			-->
 
 		</table>
 	</form:form>
