@@ -8,37 +8,37 @@ import edu.virginia.shanti.om.bridge.service.RemoteServerService;
 import edu.virginia.shanti.om.bridge.service.SiteAliasService;
 import org.apache.commons.logging.Log;
 
-privileged aspect BridgeService_Roo_JavaBean {
+privileged aspect BridgeServiceImpl_Roo_JavaBean {
     
-    public RemoteServerService BridgeService.getRemoteServerService() {
+    public RemoteServerService BridgeServiceImpl.getRemoteServerService() {
         return this.remoteServerService;
     }
     
-    public void BridgeService.setRemoteServerService(RemoteServerService remoteServerService) {
+    public void BridgeServiceImpl.setRemoteServerService(RemoteServerService remoteServerService) {
         this.remoteServerService = remoteServerService;
     }
     
-    public SiteAliasService BridgeService.getSiteAliasService() {
+    public SiteAliasService BridgeServiceImpl.getSiteAliasService() {
         return this.siteAliasService;
     }
     
-    public void BridgeService.setSiteAliasService(SiteAliasService siteAliasService) {
+    public void BridgeServiceImpl.setSiteAliasService(SiteAliasService siteAliasService) {
         this.siteAliasService = siteAliasService;
     }
     
-    public PermissionMapService BridgeService.getPermissionMapService() {
+    public PermissionMapService BridgeServiceImpl.getPermissionMapService() {
         return this.permissionMapService;
     }
     
-    public void BridgeService.setPermissionMapService(PermissionMapService permissionMapService) {
+    public void BridgeServiceImpl.setPermissionMapService(PermissionMapService permissionMapService) {
         this.permissionMapService = permissionMapService;
     }
     
-    public Log BridgeService.getLog() {
+    public Log BridgeServiceImpl.getLog() {
         return this.log;
     }
     
-    public void BridgeService.setLog(Log log) {
+    public void BridgeServiceImpl.setLog(Log log) {
         this.log = log;
     }
     

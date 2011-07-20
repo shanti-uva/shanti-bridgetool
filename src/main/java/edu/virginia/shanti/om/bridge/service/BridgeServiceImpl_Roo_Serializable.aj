@@ -5,8 +5,8 @@ package edu.virginia.shanti.om.bridge.service;
 
 import java.io.Serializable;
 
-privileged aspect BridgeService_Roo_Serializable {
+privileged aspect BridgeServiceImpl_Roo_Serializable {
     
-    declare parents: BridgeService implements Serializable;
+    declare parents: BridgeServiceImpl implements Serializable;
     
 }

@@ -9,6 +9,8 @@ import static org.junit.Assert.assertThat;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.xml.rpc.ServiceException;
@@ -20,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -37,15 +40,18 @@ import edu.virginia.shanti.om.bridge.soap.sakai.SakaiLoginServiceLocator;
 import edu.virginia.shanti.om.bridge.soap.sakai.SakaiLogin_PortType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/META-INF/spring/applicationContext*.xml" })
+@ContextConfiguration(locations = { "/META-INF/spring/applicationContext.xml", "/META-INF/spring/applicationContext-security.xml" })
 // @Transactional
 public class BridgeServiceTest {
 	
-	@Value("${test.pass}")
-	private String TEST_REAL_USER_PASSWORD;
+	private static final String MOCKUSER = "ys2n";
+	private static final String MOCKPASSWORD = "mockpassword";
+	
+	// @Value("${test.pass}")
+	private String TEST_REAL_USER_PASSWORD = "52pickUP";
 
-	@Value("${test.user}")
-	private String TEST_REAL_USER;
+	// @Value("${test.user}")
+	private String TEST_REAL_USER = "ys2n-admin";
 
 	private static final String TEST_REAL_SITEID = "23e3d2d3-cad7-4dc5-89c2-666e2b1f1b18";
 
@@ -57,12 +63,20 @@ public class BridgeServiceTest {
 	@Before
 	public void pullConfigurationService() {
 		bridgeService = (BridgeService) applicationContext
-				.getBean("bridgeService");
+				.getBean("bridgeServiceImpl");
+		
+		Collection<GrantedAuthority> grants = new LinkedList<GrantedAuthority>();
+		// populate grants
+
+		SecurityContextHolder.getContext()
+		.setAuthentication(
+				new UsernamePasswordAuthenticationToken(MOCKUSER,
+						MOCKPASSWORD,grants));
 	}
 
 	@Test
 	public void pullConfigurationServiceFromApplicationContext() {
-		assertNotNull(applicationContext.getBean("bridgeService"));
+		assertNotNull(applicationContext.getBean("bridgeServiceImpl"));
 	}
 
 	@Test
@@ -94,10 +108,13 @@ public class BridgeServiceTest {
 		String session = sakaiLogin.login(TEST_REAL_USER,TEST_REAL_USER_PASSWORD).concat("." + serverId);
 		System.err.println(session);
 		
+		Collection<GrantedAuthority> grants = new LinkedList<GrantedAuthority>();
+		// populate grants
+		
 		SecurityContextHolder.getContext()
 				.setAuthentication(
 						new UsernamePasswordAuthenticationToken(TEST_REAL_USER,
-								session));
+								session, grants));
 		
 		Bridge bridge = createMockBridge();
 		bridge.setLocalContext(TEST_REAL_SITEID);
@@ -111,7 +128,6 @@ public class BridgeServiceTest {
 		// bridge.persist();
 		
 		bridgeService.save(bridge);
-		
 		
 		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance(TEST_REAL_USER,TEST_REAL_SITEID, null, "shanti-wiki", System.currentTimeMillis())),
 				equalTo("configured"));

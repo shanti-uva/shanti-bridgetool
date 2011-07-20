@@ -32,6 +32,8 @@ public class LoginController {
     		@RequestParam(value = "user", required = true) String user,
     		@RequestParam(value = "site", required = true) String site,
     		@RequestParam(value = "placement", required = true) String placement,
+    		@RequestParam(value = "role", required = true) String role,
+    		@RequestParam(value = "sign", required = true) String sign,
     		HttpSession session) {
     	
 //    	System.err.println(" user = " + user);
@@ -44,6 +46,10 @@ public class LoginController {
     	Assert.assertTrue("illegal characeter in site", site.matches("[A-z0-9\\-]+"));
     	Assert.assertTrue("site too long: " + site.length(), site.length() < 64);
     	Assert.assertTrue("placement too long: " + placement.length(), placement.length() < 64);
+    	
+    	// need to save role
+    	
+    	// TODO: need to verify signature
     	
         return "redirect:/" + site + "/" + placement + "/" + user + "/main";   
     }

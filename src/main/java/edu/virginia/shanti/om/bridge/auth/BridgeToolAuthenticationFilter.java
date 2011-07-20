@@ -1,6 +1,7 @@
 package edu.virginia.shanti.om.bridge.auth;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -12,11 +13,15 @@ import junit.framework.Assert;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 
 public class BridgeToolAuthenticationFilter extends
 		RequestHeaderAuthenticationFilter {
 
+	@Autowired
+	private UserDetailsService userDetailsService;
+	
 	private Log log = LogFactory.getLog(BridgeToolAuthenticationFilter.class);
 
 	@Override
@@ -38,6 +43,26 @@ public class BridgeToolAuthenticationFilter extends
 				log.debug("doFilter(): USING MOCKUSER: " + request);
 			}
 		}
+		
+		// Here is where we go get the set shibboleth attributes and store them so
+		// the UserDetailsService can retrieve them.
+		
+		Enumeration attributeNames = request.getAttributeNames();
+		while (attributeNames.hasMoreElements()) {
+			String attribute = (String) attributeNames.nextElement();
+			System.err.println(" ==> attribute " + attribute + " = " + request.getAttribute(attribute));
+		}
+		
+		// userDetailsService.saveGrant(username, grant);
+		
+		
+		Enumeration parameterNames = request.getParameterNames();
+		while (parameterNames.hasMoreElements()) {
+			String parameter = (String) parameterNames.nextElement();
+			System.err.println(" ==> parameter " + parameter + " = " + request.getParameter(parameter));
+		}
+		
+		
 
 		// resume normal operation
 		super.doFilter(request, response, chain);

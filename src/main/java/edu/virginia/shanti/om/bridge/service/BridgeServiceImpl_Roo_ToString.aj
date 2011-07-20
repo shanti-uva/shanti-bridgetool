@@ -5,9 +5,9 @@ package edu.virginia.shanti.om.bridge.service;
 
 import java.lang.String;
 
-privileged aspect BridgeService_Roo_ToString {
+privileged aspect BridgeServiceImpl_Roo_ToString {
     
-    public String BridgeService.toString() {
+    public String BridgeServiceImpl.toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Log: ").append(getLog()).append(", ");
         sb.append("PermissionMapService: ").append(getPermissionMapService()).append(", ");
