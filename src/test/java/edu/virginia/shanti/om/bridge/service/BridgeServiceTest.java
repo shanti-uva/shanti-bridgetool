@@ -63,7 +63,7 @@ public class BridgeServiceTest {
 	@Before
 	public void pullConfigurationService() {
 		bridgeService = (BridgeService) applicationContext
-				.getBean("bridgeServiceImpl");
+				.getBean("bridgeService");
 		
 		Collection<GrantedAuthority> grants = new LinkedList<GrantedAuthority>();
 		// populate grants
@@ -76,7 +76,7 @@ public class BridgeServiceTest {
 
 	@Test
 	public void pullConfigurationServiceFromApplicationContext() {
-		assertNotNull(applicationContext.getBean("bridgeServiceImpl"));
+		assertNotNull(applicationContext.getBean("bridgeService"));
 	}
 
 	@Test

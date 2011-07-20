@@ -24,7 +24,7 @@ import edu.virginia.shanti.om.bridge.form.ConfluenceConfigBean;
 @RooJavaBean
 @RooToString
 @RooSerializable
-@Service
+@Service("bridgeService")
 public class BridgeServiceImpl implements BridgeService {
 
 	private static final long serialVersionUID = 3808409343349062908L;
