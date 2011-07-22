@@ -12,7 +12,6 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +34,9 @@ public class RemoteServerService {
 	private ApplicationContext applicationContext;
 
 	private Log log = LogFactory.getLog(RemoteServerService.class);
+
+	@Autowired
+	private CurrentUser currentUser;
 
 	private static final long serialVersionUID = -2683260374906842765L;
 
@@ -75,7 +77,7 @@ public class RemoteServerService {
 		RemoteConnector remote = (RemoteConnector) applicationContext
 				.getBean(remoteServer.getImplementationName());
 
-		Principal principal = getCurrentUser();
+		Principal principal = currentUser.getAuthentication();
 		return remote.getContexts(principal, remoteServer);
 	}
 
@@ -96,7 +98,7 @@ public class RemoteServerService {
 		// DEBUG
 
 		log.warn("DEBUG:"
-				+ SecurityContextHolder.getContext().getAuthentication()
+				+ currentUser.getAuthentication()
 						.getName());
 
 		return getRemoteContexts(remoteServer);
@@ -108,14 +110,8 @@ public class RemoteServerService {
 
 		RemoteConnector connector = findRemoteConnector(newContext);
 		RemoteContext newRemoteContext = connector.createRemoteContext(
-				getCurrentUser(), newContext);
+				currentUser.getAuthentication(), newContext);
 		return newRemoteContext;
-
-	}
-
-	private Authentication getCurrentUser() {
-
-		return SecurityContextHolder.getContext().getAuthentication();
 
 	}
 
@@ -147,7 +143,7 @@ public class RemoteServerService {
 
 	public String getSummaryMarkup(RemoteContext remoteContext) {
 		RemoteConnector connector = findRemoteConnector(remoteContext);
-		Principal principal = getCurrentUser();
+		Principal principal = currentUser.getAuthentication();
 		return connector.getSummaryMarkup(principal, remoteContext);
 	}
 
@@ -161,7 +157,7 @@ public class RemoteServerService {
 		System.err.println("===>" + remoteContext);
 		
 		RemoteConnector connector = findRemoteConnector(remoteContext);
-		Authentication principal = getCurrentUser();
+		Authentication principal = currentUser.getAuthentication();
 
 		connector.setRemotePermissions(principal, localContext, remoteContext, permissionMap);
 

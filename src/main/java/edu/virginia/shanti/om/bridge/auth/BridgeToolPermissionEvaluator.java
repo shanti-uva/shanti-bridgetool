@@ -16,7 +16,7 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 			Object targetDomainObject, Object permission) {
 		// TODO Auto-generated method stub
 		log.warn("hasPermission called by " + authentication.getName() + " on " + targetDomainObject + " for permission " + permission);
-		return false;
+		return true;
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 			Serializable targetId, String targetType, Object permission) {
 		// TODO Auto-generated method stub
 		log.warn("hasPermission called by " + authentication.getName() + " on " + targetId + " of type " + targetType + " for permission " + permission);
-		return false;
+		return true;
 	}
 
 }

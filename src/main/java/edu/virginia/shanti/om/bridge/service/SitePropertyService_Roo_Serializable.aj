@@ -9,6 +9,4 @@ privileged aspect SitePropertyService_Roo_Serializable {
     
     declare parents: SitePropertyService implements Serializable;
     
-    private static final long SitePropertyService.serialVersionUID = 1L;
-    
 }

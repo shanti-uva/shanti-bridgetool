@@ -10,7 +10,6 @@ import javax.xml.rpc.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +29,10 @@ public class SiteAliasService {
 
 	@Autowired
 	private SitePropertyService sitePropertyService;
-	
+
+	@Autowired
+	private CurrentUser currentUser;
+
 	public String getAliasForSiteId(String siteId) {
 		SiteAlias siteAlias = findSiteAliasBySiteId(siteId);
 		if (siteAlias == null) {
@@ -99,8 +101,9 @@ public class SiteAliasService {
 	public String suggestSiteAliasString(String title, String siteId) {
 
 		// TODO: refactor this into an implementation class
-		StringBuilder sb = new StringBuilder("~collab:" + title.replaceAll("\\W+","-")
-				.replaceAll("&", "and").toLowerCase());
+		StringBuilder sb = new StringBuilder("~collab:"
+				+ title.replaceAll("\\W+", "-").replaceAll("&", "and")
+						.toLowerCase());
 		sb.append("-");
 		sb.append(siteId.substring(0, 4));
 		return sb.toString();
@@ -109,10 +112,11 @@ public class SiteAliasService {
 
 	public SiteAlias suggestSiteAlias(String siteId) {
 		// TODO: Refactor
-		// push this into a different service (new one named SitePropertyService?)
+		// push this into a different service (new one named
+		// SitePropertyService?)
 
-		String sakaisession = (String) SecurityContextHolder.getContext()
-				.getAuthentication().getCredentials();
+		String sakaisession = (String) currentUser.getAuthentication()
+				.getCredentials();
 
 		String[] split = sakaisession.split("\\.");
 		String session = split[0];
@@ -140,11 +144,13 @@ public class SiteAliasService {
 
 	public void registerAlias(SiteAlias siteAlias, String service) {
 		// TODO Refactor this out of this service class
-		sitePropertyService.setSiteProperty(siteAlias.getSiteId(), "shib-" + service, siteAlias.getAlias());
+		sitePropertyService.setSiteProperty(siteAlias.getSiteId(), "shib-"
+				+ service, siteAlias.getAlias());
 	}
 
 	public void registerAlias(SiteAlias siteAlias, Bridge bridge) {
-		System.err.println("Registering alias " + siteAlias + " for bridge remoteName: " + bridge.getRemoteName());
+		System.err.println("Registering alias " + siteAlias
+				+ " for bridge remoteName: " + bridge.getRemoteName());
 		registerAlias(siteAlias, bridge.getRemoteName());
 	}
 

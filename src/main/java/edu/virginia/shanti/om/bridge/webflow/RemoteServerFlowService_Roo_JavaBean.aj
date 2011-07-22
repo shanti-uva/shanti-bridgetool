@@ -3,6 +3,7 @@
 
 package edu.virginia.shanti.om.bridge.webflow;
 
+import edu.virginia.shanti.om.bridge.service.CurrentUser;
 import edu.virginia.shanti.om.bridge.service.RemoteServerService;
 import org.apache.commons.logging.Log;
 
@@ -22,6 +23,14 @@ privileged aspect RemoteServerFlowService_Roo_JavaBean {
     
     public void RemoteServerFlowService.setRemoteServerService(RemoteServerService remoteServerService) {
         this.remoteServerService = remoteServerService;
+    }
+    
+    public CurrentUser RemoteServerFlowService.getCurrentUser() {
+        return this.currentUser;
+    }
+    
+    public void RemoteServerFlowService.setCurrentUser(CurrentUser currentUser) {
+        this.currentUser = currentUser;
     }
     
 }

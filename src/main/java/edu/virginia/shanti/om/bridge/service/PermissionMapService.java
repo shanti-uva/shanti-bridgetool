@@ -9,7 +9,7 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +27,9 @@ public class PermissionMapService {
 	Log log = LogFactory.getLog(PermissionMapService.class);
 
 	transient private SakaiScriptServiceLocator sakaiScriptServiceLocator = new SakaiScriptServiceLocator();
+
+	@Autowired
+	private CurrentUser currentUser;
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public PermissionMap getPermissionMap(LocalContextType type) {
@@ -71,7 +74,7 @@ public class PermissionMapService {
 		} else {
 			// TODO Otherwise try looking up by site type! FRICK! how do we know
 			// the site type!!!?
-			String sakaisession = (String) SecurityContextHolder.getContext()
+			String sakaisession = (String) currentUser
 					.getAuthentication().getCredentials();
 			
 			if (sakaisession == null || sakaisession.length()==0) {

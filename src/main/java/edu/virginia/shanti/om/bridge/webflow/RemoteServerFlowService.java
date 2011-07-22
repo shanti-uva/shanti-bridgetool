@@ -14,6 +14,7 @@ import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.form.ConfluenceSpaceForm;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
+import edu.virginia.shanti.om.bridge.service.CurrentUser;
 import edu.virginia.shanti.om.bridge.service.RemoteServerService;
 
 @Service
@@ -24,18 +25,21 @@ public class RemoteServerFlowService {
 	
 	@Autowired
 	RemoteServerService remoteServerService;
+	
+	@Autowired
+	CurrentUser currentUser;
 
 	public RemoteServer getRemoteServer(String serviceName) {
 		return remoteServerService.getRemoteServer(serviceName);
 	}
 
 	public List<RemoteContextChoice> getRemoteContexts(RemoteServer remoteServer) {
-		log.warn("DEBUG:" + SecurityContextHolder.getContext().getAuthentication().getName());
+		log.warn("DEBUG:" + currentUser.getAuthentication().getName());
 		return remoteServerService.getRemoteContexts(remoteServer);
 	}
 
 	public List<RemoteContextChoice> getRemoteContexts(String configurationName) {
-		log.warn("DEBUG:" + SecurityContextHolder.getContext().getAuthentication().getName());
+		log.warn("DEBUG:" + currentUser.getAuthentication().getName());
 		return remoteServerService.getRemoteContexts(configurationName);
 	}
 

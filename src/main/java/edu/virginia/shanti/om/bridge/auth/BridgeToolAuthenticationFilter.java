@@ -14,6 +14,8 @@ import junit.framework.Assert;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 
 public class BridgeToolAuthenticationFilter extends
@@ -28,6 +30,9 @@ public class BridgeToolAuthenticationFilter extends
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 
+		
+		// TODO: need to verify signature!
+		
 		// when running on localhost, use mockuser httpRequestWrapper
 
 		Assert.assertTrue("This class only applies to HttpServletRequests!",
@@ -44,9 +49,6 @@ public class BridgeToolAuthenticationFilter extends
 			}
 		}
 		
-		// Here is where we go get the set shibboleth attributes and store them so
-		// the UserDetailsService can retrieve them.
-		
 		Enumeration attributeNames = request.getAttributeNames();
 		while (attributeNames.hasMoreElements()) {
 			String attribute = (String) attributeNames.nextElement();
@@ -55,17 +57,22 @@ public class BridgeToolAuthenticationFilter extends
 		
 		// userDetailsService.saveGrant(username, grant);
 		
-		
 		Enumeration parameterNames = request.getParameterNames();
 		while (parameterNames.hasMoreElements()) {
 			String parameter = (String) parameterNames.nextElement();
 			System.err.println(" ==> parameter " + parameter + " = " + request.getParameter(parameter));
 		}
 		
-		
-
+		if( request.getParameter("role") != null) {
+			userDetailsService.saveGrant(((HttpServletRequest)request).getRemoteUser(), createGrant(request.getParameter("role")));
+		}
 		// resume normal operation
 		super.doFilter(request, response, chain);
+	}
+
+	private GrantedAuthority createGrant(String role) {
+		GrantedAuthorityImpl grant = new GrantedAuthorityImpl(role);
+		return grant;
 	}
 
 	private String overrideUserName(ServletRequest request) {

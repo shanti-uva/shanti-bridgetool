@@ -12,11 +12,9 @@
       	<div style="font-size: 2em">Visit: <a  style="font-size: 1em" href="${bridge.remoteContext.url}" target="_blank">${bridge.remoteContext.contextLabel}</a>
 
 
-			<sec:accesscontrollist hasPermission="oink" domainObject="bridge">
 				<input style="float: right; margin-bottom: 2 em" type="submit"
 					id="edit" name="_eventId_edit" value="${fn:escapeXml(edit)}"
 					target="_self" />
-			</sec:accesscontrollist>
       	</div>
 
 

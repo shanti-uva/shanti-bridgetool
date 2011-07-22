@@ -3,6 +3,7 @@
 
 package edu.virginia.shanti.om.bridge.service;
 
+import edu.virginia.shanti.om.bridge.service.CurrentUser;
 import org.apache.commons.logging.Log;
 import org.springframework.context.ApplicationContext;
 
@@ -22,6 +23,14 @@ privileged aspect RemoteServerService_Roo_JavaBean {
     
     public void RemoteServerService.setLog(Log log) {
         this.log = log;
+    }
+    
+    public CurrentUser RemoteServerService.getCurrentUser() {
+        return this.currentUser;
+    }
+    
+    public void RemoteServerService.setCurrentUser(CurrentUser currentUser) {
+        this.currentUser = currentUser;
     }
     
 }

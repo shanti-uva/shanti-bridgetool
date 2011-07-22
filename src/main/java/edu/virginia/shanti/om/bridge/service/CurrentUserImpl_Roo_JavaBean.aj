@@ -3,16 +3,12 @@
 
 package edu.virginia.shanti.om.bridge.service;
 
-import java.lang.String;
+import org.springframework.security.core.Authentication;
 
 privileged aspect CurrentUserImpl_Roo_JavaBean {
     
-    public String CurrentUserImpl.getUser() {
-        return this.user;
-    }
-    
-    public void CurrentUserImpl.setUser(String user) {
-        this.user = user;
+    public void CurrentUserImpl.setAuthentication(Authentication authentication) {
+        this.authentication = authentication;
     }
     
 }

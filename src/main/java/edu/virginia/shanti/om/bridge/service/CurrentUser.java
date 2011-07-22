@@ -1,7 +1,7 @@
 package edu.virginia.shanti.om.bridge.service;
 
-public interface CurrentUser {
-	
-	String getUser();
+import org.springframework.security.core.Authentication;
 
+public interface CurrentUser {
+	Authentication getAuthentication();
 }
