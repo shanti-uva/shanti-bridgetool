@@ -1,6 +1,7 @@
 package edu.virginia.shanti.om.bridge.auth;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Enumeration;
 
 import javax.servlet.FilterChain;
@@ -14,12 +15,19 @@ import junit.framework.Assert;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
+
+import edu.virginia.shanti.om.bridge.service.CurrentUser;
 
 public class BridgeToolAuthenticationFilter extends
 		RequestHeaderAuthenticationFilter {
+	
+	@Autowired 
+	private CurrentUser currentUser;
 
 	@Autowired
 	private UserDetailsService userDetailsService;
@@ -29,7 +37,6 @@ public class BridgeToolAuthenticationFilter extends
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-
 		
 		// TODO: need to verify signature!
 		
@@ -55,8 +62,6 @@ public class BridgeToolAuthenticationFilter extends
 			System.err.println(" ==> attribute " + attribute + " = " + request.getAttribute(attribute));
 		}
 		
-		// userDetailsService.saveGrant(username, grant);
-		
 		Enumeration parameterNames = request.getParameterNames();
 		while (parameterNames.hasMoreElements()) {
 			String parameter = (String) parameterNames.nextElement();
@@ -64,8 +69,18 @@ public class BridgeToolAuthenticationFilter extends
 		}
 		
 		if( request.getParameter("role") != null) {
-			userDetailsService.saveGrant(((HttpServletRequest)request).getRemoteUser(), createGrant(request.getParameter("role")));
+			GrantedAuthority grant = createGrant(request.getParameter("role") + "@" + request.getParameter("site"));
+			userDetailsService.saveGrant(((HttpServletRequest)request).getRemoteUser(),grant);
+
+			SecurityContextHolder.getContext().setAuthentication(
+				new UsernamePasswordAuthenticationToken(
+					currentUser.getAuthentication().getPrincipal(),
+					currentUser.getAuthentication().getCredentials(),
+					Arrays.asList(new GrantedAuthority[]{grant}))
+				);
+			
 		}
+		
 		// resume normal operation
 		super.doFilter(request, response, chain);
 	}

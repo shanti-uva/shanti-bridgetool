@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.AuthenticationUserDetailsService;
@@ -15,6 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public class UserDetailsService implements AuthenticationUserDetailsService {
 
+	private Log log = LogFactory.getLog(AuthenticationUserDetailsService.class);
 	private static final boolean ENABLED = true;
 	private static final boolean NOT_EXPIRED = true;
 	private static final boolean PASSWORD_NOT_EXPIRED = true;
@@ -40,6 +43,8 @@ public class UserDetailsService implements AuthenticationUserDetailsService {
 		if (!storedGrants.containsKey(user)) {
 			storedGrants.put(user, new HashSet<GrantedAuthority>());
 		}
+		
+		log.info ("Grant " + grant + " stored for " + user);
 		// check the returned boolean?
 		storedGrants.get(user).add(grant);
 
@@ -51,7 +56,10 @@ public class UserDetailsService implements AuthenticationUserDetailsService {
 		if (!storedGrants.containsKey(user)) {
 			storedGrants.put(user, new HashSet<GrantedAuthority>());
 		}
-		return storedGrants.get(user);
+		
+		Set<GrantedAuthority> grants = storedGrants.get(user);
+		log.info("Return Grants  " + grants + " for " + user);
+		return grants;
 	}
 
 }
