@@ -33,7 +33,7 @@ public class Bridge implements Serializable {
     /** the name of the remote instance */
     private String remoteName;
     
-    @Autowired
+    @Autowired(required=false)
     transient private BridgeToolPermissionEvaluator bridgeToolPermissionEvaluator;
     
     public void setBridgeToolPermissionEvaluator(
@@ -69,6 +69,10 @@ public class Bridge implements Serializable {
     
     
     public boolean isAdmin() {
+    	
+    	if (bridgeToolPermissionEvaluator == null) {
+    		bridgeToolPermissionEvaluator = new BridgeToolPermissionEvaluator();
+    	}
     	return bridgeToolPermissionEvaluator.hasPermission(currentUser.getAuthentication(), this, "admin");
     }
     
