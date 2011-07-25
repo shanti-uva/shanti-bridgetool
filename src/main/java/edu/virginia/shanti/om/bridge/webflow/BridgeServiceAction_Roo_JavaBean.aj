@@ -4,8 +4,17 @@
 package edu.virginia.shanti.om.bridge.webflow;
 
 import edu.virginia.shanti.om.bridge.service.BridgeService;
+import org.apache.commons.logging.Log;
 
 privileged aspect BridgeServiceAction_Roo_JavaBean {
+    
+    public Log BridgeServiceAction.getLog() {
+        return this.log;
+    }
+    
+    public void BridgeServiceAction.setLog(Log log) {
+        this.log = log;
+    }
     
     public BridgeService BridgeServiceAction.getBridgeService() {
         return this.bridgeService;

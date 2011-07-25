@@ -27,11 +27,11 @@ public class SitePropertyService {
 	transient private SakaiScriptServiceLocator sakaiScriptServiceLocator = new SakaiScriptServiceLocator();
 
 	@Autowired
-	private CurrentUser currentUser;
+	private AdminUser sakaiAdminUser;
 
 	public String getSiteProperty(String siteId, String propertyName) {
 
-		String sakaisession = (String) currentUser.getAuthentication()
+		String sakaisession = (String) sakaiAdminUser.getAuthentication()
 				.getCredentials();
 
 		String[] split = sakaisession.split("\\.");
@@ -56,7 +56,7 @@ public class SitePropertyService {
 
 	public void setSiteProperty(String siteId, String propertyName, String value) {
 
-		String sakaisession = (String) currentUser
+		String sakaisession = (String) sakaiAdminUser
 				.getAuthentication().getCredentials();
 
 		String[] split = sakaisession.split("\\.");

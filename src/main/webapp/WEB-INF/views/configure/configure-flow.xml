@@ -39,7 +39,7 @@
 		<transition on="success" to="success" />
 	</action-state>
 	
-	<view-state id="success" view="create/success">
+	<view-state id="success" view="create/success" model="bridge">
 		<transition to="done" />
 	</view-state>
 	

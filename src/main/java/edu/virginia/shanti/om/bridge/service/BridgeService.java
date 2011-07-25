@@ -25,8 +25,13 @@ public interface BridgeService {
 
 	Bridge createNewBridge(ConfigBean config, RemoteContext remoteContext);
 
-	@PreAuthorize("hasPermission(#bridge, 'oink')") 
+	@PreAuthorize("hasPermission(#bridge, 'admin')") 
 	void save(Bridge bridge);
+	
+	boolean isAdmin(Bridge bridge);
+	
+	@PreAuthorize("hasPermission(#bridge, 'admin')")
+	boolean adminCheck(Bridge bridge);
 
 	ConfigBean populateConfigFromContext(RequestContext request);
 

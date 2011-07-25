@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -15,7 +17,9 @@ import edu.virginia.shanti.om.bridge.domain.Bridge;
 
 public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 	
-	Log log = LogFactory.getLog(BridgeToolPermissionEvaluator.class);
+	
+	Logger log = LoggerFactory.getLogger(BridgeToolPermissionEvaluator.class);
+//	Log log = LogFactory.getLog(BridgeToolPermissionEvaluator.class);
 
 	@Override
 	public boolean hasPermission(Authentication authentication,
@@ -38,6 +42,7 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 				}
 			}
 		}
+		
 		return authorized;
 	}
 	
@@ -53,7 +58,19 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 		String role = parts[0];
 		String glc = parts[1];
 		
-		return glc.equals(localContext) && adminRoles.contains(role);
+		boolean isAdminRole = adminRoles.contains(role);
+		boolean isMatchingContext = glc.equals(localContext);
+		
+		log.error("Checking localContext " + localContext + " is the same as granted local context " + glc + ": " + isMatchingContext);
+		log.error("Checking role " + role + " is contained in " + adminRoles + ": " + isAdminRole);
+	
+		
+		boolean check = isMatchingContext && isAdminRole;
+		
+		System.err.println("===> Therefore check is: " + check);
+		
+		return check;
+		
 
 	}
 

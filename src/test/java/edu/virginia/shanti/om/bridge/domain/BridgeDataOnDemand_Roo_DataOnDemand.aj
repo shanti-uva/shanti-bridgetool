@@ -23,12 +23,24 @@ privileged aspect BridgeDataOnDemand_Roo_DataOnDemand {
     
     public Bridge BridgeDataOnDemand.getNewTransientBridge(int index) {
         edu.virginia.shanti.om.bridge.domain.Bridge obj = new edu.virginia.shanti.om.bridge.domain.Bridge();
+        setBridgeToolPermissionEvaluator(obj, index);
+        setCurrentUser(obj, index);
         setRemoteName(obj, index);
         setLocalContext(obj, index);
         setLocalSubContext(obj, index);
         setRemoteContext(obj, index);
         setPermissionMap(obj, index);
         return obj;
+    }
+    
+    private void BridgeDataOnDemand.setBridgeToolPermissionEvaluator(Bridge obj, int index) {
+        edu.virginia.shanti.om.bridge.auth.BridgeToolPermissionEvaluator bridgeToolPermissionEvaluator = null;
+        obj.setBridgeToolPermissionEvaluator(bridgeToolPermissionEvaluator);
+    }
+    
+    private void BridgeDataOnDemand.setCurrentUser(Bridge obj, int index) {
+        edu.virginia.shanti.om.bridge.service.CurrentUser currentUser = null;
+        obj.setCurrentUser(currentUser);
     }
     
     private void BridgeDataOnDemand.setRemoteName(Bridge obj, int index) {

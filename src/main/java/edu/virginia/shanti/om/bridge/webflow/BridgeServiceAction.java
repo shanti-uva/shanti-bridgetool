@@ -1,5 +1,7 @@
 package edu.virginia.shanti.om.bridge.webflow;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
@@ -13,6 +15,8 @@ import edu.virginia.shanti.om.bridge.service.BridgeService;
 @Component
 public class BridgeServiceAction {
 	
+	Log log = LogFactory.getLog(BridgeServiceAction.class);
+	
 	@Autowired
 	private BridgeService bridgeService;
 	
@@ -24,6 +28,14 @@ public class BridgeServiceAction {
 			return "success";
 			
 		} catch (Exception e) {
+			
+			e.printStackTrace();
+			log.error(e);
+			
+//			if (true) {
+//				throw new RuntimeException(e);
+//			}
+			
 			context.addMessage(new MessageBuilder().error().defaultText(e.getMessage()).build());
 			return "error";
 		}

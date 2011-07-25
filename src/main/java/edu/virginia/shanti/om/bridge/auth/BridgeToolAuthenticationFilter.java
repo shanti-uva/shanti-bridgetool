@@ -25,21 +25,21 @@ import edu.virginia.shanti.om.bridge.service.CurrentUser;
 
 public class BridgeToolAuthenticationFilter extends
 		RequestHeaderAuthenticationFilter {
-	
-	@Autowired 
+
+	@Autowired
 	private CurrentUser currentUser;
 
 	@Autowired
 	private UserDetailsService userDetailsService;
-	
+
 	private Log log = LogFactory.getLog(BridgeToolAuthenticationFilter.class);
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
-		
+
 		// TODO: need to verify signature!
-		
+
 		// when running on localhost, use mockuser httpRequestWrapper
 
 		Assert.assertTrue("This class only applies to HttpServletRequests!",
@@ -55,32 +55,43 @@ public class BridgeToolAuthenticationFilter extends
 				log.debug("doFilter(): USING MOCKUSER: " + request);
 			}
 		}
-		
+
 		Enumeration attributeNames = request.getAttributeNames();
 		while (attributeNames.hasMoreElements()) {
 			String attribute = (String) attributeNames.nextElement();
-			System.err.println(" ==> attribute " + attribute + " = " + request.getAttribute(attribute));
+			System.err.println(" ==> attribute " + attribute + " = "
+					+ request.getAttribute(attribute));
 		}
-		
+
 		Enumeration parameterNames = request.getParameterNames();
 		while (parameterNames.hasMoreElements()) {
 			String parameter = (String) parameterNames.nextElement();
-			System.err.println(" ==> parameter " + parameter + " = " + request.getParameter(parameter));
+			System.err.println(" ==> parameter " + parameter + " = "
+					+ request.getParameter(parameter));
 		}
-		
-		if( request.getParameter("role") != null) {
-			GrantedAuthority grant = createGrant(request.getParameter("role") + "@" + request.getParameter("site"));
-			userDetailsService.saveGrant(((HttpServletRequest)request).getRemoteUser(),grant);
 
-			SecurityContextHolder.getContext().setAuthentication(
-				new UsernamePasswordAuthenticationToken(
-					currentUser.getAuthentication().getPrincipal(),
-					currentUser.getAuthentication().getCredentials(),
-					Arrays.asList(new GrantedAuthority[]{grant}))
-				);
-			
+		if (request.getParameter("role") != null) {
+			GrantedAuthority grant = createGrant(request.getParameter("role")
+					+ "@" + request.getParameter("site"));
+			userDetailsService.saveGrant(
+					((HttpServletRequest) request).getRemoteUser(), grant);
+
+			if (currentUser != null && currentUser.getAuthentication() != null) {
+
+				SecurityContextHolder
+						.getContext()
+						.setAuthentication(
+								new UsernamePasswordAuthenticationToken(
+										currentUser.getAuthentication()
+												.getPrincipal(),
+										currentUser.getAuthentication()
+												.getCredentials(),
+										Arrays.asList(new GrantedAuthority[] { grant })));
+
+			}
+
 		}
-		
+
 		// resume normal operation
 		super.doFilter(request, response, chain);
 	}

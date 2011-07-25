@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.webflow.execution.RequestContext;
 
 import edu.virginia.shanti.om.bridge.domain.Bridge;
@@ -151,6 +151,7 @@ public class BridgeServiceImpl implements BridgeService {
 	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#save(edu.virginia.shanti.om.bridge.domain.Bridge)
 	 */
 	@Override
+	@Transactional
 	public void save(Bridge bridge) {
 
 		log.info("Bridge before persisting or merging: " + bridge);
@@ -298,5 +299,22 @@ public class BridgeServiceImpl implements BridgeService {
 	@Override
 	public String getSummaryMarkup(Bridge bridge) {
 		return remoteServerService.getSummaryMarkup(bridge.getRemoteContext());
+	}
+
+	@Override
+	public boolean isAdmin(Bridge bridge) {
+		// this is an adapter method to return true or false
+		try {
+			return adminCheck(bridge);
+		} catch (Exception e) {
+			log.info(e.getMessage());
+		}
+		return false;
+	}
+
+	@Override
+	public boolean adminCheck(Bridge bridge) {
+		// this is an advised method that should throw an exception if false
+		return true;
 	}
 }
