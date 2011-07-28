@@ -276,7 +276,7 @@ public class ConfluenceConnector implements RemoteConnector {
 		try {
 			ConfluenceSoapService conf = getConfLocator()
 					.getConfluenceserviceV1();
-			String sess = login(principal);
+			String adminSess = loginAdmin();
 
 			for (PermissionSet remotePermissions : permissionMap
 					.getPermissionSets()) {
@@ -294,11 +294,11 @@ public class ConfluenceConnector implements RemoteConnector {
 				System.err.println("groupName: " + groupName);
 				System.err.println("contextId: " + spaceId);
 
-				if (!conf.hasGroup(sess, groupName)) {
-					conf.addGroup(sess, groupName);
+				if (!conf.hasGroup(adminSess, groupName)) {
+					conf.addGroup(adminSess, groupName);
 				}
 
-				boolean success = conf.addPermissionsToSpace(sess, permissions,
+				boolean success = conf.addPermissionsToSpace(adminSess, permissions,
 						groupName, spaceId);
 
 				System.err.println("Call returned " + success);
