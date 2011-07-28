@@ -186,7 +186,7 @@ public class ConfluenceConnector implements RemoteConnector {
 		// ConfluenceSoapService conf =
 		// getConfLocator().getConfluenceserviceV1();
 		String sess = loginAdmin();
-		boolean switchUser = false;
+		boolean switchUser = true;
 		
 		if (principal != null) {
 			log.info("Got admin session = " + sess + " trying to sudo to "
@@ -215,7 +215,7 @@ public class ConfluenceConnector implements RemoteConnector {
 		ConfluenceSoapService conf;
 		try {
 			conf = getConfLocator().getConfluenceserviceV1();
-			String sess = login(principal);
+			String sess = loginAdmin();
 
 			String spacekey = remoteContext.getContextId();
 
