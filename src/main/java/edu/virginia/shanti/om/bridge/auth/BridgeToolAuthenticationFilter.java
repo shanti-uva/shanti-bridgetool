@@ -70,14 +70,17 @@ public class BridgeToolAuthenticationFilter extends
 					+ request.getParameter(parameter));
 		}
 
-		if (request.getParameter("role") != null) {
+		if (request.getParameter("role") != null && request.getParameter("site") != null) {
 			GrantedAuthority grant = createGrant(request.getParameter("role")
 					+ "@" + request.getParameter("site"));
 			userDetailsService.saveGrant(
 					((HttpServletRequest) request).getRemoteUser(), grant);
+			
+			log.info("Saving grant " + grant + " for " + ((HttpServletRequest) request).getRemoteUser());
 
 			if (currentUser != null && currentUser.getAuthentication() != null) {
 
+				// substitute authentication to add GrantedAuthorities
 				SecurityContextHolder
 						.getContext()
 						.setAuthentication(
