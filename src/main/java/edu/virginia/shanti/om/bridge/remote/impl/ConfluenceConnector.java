@@ -186,17 +186,14 @@ public class ConfluenceConnector implements RemoteConnector {
 		// ConfluenceSoapService conf =
 		// getConfLocator().getConfluenceserviceV1();
 		String sess = loginAdmin();
-		boolean switchUser = true;
-		
+
 		if (principal != null) {
 			log.info("Got admin session = " + sess + " trying to sudo to "
 					+ principal.getName());
 
-			if (switchUser) {
-				sudo.sudo(sess, sess, principal.getName());
-				log.info("Sudo to " + principal.getName()
-						+ "successful for sess=" + sess);
-			}
+			sudo.sudo(sess, sess, principal.getName());
+			log.info("Sudo to " + principal.getName() + "successful for sess="
+					+ sess);
 		}
 		return sess;
 	}
@@ -206,6 +203,7 @@ public class ConfluenceConnector implements RemoteConnector {
 		log.info("Logging in using admin user = " + adminUser);
 		SudoSoap sudo = getSudoLocator().getsudo();
 		String sess = sudo.login(adminUser, adminPassword);
+		log.info("Got admin session = " + sess);
 		return sess;
 	}
 
@@ -214,6 +212,9 @@ public class ConfluenceConnector implements RemoteConnector {
 			RemoteContext remoteContext) {
 		ConfluenceSoapService conf;
 		try {
+
+			// Let's do this as admin, so that if the current user hasn't yet
+			// logged into Confluence it won't bomb.
 			conf = getConfLocator().getConfluenceserviceV1();
 			String sess = loginAdmin();
 
@@ -242,7 +243,7 @@ public class ConfluenceConnector implements RemoteConnector {
 			String localContext, RemoteContext remoteContext) {
 
 		// unimplementable for confluence as there is no remote procedure call
-		// to retrieve this information
+		// to retrieve this information (!)
 		return null;
 
 	}
@@ -277,6 +278,7 @@ public class ConfluenceConnector implements RemoteConnector {
 			ConfluenceSoapService conf = getConfLocator()
 					.getConfluenceserviceV1();
 			String adminSess = loginAdmin();
+			String userSess = login(principal);
 
 			for (PermissionSet remotePermissions : permissionMap
 					.getPermissionSets()) {
@@ -294,12 +296,15 @@ public class ConfluenceConnector implements RemoteConnector {
 				System.err.println("groupName: " + groupName);
 				System.err.println("contextId: " + spaceId);
 
+				// creating the group can only be done by admin
 				if (!conf.hasGroup(adminSess, groupName)) {
 					conf.addGroup(adminSess, groupName);
 				}
 
-				boolean success = conf.addPermissionsToSpace(adminSess, permissions,
-						groupName, spaceId);
+				// adding the permissions should be done as the user
+				// so that permissions on the space are respected.
+				boolean success = conf.addPermissionsToSpace(userSess,
+						permissions, groupName, spaceId);
 
 				System.err.println("Call returned " + success);
 

@@ -16,7 +16,7 @@
 				result="flowScope.newRemoteContext"></evaluate>
 		</transition>
 		<transition on="cancel" to="cancel" />
-		<!--  <exception-handler bean="remoteConfluenceExceptionHandler"></exception-handler> -->
+		<exception-handler bean="remoteConfluenceExceptionHandler"></exception-handler>
 	</view-state>
 
 	<!-- success message -->

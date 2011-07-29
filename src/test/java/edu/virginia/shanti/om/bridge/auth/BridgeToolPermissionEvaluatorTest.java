@@ -1,7 +1,8 @@
 package edu.virginia.shanti.om.bridge.auth;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.Collection;
@@ -20,7 +21,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import edu.virginia.shanti.om.bridge.domain.Bridge;
-import edu.virginia.shanti.om.bridge.service.CurrentUser;
 import edu.virginia.shanti.om.bridge.service.CurrentUserImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
