@@ -155,7 +155,7 @@ public class ConfluenceConnector implements RemoteConnector {
 
 			ConfluenceSoapService conf = getConfLocator()
 					.getConfluenceserviceV1();
-			String sess = login(principal);
+			String sess = loginAdmin();  // login(principal);
 			RemoteSpace rs = new RemoteSpace();
 			rs.setKey(newContext.getContextId());
 			rs.setName(newContext.getContextLabel());
