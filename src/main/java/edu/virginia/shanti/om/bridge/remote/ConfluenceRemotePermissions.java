@@ -8,8 +8,21 @@ public class ConfluenceRemotePermissions implements RemotePermissions {
 
 	private Map<String, Boolean> perms = new HashMap<String, Boolean>();
 
-	private String[] possiblePermissions = {
-
+	private String[] possiblePermissions = {			
+			"EDITSPACE",
+			"EXPORTSPACE",
+			"SETSPACEPERMISSIONS",
+			"SETPAGEPERMISSIONS",
+			"REMOVEMAIL",
+			"REMOVEBLOG",
+			"EXPORTPAGE", 
+			"REMOVEATTACHMENT",
+			"CREATEATTACHMENT",
+			"VIEWSPACE",
+			"EDITBLOG",
+			"REMOVECOMMENT",
+			"REMOVEPAGE",
+			"COMMENT" 
 	};
 
 	public ConfluenceRemotePermissions(String[] permissions) {

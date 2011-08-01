@@ -23,7 +23,6 @@ import edu.virginia.shanti.om.bridge.domain.PermissionSet;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
-import edu.virginia.shanti.om.bridge.remote.ConfluenceRemotePermissions;
 import edu.virginia.shanti.om.bridge.remote.RemoteConnector;
 import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
 import edu.virginia.shanti.om.bridge.service.SiteAliasService;
@@ -31,8 +30,8 @@ import edu.virginia.shanti.om.bridge.soap.confluence.AuthenticationFailedExcepti
 import edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceSoapService;
 import edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceSoapServiceServiceLocator;
 import edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException;
+import edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException;
 import edu.virginia.shanti.om.bridge.soap.confluence.RemoteException;
-import edu.virginia.shanti.om.bridge.soap.confluence.RemotePermission;
 import edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpace;
 import edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpaceSummary;
 import edu.virginia.shanti.om.bridge.soap.confluence.RemoteUser;
@@ -45,6 +44,12 @@ import edu.virginia.shanti.om.bridge.soap.confluence.SudoSoapServiceLocator;
 public class ConfluenceConnector implements RemoteConnector {
 
 	private static final long serialVersionUID = 7461979436195181130L;
+
+	private static final String[] ALL_PERMISSIONS = { "EDITSPACE",
+			"EXPORTSPACE", "SETSPACEPERMISSIONS", "SETPAGEPERMISSIONS",
+			"REMOVEMAIL", "REMOVEBLOG", "EXPORTPAGE", "REMOVEATTACHMENT",
+			"CREATEATTACHMENT", "VIEWSPACE", "EDITBLOG", "REMOVECOMMENT",
+			"REMOVEPAGE", "COMMENT" };
 
 	private Log log = LogFactory.getLog(ConfluenceConnector.class);
 
@@ -155,12 +160,40 @@ public class ConfluenceConnector implements RemoteConnector {
 
 			ConfluenceSoapService conf = getConfLocator()
 					.getConfluenceserviceV1();
-			String sess = loginAdmin();  // login(principal);
+			String sess = loginAdmin(); // login(principal);
 			RemoteSpace rs = new RemoteSpace();
 			rs.setKey(newContext.getContextId());
 			rs.setName(newContext.getContextLabel());
 			rs.setDescription("Auto-generated space which needs more of a description.");
+
 			RemoteSpace newSpace = conf.addSpace(sess, rs);
+			newContext.setUrl(newSpace.getUrl());
+			newContext.persist();
+
+			boolean userExists = assureUser(principal);
+
+			if (userExists) {
+				String user = principal.getName();
+				String[] permissions = ALL_PERMISSIONS;
+				boolean success = conf.addPermissionsToSpace(sess, permissions,
+						user, newSpace.getKey());
+
+				if (success) {
+					log.info("Gave user " + user + " all permissions in "
+							+ newSpace.getKey());
+				} else {
+					log.warn("Failed to give user " + user
+							+ " all permissions in " + newSpace.getKey());
+					// throw new RuntimeException("Failed to give user " + user
+					// + " all permissions in " + newSpace.getKey());
+				}
+			}
+			else {
+				
+				throw new RuntimeException("User " + principal.getName() + " does not exist and could not be created!");
+				
+			}
+
 			try {
 				conf.logout(sess);
 			} catch (RemoteException e) {
@@ -170,13 +203,62 @@ public class ConfluenceConnector implements RemoteConnector {
 				// ignore
 				e.printStackTrace();
 			}
-			newContext.setUrl(newSpace.getUrl());
-			newContext.persist();
+
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 
 		return newContext;
+	}
+
+	private boolean assureUser(Principal principal) {
+		// TODO Auto-generated method stub
+		String user = principal.getName();
+
+		try {
+			String adminSess = loginAdmin();
+
+			ConfluenceSoapService conf = getConfLocator()
+					.getConfluenceserviceV1();
+
+			if (!conf.hasUser(adminSess, user)) {
+				createUser(conf, adminSess, user);
+			}
+
+			return true;
+
+		} catch (ServiceException e) {
+			log.warn(e);
+		} catch (InvalidSessionException e) {
+			log.warn(e);
+		} catch (RemoteException e) {
+			log.warn(e);
+		} catch (java.rmi.RemoteException e) {
+			log.warn(e);
+		}
+
+		// fall through only if there was a problem.
+		return false;
+
+	}
+
+	private void createUser(ConfluenceSoapService conf, String adminSess,
+			String user) throws java.rmi.RemoteException,
+			InvalidSessionException, NotPermittedException, RemoteException {
+		RemoteUser ruser = new RemoteUser();
+
+		String email;
+		if (user.contains("@")) {
+			email = user;
+		} else {
+			email = user + "@virginia.edu";
+		}
+
+		ruser.setName(user);
+		ruser.setEmail(email);
+		ruser.setFullname(user);
+
+		conf.addUser(adminSess, ruser, user);
 	}
 
 	private String login(Principal principal) throws java.rmi.RemoteException,
