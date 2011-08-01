@@ -59,15 +59,15 @@ public class BridgeToolAuthenticationFilter extends
 		Enumeration attributeNames = request.getAttributeNames();
 		while (attributeNames.hasMoreElements()) {
 			String attribute = (String) attributeNames.nextElement();
-			System.err.println(" ==> attribute " + attribute + " = "
-					+ request.getAttribute(attribute));
+//			System.err.println(" ==> attribute " + attribute + " = "
+//					+ request.getAttribute(attribute));
 		}
 
 		Enumeration parameterNames = request.getParameterNames();
 		while (parameterNames.hasMoreElements()) {
 			String parameter = (String) parameterNames.nextElement();
-			System.err.println(" ==> parameter " + parameter + " = "
-					+ request.getParameter(parameter));
+//			System.err.println(" ==> parameter " + parameter + " = "
+//					+ request.getParameter(parameter));
 		}
 
 		if (request.getParameter("role") != null && request.getParameter("site") != null) {

@@ -9,6 +9,7 @@
 	code="webflow_normalstate_title" /> <util:panel id="wiki" title="Wiki">
 	<base target="_blank" />
 	<form method="POST" target="_self">
+	
 	<div class="submit"><spring:message var="edit"
 		code="context_edit" />
 

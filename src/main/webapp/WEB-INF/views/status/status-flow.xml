@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="status" view="status/status">
+		<transition on="cancel" to="end-state" />
+		<transition on="configure" to="configure" />
+	</view-state>
+
+	<subflow-state id="configure" subflow="configure">
+		<!-- always check the config -->
+		<transition to="checkConfig" />
+	</subflow-state>
+
+	<action-state id="checkConfig">
+		<evaluate expression="bridgeService.checkConfig(config)" />
+		<transition to="configure" on="unconfigured" />
+		<transition to="end-state" on="configured" />
+	</action-state>
+
+	<end-state id="end-state" view="status/end-state" />
+
+</flow>

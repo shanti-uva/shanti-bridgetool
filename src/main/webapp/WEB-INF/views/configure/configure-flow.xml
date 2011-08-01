@@ -36,19 +36,20 @@
 	<action-state id="saveBridge">
 		<evaluate expression="bridgeServiceAction.save(bridge,messageContext)" />
 		<transition on="error" to="bridgeForm" />
-		<transition on="success" to="success" />
+		<transition on="success" to="done" />
 	</action-state>
 	
+	<!--
 	<view-state id="success" view="create/success" model="bridge">
 		<transition to="done" />
 	</view-state>
-	
+	-->	
 
 	<subflow-state id="createSpace" subflow="create">
 		<transition on="end-state" to="createSave">
-			<!--<evaluate expression="bridgeService.newBridge(config, newRemoteContext)" result="flowScope.bridge" />-->
+			<!-- <evaluate expression="bridgeService.newBridge(config, newRemoteContext)" result="flowScope.bridge" /> -->
 		</transition>
-		<transition on="cancel" to="done" />
+		<transition on="cancel" to="cancel" />
 	</subflow-state>
 
 	<action-state id="createSave">
@@ -56,6 +57,8 @@
 		<transition on-exception="java.lang.RuntimeException" to="bridgeForm" />
 		<transition to="done" />
 	</action-state>
+
+	<end-state id="cancel" />
 
 	<end-state id="done" />
 </flow>

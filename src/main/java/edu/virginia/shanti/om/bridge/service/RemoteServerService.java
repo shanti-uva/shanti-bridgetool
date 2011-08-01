@@ -154,11 +154,13 @@ public class RemoteServerService {
 	public void writePermissionMap(String localContext, RemoteContext remoteContext,
 			PermissionMap permissionMap) {
 		
-		System.err.println("===>" + remoteContext);
+		log.info("Writing permission map for: " + remoteContext);
 		
 		RemoteConnector connector = findRemoteConnector(remoteContext);
 		Authentication principal = currentUser.getAuthentication();
 
+		log.info("Found RemoteConnector: " + connector);
+		log.info("Using principal: " + principal);
 		connector.setRemotePermissions(principal, localContext, remoteContext, permissionMap);
 
 	}

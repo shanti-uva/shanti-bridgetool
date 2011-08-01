@@ -1,0 +1,20 @@
+<div xmlns:spring="http://www.springframework.org/tags" xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:util="urn:jsptagdir:/WEB-INF/tags/util" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />
+  <jsp:output omit-xml-declaration="yes" />
+  <spring:message var="title" code="webflow_status_title" htmlEscape="false" />
+  <util:panel id="title" title="${title}">
+    <h1>${fn:escapeXml(title)}</h1>
+    <form method="POST">
+    
+    	Here is where the current configuration is displayed.  From here you can configure a new Bridge (to a new remote context).
+    	Eventually, you will also be able to configure the existing bridge (e.g. change permission mappings).
+    
+      <div class="submit">
+        <spring:message var="cancel" code="button_cancel" htmlEscape="false" />
+        <spring:message var="configure" code="context_edit" htmlEscape="false" />
+        <input type="submit" id="cancel" name="_eventId_cancel" value="${fn:escapeXml(cancel)}" />
+        <input type="submit" id="configure" name="_eventId_configure" value="${fn:escapeXml(configure)}" />
+      </div>
+    </form>
+  </util:panel>
+</div>

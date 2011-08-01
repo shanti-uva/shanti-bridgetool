@@ -32,6 +32,11 @@
 		<!-- always check the config -->
 		<transition to="checkConfig" />
 	</subflow-state>
+	
+	<subflow-state id="status" subflow="status">
+		<!-- always check the config -->
+		<transition to="checkConfig" />
+	</subflow-state>
 
 	<!-- the normal configured state -->
 	<view-state id="normal" view="main/normal">
@@ -41,6 +46,6 @@
 			<evaluate expression="bridgeService.getSummaryMarkup(bridge)"
 				result="flowScope.markUp"></evaluate>
 		</on-entry>
-		<transition to="configure" on="edit" />
+		<transition to="status" on="edit" />
 	</view-state>
 </flow>

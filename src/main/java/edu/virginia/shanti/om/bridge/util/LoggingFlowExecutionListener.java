@@ -69,6 +69,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 		// TODO Auto-generated method stub
 		super.transitionExecuting(context, transition);
 		logger.warn("transitionExecuting:  " + transition);
+		System.err.println("transitionExecuting:  " + transition);
 	}
 
 	@Override
@@ -77,6 +78,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 		// TODO Auto-generated method stub
 		super.stateEntering(context, state);
 		logger.warn("stateEntering: " + state);
+		System.err.println("stateEntering: " + state);
 	}
 
 	@Override
@@ -85,6 +87,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 		// TODO Auto-generated method stub
 		super.viewRendered(context, view, viewState);
 		logger.warn("viewRendered: " + view + " -- viewState: " + viewState );
+		System.err.println("viewRendered: " + view + " -- viewState: " + viewState );
 	}
 
 	@Override
@@ -93,6 +96,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 		// TODO Auto-generated method stub
 		super.viewRendering(context, view, viewState);
 		logger.warn("viewRendering: " + view + " -- viewState:" + viewState );
+		System.err.println("viewRendering: " + view + " -- viewState:" + viewState);
 	}
 
 	@Override
@@ -101,6 +105,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 		// TODO Auto-generated method stub
 		super.stateEntered(context, previousState, newState);
 		logger.warn("stateEntered: " + newState + " -- prev state: " + previousState);
+		System.err.println("stateEntered: " + newState + " -- prev state: " + previousState);
 	}
 
 	@Override
@@ -131,6 +136,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 		// TODO Auto-generated method stub
 		super.sessionEnded(context, session, outcome, output);
 		logger.warn("sessionEnded");
+		System.err.println("sessionEnded");
 	}
 
 	@Override
@@ -140,6 +146,8 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 		logger.error("Webflow " + context.getActiveFlow()
 				+ " threw exception in " + context.getCurrentState(),
 				exception);
+		
+		exception.printStackTrace();
 	}
 
 }

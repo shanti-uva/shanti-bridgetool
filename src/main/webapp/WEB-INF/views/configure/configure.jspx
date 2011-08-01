@@ -84,19 +84,22 @@
 	</form:form>
 	
 </util:panel>
-</c:when>
+
+	</c:when>
 <c:otherwise>
 <util:panel id="unconfigured" title="Unconfigured">
 
 This bridge is unconfigured and you do not have privileges to configure it.  Please consult the Owner or Administrator of this Worksite.
 
 </util:panel>
-
-
-
 </c:otherwise>
-
 </c:choose>
+
+<h3>~ OR ~</h3>
+<form:form>
+		<input type="submit" class="button" name="_eventId_cancel"
+			value="Cancel" />
+</form:form>
 
 
 

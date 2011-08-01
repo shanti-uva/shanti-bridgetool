@@ -16,6 +16,7 @@
         <menu:item id="i_flows_configure" messageCode="webflow_menu_enter" url="/configure" z="yxZOXg9sB3BGSgUusk6wAXE6108="/>
         <menu:item id="i_flows_sampleflow" messageCode="webflow_menu_enter" url="/sampleflow" z="JMM+dAVQySYHXliwJ5d5AQocPfk="/>
         <menu:item id="i_flows_create" messageCode="webflow_menu_enter" url="/create" z="I1YK7YvdulXR02xIsnz1TZzi8GE="/>
+        <menu:item id="i_flows_status" messageCode="webflow_menu_enter" url="/status" z="efWn4wVeFwWEMp5CZHOIq7XO+S0="/>
         </menu:category>
     <menu:category id="c_remoteserver" z="user-managed">
             <menu:item id="i_remoteserver_new" messageCode="global_menu_new" url="/remoteservers?form" z="user-managed"/>

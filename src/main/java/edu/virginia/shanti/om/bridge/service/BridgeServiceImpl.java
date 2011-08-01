@@ -157,6 +157,8 @@ public class BridgeServiceImpl implements BridgeService {
 		log.info("Bridge before persisting or merging: " + bridge);
 		
 		RemoteContext rc = bridge.getRemoteContext();
+		
+		log.info("RemoteContext from Bridge: " + rc);
 
 		// Update RemoteContext if it already exists, create if it doesn't
 		List<RemoteContext> list = RemoteContext
@@ -207,7 +209,7 @@ public class BridgeServiceImpl implements BridgeService {
 			System.err.println("generated alias: " + siteAlias);
 		}
 
-		System.err.println("using alias: " + siteAlias);
+		log.info("using alias: " + siteAlias);
 		siteAliasService.registerAlias(siteAlias, bridge);
 
 		//
