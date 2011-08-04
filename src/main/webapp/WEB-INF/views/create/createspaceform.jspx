@@ -29,18 +29,25 @@
 			<tr>
 				<td>Space Title</td>
 				<td><form:input path="title" /></td>
+				<td>This the title for your new Confluence space.  You will want to make it descriptive, but keep it short enough to be easily readable.</td>
 			</tr>
 
 			<tr>
 				<td>Space Key</td>
 				<td><form:input path="key" /></td>
+				<td>This is a short code to identify your new space in urls.  e.g the space key for the Shanti wiki space is SHANTI.  So the url to that space is : <b>https://wiki.shanti.virginia.edu/display/SHANTI</b></td>
 			</tr>
 			
-			<tr><td colspan="2">
+			<tr><td colspan="3">
 							<span style="float: right;" class="buttonBar"><input type="hidden"
 					name="_flowExecutionKey" value="${flowExecutionKey}" /> <input
 					type="submit" class="button" name="_eventId_create" value="Create" />
 					</span>
+							<span style="float: right;" class="buttonBar"><input type="hidden"
+					name="_flowExecutionKey" value="${flowExecutionKey}" /> <input
+					type="submit" class="button" name="_eventId_cancel" value="Cancel" />
+					</span>
+					
 			</td>
 			</tr>
 

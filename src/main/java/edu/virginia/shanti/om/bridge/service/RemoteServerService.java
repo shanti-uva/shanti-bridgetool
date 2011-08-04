@@ -88,7 +88,7 @@ public class RemoteServerService {
 	 * @return List<RemoteContext> list of remote contexts
 	 */
 	public List<RemoteContextChoice> getRemoteContexts(String configurationName) {
-		// System.err.println("getRemoteContexts( " + configurationName +" )");
+		log.info("getRemoteContexts( " + configurationName +" ) called.");
 		RemoteServer remoteServer = getRemoteServer(configurationName);
 		if (remoteServer == null) {
 			throw new RuntimeException("Remote server \'" + configurationName
@@ -106,8 +106,7 @@ public class RemoteServerService {
 
 	public RemoteContext createRemoteContext(RemoteContext newContext) {
 
-		// System.err.println("Trying this config:  " + newContext);
-
+		log.info("Trying this config:  " + newContext);
 		RemoteConnector connector = findRemoteConnector(newContext);
 		RemoteContext newRemoteContext = connector.createRemoteContext(
 				currentUser.getAuthentication(), newContext);
@@ -125,7 +124,9 @@ public class RemoteServerService {
 
 	public RemoteContext createRemoteContext(ConfluenceSpaceForm spaceForm) {
 		RemoteContext rc = new RemoteContext();
+		log.info("populating remote context from spaceForm: " + spaceForm);
 		rc.populate(spaceForm);
+		log.info("Trying to create remote context: " + rc); 
 		return createRemoteContext(rc);
 	}
 

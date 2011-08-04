@@ -3,30 +3,32 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
-	<action-state id="choose">
-		<evaluate expression="bridgeService.checkConfig(config)" />
-		<transition on="configured" to="edit" />
+	<action-state id="setup">
+		<evaluate expression="bridgeServiceAction.setup(flowRequestContext)" />
+		<transition on="success" to="checkConfig" />
+		<transition on="error" to="error" />
+	</action-state>
+	
+	<action-state id="checkConfig">
+		<evaluate expression="bridgeServiceAction.checkConfig(flowRequestContext)" />
+		<transition on="configured" to="prepareForm" />
 		<transition on="unconfigured" to="newBridge" />
+		<transition on="error" to="configError" />
 	</action-state>
 
 	<action-state id="newBridge">
-		<evaluate expression="bridgeService.newBridge(config)"
-			result="flowScope.bridge" />
-		<transition to="bridgeForm" />
+		<evaluate expression="bridgeServiceAction.newBridge(config,flowRequestContext)" />
+		<transition on="success" to="bridgeForm" />
+		<transition on="error" to="configError" />
 	</action-state>
-
-	<action-state id="edit">
-		<evaluate expression="bridgeService.getBridge(config)"
-			result="flowScope.bridge" />
-		<transition to="bridgeForm" />
+	
+	<action-state id="prepareForm">
+		<evaluate expression="bridgeServiceAction.prepareForm(flowRequestContext)" />
+		<transition on="success" to="bridgeForm" />
+		<transition on="error" to="configError" />
 	</action-state>
-
+	
 	<view-state id="bridgeForm" model="bridge" view="configure/configure">
-		<on-entry>
-			<evaluate
-				expression="remoteServerService.getRemoteContexts(config.remoteService)"
-				result="flowScope.remoteContexts"></evaluate>
-		</on-entry>
 		<transition on="save" to="saveBridge" bind="true" />
 		<transition on="cancel" to="cancel" bind="false" />
 		<transition on="createSpace" to="createSpace" bind="false" />
@@ -34,7 +36,7 @@
 	</view-state>
 	
 	<action-state id="saveBridge">
-		<evaluate expression="bridgeServiceAction.save(bridge,messageContext)" />
+		<evaluate expression="bridgeServiceAction.save(bridge,flowRequestContext)" />
 		<transition on="error" to="bridgeForm" />
 		<transition on="success" to="success" />
 	</action-state>
@@ -46,9 +48,8 @@
 
 	<subflow-state id="createSpace" subflow="create">
 		<transition on="end-state" to="createSave">
-			<!--<evaluate expression="bridgeService.newBridge(config, newRemoteContext)" result="flowScope.bridge" />-->
 		</transition>
-		<transition on="cancel" to="done" />
+		<transition on="cancel" to="checkConfig" />
 	</subflow-state>
 
 	<action-state id="createSave">
@@ -56,6 +57,8 @@
 		<transition on-exception="java.lang.RuntimeException" to="bridgeForm" />
 		<transition to="done" />
 	</action-state>
+
+	<end-state id="cancel" />
 
 	<end-state id="done" />
 </flow>

@@ -41,9 +41,10 @@ public class RemoteConfluenceExceptionHandler implements
 		if (testState instanceof ViewState) {
 			ViewState viewState = (ViewState) testState;
 			try {
+//			   context.getExternalContext().requestFlowExecutionRedirect();
 				viewState.getViewFactory().getView(context).render();
 				log.info(ex);
-			} catch (IOException e) {
+			} catch (Exception e) {
 				// Properly handle rendering errors here
 				log.info(e);
 				log.info("Original exception: " + ex);

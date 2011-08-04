@@ -112,7 +112,7 @@ public class ConfluenceConnector implements RemoteConnector {
 
 			for (RemoteSpaceSummary summary : spaces) {
 
-				System.err.print(summary);
+				// System.err.print(summary);
 
 				RemoteContextChoice choice = new RemoteContextChoice();
 				choice.setContextId(summary.getKey());
@@ -211,9 +211,9 @@ public class ConfluenceConnector implements RemoteConnector {
 		return newContext;
 	}
 
-	private boolean assureUser(Principal principal) {
+	protected boolean assureUser(Principal principal) {
 		// TODO Auto-generated method stub
-		String user = principal.getName();
+		String user = principal.getName().toLowerCase();
 
 		try {
 			String adminSess = loginAdmin();
@@ -245,44 +245,48 @@ public class ConfluenceConnector implements RemoteConnector {
 	private void createUser(ConfluenceSoapService conf, String adminSess,
 			String user) throws java.rmi.RemoteException,
 			InvalidSessionException, NotPermittedException, RemoteException {
-		RemoteUser ruser = new RemoteUser();
 
-		String email;
-		if (user.contains("@")) {
-			email = user;
-		} else {
-			email = user + "@virginia.edu";
-		}
+		RemoteUser ruser = new RemoteUser();
+		String email = determineEmail(user);
 
 		ruser.setName(user);
 		ruser.setEmail(email);
 		ruser.setFullname(user);
 
 		conf.addUser(adminSess, ruser, user);
+		
+	}
+
+	private String determineEmail(String user) {
+		String email;
+		if (user.contains("@")) {
+			email = user;
+		} else {
+			email = user + "@virginia.edu";
+		}
+		return email;
 	}
 
 	private String login(Principal principal) throws java.rmi.RemoteException,
 			AuthenticationFailedException, RemoteException, ServiceException {
 
 		SudoSoap sudo = getSudoLocator().getsudo();
-		// ConfluenceSoapService conf =
-		// getConfLocator().getConfluenceserviceV1();
 		String sess = loginAdmin();
-
-		if (principal != null) {
-			log.info("Got admin session = " + sess + " trying to sudo to "
-					+ principal.getName());
-
-			sudo.sudo(sess, sess, principal.getName());
-			log.info("Sudo to " + principal.getName() + "successful for sess="
-					+ sess);
+		
+		if (principal == null) {
+			throw new RuntimeException( "Principal cannot be null");
 		}
+		
+		sudo.sudo(sess, sess, principal.getName());
+		log.info("Sudo to " + principal.getName() + "successful for sess="
+				+ sess);
+		
 		return sess;
 	}
 
 	private String loginAdmin() throws java.rmi.RemoteException,
 			AuthenticationFailedException, RemoteException, ServiceException {
-		log.info("Logging in using admin user = " + adminUser);
+
 		SudoSoap sudo = getSudoLocator().getsudo();
 		String sess = sudo.login(adminUser, adminPassword);
 		log.info("Got admin session = " + sess);
@@ -297,11 +301,11 @@ public class ConfluenceConnector implements RemoteConnector {
 
 			// Let's do this as admin, so that if the current user hasn't yet
 			// logged into Confluence it won't bomb.
+			
 			conf = getConfLocator().getConfluenceserviceV1();
 			String sess = loginAdmin();
 
 			String spacekey = remoteContext.getContextId();
-
 			RemoteSpace space = conf.getSpace(sess, spacekey);
 
 			long pageid = space.getHomePage();

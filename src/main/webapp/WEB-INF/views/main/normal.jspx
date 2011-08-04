@@ -21,6 +21,16 @@
 			target="_self" />
 	</c:if>
 	
+	<c:if
+		test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">		
+		<util:panel id="Error" title="Error">
+			<c:forEach items="${flowRequestContext.messageContext.allMessages}"
+				var="message">
+				<div class="error">${message.text}</div>
+			</c:forEach>
+		</util:panel>
+	</c:if>
+	
 	</div>
 
 	</div>

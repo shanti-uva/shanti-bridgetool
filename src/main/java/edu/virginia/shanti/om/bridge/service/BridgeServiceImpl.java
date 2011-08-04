@@ -45,11 +45,9 @@ public class BridgeServiceImpl implements BridgeService {
 	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#checkConfig(edu.virginia.shanti.om.bridge.form.ConfigBean)
 	 */
 	@Override
-	public String checkConfig(ConfigBean config) {
-		log.info("XXX config = " + config);
+	public boolean checkConfig(ConfigBean config) {
 		List<Bridge> bridgeList = getBridges(config);
-		String conf = (bridgeList.isEmpty()) ? "unconfigured" : "configured";
-		return conf;
+		return !bridgeList.isEmpty();
 	}
 
 	/* (non-Javadoc)

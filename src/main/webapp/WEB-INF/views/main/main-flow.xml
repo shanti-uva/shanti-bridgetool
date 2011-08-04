@@ -4,43 +4,38 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
 	<action-state id="setup">
-		<evaluate expression="remoteServerService.getAllRemoteServers()"
-			result="flowScope.remoteServers" />
-		<transition to="start" />
-	</action-state>
-
-	<action-state id="start">
-		<evaluate
-			expression="bridgeService.populateConfigFromContext(flowRequestContext)"
-			result="conversationScope.config" />
-			<transition to="checkConfig"/>
+		<evaluate expression="bridgeServiceAction.setup(flowRequestContext)" />
+		<transition on="success" to="checkConfig" />
+		<transition on="error" to="error" />
 	</action-state>
 
 	<view-state id="debug" view="main/debug-entry" model="config">
-		<transition to="checkConfig">
-		</transition>
+		<transition to="checkConfig" />
 		<!-- regardless of the result, lets checkConfig -->
 	</view-state>
 
 	<action-state id="checkConfig">
-		<evaluate expression="bridgeService.checkConfig(config)" />
-		<transition to="configure" on="unconfigured" />
-		<transition to="normal" on="configured" />
+		<evaluate
+			expression="bridgeServiceAction.checkConfig(flowRequestContext)" />
+		<transition on="unconfigured" to="configure" />
+		<transition on="configured" to="normal" />
+		<transition on="error" to="error" />
 	</action-state>
 
 	<subflow-state id="configure" subflow="configure">
-		<!-- always check the config -->
+		<!-- always check the config after returning from configure -->
 		<transition to="checkConfig" />
 	</subflow-state>
 
 	<!-- the normal configured state -->
-	<view-state id="normal" view="main/normal">
-		<on-entry>
-			<evaluate expression="bridgeService.getBridge(config)"
-				result="flowScope.bridge"></evaluate>
-			<evaluate expression="bridgeService.getSummaryMarkup(bridge)"
-				result="flowScope.markUp"></evaluate>
-		</on-entry>
+	<action-state id="normal">
+		<evaluate expression="bridgeServiceAction.prepareNormalView(flowRequestContext)" />
+		<transition on="success" to="normalView" />
+		<transition on="error" to="normalView" />
+	</action-state>
+	
+	<view-state id="normalView" view="main/normal">
 		<transition to="configure" on="edit" />
+		<!--   exception-handler bean="remoteConfluenceExceptionHandler" / -->
 	</view-state>
 </flow>

@@ -94,7 +94,7 @@ public class BridgeServiceTest {
 	public void testSaveBridge() throws MalformedURLException, ServiceException, RemoteException {
 
 		setupMockPermissionMap();
-		
+	
 		String serverId = "sakai11";
 		
 		// login and get session
@@ -130,9 +130,9 @@ public class BridgeServiceTest {
 		bridgeService.save(bridge);
 		
 		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance(TEST_REAL_USER,TEST_REAL_SITEID, null, "shanti-wiki", System.currentTimeMillis())),
-				equalTo("configured"));
+				equalTo(true));
 		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance(TEST_REAL_USER,"secondLocalContext",
-				"secondLocalSubContext", "shanti-wiki", System.currentTimeMillis())), equalTo("unconfigured"));
+				"secondLocalSubContext", "shanti-wiki", System.currentTimeMillis())), equalTo(false));
 	}
 
 	private void setupMockPermissionMap() {

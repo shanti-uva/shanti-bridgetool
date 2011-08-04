@@ -4,6 +4,7 @@
 package edu.virginia.shanti.om.bridge.webflow;
 
 import edu.virginia.shanti.om.bridge.service.BridgeService;
+import edu.virginia.shanti.om.bridge.service.RemoteServerService;
 import org.apache.commons.logging.Log;
 
 privileged aspect BridgeServiceAction_Roo_JavaBean {
@@ -22,6 +23,14 @@ privileged aspect BridgeServiceAction_Roo_JavaBean {
     
     public void BridgeServiceAction.setBridgeService(BridgeService bridgeService) {
         this.bridgeService = bridgeService;
+    }
+    
+    public RemoteServerService BridgeServiceAction.getRemoteServerService() {
+        return this.remoteServerService;
+    }
+    
+    public void BridgeServiceAction.setRemoteServerService(RemoteServerService remoteServerService) {
+        this.remoteServerService = remoteServerService;
     }
     
 }

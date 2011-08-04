@@ -11,7 +11,7 @@ import edu.virginia.shanti.om.bridge.form.ConfigBean;
 
 public interface BridgeService {
 
-	String checkConfig(ConfigBean config);
+	boolean checkConfig(ConfigBean config);
 
 	List<Bridge> getBridges(ConfigBean config);
 
