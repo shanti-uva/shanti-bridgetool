@@ -9,4 +9,5 @@ public class BridgeIntegrationTest {
     @Test
     public void testMarkerMethod() {
     }
+    
 }

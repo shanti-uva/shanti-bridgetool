@@ -43,6 +43,10 @@ public class BridgeToolFlowUrlHandler extends FilenameFlowUrlHandler {
 			request.setAttribute("localSubContext",path[2]);
 			request.setAttribute("user", path[3]);
 			
+			//
+			
+			
+			
 //			System.err.println("Adding to request attributes: localContext=" + path[1] + " localSubContext=" + path[2] + " user=" + path[3]);
 		}
 		

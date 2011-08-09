@@ -83,9 +83,9 @@ public class BridgeServiceTest {
 	public void testCheckConfig() {
 
 		// these should not be configured yet.
-		assertEquals("unconfigured",
+		assertEquals(false,
 				bridgeService.checkConfig(BasicConfigBean.getInstance(TEST_REAL_USER,"firstLocalContext", null, "serviceName",System.currentTimeMillis())));
-		assertEquals("unconfigured", bridgeService.checkConfig(BasicConfigBean.getInstance(
+		assertEquals(false, bridgeService.checkConfig(BasicConfigBean.getInstance(
 				TEST_REAL_USER,"secondLocalContext", "secondLocalSubContext", "serviceName",System.currentTimeMillis())));
 	}
 

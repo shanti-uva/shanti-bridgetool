@@ -103,6 +103,10 @@ public class ConfluenceConnector implements RemoteConnector {
 		try {
 			ConfluenceSoapService conf = getConfLocator()
 					.getConfluenceserviceV1();
+			
+//			if (!assureUser(principal)) {
+//				throw new RuntimeException("User " + principal.getName() + " is not a confluence user, and could not be created.");
+//			}
 
 			String sess = login(principal);
 
@@ -128,15 +132,19 @@ public class ConfluenceConnector implements RemoteConnector {
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log.warn(e);
 		} catch (AuthenticationFailedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log.warn(e);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log.warn(e);
 		} catch (java.rmi.RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			log.warn(e);
 		}
 		return null;
 	}
@@ -272,6 +280,10 @@ public class ConfluenceConnector implements RemoteConnector {
 
 		SudoSoap sudo = getSudoLocator().getsudo();
 		String sess = loginAdmin();
+		
+		if (!assureUser(principal)) {
+			throw new RuntimeException("Could not find or create user " + principal.getName());
+		}
 		
 		if (principal == null) {
 			throw new RuntimeException( "Principal cannot be null");
