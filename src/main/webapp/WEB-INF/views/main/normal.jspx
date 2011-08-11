@@ -14,10 +14,9 @@
 
 	<div style="font-size: 2em">Visit: <a style="font-size: 1em"
 		href="${bridge.remoteContext.url}" target="_blank">${bridge.remoteContext.contextLabel}</a>
-
 	<c:if test="${bridge.admin}">
 		<input style="float: right; margin-bottom: 2 em" type="submit"
-			id="edit" name="_eventId_edit" value="${fn:escapeXml(edit)}"
+			id="configure" name="_eventId_configure" value="${fn:escapeXml(edit)}"
 			target="_self" />
 	</c:if>
 	

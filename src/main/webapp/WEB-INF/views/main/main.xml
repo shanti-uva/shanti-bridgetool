@@ -6,7 +6,6 @@
 	<action-state id="setup">
 		<evaluate expression="bridgeServiceAction.setup(flowRequestContext)" />
 		<transition on="success" to="checkConfig" />
-		<transition on="error" to="error" />
 	</action-state>
 
 	<view-state id="debug" view="main/debug-entry" model="config">
@@ -17,25 +16,36 @@
 	<action-state id="checkConfig">
 		<evaluate
 			expression="bridgeServiceAction.checkConfig(flowRequestContext)" />
-		<transition on="unconfigured" to="configure" />
-		<transition on="configured" to="normal" />
-		<transition on="error" to="error" />
+		<transition on="unconfigured" to="config" />
+		<transition on="configured" to="prepare" />
 	</action-state>
 
-	<subflow-state id="configure" subflow="configure">
+	<subflow-state subflow="choose" id="choose">
 		<!-- always check the config after returning from configure -->
-		<transition to="checkConfig" />
+		<transition to="update" />
 	</subflow-state>
 
 	<!-- the normal configured state -->
-	<action-state id="normal">
+	<action-state id="prepare">
 		<evaluate expression="bridgeServiceAction.prepareNormalView(flowRequestContext)" />
-		<transition on="success" to="normalView" />
-		<transition on="error" to="normalView" />
+		<transition on="success" to="normal" />
+		<transition on="error" to="config" />
+	</action-state>
+
+	<view-state id="normal" view="main/normal">	
+		<!--   exception-handler bean="remoteConfluenceExceptionHandler" / -->
+		<transition on="configure" to="config"></transition>
+	</view-state>
+	
+	<action-state id="update">
+		<evaluate expression="bridgeServiceAction.prepareNormalView(flowRequestContext)" />
+		<transition on="success" to="config" />
+		<transition on="error" to="config" />
 	</action-state>
 	
-	<view-state id="normalView" view="main/normal">
-		<transition to="configure" on="edit" />
-		<!--   exception-handler bean="remoteConfluenceExceptionHandler" / -->
+	<view-state id="config" model="bridge"
+		view="main/config">
+		<transition on="choose" to="choose" />
+		<transition on="done" to="normal" />
 	</view-state>
 </flow>

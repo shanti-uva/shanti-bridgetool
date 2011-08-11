@@ -46,7 +46,10 @@
 	
 	<!-- The registry of executable flow definitions -->
 	<webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices" base-path="/WEB-INF/views">
-		<webflow:flow-location-pattern value="/**/*flow.xml" />
+		<webflow:flow-location path="/main/main.xml" id="main" />
+		<webflow:flow-location path="/create/create.xml" id="create" />
+		<webflow:flow-location path="/choose/choose.xml" id="choose" />
+		<!--  <webflow:flow-location-pattern value="/**/*flow.xml" /> -->
 	</webflow:flow-registry>
 
 	<!-- Plugs in a custom creator for Web Flow views -->

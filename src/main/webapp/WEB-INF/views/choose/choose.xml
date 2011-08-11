@@ -6,29 +6,25 @@
 	<action-state id="setup">
 		<evaluate expression="bridgeServiceAction.setup(flowRequestContext)" />
 		<transition on="success" to="checkConfig" />
-		<transition on="error" to="error" />
 	</action-state>
 	
 	<action-state id="checkConfig">
 		<evaluate expression="bridgeServiceAction.checkConfig(flowRequestContext)" />
 		<transition on="configured" to="prepareForm" />
 		<transition on="unconfigured" to="newBridge" />
-		<transition on="error" to="configError" />
 	</action-state>
 
 	<action-state id="newBridge">
 		<evaluate expression="bridgeServiceAction.newBridge(config,flowRequestContext)" />
 		<transition on="success" to="bridgeForm" />
-		<transition on="error" to="configError" />
 	</action-state>
 	
 	<action-state id="prepareForm">
 		<evaluate expression="bridgeServiceAction.prepareForm(flowRequestContext)" />
 		<transition on="success" to="bridgeForm" />
-		<transition on="error" to="configError" />
 	</action-state>
 	
-	<view-state id="bridgeForm" model="bridge" view="configure/configure">
+	<view-state id="bridgeForm" model="bridge" view="choose/choose">
 		<transition on="save" to="saveBridge" bind="true" />
 		<transition on="cancel" to="cancel" bind="false" />
 		<transition on="createSpace" to="createSpace" bind="false" />
@@ -38,14 +34,13 @@
 	<action-state id="saveBridge">
 		<evaluate expression="bridgeServiceAction.save(bridge,flowRequestContext)" />
 		<transition on="error" to="bridgeForm" />
-		<transition on="success" to="success" />
+		<transition on="success" to="done" />
 	</action-state>
 	
-	<view-state id="success" view="create/success" model="bridge">
+	<view-state id="success" view="choose/choice" model="bridge">
 		<transition to="done" />
 	</view-state>
 	
-
 	<subflow-state id="createSpace" subflow="create">
 		<transition on="end-state" to="createSave">
 		</transition>
@@ -61,4 +56,5 @@
 	<end-state id="cancel" />
 
 	<end-state id="done" />
+	
 </flow>

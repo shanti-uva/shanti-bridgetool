@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webflow-project-description>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.7.1.201107082359-RELEASE]]></pluginVersion>
+	<configs>
+		<config>
+			<file>src/main/webapp/WEB-INF/views/create/create.xml</file>
+			<name><![CDATA[create]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/views/main/main.xml</file>
+			<name><![CDATA[main]]></name>
+		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/views/choose/choose.xml</file>
+			<name><![CDATA[choose]]></name>
+		</config>
+	</configs>
+</webflow-project-description>

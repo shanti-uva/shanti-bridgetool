@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <flow xmlns="http://www.springframework.org/schema/webflow"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" >
 
 	<on-start>
 		<evaluate expression="confluenceSpaceForm" result="flowScope.confluenceSpaceForm"></evaluate>
@@ -10,7 +10,6 @@
 	<action-state id="setup">
 		<evaluate expression="bridgeServiceAction.setupCreateForm(flowRequestContext)" />
 		<transition on="success" to="createspaceform" />
-		<transition on="error" to="error" />
 	</action-state>
 
 	<view-state id="createspaceform" view="create/createspaceform"
@@ -21,7 +20,7 @@
 				result="flowScope.newRemoteContext"></evaluate>
 		</transition>
 		<transition on="cancel" to="cancel" />
-		<exception-handler bean="remoteConfluenceExceptionHandler"></exception-handler>
+		<!--  <exception-handler bean="remoteConfluenceExceptionHandler"></exception-handler> -->
 	</view-state>
 
 	<!-- success message -->
