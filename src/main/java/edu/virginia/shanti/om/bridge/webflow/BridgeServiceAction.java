@@ -1,5 +1,8 @@
 package edu.virginia.shanti.om.bridge.webflow;
 
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -43,8 +46,9 @@ public class BridgeServiceAction {
 
 	public String checkConfig(RequestContext context) {
 		try {
-			
-			ConfigBean config = (ConfigBean) context.getFlowScope().get("config");
+
+			ConfigBean config = (ConfigBean) context.getFlowScope().get(
+					"config");
 			return (bridgeService.checkConfig(config)) ? "configured"
 					: "unconfigured";
 		} catch (Exception e) {
@@ -71,7 +75,7 @@ public class BridgeServiceAction {
 			return handleError(e, context);
 		}
 	}
-	
+
 	public String setupCreateForm(RequestContext context) {
 		try {
 			populateConfig(context);
@@ -82,26 +86,29 @@ public class BridgeServiceAction {
 			return handleError(e, context);
 		}
 	}
-	
+
 	private void populateCreateForm(RequestContext context) {
-		/// TODO: eliminate dependence on ConfluenceSpaceForm!
+		// / TODO: eliminate dependence on ConfluenceSpaceForm!
 		ConfigBean config = (ConfigBean) context.getFlowScope().get("config");
-		ConfluenceSpaceForm confluenceSpaceForm = (ConfluenceSpaceForm)context.getFlowScope().get("confluenceSpaceForm");
+		ConfluenceSpaceForm confluenceSpaceForm = (ConfluenceSpaceForm) context
+				.getFlowScope().get("confluenceSpaceForm");
 		confluenceSpaceForm.populate(config);
 	}
 
 	public String prepareNormalView(RequestContext context) {
 		try {
 			populateBridge(context);
+
 			populateMarkup(context);
+
 			return "success";
 		} catch (Exception e) {
 			return handleError(e, context);
 		}
 	}
-	
+
 	public String prepareForm(RequestContext context) {
-		try {			
+		try {
 			populateBridge(context);
 			populateRemoteContexts(context);
 			return "success";
@@ -113,8 +120,13 @@ public class BridgeServiceAction {
 	private void populateMarkup(RequestContext context) {
 		if (context.getFlowScope().contains("bridge")) {
 			Bridge bridge = (Bridge) context.getFlowScope().get("bridge");
-			String markUp = bridgeService.getSummaryMarkup(bridge);
-			context.getFlowScope().put("markUp", markUp);
+
+			try {
+				String markUp = bridgeService.getSummaryMarkup(bridge);
+				context.getFlowScope().put("markUp", markUp);
+			} catch (Exception e) {
+				log.error(e);
+			}
 		} else {
 			throw new RuntimeException("bridge is not found in flow scope.");
 		}
@@ -122,9 +134,10 @@ public class BridgeServiceAction {
 
 	private void populateBridge(RequestContext context) {
 		if (context.getFlowScope().contains("config")) {
-			ConfigBean config = (ConfigBean) context.getFlowScope().get("config");
+			ConfigBean config = (ConfigBean) context.getFlowScope().get(
+					"config");
 			Bridge bridge = bridgeService.getBridge(config);
-			
+
 			if (bridge == null) {
 				bridge = bridgeService.newBridge(config);
 			}
@@ -139,13 +152,14 @@ public class BridgeServiceAction {
 				.getAllRemoteServers();
 		context.getFlowScope().put("remoteServers", remoteServers);
 	}
-	
+
 	private void populateRemoteContexts(RequestContext context) {
 		ConfigBean config = (ConfigBean) context.getFlowScope().get("config");
-		List<RemoteContextChoice> remoteContexts = remoteServerService.getRemoteContexts(config.getRemoteService());
+		List<RemoteContextChoice> remoteContexts = remoteServerService
+				.getRemoteContexts(config.getRemoteService());
 		context.getFlowScope().put("remoteContexts", remoteContexts);
 	}
-	
+
 	private void populateConfig(RequestContext context) {
 		ConfigBean configBean = bridgeService
 				.populateConfigFromContext(context);
@@ -154,9 +168,14 @@ public class BridgeServiceAction {
 
 	private String handleError(Exception e, RequestContext context) {
 		log.error(e);
+
+		StringWriter s = new StringWriter();
+		PrintWriter p = new PrintWriter(s);
+		e.printStackTrace(p);
+
 		context.getMessageContext().addMessage(
-				new MessageBuilder().error().defaultText(e.getMessage())
-						.build());
+				new MessageBuilder().error()
+						.defaultText("Error: " + s.toString()).build());
 		return "error";
 	}
 

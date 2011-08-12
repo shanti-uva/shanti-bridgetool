@@ -6,8 +6,8 @@
 	<action-state id="setup">
 		<evaluate expression="bridgeServiceAction.setup(flowRequestContext)" />
 		<transition on="success" to="checkConfig" />
-<!-- 		<exception-handler bean="remoteConfluenceExceptionHandler" />
- -->	</action-state>
+		<!-- <exception-handler bean="remoteConfluenceExceptionHandler" /> -->
+	</action-state>
 
 	<view-state id="debug" view="main/debug-entry" model="config">
 		<transition to="checkConfig" />
@@ -15,9 +15,8 @@
 	</view-state>
 
 	<action-state id="checkConfig">
-		<evaluate
-			expression="bridgeServiceAction.checkConfig(flowRequestContext)" />
-		<transition on="unconfigured" to="config" />
+		<evaluate expression="bridgeServiceAction.checkConfig(flowRequestContext)" />
+		<transition on="unconfigured" to="update" />
 		<transition on="configured" to="prepare" />
 	</action-state>
 
@@ -33,20 +32,20 @@
 		<transition on="error" to="config" />
 	</action-state>
 
-	<view-state id="normal" view="main/normal">	
-		<!--   exception-handler bean="remoteConfluenceExceptionHandler" / -->
+	<view-state id="normal" view="main/normal">
+		<!-- <exception-handler bean="remoteConfluenceExceptionHandler" /> -->
 		<transition on="configure" to="config"></transition>
 	</view-state>
-	
+
 	<action-state id="update">
 		<evaluate expression="bridgeServiceAction.prepareNormalView(flowRequestContext)" />
 		<transition on="success" to="config" />
 		<transition on="error" to="config" />
 	</action-state>
-	
-	<view-state id="config" model="bridge"
-		view="main/config">
+
+	<view-state id="config" model="bridge" view="main/config">
 		<transition on="choose" to="choose" />
 		<transition on="done" to="normal" />
+		<!-- <exception-handler bean="remoteConfluenceExceptionHandler" /> -->
 	</view-state>
 </flow>
