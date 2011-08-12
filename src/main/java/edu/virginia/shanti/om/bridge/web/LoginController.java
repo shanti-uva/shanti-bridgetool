@@ -43,7 +43,7 @@ public class LoginController {
     	// sanity check
     	Assert.assertTrue("illegal character in username", user.matches("[\\S]+"));
     	Assert.assertTrue("username too long: " + user.length(), user.length() < 64);
-    	Assert.assertTrue("illegal characeter in site", site.matches("[A-z0-9\\-]+"));
+    	Assert.assertTrue("illegal characeter in site", site.matches("[A-z0-9\\-~]+"));
     	Assert.assertTrue("site too long: " + site.length(), site.length() < 64);
     	Assert.assertTrue("placement too long: " + placement.length(), placement.length() < 64);
     	
