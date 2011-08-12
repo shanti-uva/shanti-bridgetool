@@ -124,6 +124,10 @@ public class BridgeServiceAction {
 		if (context.getFlowScope().contains("config")) {
 			ConfigBean config = (ConfigBean) context.getFlowScope().get("config");
 			Bridge bridge = bridgeService.getBridge(config);
+			
+			if (bridge == null) {
+				bridge = bridgeService.newBridge(config);
+			}
 			context.getFlowScope().put("bridge", bridge);
 		} else {
 			throw new RuntimeException("config is not found in flow scope.");

@@ -12,49 +12,85 @@
 
 	<form method="POST" target="_self">
 
-		<util:panel id="config" title="Current Configuration">
-			<div class="submit">
+		<c:choose>
+			<c:when test="${config == null}">
+				<util:panel id="Null" title="Error">Config is null!</util:panel>
+			</c:when>
+			<c:when test="${bridge == null}">
+				<util:panel id="Null" title="Error">Bridge is null!</util:panel>
 
-				<spring:message var="edit" code="context_edit" />
-				<div>
-					<c:if
-						test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">
-						<util:panel id="Error" title="Error">
-							<c:forEach
-								items="${flowRequestContext.messageContext.allMessages}"
-								var="message">
-								<div class="error">${message.text}</div>
-							</c:forEach>
-						</util:panel>
-					</c:if>
-
-
-					<table>
+				<util:panel id="Config" title="Config">
+						<table>
 						<tr>
-							<td>Remote Context Url</td>
-							<td>${bridge.remoteContext.url}</td>
+							<td>User</td>
+							<td>${config.user}</td>
 						</tr>
 						<tr>
-							<td>Context Label</td>
-							<td>${bridge.remoteContext.contextLabel}</td>
+							<td>Site Id</td>
+							<td>${config.siteId}</td>
 						</tr>
 
 						<tr>
-							<td>Markup</td>
-							<td>${fn:length(markUp) > 0}</td>
+							<td>remoteService</td>
+							<td>${config.remoteService}</td>
+						</tr>
+
+						<tr>
+							<td>Placement Id</td>
+							<td>${config.toolPlacementId}</td>
 						</tr>
 					</table>
-				</div>
-			</div>
+				</util:panel>
+			</c:when>
+			<c:otherwise>
+				<util:panel id="config" title="Current Configuration">
+					<div class="submit">
+						<spring:message var="edit" code="context_edit" />
+						<div>
+							<c:if
+								test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">
+								<util:panel id="Error" title="Error">
+									<c:forEach
+										items="${flowRequestContext.messageContext.allMessages}"
+										var="message">
+										<div class="error">${message.text}</div>
+									</c:forEach>
+								</util:panel>
+							</c:if>
 
-		</util:panel>
-		<c:if test="${bridge.admin}">
-			<input style="float: left; margin-bottom: 2 em" type="submit"
-				id="choose" name="_eventId_choose"
-				value="Edit Configuration" target="_self" />
-		</c:if>
 
-		<input style="float: left; margin-bottom: 2 em" type="submit"
+							<table>
+								<tr>
+									<td>Remote Context Url</td>
+									<td>${bridge.remoteContext.url}</td>
+								</tr>
+								<tr>
+									<td>Context Label</td>
+									<td>${bridge.remoteContext.contextLabel}</td>
+								</tr>
+
+								<tr>
+									<td>Markup</td>
+									<td>${fn:length(markUp) > 0}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+
+				</util:panel>
+
+				<c:if test="${bridge.admin}">
+					<input style="float: left; margin-bottom: 2 em" type="submit"
+						id="choose" name="_eventId_choose" value="Edit Configuration"
+						target="_self" />
+				</c:if>
+
+
+			</c:otherwise>
+
+		</c:choose>
+
+		<input style="margin-bottom: 2 em" type="submit"
 			id="done" name="_eventId_done" value="Done" target="_self" />
 
 	</form>

@@ -6,7 +6,8 @@
 	<action-state id="setup">
 		<evaluate expression="bridgeServiceAction.setup(flowRequestContext)" />
 		<transition on="success" to="checkConfig" />
-	</action-state>
+<!-- 		<exception-handler bean="remoteConfluenceExceptionHandler" />
+ -->	</action-state>
 
 	<view-state id="debug" view="main/debug-entry" model="config">
 		<transition to="checkConfig" />
