@@ -7,92 +7,71 @@
 		contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 	<spring:message var="title" code="webflow_normalstate_title" />
+	<util:panel id="config" title="Current Configuration">
 
-	<base target="_blank" />
+		<base target="_blank" />
 
-	<form method="POST" target="_self">
+		<form method="POST" target="_self">
 
-		<c:choose>
-			<c:when test="${config == null}">
-				<util:panel id="Null" title="Error">Config is null!</util:panel>
-			</c:when>
-			<c:when test="${bridge == null}">
-				<util:panel id="Null" title="Error">Bridge is null!</util:panel>
+			<input type="hidden" name="_flowExecutionKey"
+				value="${flowExecutionKey}" />
 
-				<util:panel id="Config" title="Config">
-						<table>
-						<tr>
-							<td>User</td>
-							<td>${config.user}</td>
-						</tr>
-						<tr>
-							<td>Site Id</td>
-							<td>${config.siteId}</td>
-						</tr>
+			<div class="submit">
+				<spring:message var="edit" code="context_edit" />
+				<div>
+					<c:if
+						test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">
+						<util:panel id="Error" title="Error">
+							<c:forEach
+								items="${flowRequestContext.messageContext.allMessages}"
+								var="message">
+								<div class="error">${message.text}</div>
+							</c:forEach>
+						</util:panel>
+					</c:if>
+				</div>
 
-						<tr>
-							<td>remoteService</td>
-							<td>${config.remoteService}</td>
-						</tr>
+				<c:choose>
+					<c:when test="${bridge.configured}">
+						<h2 style="display: inline;">${bridge.remoteContext.contextLabel}</h2>
+									(${bridge.remoteContext.url})
 
-						<tr>
-							<td>Placement Id</td>
-							<td>${config.toolPlacementId}</td>
-						</tr>
-					</table>
-				</util:panel>
-			</c:when>
-			<c:otherwise>
-				<util:panel id="config" title="Current Configuration">
-					<div class="submit">
-						<spring:message var="edit" code="context_edit" />
-						<div>
-							<c:if
-								test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">
-								<util:panel id="Error" title="Error">
-									<c:forEach
-										items="${flowRequestContext.messageContext.allMessages}"
-										var="message">
-										<div class="error">${message.text}</div>
-									</c:forEach>
-								</util:panel>
+						<div style="float: right">
+							<c:if test="${bridge.admin}">
+								<input type="submit" id="clear" name="_eventId_clear"
+									value="Clear" target="_self" />
 							</c:if>
+							<input style="margin-left: 1em" type="submit" id="done"
+								name="_eventId_done" value="Ok" target="_self" />
 
-
-							<table>
-								<tr>
-									<td>Remote Context Url</td>
-									<td>${bridge.remoteContext.url}</td>
-								</tr>
-								<tr>
-									<td>Context Label</td>
-									<td>${bridge.remoteContext.contextLabel}</td>
-								</tr>
-
-								<tr>
-									<td>Markup</td>
-									<td>${fn:length(markUp) > 0}</td>
-								</tr>
-							</table>
 						</div>
-					</div>
+					</c:when>
+					<c:otherwise>
 
-				</util:panel>
+						<c:choose>
+							<c:when test="${bridge.admin}">
+										
+								<p>
+									<input style="margin-left:1em; margin-right: 1em" type="submit" id="choose" name="_eventId_choose"
+										value="Choose an Existing Confluence Space" target="_self" />
 
-				<c:if test="${bridge.admin}">
-					<input style="float: left; margin-bottom: 2 em" type="submit"
-						id="choose" name="_eventId_choose" value="Edit Configuration"
-						target="_self" />
-				</c:if>
+									~ OR ~
 
+									<input style="margin-left:1em; margin-right: 1em" id="create" type="submit" class="button"
+										name="_eventId_create" value="Create New Confluence Space" />
+								</p>
+							</c:when>
+							<c:otherwise>
+								You do not have permission to configure it.  Please contact your professor or worksite administratpr. 
+							</c:otherwise>
+						</c:choose>
 
-			</c:otherwise>
+					</c:otherwise>
+				</c:choose>
+			</div>
 
-		</c:choose>
+		</form>
 
-		<input style="margin-bottom: 2 em" type="submit"
-			id="done" name="_eventId_done" value="Done" target="_self" />
-
-	</form>
+	</util:panel>
 
 </div>

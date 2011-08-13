@@ -40,4 +40,7 @@ public interface BridgeService {
 
 	String getSummaryMarkup(Bridge bridge);
 
+	@PreAuthorize("hasPermission(#bridge, 'admin')") 
+	void remove(Bridge bridge);
+
 }

@@ -30,6 +30,7 @@ privileged aspect BridgeDataOnDemand_Roo_DataOnDemand {
         setLocalSubContext(obj, index);
         setRemoteContext(obj, index);
         setPermissionMap(obj, index);
+        setInFrame(obj, index);
         return obj;
     }
     
@@ -66,6 +67,11 @@ privileged aspect BridgeDataOnDemand_Roo_DataOnDemand {
     private void BridgeDataOnDemand.setPermissionMap(Bridge obj, int index) {
         edu.virginia.shanti.om.bridge.domain.PermissionMap permissionMap = permissionMapDataOnDemand.getRandomPermissionMap();
         obj.setPermissionMap(permissionMap);
+    }
+    
+    private void BridgeDataOnDemand.setInFrame(Bridge obj, int index) {
+        java.lang.Boolean inFrame = true;
+        obj.setInFrame(inFrame);
     }
     
     public Bridge BridgeDataOnDemand.getSpecificBridge(int index) {

@@ -9,6 +9,7 @@
             <table:column id="c_edu_virginia_shanti_om_bridge_domain_Bridge_localSubContext" property="localSubContext" z="SHbSBftwGHc/OrhOHkRJuD+d/as="/>
             <table:column id="c_edu_virginia_shanti_om_bridge_domain_Bridge_remoteContext" property="remoteContext" z="n5PKGJ2tTewSRdkznyNM0xTNGj8="/>
             <table:column id="c_edu_virginia_shanti_om_bridge_domain_Bridge_permissionMap" property="permissionMap" z="jrlnzxCF8tL8Qwu/qXV1Az63B80="/>
+        <table:column id="c_edu_virginia_shanti_om_bridge_domain_Bridge_inFrame" property="inFrame" z="2qFwE83BuaKTZQUNy3y9WHKYiI0="/>
         </table:table>
     </page:list>
 </div>

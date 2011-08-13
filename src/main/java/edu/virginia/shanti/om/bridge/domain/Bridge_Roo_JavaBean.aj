@@ -49,4 +49,12 @@ privileged aspect Bridge_Roo_JavaBean {
         this.permissionMap = permissionMap;
     }
     
+    public boolean Bridge.isInFrame() {
+        return this.inFrame;
+    }
+    
+    public void Bridge.setInFrame(boolean inFrame) {
+        this.inFrame = inFrame;
+    }
+    
 }

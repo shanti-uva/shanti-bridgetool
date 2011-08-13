@@ -137,9 +137,14 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 	public void exceptionThrown(RequestContext context,
 			FlowExecutionException exception) {
 		super.exceptionThrown(context, exception);
-		logger.error("Webflow " + context.getActiveFlow()
-				+ " threw exception in " + context.getCurrentState(),
+		logger.error("Active Flow (" + context.getActiveFlow().getId()
+				+ ") threw exception in state " + context.getCurrentState(),
 				exception);
+		
+		logger.error("Current Event: " + context.getCurrentEvent());
+		logger.error("Current Transition: " + context.getCurrentTransition());
+		logger.error("Current View: " + context.getCurrentView());
+
 	}
 
 }

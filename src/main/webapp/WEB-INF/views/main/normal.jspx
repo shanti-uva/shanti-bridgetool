@@ -4,37 +4,41 @@
 	xmlns:security="http://www.springframework.org/security/tags"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"><jsp:directive.page
-	contentType="text/html;charset=UTF-8" /> <jsp:output
-	omit-xml-declaration="yes" /> <spring:message var="title"
-	code="webflow_normalstate_title" /> <util:panel id="wiki" title="Wiki">
-	<base target="_blank" />
-	<form method="POST" target="_self">
-	<div class="submit"><spring:message var="edit"
-		code="context_edit" />
+		contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<spring:message var="title" code="webflow_normalstate_title" />
+	<util:panel id="wiki" title="Wiki">
+		<base target="_blank" />
+		<form method="POST" target="_self">
+			<div class="submit">
+				<spring:message var="edit" code="context_edit" />
 
-	<div style="font-size: 2em">Visit: <a style="font-size: 1em"
-		href="${bridge.remoteContext.url}" target="_blank">${bridge.remoteContext.contextLabel}</a>
-	<c:if test="${bridge.admin}">
-		<input style="float: right; margin-bottom: 2 em" type="submit"
-			id="configure" name="_eventId_configure" value="${fn:escapeXml(edit)}"
-			target="_self" />
-	</c:if>
-	
-	<c:if
-		test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">		
-		<util:panel id="Error" title="Error">
-			<c:forEach items="${flowRequestContext.messageContext.allMessages}"
-				var="message">
-				<div class="error">${message.text}</div>
-			</c:forEach>
-		</util:panel>
-	</c:if>
-	
-	</div>
+				<div style="font-size: 2em">
+					Visit: <a style="font-size: 1em" href="${bridge.remoteContext.url}"
+						target="_blank">${bridge.remoteContext.contextLabel}</a>
+					<c:if test="${bridge.admin}">
+						<input style="float: right; margin-bottom: 2 em" type="submit"
+							id="configure" name="_eventId_configure"
+							value="${fn:escapeXml(edit)}" target="_self" />
+					</c:if>
 
-	</div>
-	</form>
+					<c:if
+						test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">
+						<util:panel id="Error" title="Error">
+							<c:forEach
+								items="${flowRequestContext.messageContext.allMessages}"
+								var="message">
+								<div class="error">${message.text}</div>
+							</c:forEach>
+						</util:panel>
+					</c:if>
 
-	<div class="synopsis" style="margin-top: 2em;">${markUp}</div>
+				</div>
 
-</util:panel></div>
+			</div>
+		</form>
+
+		<div class="synopsis" style="margin-top: 2em;">${markUp}</div>
+
+	</util:panel>
+</div>

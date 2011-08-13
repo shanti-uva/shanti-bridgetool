@@ -6,7 +6,6 @@
 	<action-state id="setup">
 		<evaluate expression="bridgeServiceAction.setup(flowRequestContext)" />
 		<transition on="success" to="checkConfig" />
-		<!-- <exception-handler bean="remoteConfluenceExceptionHandler" /> -->
 	</action-state>
 
 	<view-state id="debug" view="main/debug-entry" model="config">
@@ -21,7 +20,7 @@
 	</action-state>
 
 	<subflow-state subflow="choose" id="choose">
-		<!-- always check the config after returning from configure -->
+		<!-- always check the config after returning from choose -->
 		<transition to="update" />
 	</subflow-state>
 
@@ -29,23 +28,36 @@
 	<action-state id="prepare">
 		<evaluate expression="bridgeServiceAction.prepareNormalView(flowRequestContext)" />
 		<transition on="success" to="normal" />
-		<transition on="error" to="config" />
+		<transition on="error" to="showConfig" />
 	</action-state>
 
 	<view-state id="normal" view="main/normal">
-		<!-- <exception-handler bean="remoteConfluenceExceptionHandler" /> -->
-		<transition on="configure" to="config"></transition>
+		<transition on="configure" to="showConfig"></transition>
 	</view-state>
 
 	<action-state id="update">
-		<evaluate expression="bridgeServiceAction.prepareNormalView(flowRequestContext)" />
-		<transition on="success" to="config" />
-		<transition on="error" to="config" />
+		<evaluate expression="bridgeServiceAction.prepareForm(flowRequestContext)" />
+		<transition on="success" to="showConfig" />
 	</action-state>
 
-	<view-state id="config" model="bridge" view="main/config">
+	<view-state id="showConfig" model="bridge" view="main/config">
 		<transition on="choose" to="choose" />
-		<transition on="done" to="normal" />
-		<!-- <exception-handler bean="remoteConfluenceExceptionHandler" /> -->
+		<transition on="clear" to="clear" />
+		
+		<transition to="configure" on="configure" />
+		<transition to="prepare" on="done" validate="false"></transition>
+		<transition to="create" on="create"></transition>
 	</view-state>
+
+	<action-state id="clear">
+		<evaluate expression="bridgeServiceAction.delete(flowRequestContext)" />
+		<transition to="checkConfig" />
+	</action-state>
+
+	<subflow-state id="configure" subflow="configure">
+		<transition to="update" />
+	</subflow-state>
+	<subflow-state id="create" subflow="create">
+		<transition to="update"></transition>
+	</subflow-state>
 </flow>

@@ -25,6 +25,8 @@ import edu.virginia.shanti.om.bridge.service.RemoteServerService;
 @Component
 public class BridgeServiceAction {
 
+	private static final boolean failfast = true;
+
 	Log log = LogFactory.getLog(BridgeServiceAction.class);
 
 	@Autowired
@@ -39,6 +41,7 @@ public class BridgeServiceAction {
 			bridgeService.save(bridge);
 			return "success";
 		} catch (Exception e) {
+			log.error(e);
 			return handleError(e, context);
 		}
 
@@ -70,6 +73,7 @@ public class BridgeServiceAction {
 		try {
 			populateConfig(context);
 			populateRemoteServers(context);
+			populateRemoteContexts(context);
 			return "success";
 		} catch (Exception e) {
 			return handleError(e, context);
@@ -98,9 +102,7 @@ public class BridgeServiceAction {
 	public String prepareNormalView(RequestContext context) {
 		try {
 			populateBridge(context);
-
 			populateMarkup(context);
-
 			return "success";
 		} catch (Exception e) {
 			return handleError(e, context);
@@ -115,6 +117,30 @@ public class BridgeServiceAction {
 		} catch (Exception e) {
 			return handleError(e, context);
 		}
+	}
+	
+	public String delete(RequestContext context) {
+		try {
+			deleteBridge(context);
+			return "success";
+		} catch (Exception e) {
+			return handleError(e, context);
+		}
+	}
+
+	private void deleteBridge(RequestContext context) {
+		if (context.getFlowScope().contains("config")) {
+			ConfigBean config = (ConfigBean) context.getFlowScope().get(
+					"config");
+			Bridge bridge = bridgeService.getBridge(config);
+
+			if (bridge != null) {
+				bridgeService.remove(bridge);
+				context.getFlowScope().remove("bridge");
+			}
+		} else {
+			throw new RuntimeException("config is not found in flow scope.");
+		}		
 	}
 
 	private void populateMarkup(RequestContext context) {
@@ -168,6 +194,8 @@ public class BridgeServiceAction {
 
 	private String handleError(Exception e, RequestContext context) {
 		log.error(e);
+
+		// if (failfast)throw new RuntimeException(e);
 
 		StringWriter s = new StringWriter();
 		PrintWriter p = new PrintWriter(s);

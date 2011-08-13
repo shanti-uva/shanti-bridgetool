@@ -66,8 +66,9 @@ public class Bridge implements Serializable {
     /** permission map: sets of permissions that apply to this Bridged context */
     @ManyToOne
     private PermissionMap permissionMap;
-    
-    
+        
+    private boolean inFrame;
+  
     public boolean isAdmin() {
     	
     	if (bridgeToolPermissionEvaluator == null) {
@@ -85,6 +86,15 @@ public class Bridge implements Serializable {
         sb.append("RemoteName: ").append(getRemoteName()).append(", ");
         // sb.append("Admin: ").append(isAdmin());
         return sb.toString();
+    }
+    
+    public boolean isConfigured() {	
+    	return (getId() != null) 
+    			&& (getLocalContext() != null)
+    			&& (getLocalSubContext() != null)
+    			&& (getPermissionMap() != null)
+    			&& (getRemoteContext() != null)
+    			&& (getRemoteName() != null);
     }
     
     

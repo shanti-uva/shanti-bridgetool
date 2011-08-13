@@ -8,5 +8,6 @@
         <field:input field="localSubContext" id="c_edu_virginia_shanti_om_bridge_domain_Bridge_localSubContext" required="true" z="SqQ68Y/q7+knFpLL2YJsgvb5B0Y="/>
         <field:select field="remoteContext" id="c_edu_virginia_shanti_om_bridge_domain_Bridge_remoteContext" itemValue="id" items="${remotecontexts}" path="/remotecontexts" z="f9rvii62fUnSHm3F4esmf9oHmec="/>
         <field:select field="permissionMap" id="c_edu_virginia_shanti_om_bridge_domain_Bridge_permissionMap" itemValue="id" items="${permissionmaps}" path="/permissionmaps" z="dmawN3A0OiXNtukOMEHPw+xoo+s="/>
+    <field:checkbox field="inFrame" id="c_edu_virginia_shanti_om_bridge_domain_Bridge_inFrame" z="BOwUDXsshP1J2meo0PfuK47BY0g="/>
     </form:update>
 </div>

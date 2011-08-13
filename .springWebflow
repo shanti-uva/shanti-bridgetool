@@ -15,5 +15,9 @@
 			<file>src/main/webapp/WEB-INF/views/choose/choose.xml</file>
 			<name><![CDATA[choose]]></name>
 		</config>
+		<config>
+			<file>src/main/webapp/WEB-INF/views/configure/configure.xml</file>
+			<name><![CDATA[configure]]></name>
+		</config>
 	</configs>
 </webflow-project-description>

@@ -30,8 +30,8 @@ public class RemoteConfluenceExceptionHandler implements
 
 	public void handle(FlowExecutionException ex, RequestControlContext context) {
 		context.getMessageContext().addMessage(
-				new MessageBuilder().error().source(null)
-						.defaultText(findBusinessException(ex).getMessage())
+				new MessageBuilder().error()
+						.defaultText("Business Exception: " + findBusinessException(ex).getMessage())
 						.build());
 
 		Object testState = context.getCurrentState();
@@ -41,13 +41,14 @@ public class RemoteConfluenceExceptionHandler implements
 		if (testState instanceof ViewState) {
 			ViewState viewState = (ViewState) testState;
 			try {
-//			   context.getExternalContext().requestFlowExecutionRedirect();
-				viewState.getViewFactory().getView(context).render();
+				context.getExternalContext().requestFlowExecutionRedirect();
+				// viewState.getViewFactory().getView(context).render();
 				log.info(ex);
 			} catch (Exception e) {
 				// Properly handle rendering errors here
 				log.info(e);
 				log.info("Original exception: " + ex);
+				throw new RuntimeException("We are screwed!", e);
 			}
 		}
 

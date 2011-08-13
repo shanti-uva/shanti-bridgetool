@@ -315,4 +315,9 @@ public class BridgeServiceImpl implements BridgeService {
 		// this is an advised method that should throw an exception if false
 		return true;
 	}
+
+	@Override
+	public void remove(Bridge bridge) {
+		bridge.remove();	
+	}
 }
