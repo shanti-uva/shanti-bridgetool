@@ -7,7 +7,7 @@
 		contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 	<spring:message var="title" code="webflow_normalstate_title" />
-	<util:panel id="wiki" title="Wiki">
+	<!--  <util:panel id="wiki" title="Wiki"> -->
 		<base target="_blank" />
 		<form method="POST" target="_self">
 			<div class="submit">
@@ -18,7 +18,7 @@
 						target="_blank">${bridge.remoteContext.contextLabel}</a>
 					<c:if test="${bridge.admin}">
 						<input style="float: right; margin-bottom: 2 em" type="submit"
-							id="configure" name="_eventId_configure"
+							id="configure" name="_eventId_showConfig"
 							value="${fn:escapeXml(edit)}" target="_self" />
 					</c:if>
 
@@ -40,5 +40,5 @@
 
 		<div class="synopsis" style="margin-top: 2em;">${markUp}</div>
 
-	</util:panel>
+	<!--  </util:panel> -->
 </div>

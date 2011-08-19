@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
-    <definition extends="default" name="choose/*">
-        <put-attribute name="body" value="/WEB-INF/views/choose/{1}.jspx"/>
-    </definition>
+	<definition extends="default" name="choose/choose">
+		<put-attribute name="body">
+			<definition template="/WEB-INF/views/main/config.jspx">
+				<put-attribute name="configChoose"
+					value="/WEB-INF/views/choose/choose.jspx" />
+									<put-attribute name="spaceEditControl"
+					value="/WEB-INF/views/main/config-cancel-change.jspx" />
+			</definition>
+		</put-attribute>
+	</definition>
+
+	<definition extends="default" name="choose/*">
+		<put-attribute name="body" value="/WEB-INF/views/choose/{1}.jspx" />
+	</definition>
 </tiles-definitions>

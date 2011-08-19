@@ -11,7 +11,7 @@
 		<evaluate expression="bridgeServiceAction.setupCreateForm(flowRequestContext)" />
 		<transition on="success" to="createspaceform" />
 	</action-state>
-
+	
 	<view-state id="createspaceform" view="create/createspaceform"
 		model="confluenceSpaceForm">
 		<transition on="create" to="success">
@@ -20,6 +20,7 @@
 				result="flowScope.newRemoteContext"></evaluate>
 		</transition>
 		<transition on="cancel" to="cancel" />
+		<transition on="done" to="cancel" />
 		<exception-handler bean="remoteConfluenceExceptionHandler"></exception-handler>
 	</view-state>
 

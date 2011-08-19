@@ -35,7 +35,7 @@
 
 	<beans:bean id="containerAuthenticationEntryPoint"
 		class="edu.virginia.shanti.om.bridge.auth.ContainerAuthenticationEntryPoint">
-		<beans:property name="domainLogin" value="/error.htm" />
+		<beans:property name="domainLogin" value="/login" />
 	</beans:bean>
 
 

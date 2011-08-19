@@ -84,6 +84,7 @@ public class BridgeServiceAction {
 		try {
 			populateConfig(context);
 			populateRemoteServers(context);
+			populateBridge(context);
 			populateCreateForm(context);
 			return "success";
 		} catch (Exception e) {

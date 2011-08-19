@@ -5,6 +5,7 @@ package edu.virginia.shanti.om.bridge.domain;
 
 import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
+import edu.virginia.shanti.om.bridge.domain.SiteAlias;
 import java.lang.String;
 
 privileged aspect Bridge_Roo_JavaBean {
@@ -55,6 +56,14 @@ privileged aspect Bridge_Roo_JavaBean {
     
     public void Bridge.setInFrame(boolean inFrame) {
         this.inFrame = inFrame;
+    }
+    
+    public SiteAlias Bridge.getSiteAlias() {
+        return this.siteAlias;
+    }
+    
+    public void Bridge.setSiteAlias(SiteAlias siteAlias) {
+        this.siteAlias = siteAlias;
     }
     
 }

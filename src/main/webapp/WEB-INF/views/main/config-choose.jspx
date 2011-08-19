@@ -1,0 +1,29 @@
+<div xmlns:spring="http://www.springframework.org/tags"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+	<spring:message var="title" code="webflow_state2_title" />
+
+	<form method="POST">
+		<div class="submit">
+			<p>
+				<input style="margin-left: 0.2em; margin-right: 0.2em" type="submit"
+					id="choose" name="_eventId_choose"
+					value="Choose an Existing Confluence Space" target="_self" /> <input
+					style="margin-left: 0.2em; margin-right: 0.2em" id="create"
+					type="submit" class="button" name="_eventId_create"
+					value="Create New Confluence Space" />
+			</p>
+			<p>
+				<input style="margin-left: 0.2em; margin-right: 0.2em" id="clear"
+					type="submit" class="button" name="_eventId_clear"
+					value="Clear All Settings" /> <input
+					style="margin-left: 0.2em; margin-right: 0.2em" id="cancel"
+					type="submit" class="button" name="_eventId_cancel" value="Cancel" />
+			</p>
+
+		</div>
+	</form>
+</div>

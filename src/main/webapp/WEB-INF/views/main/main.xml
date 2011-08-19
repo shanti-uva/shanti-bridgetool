@@ -32,7 +32,7 @@
 	</action-state>
 
 	<view-state id="normal" view="main/normal">
-		<transition on="configure" to="showConfig"></transition>
+		<transition on="showConfig" to="showConfig"></transition>
 	</view-state>
 
 	<action-state id="update">
@@ -41,22 +41,32 @@
 	</action-state>
 
 	<view-state id="showConfig" model="bridge" view="main/config">
+		<transition on="configure" to="configChooseType" />
+		<transition to="prepare" on="done" validate="false" />
+		<transition to="prepare" on="cancel" validate="false" />
+		<transition to="clear" on="clear" validate="false" />
+		<transition to="save" on="save" validate="true" />
+	</view-state>
+	
+	<action-state id="save">
+		<evaluate expression="bridgeServiceAction.save(bridge,flowRequestContext)" />
+		<transition on="success" to="showConfig"/>
+		<transition on="error" to="showConfig"/>
+	</action-state>
+	
+	<view-state id="configChooseType" model="bridge" view="main/config-choosetype">
 		<transition on="choose" to="choose" />
-		<transition on="clear" to="clear" />
-		
-		<transition to="configure" on="configure" />
-		<transition to="prepare" on="done" validate="false"></transition>
-		<transition to="create" on="create"></transition>
+		<transition to="create" on="create" />
+		<transition to="showConfig" on="cancel" />
+		<transition to="showConfig" on="done" />
+		<transition to="clear" on="clear" validate="false" />	
 	</view-state>
 
 	<action-state id="clear">
 		<evaluate expression="bridgeServiceAction.delete(flowRequestContext)" />
 		<transition to="checkConfig" />
-	</action-state>
-
-	<subflow-state id="configure" subflow="configure">
-		<transition to="update" />
-	</subflow-state>
+	</action-state>	
+	
 	<subflow-state id="create" subflow="create">
 		<transition to="update"></transition>
 	</subflow-state>

@@ -1,17 +1,20 @@
 <div xmlns:spring="http://www.springframework.org/tags"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:form="http://www.springframework.org/tags/form"
 	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
 	xmlns:security="http://www.springframework.org/security/tags"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:tiles="http://tiles.apache.org/tags-tiles"
 	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"><jsp:directive.page
 		contentType="text/html;charset=UTF-8" />
+
 	<jsp:output omit-xml-declaration="yes" />
 	<spring:message var="title" code="webflow_normalstate_title" />
-	<util:panel id="config" title="Current Configuration">
 
-		<base target="_blank" />
+	<base target="_blank" />
 
-		<form method="POST" target="_self">
+	<util:panel title="Configure" id="editconfig">
+		<form:form method="POST" target="_self" modelAttribute="bridge">
 
 			<input type="hidden" name="_flowExecutionKey"
 				value="${flowExecutionKey}" />
@@ -33,45 +36,60 @@
 
 				<c:choose>
 					<c:when test="${bridge.configured}">
-						<h2 style="display: inline;">${bridge.remoteContext.contextLabel}</h2>
-									(${bridge.remoteContext.url})
+						<h2 style="display: inline;">${bridge.remoteContext.contextLabel}
+						</h2>
+					(${bridge.remoteContext.url})
+				</c:when>
+					<c:otherwise>
+					Welcome!  Please choose or create a confluence space.
+					</c:otherwise>
 
-						<div style="float: right">
-							<c:if test="${bridge.admin}">
-								<input type="submit" id="clear" name="_eventId_clear"
-									value="Clear" target="_self" />
-							</c:if>
-							<input style="margin-left: 1em" type="submit" id="done"
-								name="_eventId_done" value="Ok" target="_self" />
+				</c:choose>
+				<span style="float: right;"> <c:if test="${bridge.admin}">
+						<tiles:insertAttribute name="spaceEditControl" ignore="false" />
+					</c:if> </span>
 
+				<c:choose>
+					<c:when test="${bridge.admin}">
+						<div id="basicNode">
+							<tiles:insertAttribute name="configChoose" ignore="false" />
 						</div>
 					</c:when>
 					<c:otherwise>
-
-						<c:choose>
-							<c:when test="${bridge.admin}">
-										
-								<p>
-									<input style="margin-left:1em; margin-right: 1em" type="submit" id="choose" name="_eventId_choose"
-										value="Choose an Existing Confluence Space" target="_self" />
-
-									~ OR ~
-
-									<input style="margin-left:1em; margin-right: 1em" id="create" type="submit" class="button"
-										name="_eventId_create" value="Create New Confluence Space" />
-								</p>
-							</c:when>
-							<c:otherwise>
-								You do not have permission to configure it.  Please contact your professor or worksite administratpr. 
-							</c:otherwise>
-						</c:choose>
-
 					</c:otherwise>
 				</c:choose>
-			</div>
 
-		</form>
+
+				<!-- 			<div style="text-align: center; margin: 0 auto;">
+				<input type="submit" id="done" name="_eventId_done" value="Close"
+					target="_self" />
+			</div> -->
+			</div>
+			
+						<div class="submit">
+
+				<util:panel openPane="false" title="additional configs" render="false" id="addconfig">
+				Display inside UVaCollab <input type="checkbox" name="inFrame"
+						path="/inFrame" />
+					<input type="submit" id="save" name="_eventId_save" value="Save" />
+				</util:panel>
+
+			</div>
+		</form:form>
+	</util:panel>
+
+	<util:panel id="debug" openPane="false" title="debug">
+
+		<util:panel id="bridge" openPane="true" title="bridge">
+			${bridge}
+		</util:panel>
+
+		<util:panel id="config" openPane="true" title="config">
+			${config}
+		</util:panel>
 
 	</util:panel>
+
+
 
 </div>

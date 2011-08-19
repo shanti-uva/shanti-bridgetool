@@ -6,6 +6,7 @@ import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
+import flexjson.JSON;
 
 @RooJavaBean
 @RooToString
@@ -36,6 +37,7 @@ public class RemoteContext {
         BeanUtils.copyProperties(choice, this, new String[] { "id" });
     }
 
+    @JSON(include=false)
     public RemoteContextChoice getRemoteContextChoice() {
         RemoteContextChoice rcc = new RemoteContextChoice();
         BeanUtils.copyProperties(this, rcc, new String[] { "id" });

@@ -23,14 +23,14 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 	public void requestSubmitted(RequestContext context) {
 		// TODO Auto-generated method stub
 		super.requestSubmitted(context);
-		logger.warn("requestSubmitted: " + context);
+		logger.debug("requestSubmitted: " + context);
 	}
 
 	@Override
 	public void requestProcessed(RequestContext context) {
 		// TODO Auto-generated method stub
 		super.requestProcessed(context);
-		logger.warn("requestProcessed: " + context);
+		logger.debug("requestProcessed: " + context);
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 			FlowDefinition definition) {
 		// TODO Auto-generated method stub
 		super.sessionCreating(context, definition);
-		logger.warn("sessionCreating: " + definition);
+		logger.debug("sessionCreating: " + definition);
 	}
 
 	@Override
@@ -46,21 +46,21 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 			MutableAttributeMap input) {
 		// TODO Auto-generated method stub
 		super.sessionStarting(context, session, input);
-		logger.warn("sessionStarting: " + session + " -- input: " + input);
+		logger.debug("sessionStarting: " + session + " -- input: " + input);
 	}
 
 	@Override
 	public void sessionStarted(RequestContext context, FlowSession session) {
 		// TODO Auto-generated method stub
 		super.sessionStarted(context, session);
-		logger.warn("sessionStarted: " + session);
+		logger.debug("sessionStarted: " + session);
 	}
 
 	@Override
 	public void eventSignaled(RequestContext context, Event event) {
 		// TODO Auto-generated method stub
 		super.eventSignaled(context, event);
-		logger.warn("eventSignaled:  " + event);
+		logger.debug("eventSignaled:  " + event);
 	}
 
 	@Override
@@ -68,7 +68,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 			TransitionDefinition transition) {
 		// TODO Auto-generated method stub
 		super.transitionExecuting(context, transition);
-		logger.warn("transitionExecuting:  " + transition);
+		logger.debug("transitionExecuting:  " + transition);
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 			throws EnterStateVetoException {
 		// TODO Auto-generated method stub
 		super.stateEntering(context, state);
-		logger.warn("stateEntering: " + state);
+		logger.debug("stateEntering: " + state);
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 			StateDefinition viewState) {
 		// TODO Auto-generated method stub
 		super.viewRendered(context, view, viewState);
-		logger.warn("viewRendered: " + view + " -- viewState: " + viewState );
+		logger.debug("viewRendered: " + view + " -- viewState: " + viewState );
 	}
 
 	@Override
@@ -92,7 +92,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 			StateDefinition viewState) {
 		// TODO Auto-generated method stub
 		super.viewRendering(context, view, viewState);
-		logger.warn("viewRendering: " + view + " -- viewState:" + viewState );
+		logger.debug("viewRendering: " + view + " -- viewState:" + viewState );
 	}
 
 	@Override
@@ -100,21 +100,21 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 			StateDefinition previousState, StateDefinition newState) {
 		// TODO Auto-generated method stub
 		super.stateEntered(context, previousState, newState);
-		logger.warn("stateEntered: " + newState + " -- prev state: " + previousState);
+		logger.debug("stateEntered: " + newState + " -- prev state: " + previousState);
 	}
 
 	@Override
 	public void paused(RequestContext context) {
 		// TODO Auto-generated method stub
 		super.paused(context);
-		logger.warn("paused");
+		logger.debug("paused");
 	}
 
 	@Override
 	public void resuming(RequestContext context) {
 		// TODO Auto-generated method stub
 		super.resuming(context);
-		logger.warn("resuming");
+		logger.debug("resuming");
 	}
 
 	@Override
@@ -122,7 +122,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 			String outcome, MutableAttributeMap output) {
 		// TODO Auto-generated method stub
 		super.sessionEnding(context, session, outcome, output);
-		logger.warn("sessionEnding");
+		logger.debug("sessionEnding");
 	}
 
 	@Override
@@ -130,7 +130,7 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 			String outcome, AttributeMap output) {
 		// TODO Auto-generated method stub
 		super.sessionEnded(context, session, outcome, output);
-		logger.warn("sessionEnded");
+		logger.debug("sessionEnded");
 	}
 
 	@Override

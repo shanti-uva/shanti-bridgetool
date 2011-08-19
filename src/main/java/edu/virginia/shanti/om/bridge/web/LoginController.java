@@ -34,6 +34,7 @@ public class LoginController {
     		@RequestParam(value = "placement", required = true) String placement,
     		@RequestParam(value = "role", required = true) String role,
     		@RequestParam(value = "sign", required = true) String sign,
+    		@RequestParam(value = "service", required = false) String service,
     		HttpSession session) {
     	
 //    	System.err.println(" user = " + user);
@@ -51,7 +52,11 @@ public class LoginController {
     	
     	// TODO: need to verify signature
     	
-        return "redirect:/" + site + "/" + placement + "/" + user + "/main";   
+    	if (service == null || "".equals(service)) {
+    		service="shanti-wiki";
+    	}
+    	
+        return "redirect:/" + site + "/" + placement + "/" + service + "/main";   
     }
 
 }

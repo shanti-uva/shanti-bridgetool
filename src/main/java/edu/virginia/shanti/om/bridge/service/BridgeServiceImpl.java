@@ -176,6 +176,19 @@ public class BridgeServiceImpl implements BridgeService {
 							+ rc.getContextId());
 		}
 		
+		// find and/or establish site alias
+		SiteAlias siteAlias = siteAliasService.findSiteAliasBySiteId(bridge.getLocalContext());
+		if (siteAlias == null) {
+			siteAlias = siteAliasService.suggestSiteAlias(bridge.getLocalContext());
+			siteAlias.persist();
+			System.err.println("generated alias: " + siteAlias);
+		}
+		
+		bridge.setSiteAlias(siteAlias);
+
+		System.err.println("using alias: " + siteAlias);
+		siteAliasService.registerAlias(siteAlias, bridge);
+		
 		// Update Bridge if it already exists, create if it doesn't
 		List<Bridge> blist = Bridge.findBridgesByLocalSubContext(bridge.getLocalSubContext()).getResultList();
 		if (blist.size() == 1) {
@@ -196,17 +209,6 @@ public class BridgeServiceImpl implements BridgeService {
 							+ rc.getContextId());
 		}
 		
-		
-		// find and/or establish site alias
-		SiteAlias siteAlias = siteAliasService.findSiteAliasBySiteId(bridge.getLocalContext());
-		if (siteAlias == null) {
-			siteAlias = siteAliasService.suggestSiteAlias(bridge.getLocalContext());
-			siteAlias.persist();
-			System.err.println("generated alias: " + siteAlias);
-		}
-
-		System.err.println("using alias: " + siteAlias);
-		siteAliasService.registerAlias(siteAlias, bridge);
 
 		//
 		remoteServerService.writePermissionMap(bridge.getLocalContext(), bridge.getRemoteContext(), bridge.getPermissionMap());
@@ -285,7 +287,13 @@ public class BridgeServiceImpl implements BridgeService {
 
 		if (config.getRemoteService() == null) {
 			// TODO: need to populate remote service intelligently
-			config.setRemoteService("shanti-wiki");
+			String service = request.getExternalContext().getRequestMap().getString("service");
+			
+			if (service == null) {
+				service="shanti-wiki"; // default for now
+			}
+
+			config.setRemoteService(service);
 		}
 
 		return config;

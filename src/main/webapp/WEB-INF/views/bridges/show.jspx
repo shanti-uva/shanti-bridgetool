@@ -28,6 +28,8 @@
     
     <field:display field="remoteName" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_remoteName" object="${bridge}" z="rigjaHam2+4xxUjDX9cUUhJnumQ="/>
     <field:display field="permissionMap" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_permissionMap" object="${bridge}" z="Ck/Nxuj/FzCiO/lc6m+ZwA9NrnA="/>
+    
+    <field:display field="siteAlias" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_siteAlias" object="${bridge}" z="2SiqpfNW4HdsgoeOJ6gPaDk5950="/>
     <field:display field="inFrame" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_inFrame" object="${bridge}" z="MkJWop1/+wmLhINyvYFxh2vSOdE="/>
     </page:show>
 </div>

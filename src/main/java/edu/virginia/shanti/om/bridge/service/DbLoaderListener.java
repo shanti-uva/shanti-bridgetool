@@ -46,15 +46,14 @@ public class DbLoaderListener implements
 		remoteServer.setRemoteName("shanti-wiki");
 		remoteServer.setRemoteUrl("https://wiki.shanti.virginia.edu");
 
-		if (RemoteServer
-				.findRemoteServersByRemoteName(remoteServer.getRemoteName())
-				.getResultList().size() == 0) {
-			log.info("Loading " + remoteServer.getRemoteName() + ": "
-					+ remoteServer);
-			remoteServer.persist();
-			remoteServer.flush();
-			log.info("Loaded " + remoteServer);
-		}
+		assureRemoteServer(remoteServer);
+		
+		remoteServer = new RemoteServer();
+		remoteServer.setImplementationName("nowCommentConnector");
+		remoteServer.setRemoteName("nowCommentStaging");
+		remoteServer.setRemoteUrl("https://staging.nowcomment.com");
+		
+		assureRemoteServer(remoteServer);
 
 		if (PermissionMap
 				.findPermissionMapsByLocalContextType(
@@ -110,6 +109,18 @@ public class DbLoaderListener implements
 			pm.addPermissionSet(p2);
 			pm.addPermissionSet(p3);
 			pm.persist();
+		}
+	}
+
+	private void assureRemoteServer(RemoteServer remoteServer) {
+		if (RemoteServer
+				.findRemoteServersByRemoteName(remoteServer.getRemoteName())
+				.getResultList().size() == 0) {
+			log.info("Loading " + remoteServer.getRemoteName() + ": "
+					+ remoteServer);
+			remoteServer.persist();
+			remoteServer.flush();
+			log.info("Loaded " + remoteServer);
 		}
 	}
 }

@@ -23,7 +23,7 @@ public class BasicConfigBean implements ConfigBean {
 	private String localSubContext;
 	
 	private String remoteService;
-	
+		
 	public BasicConfigBean() {
 		
 	}

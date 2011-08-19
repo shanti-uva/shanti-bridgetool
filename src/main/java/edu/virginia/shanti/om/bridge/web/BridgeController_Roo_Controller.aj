@@ -6,6 +6,7 @@ package edu.virginia.shanti.om.bridge.web;
 import edu.virginia.shanti.om.bridge.domain.Bridge;
 import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
+import edu.virginia.shanti.om.bridge.domain.SiteAlias;
 import java.io.UnsupportedEncodingException;
 import java.lang.Integer;
 import java.lang.Long;
@@ -101,6 +102,11 @@ privileged aspect BridgeController_Roo_Controller {
     @ModelAttribute("remotecontexts")
     public java.util.Collection<RemoteContext> BridgeController.populateRemoteContexts() {
         return RemoteContext.findAllRemoteContexts();
+    }
+    
+    @ModelAttribute("sitealiases")
+    public java.util.Collection<SiteAlias> BridgeController.populateSiteAliases() {
+        return SiteAlias.findAllSiteAliases();
     }
     
     String BridgeController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

@@ -10,7 +10,6 @@
 	<c:choose>
 		<c:when test="true">
 
-			<util:panel id="chooseSpace" title="Choose Existing Space">
 
 				<form:form method="post" modelAttribute="bridge">
 					<spring:hasBindErrors name="bridge">
@@ -64,8 +63,6 @@
 
 			-->
 				</form:form>
-
-			</util:panel>
 
 		</c:when>
 		<c:otherwise>

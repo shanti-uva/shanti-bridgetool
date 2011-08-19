@@ -41,7 +41,7 @@ public class BridgeToolFlowUrlHandler extends FilenameFlowUrlHandler {
 			//TODO: sanitize the path elements!
 			request.setAttribute("localContext",path[1]);
 			request.setAttribute("localSubContext",path[2]);
-			request.setAttribute("user", path[3]);
+			request.setAttribute("service", path[3]);
 			
 			//
 			

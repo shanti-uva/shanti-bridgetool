@@ -16,11 +16,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter;
 
+import edu.virginia.shanti.om.bridge.auth.sakai.ExtensionClient;
+import edu.virginia.shanti.om.bridge.auth.sakai.LinktoolFormValues;
+import edu.virginia.shanti.om.bridge.auth.sakai.SakaiUserInfo;
 import edu.virginia.shanti.om.bridge.service.CurrentUser;
 
 public class BridgeToolAuthenticationFilter extends
@@ -45,52 +49,69 @@ public class BridgeToolAuthenticationFilter extends
 		Assert.assertTrue("This class only applies to HttpServletRequests!",
 				request instanceof HttpServletRequest);
 
-		String username = overrideUserName(request);
+		// TODO: REFACTOR override username under certain circumstances
+		// (development)
+		// request = overrideUserName((HttpServletRequest) request);
 
-		// wrap the request if the user name has been overridden
-		if (username != null) {
-			request = new MockRequestWrapper((HttpServletRequest) request,
-					username);
-			if (log.isDebugEnabled()) {
-				log.debug("doFilter(): USING MOCKUSER: " + request);
-			}
-		}
+		if (request.getParameter("role") != null
+				&& request.getParameter("site") != null) {
 
-//		Enumeration attributeNames = request.getAttributeNames();
-//		while (attributeNames.hasMoreElements()) {
-//			String attribute = (String) attributeNames.nextElement();
-//			System.err.println(" ==> attribute " + attribute + " = "
-//					+ request.getAttribute(attribute));
-//		}
-//
-//		Enumeration parameterNames = request.getParameterNames();
-//		while (parameterNames.hasMoreElements()) {
-//			String parameter = (String) parameterNames.nextElement();
-//			System.err.println(" ==> parameter " + parameter + " = "
-//					+ request.getParameter(parameter));
-//		}
+			// this is assumed to be a linktool login.
+			String queryString = ((HttpServletRequest) request)
+					.getQueryString();
+			LinktoolFormValues values = new LinktoolFormValues(queryString);
+			ExtensionClient extensionClient = new ExtensionClient(values);
 
-		if (request.getParameter("role") != null && request.getParameter("site") != null) {
-			GrantedAuthority grant = createGrant(request.getParameter("role")
-					+ "@" + request.getParameter("site"));
-			userDetailsService.saveGrant(
-					((HttpServletRequest) request).getRemoteUser(), grant);
-			
-			log.info("Saving grant " + grant + " for " + ((HttpServletRequest) request).getRemoteUser());
+			try {
+				if (extensionClient.authenticate()) {
+					SakaiUserInfo sakaiUserInfo = extensionClient
+							.getSakaiUserInfo();
 
-			if (currentUser != null && currentUser.getAuthentication() != null) {
+					String user = sakaiUserInfo.getUserId();
+					String sessionId = sakaiUserInfo.getSakaiSessionId();
+					String serverId = sakaiUserInfo.getServerId();
+					String sessionString = sessionId + "." + serverId;
 
-				// substitute authentication to add GrantedAuthorities
-				SecurityContextHolder
-						.getContext()
-						.setAuthentication(
-								new UsernamePasswordAuthenticationToken(
-										currentUser.getAuthentication()
-												.getPrincipal(),
-										currentUser.getAuthentication()
-												.getCredentials(),
-										Arrays.asList(new GrantedAuthority[] { grant })));
+					GrantedAuthority grant = createGrant(request
+							.getParameter("role")
+							+ "@"
+							+ request.getParameter("site"));
+					userDetailsService.saveGrant(user, grant);
 
+					log.info("Saving grant " + grant + " for " + user);
+
+					if (currentUser != null
+							&& currentUser.getAuthentication() != null) {
+
+						Authentication existingAuth = SecurityContextHolder
+								.getContext().getAuthentication();
+						if (existingAuth.getName() != null
+								&& !existingAuth.getName().equals(user)) {
+							log.warn("WARNING! authenticated user from linktool " + user + " is not the same as remote user " + existingAuth.getName());
+						}
+
+					}
+
+					// substitute authentication to add GrantedAuthorities
+					SecurityContextHolder
+							.getContext()
+							.setAuthentication(
+									new UsernamePasswordAuthenticationToken(
+											user,
+											sessionString,
+											Arrays.asList(new GrantedAuthority[] { grant })));
+
+				} else {
+					log.warn("failed authentication!");
+					SecurityContextHolder.clearContext();
+				}
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				// throw new ServletException(e);
+				log.warn("authentication error: " + e);
+				SecurityContextHolder.clearContext();
 			}
 
 		}
@@ -104,13 +125,13 @@ public class BridgeToolAuthenticationFilter extends
 		return grant;
 	}
 
-	private String overrideUserName(ServletRequest request) {
+	private HttpServletRequest overrideUserName(HttpServletRequest request) {
 
 		// override the username if host is localhost.
 
 		String username = null;
 
-		String localname = ((HttpServletRequest) request).getLocalName();
+		String localname = (request).getLocalName();
 		if (log.isDebugEnabled()) {
 			log.debug("localname = " + localname);
 		}
@@ -128,13 +149,22 @@ public class BridgeToolAuthenticationFilter extends
 		if (log.isDebugEnabled()) {
 			log.debug("overrideUserName(): RETURNING: " + username);
 		}
-		return username;
+
+		// wrap the request if the user name has been overridden
+		if (username != null) {
+			request = new MockRequestWrapper(request, username);
+			if (log.isDebugEnabled()) {
+				log.debug("doFilter(): USING MOCKUSER: " + request);
+			}
+		}
+
+		return request;
 	}
 
 	@Override
 	protected Object getPreAuthenticatedPrincipal(HttpServletRequest request) {
 
-		String user = overrideUserName(request);
+		String user = overrideUserName(request).getRemoteUser();
 
 		if (user != null) {
 			if (log.isDebugEnabled()) {
