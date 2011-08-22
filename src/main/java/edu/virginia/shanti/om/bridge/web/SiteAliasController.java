@@ -27,7 +27,7 @@ public class SiteAliasController {
 		EntityManager em = SiteAlias.entityManager();
 		Query q = em
 				.createQuery(
-						"SELECT b.remoteName, b.localContext, b.siteAlias.alias as alias FROM Bridge b join b.siteAlias");
+						"SELECT unique b.remoteName, b.localContext, b.siteAlias.alias as alias FROM Bridge b join b.siteAlias");
 
 		List resultList = q.getResultList();
 
