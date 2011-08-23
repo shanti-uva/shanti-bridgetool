@@ -1,10 +1,11 @@
 package edu.virginia.shanti.om.bridge.util;
 
 import org.springframework.roo.addon.javabean.RooJavaBean;
+import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
+@RooToString
 public class SiteAliasMapping {
-	
 	
 	public SiteAliasMapping(String remoteName, String localContext, String alias) {
 		this.remoteName = remoteName;
