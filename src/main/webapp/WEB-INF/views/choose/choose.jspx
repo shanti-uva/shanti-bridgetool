@@ -34,10 +34,10 @@
 						<form:options items="${remoteContexts}" itemLabel="contextLabel" />
 					</form:select>
 					<span class="buttonBar"><input type="hidden"
-						name="_flowExecutionKey" value="${flowExecutionKey}" /> <input style="margin-left: .5em; margin-right: .5em"
-						type="submit" class="button" name="_eventId_save" value="Choose" />
-						<input style="margin-left: .5em; margin-right: .5em" type="submit" class="button" name="_eventId_cancel"
-						value="Cancel" /> </span>
+						name="_flowExecutionKey" value="${flowExecutionKey}" /> <button style="margin-left: .5em; margin-right: .5em"
+						type="submit" class="button" name="_eventId_save" value="Choose">Choose</button>
+						<button style="margin-left: .5em; margin-right: .5em" type="submit" class="button" name="_eventId_cancel"
+						value="Cancel">Cancel</button> </span>
 
 					<!-- 
 				<util:panel title="debug" id="debug" openPane="false">

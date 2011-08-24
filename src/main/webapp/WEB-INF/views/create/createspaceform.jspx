@@ -4,11 +4,11 @@
 	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"><jsp:directive.page
-	contentType="text/html;charset=UTF-8" /> <jsp:output
-	omit-xml-declaration="yes" /> 
-	
-	
-	
+		contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+
+
 	<!--  <util:panel id="createSpace"
 	title="Create a New Confluence Space"> -->
 
@@ -17,42 +17,47 @@
 			<spring:hasBindErrors name="confluenceSpaceForm">
 				<tr>
 					<td colspan="2">
-					<div class="error">ERROR:
-					<div class="formerror">
-					<ul>
-						<c:forEach var="error" items="${errors.allErrors}">
-							<li>${error.defaultMessage}</li>
-						</c:forEach>
-					</ul>
-					</div>
-					</div>
-					</td>
+						<div class="error">
+							ERROR:
+							<div class="formerror">
+								<ul>
+									<c:forEach var="error" items="${errors.allErrors}">
+										<li>${error.defaultMessage}</li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div></td>
 				</tr>
 			</spring:hasBindErrors>
 
 			<tr>
 				<td>Space Title</td>
-				<td><form:input path="title" /></td>
-				<td>This the title for your new Confluence space.  You will want to make it descriptive, but keep it short enough to be easily readable.</td>
+				<td><form:input path="title" />
+				</td>
+				<td>This the title for your new Confluence space. You will want
+					to make it descriptive, but keep it short enough to be easily
+					readable.</td>
 			</tr>
 
 			<tr>
 				<td>Space Key</td>
-				<td><form:input path="key" /></td>
-				<td>This is a short code to identify your new space in urls.  e.g the space key for the Shanti wiki space is SHANTI.  So the url to that space is : <b>https://wiki.shanti.virginia.edu/display/SHANTI</b></td>
+				<td><form:input path="key" />
+				</td>
+				<td>This is a short code to identify your new space in urls.
+					e.g the space key for the Shanti wiki space is SHANTI. So the url
+					to that space is : <b>https://wiki.shanti.virginia.edu/display/SHANTI</b>
+				</td>
 			</tr>
-			
-			<tr><td colspan="3">
-							<span style="float: right;" class="buttonBar"><input type="hidden"
-					name="_flowExecutionKey" value="${flowExecutionKey}" /> <input
-					type="submit" class="button" name="_eventId_create" value="Create" />
-					</span>
-							<span style="float: right;" class="buttonBar"><input type="hidden"
-					name="_flowExecutionKey" value="${flowExecutionKey}" /> <input
-					type="submit" class="button" name="_eventId_cancel" value="Cancel" />
-					</span>
-					
-			</td>
+
+			<tr>
+				<td colspan="3"><span style="float: right;" class="buttonBar"><input
+						type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
+						<button type="submit" class="button" name="_eventId_create"
+							value="Create">Create</button></span> <span style="float: right;"
+					class="buttonBar"><input type="hidden"
+						name="_flowExecutionKey" value="${flowExecutionKey}" />
+						<button type="submit" class="button" name="_eventId_cancel"
+							value="Cancel">Cancel</button> </span></td>
 			</tr>
 
 			<!--
@@ -84,5 +89,5 @@
 
 		</table>
 	</form:form>
-<!-- </util:panel> -->
+	<!-- </util:panel> -->
 </div>

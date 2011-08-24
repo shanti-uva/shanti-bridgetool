@@ -1,11 +1,11 @@
-<span> <input style="margin-left: 0.3em" type="submit"
-	id="configure" name="_eventId_configure" value="Change" target="_self" />
+<span> <button style="margin-left: 0.3em" type="submit"
+	id="configure" name="_eventId_configure" value="Change" target="_self" >Change</button>
 	
 	<!--  
 	<input style="margin-left: 0.3em" type="submit"
 	id="clear" name="_eventId_clear" value="Clear" target="_self" />
 	-->
 	
-	<input style="margin-left: 0.3em" type="submit" id="cancel"
-	name="_eventId_cancel" value="Close" target="_self" /> </span>
+	<button style="margin-left: 0.3em" type="submit" id="cancel"
+	name="_eventId_cancel" value="Close" target="_self" />Close</span>
 

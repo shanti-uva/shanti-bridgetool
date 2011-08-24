@@ -71,7 +71,7 @@
 				<util:panel openPane="false" title="additional configs" render="false" id="addconfig">
 				Display inside UVaCollab <input type="checkbox" name="inFrame"
 						path="/inFrame" />
-					<input type="submit" id="save" name="_eventId_save" value="Save" />
+					<button type="submit" id="save" name="_eventId_save" value="Save">Save</button>
 				</util:panel>
 
 			</div>

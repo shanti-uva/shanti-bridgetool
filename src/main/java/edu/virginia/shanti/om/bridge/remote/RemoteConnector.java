@@ -8,6 +8,8 @@ import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
 import org.springframework.security.core.Authentication;
 
+import com.googlecode.ehcache.annotations.Cacheable;
+
 import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
@@ -24,6 +26,7 @@ public interface RemoteConnector {
 	 * @param remoteServer
 	 * @return List<RemoteContext>
 	 */
+	
 	public List<RemoteContextChoice> getContexts(Principal principal,
 			RemoteServer remoteServer);
 
