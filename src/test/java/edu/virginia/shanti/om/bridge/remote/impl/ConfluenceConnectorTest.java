@@ -1,16 +1,14 @@
 package edu.virginia.shanti.om.bridge.remote.impl;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 import java.security.Principal;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -32,6 +29,7 @@ import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
+import edu.virginia.shanti.om.bridge.remote.RemoteConnector;
 import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
 import edu.virginia.shanti.om.bridge.service.PermissionMapService;
 
@@ -41,14 +39,14 @@ public class ConfluenceConnectorTest {
 
 	private static final String TESTSLUG = "TESTTEST2";
 
-	private static final String MOCKUSER = "ys2n";
+	private static final String MOCKUSER = "tms";
 
 	private static final String MOCKPASSWORD = "mockpassword";
 
 	@Autowired
 	private ApplicationContext applicationContext;
 
-	private ConfluenceConnector conf;
+	private RemoteConnector conf;
 
 	private RemoteServer remoteServer;
 
@@ -57,7 +55,7 @@ public class ConfluenceConnectorTest {
 	@Before
 	public void setUp() {
 
-		conf = (ConfluenceConnector) applicationContext
+		conf = (RemoteConnector) applicationContext
 				.getBean("confluenceConnector");
 
 		remoteServer = new RemoteServer();
@@ -83,7 +81,7 @@ public class ConfluenceConnectorTest {
 		// System.err.println(bean);
 		// }
 		//
-		ConfluenceConnector conf = (ConfluenceConnector) applicationContext
+		RemoteConnector conf = (RemoteConnector) applicationContext
 				.getBean("confluenceConnector");
 
 		assertNotNull(conf);
@@ -93,18 +91,37 @@ public class ConfluenceConnectorTest {
 
 	@Test
 	public void testGetContexts() {
+		int LAPS = 5;
 
 		Principal principal = SecurityContextHolder.getContext()
 				.getAuthentication();
+		
+		long[] laptimes = new long[LAPS];
+		for (int i = 0; i < LAPS; i++) {
+			long start = System.currentTimeMillis();
 
-		List<RemoteContextChoice> contexts = conf.getContexts(principal,
-				remoteServer);
-
-		assertNotNull("getContexts() returned null!", contexts);
-
-		for (RemoteContextChoice remoteContextChoice : contexts) {
-			System.err.println("=======>" + remoteContextChoice);
+			List<RemoteContextChoice> contexts = conf.getContexts(principal,
+					remoteServer);
+			assertNotNull("getContexts() returned null!", contexts);
+			
+			
+			System.err.println("Remote Context Choices: ");
+			for (RemoteContextChoice remoteContextChoice : contexts) {
+				System.err.println("=======>" + remoteContextChoice);
+			}
+			assertTrue("getContexts() returned empty list!",
+					!contexts.isEmpty());
+			laptimes[i] = System.currentTimeMillis() - start;
 		}
+		
+		
+		
+		for (int i = 0; i < laptimes.length; i++) {
+			long l = laptimes[i];
+			
+			System.err.println("lap " + i + ": " + l);
+		}
+
 
 		// fail("Need to implement checks");
 
@@ -129,7 +146,7 @@ public class ConfluenceConnectorTest {
 		
 		System.err.println(newRemoteContext);
 
-		conf.removeRemoteContext(principal, newContext);
+		// conf.removeRemoteContext(principal, newContext);
 		
 	}
 
@@ -232,14 +249,14 @@ public class ConfluenceConnectorTest {
 	@Test
 	public void testAssureUser() {
 		
-		Set<GrantedAuthority> grants = new HashSet<GrantedAuthority>();
-		
-		Principal principal = new UsernamePasswordAuthenticationToken("TestUser","TestPass", grants);
-	
-		boolean assureUser = conf.assureUser(principal);
-		
-		assertTrue("Assure User returned false", assureUser);
-		
+//		Set<GrantedAuthority> grants = new HashSet<GrantedAuthority>();
+//		
+//		Principal principal = new UsernamePasswordAuthenticationToken("TestUser","TestPass", grants);
+//	
+//		boolean assureUser = conf.assureUser(principal);
+//		
+//		assertTrue("Assure User returned false", assureUser);
+//		
 		// should now REMOVE the test user we created.
 	
 	}

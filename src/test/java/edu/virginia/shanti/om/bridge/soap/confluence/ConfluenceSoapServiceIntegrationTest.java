@@ -8,6 +8,7 @@ import static org.junit.Assert.assertThat;
 import java.rmi.RemoteException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.rpc.ServiceException;
 
@@ -28,6 +29,9 @@ public class ConfluenceSoapServiceIntegrationTest {
 	private String session;
 	private SudoSoapServiceLocator sudolocator;
 	private SudoSoap sudo;
+	
+	// Utility
+	private Map<String,ThreadLocal<Long>> timers = new HashMap<String,ThreadLocal<Long>>();
 	
 	@Value(value="${adminUser}")
 	private String adminUser;
@@ -59,8 +63,6 @@ public class ConfluenceSoapServiceIntegrationTest {
 		} else {
 			throw new RuntimeException("admin user and password not set!");
 		}
-		
-		
 		
 	}
 
@@ -146,13 +148,26 @@ public class ConfluenceSoapServiceIntegrationTest {
 	public void getSpacesWithPermissions() throws EntityException,
 			RemoteException {
 
-		sudo.sudo(session, session, "ybf2u");
+		sudo.sudo(session, session, "dfg9w");
 
 		RemoteSpaceSummary[] spaces = confluence.getSpaces(session);
-
+		
+		getLapTime("overall"); // initialize overall timer
+		getLapTime(); // initialize lap timer
+		int spaceCount = 0;
+		long maxLap = 0, minLap = 0;
 		for (int i = 0; i < spaces.length; i++) {
+			
 			RemoteSpaceSummary remoteSpaceSummary = spaces[i];
-			System.err.println(remoteSpaceSummary.getName());
+			
+			if ("personal".equals(remoteSpaceSummary.getType()) ) {
+				continue;
+			}
+			spaceCount++;
+			
+			System.err.println("Name = " + remoteSpaceSummary.getName());
+			
+			System.err.println("Type = " + remoteSpaceSummary.getType());
 
 			String key = remoteSpaceSummary.getKey();
 
@@ -162,14 +177,57 @@ public class ConfluenceSoapServiceIntegrationTest {
 				String perm = permissions[j];
 				System.err.println("\t" + perm);
 			}
+			long lap = getLapTime();
+			
+			maxLap = (lap > maxLap)?lap:maxLap;
+			minLap = (lap < minLap || minLap == 0)?lap:minLap;
+			System.err.println("lap " + spaceCount + ": " + lap);
 		}
+		 // overall
+		long overall = getLapTime("overall");
+		System.err.println("overall time = " + overall);
+		System.err.println("average/max/min = " + (overall / spaceCount) + "/" + maxLap + "/" + minLap);
+
 
 	}
 	
+	
+	/*
+	 * This really isn't testing anything, its just giving reference info.
+	 */
 	@Test
-	public void getSpacePermissions() throws edu.virginia.shanti.om.bridge.soap.confluence.RemoteException, RemoteException {
+	public void getSpaceLevelPermissions() throws edu.virginia.shanti.om.bridge.soap.confluence.RemoteException, RemoteException {
 		System.err.println(Arrays.toString(confluence.getSpaceLevelPermissions(session)));
 	}
+	
+	/// Utility
+	private long getLapTime(String timerName) {
+		
+		ThreadLocal<Long> timer = timers.get(timerName);
+		if (timer == null) {
+			timer = createTimer();
+			timers.put(timerName,timer);
+		}
+		long now = System.currentTimeMillis();
+		long last = timer.get();
+		timer.set(now);
+		return now - last;
+	}
+	
+	
+	private long getLapTime() {
+		return getLapTime("default");
+	}
+	
+	private ThreadLocal<Long> createTimer() {
+		return new ThreadLocal<Long>() {
+			@Override
+			protected Long initialValue() {
+				return System.currentTimeMillis();
+			}
+		};
+	}
+	
 	
 	
 }

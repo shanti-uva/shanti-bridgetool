@@ -68,12 +68,6 @@ public class RemoteServerService {
 	 * @return List<RemoteContext> list of remote contexts
 	 */
 	public List<RemoteContextChoice> getRemoteContexts(RemoteServer remoteServer) {
-
-		// System.err.println("getRemoteContexts(): remoteServer = "
-		// + remoteServer);
-		// System.err.println("getRemoteContexts(): applicationContext = "
-		// + applicationContext);
-
 		RemoteConnector remote = (RemoteConnector) applicationContext
 				.getBean(remoteServer.getImplementationName());
 

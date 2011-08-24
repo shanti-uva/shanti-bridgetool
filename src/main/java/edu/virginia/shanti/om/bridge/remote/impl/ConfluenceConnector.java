@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.googlecode.ehcache.annotations.Cacheable;
+
 import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.PermissionSet;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
@@ -97,26 +99,31 @@ public class ConfluenceConnector implements RemoteConnector {
 		return sudoLocator;
 	}
 
+	
 	@Override
+	@Cacheable(cacheName="remoteContextChoices")
 	public List<RemoteContextChoice> getContexts(Principal principal,
 			RemoteServer remoteServer) {
 		try {
 			ConfluenceSoapService conf = getConfLocator()
 					.getConfluenceserviceV1();
-			
-//			if (!assureUser(principal)) {
-//				throw new RuntimeException("User " + principal.getName() + " is not a confluence user, and could not be created.");
-//			}
+
+			// if (!assureUser(principal)) {
+			// throw new RuntimeException("User " + principal.getName() +
+			// " is not a confluence user, and could not be created.");
+			// }
 
 			String sess = login(principal);
 
 			RemoteSpaceSummary[] spaces = conf.getSpaces(sess);
 
+			spaces = filterSpaces(conf, sess, spaces);
+
 			List<RemoteContextChoice> list = new LinkedList<RemoteContextChoice>();
 
 			for (RemoteSpaceSummary summary : spaces) {
 
-				// System.err.print(summary);
+				System.err.println(summary.getKey());
 
 				RemoteContextChoice choice = new RemoteContextChoice();
 				choice.setContextId(summary.getKey());
@@ -147,6 +154,47 @@ public class ConfluenceConnector implements RemoteConnector {
 			log.warn(e);
 		}
 		return null;
+	}
+
+	// filter spaces according to permissions
+	private RemoteSpaceSummary[] filterSpaces(ConfluenceSoapService conf,
+			String sess, RemoteSpaceSummary[] spaces) {
+		List<RemoteSpaceSummary> newList = new LinkedList<RemoteSpaceSummary>();
+
+		for (RemoteSpaceSummary sum : spaces) {
+			if ("global".equals(sum.getType())) {
+
+				try {
+
+					System.err.println("Space summary: " + sum.getKey());
+					String[] permissions = conf.getPermissions(sess,
+							sum.getKey());
+					System.err.println("Permissions: "
+							+ Arrays.toString(permissions));
+
+					if (Arrays.asList(permissions).contains("admin")) {
+						System.err.println("=========> found admin");
+						newList.add(sum);
+					}
+
+				} catch (InvalidSessionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (java.rmi.RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+		RemoteSpaceSummary[] newArray = newList
+				.toArray(new RemoteSpaceSummary[newList.size()]);
+		
+		System.err.println("Returning:  " + newArray);
+		return newArray;
 	}
 
 	/*
@@ -195,11 +243,11 @@ public class ConfluenceConnector implements RemoteConnector {
 					// throw new RuntimeException("Failed to give user " + user
 					// + " all permissions in " + newSpace.getKey());
 				}
-			}
-			else {
-				
-				throw new RuntimeException("User " + principal.getName() + " does not exist and could not be created!");
-				
+			} else {
+
+				throw new RuntimeException("User " + principal.getName()
+						+ " does not exist and could not be created!");
+
 			}
 
 			try {
@@ -262,7 +310,7 @@ public class ConfluenceConnector implements RemoteConnector {
 		ruser.setFullname(user);
 
 		conf.addUser(adminSess, ruser, user);
-		
+
 	}
 
 	private String determineEmail(String user) {
@@ -280,19 +328,20 @@ public class ConfluenceConnector implements RemoteConnector {
 
 		SudoSoap sudo = getSudoLocator().getsudo();
 		String sess = loginAdmin();
-		
+
 		if (!assureUser(principal)) {
-			throw new RuntimeException("Could not find or create user " + principal.getName());
+			throw new RuntimeException("Could not find or create user "
+					+ principal.getName());
 		}
-		
+
 		if (principal == null) {
-			throw new RuntimeException( "Principal cannot be null");
+			throw new RuntimeException("Principal cannot be null");
 		}
-		
+
 		sudo.sudo(sess, sess, principal.getName());
 		log.info("Sudo to " + principal.getName() + "successful for sess="
 				+ sess);
-		
+
 		return sess;
 	}
 
@@ -313,7 +362,7 @@ public class ConfluenceConnector implements RemoteConnector {
 
 			// Let's do this as admin, so that if the current user hasn't yet
 			// logged into Confluence it won't bomb.
-			
+
 			conf = getConfLocator().getConfluenceserviceV1();
 			String sess = loginAdmin();
 
