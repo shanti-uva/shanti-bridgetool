@@ -15,59 +15,78 @@
 
 	<action-state id="checkConfig">
 		<evaluate expression="bridgeServiceAction.checkConfig(flowRequestContext)" />
-		<transition on="unconfigured" to="update" />
-		<transition on="configured" to="prepare" />
+		<transition on="unconfigured" to="configChooseType" />
+		<transition on="configured" to="normal" />
 	</action-state>
 
 	<subflow-state subflow="choose" id="choose">
 		<!-- always check the config after returning from choose -->
-		<transition to="update" />
+		<transition on="cancel" to="configChooseType" />
+		<transition to="showConfig" />
 	</subflow-state>
 
-	<!-- the normal configured state -->
-	<action-state id="prepare">
-		<evaluate expression="bridgeServiceAction.prepareNormalView(flowRequestContext)" />
-		<transition on="success" to="normal" />
+	<view-state id="normal" view="main/normal">
+		<on-entry>
+			<evaluate expression="bridgeServiceAction.prepareNormalView(flowRequestContext)" />
+		</on-entry>
+		<transition on="error" to="showConfig" />
+		<transition on="showConfig" to="showConfig" />
+	</view-state>
+
+	<view-state id="showConfig" model="bridge" view="main/config">
+		<on-entry>
+			<evaluate expression="bridgeServiceAction.prepareConfigView(flowRequestContext)" />
+		</on-entry>
+		<transition on="configure" to="configChooseType" />
+		<transition to="checkConfig" on="done" validate="false" />
+		<transition to="checkConfig" on="cancel" validate="false" />
+		<transition to="clearConfirm" on="clear" validate="false" />
+		<transition to="editSettings" on="edit" validate="false" />
+		<transition to="save" on="save" validate="true" />
+	</view-state>
+
+	<view-state id="editSettings" model="bridge" view="main/edit-settings">
+		<on-entry>
+			<evaluate expression="bridgeServiceAction.prepareConfigView(flowRequestContext)" />
+		</on-entry>
+		<transition to="save" on="save" validate="true" bind="true" />
+		<transition to="showConfig" on="cancel" validate="false" />
+	</view-state>
+
+	<action-state id="save">
+		<evaluate expression="bridgeServiceAction.save(bridge,flowRequestContext)" />
+		<transition on="success" to="showConfig" />
 		<transition on="error" to="showConfig" />
 	</action-state>
 
-	<view-state id="normal" view="main/normal">
-		<transition on="showConfig" to="showConfig"></transition>
-	</view-state>
-
-	<action-state id="update">
-		<evaluate expression="bridgeServiceAction.prepareForm(flowRequestContext)" />
-		<transition on="success" to="showConfig" />
-	</action-state>
-
-	<view-state id="showConfig" model="bridge" view="main/config">
-		<transition on="configure" to="configChooseType" />
-		<transition to="prepare" on="done" validate="false" />
-		<transition to="prepare" on="cancel" validate="false" />
-		<transition to="clear" on="clear" validate="false" />
-		<transition to="save" on="save" validate="true" />
-	</view-state>
-	
-	<action-state id="save">
-		<evaluate expression="bridgeServiceAction.save(bridge,flowRequestContext)" />
-		<transition on="success" to="showConfig"/>
-		<transition on="error" to="showConfig"/>
-	</action-state>
-	
-	<view-state id="configChooseType" model="bridge" view="main/config-choosetype">
+	<view-state id="configChooseType" model="bridge"
+		view="main/config-choosetype">
+		<on-entry>
+			<evaluate expression="bridgeServiceAction.prepareConfigView(flowRequestContext)"></evaluate>
+		</on-entry>
 		<transition on="choose" to="choose" />
 		<transition to="create" on="create" />
 		<transition to="showConfig" on="cancel" />
 		<transition to="showConfig" on="done" />
-		<transition to="clear" on="clear" validate="false" />	
+		<transition to="editSettings" on="edit" />
+		<transition on="clear" to="clearConfirm" validate="false" />
+	</view-state>
+
+
+	<!-- clearing -->
+	<view-state id="clearConfirm" view="main/config-clear-confirm">
+		<transition to="clear" on="clear" />
+		<transition to="configChooseType" on="cancel" />
 	</view-state>
 
 	<action-state id="clear">
 		<evaluate expression="bridgeServiceAction.delete(flowRequestContext)" />
 		<transition to="checkConfig" />
-	</action-state>	
-	
+	</action-state>
+	<!-- end clearing -->
+
 	<subflow-state id="create" subflow="create">
-		<transition to="update"></transition>
+		<transition to="configChooseType" on="cancel" />
+		<transition to="showConfig"></transition>
 	</subflow-state>
 </flow>

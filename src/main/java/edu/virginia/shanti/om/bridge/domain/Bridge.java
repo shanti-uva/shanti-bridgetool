@@ -1,23 +1,24 @@
 package edu.virginia.shanti.om.bridge.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
+import org.springframework.roo.addon.json.RooJson;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import edu.virginia.shanti.om.bridge.auth.BridgeToolPermissionEvaluator;
-import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.service.CurrentUser;
 import flexjson.JSON;
-
-import org.springframework.roo.addon.json.RooJson;
 
 @RooJavaBean
 @RooToString
@@ -46,6 +47,10 @@ public class Bridge implements Serializable {
         this.currentUser = currentUser;
     }
 
+    public boolean getInFrame() {
+    	return isInFrame();
+    }
+    
     @Autowired
     private transient CurrentUser currentUser;
 
@@ -59,16 +64,16 @@ public class Bridge implements Serializable {
     private String localSubContext;
 
     /** remote context: e.g. confluence space identifier */
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private RemoteContext remoteContext;
 
     /** permission map: sets of permissions that apply to this Bridged context */
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private PermissionMap permissionMap;
 
     private boolean inFrame;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private SiteAlias siteAlias;
 
     @JSON(include=false)

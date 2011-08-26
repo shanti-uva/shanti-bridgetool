@@ -25,8 +25,8 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 	public boolean hasPermission(Authentication authentication,
 			Object targetDomainObject, Object permission) {
 		// TODO Auto-generated method stub
-		log.warn("hasPermission called by " + authentication + " on "
-				+ targetDomainObject + " for permission " + permission);
+//		log.warn("hasPermission called by " + authentication + " on "
+//				+ targetDomainObject + " for permission " + permission);
 
 		log.warn("Authorities: " + authentication.getAuthorities());
 

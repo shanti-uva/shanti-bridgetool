@@ -8,11 +8,9 @@
 	<jsp:output omit-xml-declaration="yes" />
 
 
-
-	<!--  <util:panel id="createSpace"
-	title="Create a New Confluence Space"> -->
-
-	<form:form method="post" modelAttribute="confluenceSpaceForm">
+	<h3>Create a new Confluence Space</h3>
+	<form:form method="post" target="_self"
+		modelAttribute="confluenceSpaceForm">
 		<table>
 			<spring:hasBindErrors name="confluenceSpaceForm">
 				<tr>
@@ -26,14 +24,14 @@
 									</c:forEach>
 								</ul>
 							</div>
-						</div></td>
+						</div>
+					</td>
 				</tr>
 			</spring:hasBindErrors>
 
 			<tr>
 				<td>Space Title</td>
-				<td><form:input path="title" />
-				</td>
+				<td><form:input path="title" /></td>
 				<td>This the title for your new Confluence space. You will want
 					to make it descriptive, but keep it short enough to be easily
 					readable.</td>
@@ -41,8 +39,7 @@
 
 			<tr>
 				<td>Space Key</td>
-				<td><form:input path="key" />
-				</td>
+				<td><form:input path="key" /></td>
 				<td>This is a short code to identify your new space in urls.
 					e.g the space key for the Shanti wiki space is SHANTI. So the url
 					to that space is : <b>https://wiki.shanti.virginia.edu/display/SHANTI</b>
@@ -53,41 +50,16 @@
 				<td colspan="3"><span style="float: right;" class="buttonBar"><input
 						type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
 						<button type="submit" class="button" name="_eventId_create"
-							value="Create">Create</button></span> <span style="float: right;"
-					class="buttonBar"><input type="hidden"
-						name="_flowExecutionKey" value="${flowExecutionKey}" />
-						<button type="submit" class="button" name="_eventId_cancel"
-							value="Cancel">Cancel</button> </span></td>
+							value="Create">Create</button>
+				</span> <span style="float: right;" class="buttonBar"><input
+						type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
+						<!--  <button type="submit" class="button" name="_eventId_cancel"
+							value="Cancel">Cancel</button> -->
+							
+							
+							</span></td>
+							
 			</tr>
-
-			<!--
-			<tr>
-				<td colspan="2"><util:panel title="Config Info" id="configInfo" openPane="false">
-
-					<table>
-
-						<tr>
-							<td>Remote Service</td>
-							<td><form:input path="remoteName" /></td>
-						</tr>
-
-						<tr>
-							<td>Site Id</td>
-							<td><form:input path="localContext" /></td>
-						</tr>
-
-
-						<tr>
-							<td>Tool Placement Id</td>
-							<td><form:input path="localSubContext" /></td>
-						</tr>
-					</table>
-				</util:panel></td>
-			</tr>
-
-			-->
-
 		</table>
 	</form:form>
-	<!-- </util:panel> -->
 </div>

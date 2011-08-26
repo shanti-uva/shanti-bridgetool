@@ -8,6 +8,8 @@
 				<put-attribute name="configChoose" value="/WEB-INF/views/main/blank.jspx" />
 				<put-attribute name="spaceEditControl"
 					value="/WEB-INF/views/main/config-change-space.jspx" />
+				<put-attribute name="settingsPanel"
+					value="/WEB-INF/views/main/settings-panel.jspx" />
 			</definition>
 		</put-attribute>
 	</definition>
@@ -19,16 +21,33 @@
 					value="/WEB-INF/views/main/config-choose.jspx" />
 				<put-attribute name="spaceEditControl"
 					value="/WEB-INF/views/main/config-cancel-change.jspx" />
+				<put-attribute name="settingsPanel"
+					value="/WEB-INF/views/main/settings-panel.jspx" />
 			</definition>
 		</put-attribute>
 	</definition>
 
 
+	<definition name="main/edit-settings" extends="default">
+		<put-attribute name="body">
+			<definition template="/WEB-INF/views/main/config.jspx">
+				<put-attribute name="configChoose" value="/WEB-INF/views/main/blank.jspx" />
+				<put-attribute name="spaceEditControl"
+					value="/WEB-INF/views/main/config-change-space.jspx" />
+				<put-attribute name="settingsPanel"
+					value="/WEB-INF/views/main/settings-panel-edit.jspx" />
 
+			</definition>
+		</put-attribute>
+	</definition>
 
 	<definition extends="default" name="main/*">
 		<put-attribute name="body" value="/WEB-INF/views/main/{1}.jspx" />
 		<put-attribute name="configChoose"
 			value="/WEB-INF/views/main/config-choose.jspx" />
+		<put-attribute name="settingsPanel" value="/WEB-INF/views/main/blank.jspx" />
+
 	</definition>
+
+
 </tiles-definitions>

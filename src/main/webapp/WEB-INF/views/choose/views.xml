@@ -6,8 +6,10 @@
 			<definition template="/WEB-INF/views/main/config.jspx">
 				<put-attribute name="configChoose"
 					value="/WEB-INF/views/choose/choose.jspx" />
-									<put-attribute name="spaceEditControl"
+				<put-attribute name="spaceEditControl"
 					value="/WEB-INF/views/main/config-cancel-change.jspx" />
+				<put-attribute name="settingsPanel"
+					value="/WEB-INF/views/main/settings-panel.jspx" />
 			</definition>
 		</put-attribute>
 	</definition>

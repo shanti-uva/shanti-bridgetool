@@ -1,0 +1,27 @@
+
+<div xmlns:spring="http://www.springframework.org/tags"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+	xmlns:security="http://www.springframework.org/security/tags"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:tiles="http://tiles.apache.org/tags-tiles"
+	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"><jsp:directive.page
+		contentType="text/html;charset=UTF-8" />
+
+	<jsp:output omit-xml-declaration="yes" />
+
+	<form:form>
+
+		<h3>Are you sure?</h3>
+
+		<button style="margin-left: 0.3em" type="submit" id="clear"
+			name="_eventId_clear" value="Clear" target="_self">Clear</button>
+
+		<button style="margin-left: 0.3em" type="submit" id="cancel"
+			name="_eventId_cancel" value="Cancel" target="_self">Cancel</button>
+
+	</form:form>
+
+</div>
+

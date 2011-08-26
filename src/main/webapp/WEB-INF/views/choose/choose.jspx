@@ -9,60 +9,38 @@
 
 	<c:choose>
 		<c:when test="true">
+			<div>
+				<p>
+					<form:form method="post" target="_self" modelAttribute="bridge">
+						<spring:hasBindErrors name="bridge">
+							<table>
+								<tr>
+									<td colspan="2">
+										<div class="error">
+											ERROR:
+											<div class="formerror">
+												<ul>
+													<c:forEach var="error" items="${errors.allErrors}">
+														<li>${error.defaultMessage}</li>
+													</c:forEach>
+												</ul>
+											</div>
+										</div></td>
+								</tr>
+							</table>
+						</spring:hasBindErrors>
+						<form:select path="remoteContext">
+							<form:options items="${remoteContexts}" itemLabel="contextLabel" />
+						</form:select>
+						<span class="buttonBar"><input type="hidden"
+							name="_flowExecutionKey" value="${flowExecutionKey}" />
+							<button style="margin-left: .3em; margin-right: .3em"
+								type="submit" class="button" name="_eventId_save" value="Choose">Choose</button>
+						</span>
 
-
-				<form:form method="post" modelAttribute="bridge">
-					<spring:hasBindErrors name="bridge">
-						<table>
-							<tr>
-								<td colspan="2">
-									<div class="error">
-										ERROR:
-										<div class="formerror">
-											<ul>
-												<c:forEach var="error" items="${errors.allErrors}">
-													<li>${error.defaultMessage}</li>
-												</c:forEach>
-											</ul>
-										</div>
-									</div>
-								</td>
-							</tr>
-						</table>
-					</spring:hasBindErrors>
-					<form:select path="remoteContext">
-						<form:options items="${remoteContexts}" itemLabel="contextLabel" />
-					</form:select>
-					<span class="buttonBar"><input type="hidden"
-						name="_flowExecutionKey" value="${flowExecutionKey}" /> <button style="margin-left: .5em; margin-right: .5em"
-						type="submit" class="button" name="_eventId_save" value="Choose">Choose</button>
-						<button style="margin-left: .5em; margin-right: .5em" type="submit" class="button" name="_eventId_cancel"
-						value="Cancel">Cancel</button> </span>
-
-					<!-- 
-				<util:panel title="debug" id="debug" openPane="false">
-				<table>
-					<tr>
-						<td>Remote Name</td>
-						<td><form:input path="remoteName" /></td>
-					</tr>
-
-					<tr>
-						<td>Site Id</td>
-						<td><form:input path="localContext" /></td>
-					</tr>
-
-
-					<tr>
-						<td>Tool Placement Id</td>
-						<td><form:input path="localSubContext" /></td>
-					</tr>
-				</table>
-
-			</util:panel>
-
-			-->
-				</form:form>
+					</form:form>
+				</p>
+			</div>
 
 		</c:when>
 		<c:otherwise>

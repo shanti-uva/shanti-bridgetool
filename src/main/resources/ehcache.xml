@@ -6,15 +6,15 @@
      | detailed information on how to configurigure caches in this file
      +-->
     <!-- Location of persistent caches on disk -->
-    <diskStore path="java.io.tmpdir/EhCacheSpringAnnotationsExampleApp" />
+    <diskStore path="java.io.tmpdir/ehcachebridgetool" />
 
     <defaultCache eternal="false" maxElementsInMemory="1000"
         overflowToDisk="false" diskPersistent="false" timeToIdleSeconds="0"
-        timeToLiveSeconds="600" memoryStoreEvictionPolicy="LRU"/>
+        timeToLiveSeconds="3600" memoryStoreEvictionPolicy="LRU"/>
 
     <cache name="remoteContextChoices" eternal="false"
         maxElementsInMemory="100" overflowToDisk="false" diskPersistent="false"
-        timeToIdleSeconds="0" timeToLiveSeconds="300"
+        timeToIdleSeconds="6000" timeToLiveSeconds="3600"
         memoryStoreEvictionPolicy="LRU" />
         
 </ehcache>

@@ -23,14 +23,14 @@ public class LoggingFlowExecutionListener extends FlowExecutionListenerAdapter {
 	public void requestSubmitted(RequestContext context) {
 		// TODO Auto-generated method stub
 		super.requestSubmitted(context);
-		logger.debug("requestSubmitted: " + context);
+		logger.debug("requestSubmitted: " + context.getRequestParameters());
 	}
 
 	@Override
 	public void requestProcessed(RequestContext context) {
 		// TODO Auto-generated method stub
 		super.requestProcessed(context);
-		logger.debug("requestProcessed: " + context);
+		logger.debug("requestProcessed: " + context.getRequestParameters());
 	}
 
 	@Override

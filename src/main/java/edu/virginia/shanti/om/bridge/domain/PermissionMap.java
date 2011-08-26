@@ -2,9 +2,12 @@ package edu.virginia.shanti.om.bridge.domain;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
 import org.springframework.roo.addon.serializable.RooSerializable;
@@ -27,7 +30,7 @@ public class PermissionMap {
     @Enumerated
     private LocalContextType localContextType;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<PermissionSet> permissionSets = new HashSet<PermissionSet>();
 
     public void addPermissionSet(ConfluencePermissionSet pset) {

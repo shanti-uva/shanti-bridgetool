@@ -73,7 +73,7 @@ public class BridgeServiceAction {
 		try {
 			populateConfig(context);
 			populateRemoteServers(context);
-			populateRemoteContexts(context);
+			// populateRemoteContexts(context);
 			return "success";
 		} catch (Exception e) {
 			return handleError(e, context);
@@ -110,10 +110,19 @@ public class BridgeServiceAction {
 		}
 	}
 
-	public String prepareForm(RequestContext context) {
+	public String prepareConfigView(RequestContext context) {
 		try {
 			populateBridge(context);
+			return "success";
+		} catch (Exception e) {
+			return handleError(e, context);
+		}
+	}
+	
+	public String prepareForm(RequestContext context) {
+		try {
 			populateRemoteContexts(context);
+			populateBridge(context);
 			return "success";
 		} catch (Exception e) {
 			return handleError(e, context);
@@ -160,6 +169,7 @@ public class BridgeServiceAction {
 	}
 
 	private void populateBridge(RequestContext context) {
+		log.info("populateBridge called.");
 		if (context.getFlowScope().contains("config")) {
 			ConfigBean config = (ConfigBean) context.getFlowScope().get(
 					"config");

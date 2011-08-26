@@ -99,11 +99,16 @@ public class ConfluenceConnector implements RemoteConnector {
 		return sudoLocator;
 	}
 
-	
 	@Override
-	@Cacheable(cacheName="remoteContextChoices")
+	@Cacheable(cacheName = "remoteContextChoices")
 	public List<RemoteContextChoice> getContexts(Principal principal,
 			RemoteServer remoteServer) {
+		
+		if (log.isDebugEnabled()) {
+			log.debug("Someone called getContexts with " + principal + " and "
+			+ remoteServer, new Exception());
+		}
+
 		try {
 			ConfluenceSoapService conf = getConfLocator()
 					.getConfluenceserviceV1();
@@ -192,7 +197,7 @@ public class ConfluenceConnector implements RemoteConnector {
 
 		RemoteSpaceSummary[] newArray = newList
 				.toArray(new RemoteSpaceSummary[newList.size()]);
-		
+
 		System.err.println("Returning:  " + newArray);
 		return newArray;
 	}

@@ -18,7 +18,7 @@
 		<evaluate expression="bridgeServiceAction.newBridge(config,flowRequestContext)" />
 		<transition on="success" to="prepareForm" />
 	</action-state>
-	
+
 	<action-state id="prepareForm">
 		<evaluate expression="bridgeServiceAction.prepareForm(flowRequestContext)" />
 		<transition on="success" to="bridgeForm" />

@@ -31,18 +31,21 @@ public class BridgeServiceImpl implements BridgeService {
 
 	@Autowired
 	private RemoteServerService remoteServerService;
-	
+
 	@Autowired
 	private SiteAliasService siteAliasService;
 
 	@Autowired
 	private PermissionMapService permissionMapService;
-	
+
 	private Log log = LogFactory.getLog(BridgeServiceImpl.class);
 
-
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#checkConfig(edu.virginia.shanti.om.bridge.form.ConfigBean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#checkConfig(edu.virginia
+	 * .shanti.om.bridge.form.ConfigBean)
 	 */
 	@Override
 	public boolean checkConfig(ConfigBean config) {
@@ -50,8 +53,12 @@ public class BridgeServiceImpl implements BridgeService {
 		return !bridgeList.isEmpty();
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#getBridges(edu.virginia.shanti.om.bridge.form.ConfigBean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#getBridges(edu.virginia
+	 * .shanti.om.bridge.form.ConfigBean)
 	 */
 	@Override
 	public List<Bridge> getBridges(ConfigBean config) {
@@ -79,8 +86,12 @@ public class BridgeServiceImpl implements BridgeService {
 		return bridgeList;
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#getBridges(java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#getBridges(java.lang
+	 * .String, java.lang.String)
 	 */
 	@Override
 	public List<Bridge> getBridges(String user, String localContext) {
@@ -91,8 +102,12 @@ public class BridgeServiceImpl implements BridgeService {
 		return getBridges(config);
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#getBridge(edu.virginia.shanti.om.bridge.form.ConfigBean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#getBridge(edu.virginia
+	 * .shanti.om.bridge.form.ConfigBean)
 	 */
 	@Override
 	public Bridge getBridge(ConfigBean config) {
@@ -112,16 +127,25 @@ public class BridgeServiceImpl implements BridgeService {
 		return bridge;
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#newBridge(edu.virginia.shanti.om.bridge.form.ConfigBean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#newBridge(edu.virginia
+	 * .shanti.om.bridge.form.ConfigBean)
 	 */
 	@Override
 	public Bridge newBridge(ConfigBean config) {
 		return newBridge(config, null);
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#newBridge(edu.virginia.shanti.om.bridge.form.ConfigBean, edu.virginia.shanti.om.bridge.domain.RemoteContext)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#newBridge(edu.virginia
+	 * .shanti.om.bridge.form.ConfigBean,
+	 * edu.virginia.shanti.om.bridge.domain.RemoteContext)
 	 */
 	@Override
 	public Bridge newBridge(ConfigBean config, RemoteContext remoteContext) {
@@ -135,8 +159,13 @@ public class BridgeServiceImpl implements BridgeService {
 		return bridge;
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#createNewBridge(edu.virginia.shanti.om.bridge.form.ConfigBean, edu.virginia.shanti.om.bridge.domain.RemoteContext)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#createNewBridge(edu
+	 * .virginia.shanti.om.bridge.form.ConfigBean,
+	 * edu.virginia.shanti.om.bridge.domain.RemoteContext)
 	 */
 	@Override
 	public Bridge createNewBridge(ConfigBean config, RemoteContext remoteContext) {
@@ -145,21 +174,48 @@ public class BridgeServiceImpl implements BridgeService {
 		return newBridge;
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#save(edu.virginia.shanti.om.bridge.domain.Bridge)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#save(edu.virginia
+	 * .shanti.om.bridge.domain.Bridge)
 	 */
 	@Override
 	@Transactional
 	public void save(Bridge bridge) {
 
 		log.info("Bridge before persisting or merging: " + bridge);
-		
+
+		log.info("Bridge getId(): " + bridge.getId());
+
+		// if (bridge.getId() != null && bridge.getId() != 0) {
+		//
+		// RemoteContext remoteContext = bridge.getRemoteContext();
+		// if (remoteContext.getId() != null && remoteContext.getId() != 0) {
+		// List<RemoteContext> list = RemoteContext
+		// .findRemoteContextsByRemoteNameAndContextId(
+		// remoteContext.getRemoteName(),
+		// remoteContext.getContextId()).getResultList();
+		//
+		// if (list.size() > 0) {
+		// bridge.setRemoteContext(list.get(0));
+		// } else {
+		// remoteContext.persist();
+		// }
+		//
+		// } else {
+		// bridge.setRemoteContext(remoteContext.merge());
+		// }
+		// bridge = bridge.merge();
+		// }
+
 		RemoteContext rc = bridge.getRemoteContext();
 
 		// Update RemoteContext if it already exists, create if it doesn't
 		List<RemoteContext> list = RemoteContext
-		.findRemoteContextsByRemoteNameAndContextId(rc.getRemoteName(),
-				rc.getContextId()).getResultList();
+				.findRemoteContextsByRemoteNameAndContextId(rc.getRemoteName(),
+						rc.getContextId()).getResultList();
 
 		if (list.size() == 1) {
 			// let's replace it with the saved one
@@ -175,22 +231,25 @@ public class BridgeServiceImpl implements BridgeService {
 							+ rc.getRemoteName() + " contextId="
 							+ rc.getContextId());
 		}
-		
+
 		// find and/or establish site alias
-		SiteAlias siteAlias = siteAliasService.findSiteAliasBySiteId(bridge.getLocalContext());
+		SiteAlias siteAlias = siteAliasService.findSiteAliasBySiteId(bridge
+				.getLocalContext());
 		if (siteAlias == null) {
-			siteAlias = siteAliasService.suggestSiteAlias(bridge.getLocalContext());
+			siteAlias = siteAliasService.suggestSiteAlias(bridge
+					.getLocalContext());
 			siteAlias.persist();
 			System.err.println("generated alias: " + siteAlias);
 		}
-		
+
 		bridge.setSiteAlias(siteAlias);
 
 		System.err.println("using alias: " + siteAlias);
 		siteAliasService.registerAlias(siteAlias, bridge);
-		
+
 		// Update Bridge if it already exists, create if it doesn't
-		List<Bridge> blist = Bridge.findBridgesByLocalSubContext(bridge.getLocalSubContext()).getResultList();
+		List<Bridge> blist = Bridge.findBridgesByLocalSubContext(
+				bridge.getLocalSubContext()).getResultList();
 		if (blist.size() == 1) {
 			// let's replace it with the saved one
 			log.info("using existing Bridge " + bridge);
@@ -204,14 +263,13 @@ public class BridgeServiceImpl implements BridgeService {
 			bridge.persist();
 		} else {
 			throw new RuntimeException(
-					"Too many RemoteContexts returned for remoteName="
-							+ rc.getRemoteName() + " contextId="
-							+ rc.getContextId());
+					"Too many Bridges returned for localSubContext="
+							+ bridge.getLocalSubContext());
 		}
-		
 
 		//
-		remoteServerService.writePermissionMap(bridge.getLocalContext(), bridge.getRemoteContext(), bridge.getPermissionMap());
+		remoteServerService.writePermissionMap(bridge.getLocalContext(),
+				bridge.getRemoteContext(), bridge.getPermissionMap());
 
 	}
 
@@ -222,16 +280,25 @@ public class BridgeServiceImpl implements BridgeService {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#populateConfigFromContext(org.springframework.webflow.execution.RequestContext)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#populateConfigFromContext
+	 * (org.springframework.webflow.execution.RequestContext)
 	 */
 	@Override
 	public ConfigBean populateConfigFromContext(RequestContext request) {
 		return populateConfigFromContext(request, new ConfluenceConfigBean());
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#populateConfigFromContext(org.springframework.webflow.execution.RequestContext, edu.virginia.shanti.om.bridge.form.ConfigBean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#populateConfigFromContext
+	 * (org.springframework.webflow.execution.RequestContext,
+	 * edu.virginia.shanti.om.bridge.form.ConfigBean)
 	 */
 	@Override
 	public ConfigBean populateConfigFromContext(RequestContext request,
@@ -287,10 +354,11 @@ public class BridgeServiceImpl implements BridgeService {
 
 		if (config.getRemoteService() == null) {
 			// TODO: need to populate remote service intelligently
-			String service = request.getExternalContext().getRequestMap().getString("service");
-			
+			String service = request.getExternalContext().getRequestMap()
+					.getString("service");
+
 			if (service == null) {
-				service="shanti-wiki"; // default for now
+				service = "shanti-wiki"; // default for now
 			}
 
 			config.setRemoteService(service);
@@ -299,8 +367,12 @@ public class BridgeServiceImpl implements BridgeService {
 		return config;
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.virginia.shanti.om.bridge.service.BridgeService#getSummaryMarkup(edu.virginia.shanti.om.bridge.domain.Bridge)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * edu.virginia.shanti.om.bridge.service.BridgeService#getSummaryMarkup(
+	 * edu.virginia.shanti.om.bridge.domain.Bridge)
 	 */
 	@Override
 	public String getSummaryMarkup(Bridge bridge) {
@@ -326,6 +398,6 @@ public class BridgeServiceImpl implements BridgeService {
 
 	@Override
 	public void remove(Bridge bridge) {
-		bridge.remove();	
+		bridge.remove();
 	}
 }

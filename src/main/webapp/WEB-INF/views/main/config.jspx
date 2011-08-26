@@ -13,72 +13,78 @@
 
 	<base target="_blank" />
 
-	<util:panel title="Configure" id="editconfig">
-		<form:form method="POST" target="_self" modelAttribute="bridge">
+	<util:panel title="Bridge" id="editconfig">
 
-			<input type="hidden" name="_flowExecutionKey"
-				value="${flowExecutionKey}" />
+		<input type="hidden" name="_flowExecutionKey"
+			value="${flowExecutionKey}" />
 
-			<div class="submit">
-				<spring:message var="edit" code="context_edit" />
-				<div>
-					<c:if
-						test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">
-						<util:panel id="Error" title="Error">
-							<c:forEach
-								items="${flowRequestContext.messageContext.allMessages}"
-								var="message">
-								<div class="error">${message.text}</div>
-							</c:forEach>
-						</util:panel>
-					</c:if>
-				</div>
+		<div class="submit" style="clear: both;">
+			<spring:message var="edit" code="context_edit" />
+			<div>
+				<c:if
+					test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">
+					<util:panel id="Error" title="Error"  render="false">
+						<c:forEach
+							items="${flowRequestContext.messageContext.allMessages}"
+							var="message">
+							<div class="error">${message.text}</div>
+						</c:forEach>
+					</util:panel>
+				</c:if>
+			</div>
 
-				<c:choose>
-					<c:when test="${bridge.configured}">
-						<h2 style="display: inline;">${bridge.remoteContext.contextLabel}
-						</h2>
+			<c:choose>
+				<c:when test="${bridge.configured}">
+					<h2 style="display: inline;">${bridge.remoteContext.contextLabel}
+					</h2>
 					(${bridge.remoteContext.url})
-				</c:when>
-					<c:otherwise>
-					Welcome!  Please choose or create a confluence space.
-					</c:otherwise>
-
-				</c:choose>
-				<span style="float: right;"> <c:if test="${bridge.admin}">
-						<tiles:insertAttribute name="spaceEditControl" ignore="false" />
-					</c:if> </span>
-
-				<c:choose>
-					<c:when test="${bridge.admin}">
-						<div id="basicNode">
-							<tiles:insertAttribute name="configChoose" ignore="false" />
-						</div>
 					</c:when>
-					<c:otherwise>
-					</c:otherwise>
-				</c:choose>
+				<c:otherwise>
+					<c:choose>
+						<c:when test="${bridge.admin}">
+							<h3 style="display: inline;">Welcome! Please choose or
+								create a confluence space.</h3>
+						</c:when>
+						<c:otherwise>
+								This Confluence Tool has not been configured.  Please consult with your Instructor or Worksite Administrator.
+							</c:otherwise>
+					</c:choose>
+				</c:otherwise>
+			</c:choose>
 
+			<span style="float: right;"> <c:if test="${bridge.admin}">
+					<tiles:insertAttribute name="spaceEditControl" ignore="false" />
+				</c:if> </span>
 
-				<!-- 			<div style="text-align: center; margin: 0 auto;">
-				<input type="submit" id="done" name="_eventId_done" value="Close"
-					target="_self" />
-			</div> -->
-			</div>
-			
-						<div class="submit">
-
-				<util:panel openPane="false" title="additional configs" render="false" id="addconfig">
-				Display inside UVaCollab <input type="checkbox" name="inFrame"
-						path="/inFrame" />
-					<button type="submit" id="save" name="_eventId_save" value="Save">Save</button>
-				</util:panel>
-
-			</div>
-		</form:form>
+			<c:choose>
+				<c:when test="${bridge.admin}">
+					<div id="basicNode">
+						<tiles:insertAttribute name="configChoose" ignore="false" />
+					</div>
+				</c:when>
+				<c:otherwise>
+				</c:otherwise>
+			</c:choose>
+		</div>
 	</util:panel>
 
-	<util:panel id="debug" openPane="false" title="debug">
+	<c:if test="${bridge.configured}">
+		<tiles:insertAttribute name="settingsPanel" ignore="false" />
+	</c:if>
+
+
+	<c:if test="${bridge.configured}">
+		<form:form target="_self" modelAttribute="bridge"
+			style="margin: 0px auto">
+			<div style="margin: 0px auto">
+
+				<button style="margin: 0.3em auto" type="submit" id="cancel"
+					name="_eventId_cancel" value="Close" target="_self">Close</button>
+			</div>
+		</form:form>
+	</c:if>
+
+	<util:panel id="debug" openPane="false" title="debug" render="false">
 
 		<util:panel id="bridge" openPane="true" title="bridge">
 			${bridge}
@@ -89,7 +95,5 @@
 		</util:panel>
 
 	</util:panel>
-
-
 
 </div>

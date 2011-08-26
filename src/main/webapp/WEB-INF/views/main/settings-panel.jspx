@@ -6,15 +6,17 @@
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 
-	<form:form target="_self">
-		<button style="margin-left: 0.3em" type="submit" id="configure"
-			name="_eventId_configure" value="Change" target="_self">Change</button>
 
-		<!--  
-	<input style="margin-left: 0.3em" type="submit"
-	id="clear" name="_eventId_clear" value="Clear" target="_self" />
-	-->
+	<util:panel openPane="true" title="Settings" render="false"
+		id="settings-panel">
 
+		<form:form target="_self" modelAttribute="bridge">
 
-	</form:form>
+			<p>
+				<b>Display inside UVaCollab: ${bridge.inFrame}</b>
+				<button style="float: right;" type="submit" id="edit"
+					name="_eventId_edit" value="Edit">Edit Settings</button>
+			</p>
+		</form:form>
+	</util:panel>
 </div>

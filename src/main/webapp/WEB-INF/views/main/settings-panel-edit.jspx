@@ -1,0 +1,31 @@
+<div xmlns:spring="http://www.springframework.org/tags"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+	<jsp:directive.page contentType="text/html;charset=UTF-8" />
+	<jsp:output omit-xml-declaration="yes" />
+
+	<util:panel title="Settings" id="settings-panel" render="false">
+		<form:form method="POST" target="_self" modelAttribute="bridge">
+
+			<form:label path="inFrame" for="inFrame"><b>Display inside UVaCollab?</b></form:label>
+			<form:checkbox id="inFrame" path="inFrame" />
+<span style="float: right;" class="buttonBar"><input
+					type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
+					<button type="submit" class="button" name="_eventId_cancel"
+						value="Cancel">Cancel</button></span>
+			<span style="float: right;" class="buttonBar"><input
+					type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
+					<button type="submit" class="button" name="_eventId_save"
+						value="Save">Save</button>
+			</span> 
+		</form:form>
+
+
+
+
+
+	</util:panel>
+
+</div>
