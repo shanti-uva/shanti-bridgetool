@@ -22,6 +22,9 @@
 					<button style="margin-left: 0.2em; margin-right: 0.2em" id="clear"
 						type="submit" class="button" name="_eventId_clear"
 						value="Clear All Settings">Clear All Settings</button>
+
+					<button style="float: right" id="cancel" type="submit"
+						class="button" name="_eventId_cancel" value="Cancel">Cancel</button>
 				</c:if>
 
 			</p>

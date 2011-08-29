@@ -7,7 +7,7 @@
 				<put-attribute name="configChoose"
 					value="/WEB-INF/views/choose/choose.jspx" />
 				<put-attribute name="spaceEditControl"
-					value="/WEB-INF/views/main/config-cancel-change.jspx" />
+					value="/WEB-INF/views/main/blank.jspx" />
 				<put-attribute name="settingsPanel"
 					value="/WEB-INF/views/main/settings-panel.jspx" />
 			</definition>
