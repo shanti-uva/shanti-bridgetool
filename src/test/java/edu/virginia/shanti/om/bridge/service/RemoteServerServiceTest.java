@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
+import edu.virginia.shanti.om.bridge.form.ConfigBean;
+import edu.virginia.shanti.om.bridge.form.ConfluenceConfigBean;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 import edu.virginia.shanti.om.bridge.remote.RemoteConnector;
 
@@ -93,11 +95,14 @@ public class RemoteServerServiceTest {
 	@Transactional
 	@Test
 	public void getRemoteContexts() {
+		ConfigBean config = new ConfluenceConfigBean();
+		config.setRemoteService(CONFIG_NAME);
+		
 		RemoteServer remoteConfiguration = remoteServerService
 				.getRemoteServer(CONFIG_NAME);
 		assertNotNull(remoteConfiguration);
 		List<RemoteContextChoice> remoteContexts = remoteServerService
-				.getRemoteContexts(remoteConfiguration);
+				.getRemoteContexts(remoteConfiguration, config);
 		assertNotNull("Remote Contexts were null!", remoteContexts);
 		assertTrue("No Remote Contexts found!", remoteContexts.size() > 0);
 
@@ -106,8 +111,12 @@ public class RemoteServerServiceTest {
 	@Transactional
 	@Test
 	public void getRemoteContextsByConfigName() {
+		
+		ConfigBean config = new ConfluenceConfigBean();
+		config.setRemoteService(CONFIG_NAME);
+		
 		List<RemoteContextChoice> remoteContexts = remoteServerService
-				.getRemoteContexts(CONFIG_NAME);
+				.getRemoteContexts(config);
 		assertNotNull(remoteContexts);
 		assertTrue(remoteContexts.size() > 0);
 	}
@@ -136,11 +145,14 @@ public class RemoteServerServiceTest {
 	@Test
 	public void testGetSummaryMarkup() {
 
+		ConfigBean config = new ConfluenceConfigBean();
+		config.setRemoteService(CONFIG_NAME);
+		
 		RemoteServer remoteServer = remoteServerService
-				.getRemoteServer(CONFIG_NAME);
+				.getRemoteServer(config);
 		assertNotNull(remoteServer);
 		List<RemoteContextChoice> remoteContexts = remoteServerService
-				.getRemoteContexts(remoteServer);
+				.getRemoteContexts(remoteServer, config);
 
 		System.err.println("Remote Contexts = " + remoteContexts);
 

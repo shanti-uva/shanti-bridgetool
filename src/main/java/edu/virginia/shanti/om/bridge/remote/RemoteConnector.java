@@ -13,6 +13,7 @@ import com.googlecode.ehcache.annotations.Cacheable;
 import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
+import edu.virginia.shanti.om.bridge.form.ConfigBean;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 
 @RooJavaBean
@@ -28,10 +29,10 @@ public interface RemoteConnector {
 	 */
 	
 	public List<RemoteContextChoice> getContexts(Principal principal,
-			RemoteServer remoteServer);
+			RemoteServer remoteServer, ConfigBean config);
 
 	public RemoteContext createRemoteContext(Principal principal,
-			RemoteContext remoteContext);
+			RemoteContext remoteContext, ConfigBean config);
 
 	public String getSummaryMarkup(Principal principal,
 			RemoteContext remoteContext);

@@ -16,7 +16,7 @@
 		model="confluenceSpaceForm">
 		<transition on="create" to="success">
 			<evaluate
-				expression="remoteServerService.createRemoteContext(confluenceSpaceForm)"
+				expression="remoteServerService.createRemoteContext(confluenceSpaceForm,config)"
 				result="flowScope.newRemoteContext"></evaluate>
 		</transition>
 		<transition on="cancel" to="cancel" />

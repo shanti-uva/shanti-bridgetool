@@ -24,6 +24,7 @@ import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.PermissionSet;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
+import edu.virginia.shanti.om.bridge.form.ConfigBean;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 import edu.virginia.shanti.om.bridge.remote.RemoteConnector;
 import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
@@ -102,7 +103,7 @@ public class ConfluenceConnector implements RemoteConnector {
 	@Override
 	@Cacheable(cacheName = "remoteContextChoices")
 	public List<RemoteContextChoice> getContexts(Principal principal,
-			RemoteServer remoteServer) {
+			RemoteServer remoteServer, ConfigBean bean) {
 		
 		if (log.isDebugEnabled()) {
 			log.debug("Someone called getContexts with " + principal + " and "
@@ -212,7 +213,7 @@ public class ConfluenceConnector implements RemoteConnector {
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	@Override
 	public RemoteContext createRemoteContext(Principal principal,
-			RemoteContext newContext) {
+			RemoteContext newContext, ConfigBean config) {
 		try {
 
 			// TODO: use remote server attribute of new context to

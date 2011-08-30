@@ -28,6 +28,8 @@ import edu.virginia.shanti.om.bridge.domain.LocalGroupType;
 import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
+import edu.virginia.shanti.om.bridge.form.ConfigBean;
+import edu.virginia.shanti.om.bridge.form.ConfluenceConfigBean;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 import edu.virginia.shanti.om.bridge.remote.RemoteConnector;
 import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
@@ -96,12 +98,14 @@ public class ConfluenceConnectorTest {
 		Principal principal = SecurityContextHolder.getContext()
 				.getAuthentication();
 		
+		ConfigBean config = new ConfluenceConfigBean();
+		
 		long[] laptimes = new long[LAPS];
 		for (int i = 0; i < LAPS; i++) {
 			long start = System.currentTimeMillis();
 
 			List<RemoteContextChoice> contexts = conf.getContexts(principal,
-					remoteServer);
+					remoteServer, config);
 			assertNotNull("getContexts() returned null!", contexts);
 			
 			
@@ -134,10 +138,11 @@ public class ConfluenceConnectorTest {
 				.getAuthentication();
 
 		RemoteContext newContext = new RemoteContext();
+		ConfigBean config = new ConfluenceConfigBean();
 		newContext.setContextId(TESTSLUG);
 		newContext.setContextLabel("Yuji Test Space");
 		RemoteContext newRemoteContext = conf.createRemoteContext(principal,
-				newContext);
+				newContext, config);
 
 		assertNotNull(newContext);
 		
@@ -172,8 +177,12 @@ public class ConfluenceConnectorTest {
 		// picks the first context.... ?
 		Principal principal = SecurityContextHolder.getContext()
 				.getAuthentication();
+		
+		ConfigBean config = new ConfluenceConfigBean();
+		
+		
 		List<RemoteContextChoice> contexts = conf.getContexts(principal,
-				remoteServer);
+				remoteServer, config);
 		RemoteContextChoice choice = contexts.get(0);
 		RemoteContext rc = new RemoteContext(choice);
 

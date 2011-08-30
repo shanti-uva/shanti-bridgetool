@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
+import edu.virginia.shanti.om.bridge.form.ConfigBean;
 import edu.virginia.shanti.om.bridge.form.ConfluenceSpaceForm;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 import edu.virginia.shanti.om.bridge.remote.RemoteConnector;
@@ -67,12 +68,16 @@ public class RemoteServerService {
 	 * @param remoteServer
 	 * @return List<RemoteContext> list of remote contexts
 	 */
-	public List<RemoteContextChoice> getRemoteContexts(RemoteServer remoteServer) {
+	public List<RemoteContextChoice> getRemoteContexts(RemoteServer remoteServer, ConfigBean config) {
 		RemoteConnector remote = (RemoteConnector) applicationContext
 				.getBean(remoteServer.getImplementationName());
+		
+		if (remote == null) {
+			throw new RuntimeException("The RemoteConnector " + remoteServer.getImplementationName() + " could not be found in the application context.");
+		}
 
 		Principal principal = currentUser.getAuthentication();
-		return remote.getContexts(principal, remoteServer);
+		return remote.getContexts(principal, remoteServer, config);
 	}
 
 	/**
@@ -81,8 +86,11 @@ public class RemoteServerService {
 	 * @param configurationName
 	 * @return List<RemoteContext> list of remote contexts
 	 */
-	public List<RemoteContextChoice> getRemoteContexts(String configurationName) {
-		log.info("getRemoteContexts( " + configurationName +" ) called.");
+	public List<RemoteContextChoice> getRemoteContexts(ConfigBean config) {
+		
+		String configurationName = config.getRemoteService();
+		
+		log.info("getRemoteContexts( " + config +" ) called.");
 		RemoteServer remoteServer = getRemoteServer(configurationName);
 		if (remoteServer == null) {
 			throw new RuntimeException("Remote server \'" + configurationName
@@ -95,15 +103,15 @@ public class RemoteServerService {
 				+ currentUser.getAuthentication()
 						.getName());
 
-		return getRemoteContexts(remoteServer);
+		return getRemoteContexts(remoteServer, config);
 	}
 
-	public RemoteContext createRemoteContext(RemoteContext newContext) {
+	public RemoteContext createRemoteContext(RemoteContext newContext, ConfigBean config) {
 
 		log.info("Trying this config:  " + newContext);
 		RemoteConnector connector = findRemoteConnector(newContext);
 		RemoteContext newRemoteContext = connector.createRemoteContext(
-				currentUser.getAuthentication(), newContext);
+				currentUser.getAuthentication(), newContext, config);
 		return newRemoteContext;
 
 	}
@@ -116,12 +124,12 @@ public class RemoteServerService {
 		return connector;
 	}
 
-	public RemoteContext createRemoteContext(ConfluenceSpaceForm spaceForm) {
+	public RemoteContext createRemoteContext(ConfluenceSpaceForm spaceForm, ConfigBean config) {
 		RemoteContext rc = new RemoteContext();
 		log.info("populating remote context from spaceForm: " + spaceForm);
 		rc.populate(spaceForm);
 		log.info("Trying to create remote context: " + rc); 
-		return createRemoteContext(rc);
+		return createRemoteContext(rc, config);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -156,6 +164,10 @@ public class RemoteServerService {
 
 		connector.setRemotePermissions(principal, localContext, remoteContext, permissionMap);
 
+	}
+
+	public RemoteServer getRemoteServer(ConfigBean config) {
+		return getRemoteServer(config.getRemoteService());
 	}
 
 }

@@ -9,6 +9,4 @@ privileged aspect NowCommentConnector_Roo_Serializable {
     
     declare parents: NowCommentConnector implements Serializable;
     
-    private static final long NowCommentConnector.serialVersionUID = 1L;
-    
 }

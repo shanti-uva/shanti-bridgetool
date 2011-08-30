@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
+import edu.virginia.shanti.om.bridge.form.ConfigBean;
 import edu.virginia.shanti.om.bridge.form.RemoteContextChoice;
 import edu.virginia.shanti.om.bridge.remote.RemoteConnector;
 import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
@@ -86,12 +87,12 @@ public class MockConfluenceConnector implements RemoteConnector {
 	}
 
 	@Override
-	public List<RemoteContextChoice> getContexts(Principal principal, RemoteServer config) {
-		return contextStore.get(principal.getName() + ":" + config.getRemoteName());
+	public List<RemoteContextChoice> getContexts(Principal principal, RemoteServer remote, ConfigBean config) {
+		return contextStore.get(principal.getName() + ":" + remote.getRemoteName());
 	}
 
 	@Override
-	public RemoteContext createRemoteContext(Principal principal, RemoteContext newctx) {
+	public RemoteContext createRemoteContext(Principal principal, RemoteContext newctx, ConfigBean config) {
 
 		RemoteContextChoice rcc = new RemoteContextChoice();
 		rcc.setContextId(newctx.getContextId());

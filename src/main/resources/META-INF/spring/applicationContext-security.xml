@@ -13,8 +13,9 @@
 		class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
 		<beans:property name="permissionEvaluator" ref="permissionEvaluator" />
 	</beans:bean>
-	
-	<beans:bean id="permissionEvaluator" class="edu.virginia.shanti.om.bridge.auth.BridgeToolPermissionEvaluator"></beans:bean>
+
+	<beans:bean id="permissionEvaluator"
+		class="edu.virginia.shanti.om.bridge.auth.BridgeToolPermissionEvaluator"></beans:bean>
 
 	<!-- HTTP security configurations -->
 
@@ -25,6 +26,9 @@
 			logout-url="/logout" />
 		<intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="error.htm" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/bridges/json" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/sitealiases/listMappings"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/**" access="IS_AUTHENTICATED_FULLY" />
 	</http>
 

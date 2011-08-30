@@ -192,8 +192,18 @@ public class BridgeServiceAction {
 
 	private void populateRemoteContexts(RequestContext context) {
 		ConfigBean config = (ConfigBean) context.getFlowScope().get("config");
+		
+		log.warn("Config is " + config);
+		
+		if (config == null) {
+			throw new RuntimeException("Config is null!");
+		}
+		
+		if (remoteServerService == null) {
+			throw new RuntimeException("RemoteServerService is null!");
+		}
 		List<RemoteContextChoice> remoteContexts = remoteServerService
-				.getRemoteContexts(config.getRemoteService());
+				.getRemoteContexts(config);
 		context.getFlowScope().put("remoteContexts", remoteContexts);
 	}
 
@@ -204,6 +214,8 @@ public class BridgeServiceAction {
 	}
 
 	private String handleError(Exception e, RequestContext context) {
+		
+		e.printStackTrace();
 		log.error(e);
 
 		// if (failfast)throw new RuntimeException(e);
