@@ -25,6 +25,12 @@ public class SiteAliasService {
 
 	private static final long serialVersionUID = 1304429105643786376L;
 
+	static final String[] newterms = new String[] { "term0", "january", "spring",
+			"term3", "term4", "term5", "summer", "term7", "fall" };
+	
+	static final String[] oldterms = new String[] { "oldterm0", "spring", "summer",
+		"fall", "oldterm4", "oldterm5", "oldterm6", "oldterm7", "oldterm8" };
+
 	transient private SakaiScriptServiceLocator sakaiScriptServiceLocator = new SakaiScriptServiceLocator();
 
 	@Autowired
@@ -102,7 +108,7 @@ public class SiteAliasService {
 
 		// TODO: refactor this into an implementation class
 		StringBuilder sb = new StringBuilder("~collab:"
-				+ title.replaceAll("\\W+", "-").replaceAll("&", "and")
+				+ title.replaceAll("\\W+", "-").replaceAll("&", "and").replaceAll("\\-$", "")
 						.toLowerCase());
 		sb.append("-");
 		sb.append(siteId.substring(0, 4));
@@ -127,7 +133,12 @@ public class SiteAliasService {
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-axis/SakaiScript.jws"));
 			String title = sakaiScript.getSiteTitle(session, siteId);
+			String termEid = sakaiScript.getSiteProperty(session, siteId,
+					"term_eid");
+
 			String suggestion = suggestSiteAliasString(title, siteId);
+			suggestion = addTerm(suggestion, termEid);
+
 			SiteAlias siteAlias = new SiteAlias();
 			siteAlias.setAlias(suggestion);
 			siteAlias.setSiteId(siteId);
@@ -140,6 +151,37 @@ public class SiteAliasService {
 			throw new RuntimeException(e);
 		}
 
+	}
+
+	private String addTerm(String suggestion, String termEid) {
+				
+		if (termEid != null && !termEid.isEmpty()) {
+			String term = parseTerm(termEid);
+			suggestion = suggestion + ":" + term;
+		}
+		return suggestion;
+	}
+
+	private String parseTerm(String termEid) {
+		
+		String term = null;
+		if (termEid.startsWith("1")) {
+			// e.g. 1088
+			// 1=January, 2=Spring, 6=Summer, 8=Fall
+			int termint = Integer.parseInt(termEid);
+			int year = 1900 + termint / 10;
+			int tnum = termint % 10;
+			term = newterms[tnum] + Integer.toString(year);
+		} else if (termEid.startsWith("2") && termEid.contains("_")) {
+			// example 2008_3
+			// 1=Spring, 2=Summer, 3=Fall
+			String[] parts = termEid.split("_");
+			String year =parts[0];
+			int tnum = Integer.parseInt(parts[1]);
+			term = oldterms[tnum] + year;
+		}
+
+		return term;
 	}
 
 	public void registerAlias(SiteAlias siteAlias, String service) {
