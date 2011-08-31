@@ -55,11 +55,17 @@ public class SiteAliasService {
 		return siteAlias.getSiteId();
 	}
 
+	// @Transactional
 	public SiteAlias findSiteAliasBySiteId(String siteId) {
 		List<SiteAlias> list = SiteAlias.findSiteAliasesBySiteId(siteId)
 				.getResultList();
 		try {
 			SiteAlias siteAlias = checkSiteAliasReturn(list);
+			if (siteAlias == null) {
+				siteAlias = suggestSiteAlias(siteId);
+				siteAlias.persist();
+				System.err.println("generated alias: " + siteAlias);
+			}
 			return siteAlias;
 		} catch (Exception e) {
 			throw new RuntimeException("Problem getting SiteAlias for siteId="

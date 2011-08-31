@@ -42,7 +42,8 @@ public class NowCommentConnector implements RemoteConnector {
 
 		String siteAlias = siteAliasService.getAliasForSiteId(config
 				.getLocalContext());
-
+		
+		log.info("Got siteAlias " + siteAlias + " for " + config.getLocalContext());
 		choice.setContextId(siteAlias);
 		choice.setContextLabel(siteAlias);
 		choice.setRemoteName("nowCommentStaging");
