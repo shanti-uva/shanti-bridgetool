@@ -161,7 +161,7 @@ public class BridgeServiceAction {
 				String markUp = bridgeService.getSummaryMarkup(bridge);
 				context.getFlowScope().put("markUp", markUp);
 			} catch (Exception e) {
-				log.error(e);
+				handleError(e,context);				
 			}
 		} else {
 			throw new RuntimeException("bridge is not found in flow scope.");

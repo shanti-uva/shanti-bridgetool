@@ -51,7 +51,7 @@ public class DbLoaderListener implements
 		remoteServer = new RemoteServer();
 		remoteServer.setImplementationName("nowCommentConnector");
 		remoteServer.setRemoteName("nowCommentStaging");
-		remoteServer.setRemoteUrl("https://staging.nowcomment.com");
+		remoteServer.setRemoteUrl("http://staging.nowcomment.com");
 		
 		assureRemoteServer(remoteServer);
 
