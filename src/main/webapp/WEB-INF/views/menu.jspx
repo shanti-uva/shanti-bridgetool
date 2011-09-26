@@ -42,9 +42,10 @@
             <menu:item id="i_permissionmap_new" messageCode="global_menu_new" url="/permissionmaps?form" z="V2XpUXgl8pSSnICAxBlUPxXCBOM="/>
         <menu:item id="i_permissionmap_list" messageCode="global_menu_list" url="/permissionmaps?page=1&amp;size=${empty param.size ? 10 : param.size}" z="f7dTp5wKsX2cPtiPaLwPpFTa2k4="/>
         <menu:item id="fi_permissionmap_localcontexttype" messageCode="global_menu_find" url="/permissionmaps?find=ByLocalContextType&amp;form" z="s72awPhYedCqL1oGfZyk9yajckY="/>
-        <menu:item id="fi_permissionmap_name" messageCode="global_menu_find" url="/permissionmaps?find=ByName&amp;form" z="1A7HRnOkFqVy64XPlySzFoA/+LU="/>
+        
         <menu:item id="fi_permissionmap_localcontextmask" messageCode="global_menu_find" url="/permissionmaps?find=ByLocalContextMask&amp;form" z="BziFLY/Vsb1tl5pCDiTM4GIqO4E="/>
         <menu:item id="fi_permissionmap_localcontextmaskandservice" messageCode="global_menu_find" url="/permissionmaps?find=ByLocalContextMaskAndService&amp;form" z="LDlCl8ZbWSghjLKOkcOr3sbYXgQ="/>
+        <menu:item id="fi_permissionmap_name" messageCode="global_menu_find" url="/permissionmaps?find=ByName&amp;form" z="1A7HRnOkFqVy64XPlySzFoA/+LU="/>
         </menu:category>
     <menu:category id="c_confluencepermissionset" z="xtVw6zbNoyBsx3Z6/mIHwZFLDtw=">
             <menu:item id="i_confluencepermissionset_new" messageCode="global_menu_new" url="/confluencepermissionsets?form" z="KCWtmeh7Ae1Lo+cuCHdNR+cCRiM="/>

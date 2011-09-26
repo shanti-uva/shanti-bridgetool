@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.webflow.execution.RequestContext;
 
 import edu.virginia.shanti.om.bridge.domain.Bridge;
+import edu.virginia.shanti.om.bridge.domain.RemoteContext;
 import edu.virginia.shanti.om.bridge.domain.RemoteServer;
 import edu.virginia.shanti.om.bridge.form.ConfigBean;
 import edu.virginia.shanti.om.bridge.form.ConfluenceSpaceForm;
@@ -115,6 +116,7 @@ public class BridgeServiceAction {
 			populateBridge(context);
 			return "success";
 		} catch (Exception e) {
+			e.printStackTrace();
 			return handleError(e, context);
 		}
 	}
@@ -136,6 +138,35 @@ public class BridgeServiceAction {
 		} catch (Exception e) {
 			return handleError(e, context);
 		}
+	}
+	
+	public String autochoose(RequestContext context) {
+		try {
+			populateRemoteContexts(context);
+			populateBridge(context);
+			autochooseRemoteContext(context);
+			return "success";
+		} catch (Exception e) {
+			return handleError(e, context);
+		}
+	}
+
+	private void autochooseRemoteContext(RequestContext context) {
+
+		 List<RemoteContextChoice> list = (List<RemoteContextChoice>)context.getFlowScope().get("remoteContexts");
+
+		 if (list.size() != 1) {
+			 throw new RuntimeException("Wrong number of RemoteContextChoices available.");
+		 }
+		 RemoteContextChoice choice = list.get(0);
+		 Bridge bridge = (Bridge) context.getFlowScope().get("bridge");
+		 
+		 RemoteContext remoteContext = new RemoteContext();
+		 remoteContext.populate(choice);
+		 
+		 bridge.setRemoteContext(remoteContext);
+		
+		 save(bridge,context);	 
 	}
 
 	private void deleteBridge(RequestContext context) {

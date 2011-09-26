@@ -58,13 +58,20 @@
 		<transition on="success" to="showConfig" />
 		<transition on="error" to="showConfig" />
 	</action-state>
+	
+	<action-state id="autochoose">
+		<evaluate expression="bridgeServiceAction.autochoose(flowRequestContext)" />
+		<transition on="success" to="showConfig" />
+		<transition on="error" to="choose" />
+	</action-state>
 
 	<view-state id="configChooseType" model="bridge"
 		view="main/config-choosetype">
 		<on-entry>
 			<evaluate expression="bridgeServiceAction.prepareConfigView(flowRequestContext)"></evaluate>
 		</on-entry>
-		<transition on="choose" to="choose" />
+		<transition to="autochoose" on="autochoose" />
+		<transition to="choose" on="choose" />
 		<transition to="create" on="create" />
 		<transition to="showConfig" on="cancel" />
 		<transition to="showConfig" on="done" />

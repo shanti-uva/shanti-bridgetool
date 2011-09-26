@@ -24,6 +24,9 @@ public class PermissionMapServiceTest {
 
 	@Autowired
 	PermissionMapService permissionMapService;
+	
+	@Autowired
+	BridgeService bridgeService;
 
 	@Before
 	public void setUp() throws Exception {
@@ -54,5 +57,15 @@ public class PermissionMapServiceTest {
 		
 
 	}
+	
+	
+	@Test
+	public void testGetPermissionMap() {
+	
+		
+		
+		
+	}
+	
 
 }

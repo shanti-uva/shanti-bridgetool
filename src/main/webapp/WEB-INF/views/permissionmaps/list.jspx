@@ -15,7 +15,7 @@
         
             
         <table:column id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_permissionSets" property="permissionSets" z="WPPmGYUmHWDF7fkm0zV8p5V3VDE="/>
-        <table:column id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_name" property="name" z="DDwf+FIaQEj4LquM87CqCP0C/Oc="/>
+        
             
             
         <table:column id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextType" property="localContextType" z="QetMOHCzAOIuXiB06q3qWL5ZHcQ="/>
@@ -23,6 +23,7 @@
         
         <table:column id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextMask" property="localContextMask" z="9UQiptJlmyxOALeV5tIfu34IUPU="/>
         <table:column id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_service" property="service" z="BTXlzKz3W2yjltUSzTzyG+6XQAY="/>
+        <table:column id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_name" property="name" z="DDwf+FIaQEj4LquM87CqCP0C/Oc="/>
         </table:table>
     </page:list>
 </div>

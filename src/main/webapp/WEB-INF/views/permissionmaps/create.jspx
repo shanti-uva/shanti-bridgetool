@@ -25,7 +25,7 @@
     
         
     <field:select field="permissionSets" id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_permissionSets" itemValue="id" items="${permissionsets}" multiple="true" path="/permissionsets" z="mIccXkD37JsAvBFRHoGX06aVkX8="/>
-    <field:input field="name" id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_name" z="iKoa9xKzyHlLKYnZRVONWbDwh0Q="/>
+    
         
         
     <field:select field="localContextType" id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextType" items="${localcontexttypes}" path="localcontexttypes" z="I+iHpCjJhI1T8iBTTRlwpRmeoc4="/>
@@ -33,6 +33,7 @@
     
     <field:input field="localContextMask" id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_localContextMask" z="D4wtI2AvM+ve93GWkNLXmkyd2cc="/>
     <field:input field="service" id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_service" z="YbB5UIkgeVFVhYYuplAzwNWCtu8="/>
+    <field:input field="name" id="c_edu_virginia_shanti_om_bridge_domain_PermissionMap_name" z="iKoa9xKzyHlLKYnZRVONWbDwh0Q="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_virginia_shanti_om_bridge_domain_PermissionMap" render="${not empty dependencies}" z="UEN3x5jZKWfxOjcWxYFocB0+zjw="/>
 </div>

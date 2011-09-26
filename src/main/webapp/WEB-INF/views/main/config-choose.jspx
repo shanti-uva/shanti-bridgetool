@@ -12,30 +12,58 @@
 	</script>
 
 	<style type="text/css">
-		@import url(http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojox/form/resources/BusyButton.css);
-	</style>
+@import
+	url(http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojox/form/resources/BusyButton.css)
+	;
+</style>
 
 	<form:form method="POST" target="_self">
 		<div class="submit">
-			<p>
-				<button dojoType="dojox.form.BusyButton" busyLabel="Retrieving..."
-					style="margin-left: 0.2em; margin-right: 0.2em" type="submit"
-					id="choose" name="_eventId_choose" value="Choose an Existing Space"
-					target="_self">Choose Existing Space</button>
-				<button style="margin-left: 0.2em; margin-right: 0.2em" id="create"
-					type="submit" class="button" name="_eventId_create"
-					value="Create New Space">Create New Space</button>
 
-				<c:if test="${bridge.configured}">
-					<button style="margin-left: 0.2em; margin-right: 0.2em" id="clear"
-						type="submit" class="button" name="_eventId_clear"
-						value="Clear All Settings">Clear All Settings</button>
+			<c:choose>
+				<c:when test="${bridge.remoteName =='shanti-wiki'}">
+					<p>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Retrieving..."
+							style="margin-left: 0.2em; margin-right: 0.2em" type="submit"
+							id="choose" name="_eventId_choose"
+							value="Choose an Existing Space" target="_self">Choose
+							Existing Space</button>
 
-					<button style="float: right" id="cancel" type="submit"
-						class="button" name="_eventId_cancel" value="Cancel">Cancel</button>
-				</c:if>
+						<button style="margin-left: 0.2em; margin-right: 0.2em"
+							id="create" type="submit" class="button" name="_eventId_create"
+							value="Create New Space">Create New Space</button>
 
-			</p>
+						<c:if test="${bridge.configured}">
+							<button style="margin-left: 0.2em; margin-right: 0.2em"
+								id="clear" type="submit" class="button" name="_eventId_clear"
+								value="Clear All Settings">Clear All Settings</button>
+
+							<button style="float: right" id="cancel" type="submit"
+								class="button" name="_eventId_cancel" value="Cancel">Cancel</button>
+						</c:if>
+
+					</p>
+				</c:when>
+
+				<c:when
+					test="${bridge.remoteName =='nowCommentStaging' || bridge.remoteName=='nowComment'}">
+
+					<p>
+						<button dojoType="dojox.form.BusyButton" busyLabel="Retrieving..."
+							style="margin-left: 0.2em; margin-right: 0.2em" type="submit"
+							id="choose" name="_eventId_autochoose"
+							value="Create bridge to NowComment" target="_self">Create
+							Bridge to NowComment</button>
+					</p>
+
+
+				</c:when>
+				<c:otherwise>
+
+					<h3>Unknown service: ${bridge.remoteName}</h3>
+
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</form:form>
 </div>

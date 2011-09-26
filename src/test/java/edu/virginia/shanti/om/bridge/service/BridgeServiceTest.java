@@ -123,9 +123,7 @@ public class BridgeServiceTest {
 		bridge.setRemoteName("shanti-wiki");
 		remoteContext.setRemoteName("shanti-wiki");
 		remoteContext.setContextId("TTT");
-		// remoteContext.persist();
 		bridge.setRemoteContext(remoteContext);
-		// bridge.persist();
 		
 		bridgeService.save(bridge);
 		
