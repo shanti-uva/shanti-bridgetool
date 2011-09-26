@@ -7,6 +7,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -17,6 +19,7 @@ import org.springframework.roo.addon.tostring.RooToString;
 @RooToString
 @RooSerializable
 @RooEntity(finders = { "findPermissionMapsByLocalContextType", "findPermissionMapsByName", "findPermissionMapsByLocalContextMask", "findPermissionMapsByLocalContextMaskAndService" })
+@Table(name = "permission_map", uniqueConstraints = { @UniqueConstraint(columnNames = { "localContextMask", "service", "localContextType" }) })
 public class PermissionMap {
 
     private static final long serialVersionUID = -7512207795576727622L;
