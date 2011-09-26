@@ -27,7 +27,7 @@ public class PermissionMapService {
 	Log log = LogFactory.getLog(PermissionMapService.class);
 
 	transient private SakaiScriptServiceLocator sakaiScriptServiceLocator = new SakaiScriptServiceLocator();
-
+	
 	@Autowired
 	private CurrentUser currentUser;
 
@@ -71,6 +71,7 @@ public class PermissionMapService {
 				.getResultList();
 		if (!results.isEmpty()) {
 			permissionMap = results.get(0);
+			log.error("Found permissionMap " + permissionMap);
 		} else {
 			// TODO Otherwise try looking up by site type! FRICK! how do we know
 			// the site type!!!?
@@ -93,11 +94,17 @@ public class PermissionMapService {
 			try {
 				SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 						.getSakaiScript(new URL("https://" + server
-								+ "/sakai-axis/SakaiScript.jws"));
-
+								+ "/sakai-axis/SakaiScript.jws"));				
 				LocalContextType siteType;
-				if (sakaiScript.checkForRoleInAuthzGroup(session,
-						bridge.getLocalContext(), "Instructor")) {
+				
+				String termEid = sakaiScript.getSiteProperty(session, bridge.getLocalContext(), "term_eid");
+				
+				log.error("Site type check: termEid = " + termEid);
+				
+				// if (sakaiScript.checkForRoleInAuthzGroup(session,
+				//		bridge.getLocalContext(), "Instructor")) {
+				
+				if (termEid != null) {
 					siteType = LocalContextType.COURSE;
 				} else {
 					siteType = LocalContextType.COLLABORATION;
