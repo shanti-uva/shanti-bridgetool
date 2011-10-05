@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -32,6 +34,7 @@ import org.apache.http.util.EntityUtils;
 import org.jdom.Element;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -112,9 +115,9 @@ public class NowCommentConnector implements RemoteConnector {
 			RemoteContext remoteContext) {
 
 		String ctxId = remoteContext.getContextId();
-	
-		
-		System.err.println("getSummaryMarkup called with remoteContext = " + remoteContext);
+
+		System.err.println("getSummaryMarkup called with remoteContext = "
+				+ remoteContext);
 
 		String remoteSummaryUrl = remoteContext.getUrl();
 
@@ -157,6 +160,8 @@ public class NowCommentConnector implements RemoteConnector {
 
 		String groupId = null;
 
+		String summary = "<p>Summary is currently unavailable.</p>";
+
 		groupId = fetchGroupId(ctxId, targetHost, client, httpcontext);
 
 		System.err.println("Found groupId = " + groupId);
@@ -172,78 +177,85 @@ public class NowCommentConnector implements RemoteConnector {
 		System.err.println("url = " + groupRSS);
 		System.err.println("status = " + response.getStatusLine());
 
-		HttpEntity entity = response.getEntity();
+		int retcode = response.getStatusLine().getStatusCode();
 
-		XmlReader reader = new XmlReader(entity.getContent());
-		/*
-		 * 
-		 * <rss version="2.0" xmlns:nowcomment="http://nowcomment.com/rss/">
-		 * <channel> <title>NowComment - Yuji Shinozaki's unread comments in the
-		 * group Java Basics (Summer 2008)</title> <description>NowComment -
-		 * Yuji Shinozaki's unread comments in the group Java Basics (Summer
-		 * 2008)</description>
-		 * <link>http://staging.nowcomment.com/groups/264</link>
-		 * <nowcomment:shib_id
-		 * >~collab:java-basics-fde0:summer2008</nowcomment:shib_id> <item>
-		 * <title>Test Document</title>
-		 * <link>http://staging.nowcomment.com/documents/2355/view</link>
-		 * <nowcomment:document_id>2355</nowcomment:document_id>
-		 * <nowcomment:unread_comments>0</nowcomment:unread_comments> </item>
-		 * <lastBuildDate>Fri, 12 Aug 2011 10:55:41 -0400</lastBuildDate>
-		 * </channel> </rss>
-		 */
+		if (retcode == HttpServletResponse.SC_OK) {
 
-		String summary = "no summary available";
-		try {
-			StringBuilder summaryBuilder = new StringBuilder();
+			HttpEntity entity = response.getEntity();
 
-			summaryBuilder.append("<ul>\n");
+			XmlReader reader = new XmlReader(entity.getContent());
+			/*
+			 * 
+			 * <rss version="2.0" xmlns:nowcomment="http://nowcomment.com/rss/">
+			 * <channel> <title>NowComment - Yuji Shinozaki's unread comments in
+			 * the group Java Basics (Summer 2008)</title>
+			 * <description>NowComment - Yuji Shinozaki's unread comments in the
+			 * group Java Basics (Summer 2008)</description>
+			 * <link>http://staging.nowcomment.com/groups/264</link>
+			 * <nowcomment:shib_id
+			 * >~collab:java-basics-fde0:summer2008</nowcomment:shib_id> <item>
+			 * <title>Test Document</title>
+			 * <link>http://staging.nowcomment.com/documents/2355/view</link>
+			 * <nowcomment:document_id>2355</nowcomment:document_id>
+			 * <nowcomment:unread_comments>0</nowcomment:unread_comments>
+			 * </item> <lastBuildDate>Fri, 12 Aug 2011 10:55:41
+			 * -0400</lastBuildDate> </channel> </rss>
+			 */
 
-			SyndFeed feed = new SyndFeedInput().build(reader);
-			System.out.println("Feed Title: " + feed.getTitle());
+			try {
+				StringBuilder summaryBuilder = new StringBuilder();
 
-			for (Iterator i = feed.getEntries().iterator(); i.hasNext();) {
-				int unreadCount = 0, documentId = 0;
-				SyndEntry entry = (SyndEntry) i.next();
-				System.out.println("\tEntry: " + entry.getTitle());
+				summaryBuilder.append("<ul>\n");
 
-				String documentUrl = entry.getUri();
-				System.out.println(entry);
+				SyndFeed feed = new SyndFeedInput().build(reader);
+				System.out.println("Feed Title: " + feed.getTitle());
 
-				List<Element> foreignMarkupList = (List<Element>) entry
-						.getForeignMarkup();
+				for (Iterator i = feed.getEntries().iterator(); i.hasNext();) {
+					int unreadCount = 0, documentId = 0;
+					SyndEntry entry = (SyndEntry) i.next();
+					System.out.println("\tEntry: " + entry.getTitle());
 
-				for (Element x : foreignMarkupList) {
-					System.out.println(">>>" + x.getName() + "=" + x.getText());
-					if ("unread_comments".equals(x.getName())) {
-						unreadCount = Integer.parseInt(x.getValue());
-					} else if ("document_id".equals(x.getName())) {
-						documentId = Integer.parseInt(x.getValue());
+					String documentUrl = entry.getUri();
+					System.out.println(entry);
+
+					List<Element> foreignMarkupList = (List<Element>) entry
+							.getForeignMarkup();
+
+					for (Element x : foreignMarkupList) {
+						System.out.println(">>>" + x.getName() + "="
+								+ x.getText());
+						if ("unread_comments".equals(x.getName())) {
+							unreadCount = Integer.parseInt(x.getValue());
+						} else if ("document_id".equals(x.getName())) {
+							documentId = Integer.parseInt(x.getValue());
+						}
 					}
-				}
 
-				summaryBuilder.append("\t<li>");
-				summaryBuilder.append("<a href=\"");
-				summaryBuilder.append(documentUrl);
-				summaryBuilder.append("\">");
-				summaryBuilder.append(entry.getTitle());
-				summaryBuilder.append("</a>");
-				summaryBuilder.append(" (");
-				summaryBuilder.append(unreadCount);
-				summaryBuilder.append(" unread comment");
-				if (unreadCount != 1) {
-					summaryBuilder.append("s");
-				}
-				summaryBuilder.append(")");
-				summaryBuilder.append("</li>");
-				summaryBuilder.append("\n");
+					summaryBuilder.append("\t<li>");
+					summaryBuilder.append("<a href=\"");
+					summaryBuilder.append(documentUrl);
+					summaryBuilder.append("\">");
+					summaryBuilder.append(entry.getTitle());
+					summaryBuilder.append("</a>");
+					summaryBuilder.append(" (");
+					summaryBuilder.append(unreadCount);
+					summaryBuilder.append(" unread comment");
+					if (unreadCount != 1) {
+						summaryBuilder.append("s");
+					}
+					summaryBuilder.append(")");
+					summaryBuilder.append("</li>");
+					summaryBuilder.append("\n");
 
+				}
+				summaryBuilder.append("</ul>\n");
+				summary = summaryBuilder.toString();
+			} catch (Exception e) {
+				log.warn("There was a problem retrieving the feed: Return code was: " + retcode, e);
+			} finally {
+				if (reader != null)
+					reader.close();
 			}
-			summaryBuilder.append("</ul>\n");
-			summary = summaryBuilder.toString();
-		} finally {
-			if (reader != null)
-				reader.close();
 		}
 		return summary;
 	}
