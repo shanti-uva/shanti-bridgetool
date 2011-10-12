@@ -83,7 +83,7 @@ public class NowCommentConnector implements RemoteConnector {
 				+ config.getLocalContext());
 		choice.setContextId(siteAlias);
 		choice.setContextLabel("NowComment Group: " + displayName);
-		choice.setRemoteName("nowCommentStaging");
+		choice.setRemoteName(remoteServer.getRemoteName());
 		log.info("remoteServer = " + remoteServer);
 		// https://staging.nowcomment.com/uva?redirect_to_group=~collab:java-basics-fde0:summer2008
 		choice.setUrl(remoteServer.getRemoteUrl() + "/uva?redirect_to_group="
