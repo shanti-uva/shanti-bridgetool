@@ -12,6 +12,7 @@ privileged aspect GestaltBean_Roo_ToString {
         sb.append("LocalContext: ").append(getLocalContext()).append(", ");
         sb.append("LocalSubContext: ").append(getLocalSubContext()).append(", ");
         sb.append("RemoteService: ").append(getRemoteService()).append(", ");
+        sb.append("ServiceLabel: ").append(getServiceLabel()).append(", ");
         sb.append("Timestamp: ").append(getTimestamp()).append(", ");
         sb.append("User: ").append(getUser());
         return sb.toString();

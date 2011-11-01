@@ -48,4 +48,12 @@ privileged aspect BasicConfigBean_Roo_JavaBean {
         this.remoteService = remoteService;
     }
     
+    public String BasicConfigBean.getServiceLabel() {
+        return this.serviceLabel;
+    }
+    
+    public void BasicConfigBean.setServiceLabel(String serviceLabel) {
+        this.serviceLabel = serviceLabel;
+    }
+    
 }

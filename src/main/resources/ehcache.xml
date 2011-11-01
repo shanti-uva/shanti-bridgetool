@@ -13,8 +13,8 @@
         timeToLiveSeconds="3600" memoryStoreEvictionPolicy="LRU"/>
 
     <cache name="remoteContextChoices" eternal="false"
-        maxElementsInMemory="100" overflowToDisk="false" diskPersistent="false"
-        timeToIdleSeconds="6000" timeToLiveSeconds="3600"
+        maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false"
+        timeToIdleSeconds="0" timeToLiveSeconds="3600"
         memoryStoreEvictionPolicy="LRU" />
         
 </ehcache>

@@ -357,8 +357,16 @@ public class BridgeServiceImpl implements BridgeService {
 			if (service == null) {
 				service = "shanti-wiki"; // default for now
 			}
-
+			
+			String serviceLabel = "";
+			if (service.equals("shanti-wiki")) {
+				serviceLabel="Confluence";
+			} else if (service.equals("")) {
+				serviceLabel="NowComment";
+			}
 			config.setRemoteService(service);
+			config.setServiceLabel(serviceLabel);
+
 		}
 
 		return config;

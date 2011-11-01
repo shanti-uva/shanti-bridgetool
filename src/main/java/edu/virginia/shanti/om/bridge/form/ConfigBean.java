@@ -21,5 +21,9 @@ public interface ConfigBean {
 	String getRemoteService();
 	
 	void setRemoteService(String remoteService);
+	
+	String getServiceLabel();
+	
+	void setServiceLabel(String serviceLabel);
 
 }
