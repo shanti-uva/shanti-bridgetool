@@ -10,11 +10,9 @@
 		<button style="margin-left: 0.3em" type="submit" id="configure"
 			name="_eventId_configure" value="Change" target="_self">Change</button>
 
-		<!--  
-	<input style="margin-left: 0.3em" type="submit"
-	id="clear" name="_eventId_clear" value="Clear" target="_self" />
-	-->
 
+		<button style="margin-left: 0.3em" type="submit" id="cancel"
+			name="_eventId_cancel" value="Cancel" target="_self">Cancel</button>
 
 	</form:form>
 </div>
