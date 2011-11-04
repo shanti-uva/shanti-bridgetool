@@ -67,7 +67,6 @@ body {
 #menu h2 {
 	color: #fff;
 	background: #648C1D;
-	text-transform: uppercase;
 	font-weight:bold;
 	font-size: 12px;
 }
@@ -331,7 +330,6 @@ fieldset th {
 	color:#777777;
 	padding:2px 7px;
 	font-size:11px;
-	text-transform:uppercase;
 	font-weight:bold;
 	height:24px;
 }
@@ -364,4 +362,8 @@ fieldset th {
 .flag {
 	height: 11px;
 	width: 16px;
+}
+
+div.tabletitleops {
+	display: none;
 }
