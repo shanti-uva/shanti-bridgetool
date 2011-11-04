@@ -14,7 +14,6 @@ privileged aspect ConfluenceConfigBean_Roo_ToString {
         sb.append("RemoteService: ").append(getRemoteService()).append(", ");
         sb.append("ServiceLabel: ").append(getServiceLabel()).append(", ");
         sb.append("SiteId: ").append(getSiteId()).append(", ");
-        sb.append("Timestamp: ").append(getTimestamp()).append(", ");
         sb.append("ToolPlacementId: ").append(getToolPlacementId()).append(", ");
         sb.append("User: ").append(getUser());
         return sb.toString();

@@ -5,10 +5,6 @@ public interface ConfigBean {
 	String getUser();
 	
 	void setUser(String user);
-	
-	Long getTimestamp();
-	
-	void setTimestamp(Long timestamp);
 
 	String getLocalContext();
 

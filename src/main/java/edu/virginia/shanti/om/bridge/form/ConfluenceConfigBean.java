@@ -21,8 +21,8 @@ public class ConfluenceConfigBean extends BasicConfigBean {
  	}
 
 	public ConfluenceConfigBean(String user, String siteId, String toolPlacementId,
-			String remoteService, Long timestamp) {
-		super(user, siteId,toolPlacementId,remoteService, timestamp);
+			String remoteService) {
+		super(user, siteId,toolPlacementId,remoteService);
 	}
 	
 	public String getSiteId() {

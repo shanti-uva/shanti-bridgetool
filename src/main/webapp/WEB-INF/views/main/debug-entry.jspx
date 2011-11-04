@@ -25,11 +25,6 @@
 		</tr>
 		
 		<tr>
-			<td>Time Stamp</td>
-			<td><input name="timestamp" path="timestamp" value="${config.timestamp}" /></td>
-		</tr>
-		
-		<tr>
 			<td>Site Id</td>
 			<td><input name="siteId" path="siteId" value="${config.siteId}" /></td>
 		</tr>

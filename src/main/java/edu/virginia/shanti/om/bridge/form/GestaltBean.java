@@ -36,11 +36,10 @@ public class GestaltBean extends BasicConfigBean {
 	 * @param siteId
 	 * @param toolPlacementId
 	 * @param remoteService
-	 * @param timestamp
 	 */
 	public GestaltBean(String user, String siteId, String toolPlacementId,
-			String remoteService, Long timestamp) {
-		super(user, siteId, toolPlacementId, remoteService, timestamp);
+			String remoteService) {
+		super(user, siteId, toolPlacementId, remoteService);
 	}
 
 }

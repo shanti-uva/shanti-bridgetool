@@ -13,8 +13,6 @@ import org.springframework.stereotype.Component;
 public class BasicConfigBean implements ConfigBean {
 	
 	private static final long serialVersionUID = 7034676199472189866L;
-
-	private Long timestamp;
 	
 	private String user;
 
@@ -24,10 +22,6 @@ public class BasicConfigBean implements ConfigBean {
 	
 	private String remoteService;
 	
-//	private String actionText;
-//	
-//	private String subjectText;
-	
 	private String serviceLabel;
 		
 	public BasicConfigBean() {
@@ -35,18 +29,17 @@ public class BasicConfigBean implements ConfigBean {
 	}
 	
 	public BasicConfigBean(String user, String siteId, String toolPlacementId,
-			String remoteService, Long timestamp) {
+			String remoteService) {
 		this();
 		setLocalContext(siteId);
 		setLocalSubContext(toolPlacementId);
 		setRemoteService(remoteService);
 		setUser(user);
-		setTimestamp(timestamp);
 	}
 
 	public static ConfigBean getInstance(String user, String localContext, String localSubContext,
-			String remoteService, Long timestamp) {
-		return new BasicConfigBean(user, localContext, localSubContext, remoteService, timestamp);
+			String remoteService) {
+		return new BasicConfigBean(user, localContext, localSubContext, remoteService);
 	}
 
 }

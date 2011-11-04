@@ -98,7 +98,7 @@ public class BridgeServiceImpl implements BridgeService {
 		// TODO: needs test
 
 		ConfigBean config = new ConfluenceConfigBean(user, localContext, null,
-				null, System.currentTimeMillis());
+				null);
 		return getBridges(config);
 	}
 
@@ -329,10 +329,6 @@ public class BridgeServiceImpl implements BridgeService {
 		// }
 		//
 		// System.err.println("user = " + user);
-
-		if (config.getTimestamp() == null) {
-			config.setTimestamp(System.currentTimeMillis());
-		}
 
 		if (config.getUser() == null) {
 			config.setUser((String) request.getExternalContext()
