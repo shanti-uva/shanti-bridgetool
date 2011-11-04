@@ -84,9 +84,9 @@ public class BridgeServiceTest {
 
 		// these should not be configured yet.
 		assertEquals(false,
-				bridgeService.checkConfig(BasicConfigBean.getInstance(TEST_REAL_USER,"firstLocalContext", null, "serviceName",System.currentTimeMillis())));
+				bridgeService.checkConfig(BasicConfigBean.getInstance(TEST_REAL_USER,"firstLocalContext", null, "serviceName")));
 		assertEquals(false, bridgeService.checkConfig(BasicConfigBean.getInstance(
-				TEST_REAL_USER,"secondLocalContext", "secondLocalSubContext", "serviceName",System.currentTimeMillis())));
+				TEST_REAL_USER,"secondLocalContext", "secondLocalSubContext", "serviceName")));
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED)
@@ -127,10 +127,10 @@ public class BridgeServiceTest {
 		
 		bridgeService.save(bridge);
 		
-		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance(TEST_REAL_USER,TEST_REAL_SITEID, null, "shanti-wiki", System.currentTimeMillis())),
+		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance(TEST_REAL_USER,TEST_REAL_SITEID, null, "shanti-wiki")),
 				equalTo(true));
 		assertThat(bridgeService.checkConfig(BasicConfigBean.getInstance(TEST_REAL_USER,"secondLocalContext",
-				"secondLocalSubContext", "shanti-wiki", System.currentTimeMillis())), equalTo(false));
+				"secondLocalSubContext", "shanti-wiki")), equalTo(false));
 	}
 
 	private void setupMockPermissionMap() {
@@ -190,7 +190,7 @@ public class BridgeServiceTest {
 		String mockLocalSubContext = mockBridge.getLocalSubContext();
 		String mockService = mockBridge.getRemoteContext().getRemoteName();
 		
-		Bridge bridge = bridgeService.getBridge(BasicConfigBean.getInstance(TEST_REAL_USER,mockLocalContext, mockLocalSubContext, mockService, System.currentTimeMillis()));
+		Bridge bridge = bridgeService.getBridge(BasicConfigBean.getInstance(TEST_REAL_USER,mockLocalContext, mockLocalSubContext, mockService));
 		assertNotNull("Bridge was null.", bridge);
 		assertNotNull(bridge.getRemoteContext());
 	}
@@ -208,7 +208,7 @@ public class BridgeServiceTest {
 		String mockService = mockBridge.getRemoteContext().getRemoteName();
 		
 		List<Bridge> bridges = bridgeService.getBridges(BasicConfigBean.getInstance(TEST_REAL_USER,mockLocalContext,
-				null, mockService, System.currentTimeMillis()));
+				null, mockService));
 		assertNotNull("Bridge list was null.", bridges);
 		assertFalse("Bridge list was empty", bridges.isEmpty());
 	}

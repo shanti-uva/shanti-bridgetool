@@ -22,18 +22,18 @@
 	<subflow-state subflow="choose" id="choose">
 		<!-- always check the config after returning from choose -->
 		<transition on="cancel" to="configChooseType" />
-		<transition to="showConfig" />
+		<transition to="configChooseType" />
 	</subflow-state>
 
 	<view-state id="normal" view="main/normal">
 		<on-entry>
 			<evaluate expression="bridgeServiceAction.prepareNormalView(flowRequestContext)" />
 		</on-entry>
-		<transition on="error" to="showConfig" />
-		<transition on="showConfig" to="showConfig" />
+		<transition on="error" to="configChooseType" />
+		<transition on="showConfig" to="configChooseType" />
 	</view-state>
 
-	<view-state id="showConfig" model="bridge" view="main/config">
+<!-- 	<view-state id="showConfig" model="bridge" view="main/config">
 		<on-entry>
 			<evaluate expression="bridgeServiceAction.prepareConfigView(flowRequestContext)" />
 		</on-entry>
@@ -43,25 +43,25 @@
 		<transition to="clearConfirm" on="clear" validate="false" />
 		<transition to="editSettings" on="edit" validate="false" />
 		<transition to="save" on="save" validate="true" />
-	</view-state>
+	</view-state> -->
 
 	<view-state id="editSettings" model="bridge" view="main/edit-settings">
 		<on-entry>
 			<evaluate expression="bridgeServiceAction.prepareConfigView(flowRequestContext)" />
 		</on-entry>
 		<transition to="save" on="save" validate="true" bind="true" />
-		<transition to="showConfig" on="cancel" validate="false" />
+		<transition to="configChooseType" on="cancel" validate="false" />
 	</view-state>
 
 	<action-state id="save">
 		<evaluate expression="bridgeServiceAction.save(bridge,flowRequestContext)" />
-		<transition on="success" to="showConfig" />
-		<transition on="error" to="showConfig" />
+		<transition on="success" to="configChooseType" />
+		<transition on="error" to="configChooseType" />
 	</action-state>
 	
 	<action-state id="autochoose">
 		<evaluate expression="bridgeServiceAction.autochoose(flowRequestContext)" />
-		<transition on="success" to="showConfig" />
+		<transition on="success" to="configChooseType" />
 		<transition on="error" to="choose" />
 	</action-state>
 
@@ -73,8 +73,8 @@
 		<transition to="autochoose" on="autochoose" />
 		<transition to="choose" on="choose" />
 		<transition to="create" on="create" />
-		<transition to="showConfig" on="cancel" />
-		<transition to="showConfig" on="done" />
+		<transition to="configChooseType" on="cancel" />
+		<transition to="configChooseType" on="done" />
 		<transition to="editSettings" on="edit" />
 		<transition on="clear" to="clearConfirm" validate="false" />
 	</view-state>
@@ -94,6 +94,6 @@
 
 	<subflow-state id="create" subflow="create">
 		<transition to="configChooseType" on="cancel" />
-		<transition to="showConfig"></transition>
+		<transition to="configChooseType"></transition>
 	</subflow-state>
 </flow>
