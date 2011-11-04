@@ -73,7 +73,7 @@
 		<transition to="autochoose" on="autochoose" />
 		<transition to="choose" on="choose" />
 		<transition to="create" on="create" />
-		<transition to="configChooseType" on="cancel" />
+		<transition to="checkConfig" on="cancel" />
 		<transition to="configChooseType" on="done" />
 		<transition to="editSettings" on="edit" />
 		<transition on="clear" to="clearConfirm" validate="false" />
