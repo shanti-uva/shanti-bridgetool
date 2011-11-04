@@ -12,9 +12,17 @@
         overflowToDisk="false" diskPersistent="false" timeToIdleSeconds="0"
         timeToLiveSeconds="3600" memoryStoreEvictionPolicy="LRU"/>
 
+	<!-- short-lived cache for the entire list of remote contexts -->
     <cache name="remoteContextChoices" eternal="false"
         maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false"
-        timeToIdleSeconds="0" timeToLiveSeconds="3600"
+        timeToIdleSeconds="0" timeToLiveSeconds="1200"
+        memoryStoreEvictionPolicy="LRU" />
+        
+        
+    <!-- longer-lived cache for individual confluence space permissions -->
+    <cache name="confluenceSpacePermissions" eternal="false"
+        maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false"
+        timeToIdleSeconds="0" timeToLiveSeconds="5500"
         memoryStoreEvictionPolicy="LRU" />
         
 </ehcache>

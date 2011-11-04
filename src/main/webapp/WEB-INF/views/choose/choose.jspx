@@ -30,7 +30,7 @@
 							</table>
 						</spring:hasBindErrors>
 						
-						<h4>Choose from your existing Confluence spaces:</h4>
+						<p><em>Choose from your existing Confluence spaces:</em></p>
 						<form:select path="remoteContext">
 							<form:options items="${remoteContexts}" itemLabel="contextLabel" />
 						</form:select>

@@ -7,6 +7,8 @@
 
 package edu.virginia.shanti.om.bridge.soap.confluence;
 
+import com.googlecode.ehcache.annotations.Cacheable;
+
 public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.Stub implements edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceSoapService {
     private java.util.Vector cachedSerClasses = new java.util.Vector();
     private java.util.Vector cachedSerQNames = new java.util.Vector();
@@ -3722,6 +3724,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         }
     }
 
+    @Cacheable(cacheName="confluenceSpacePermissions")
     public java.lang.String[] getPermissions(java.lang.String in0, java.lang.String in1) throws java.rmi.RemoteException, edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException, edu.virginia.shanti.om.bridge.soap.confluence.RemoteException {
         if (super.cachedEndpoint == null) {
             throw new org.apache.axis.NoEndPointException();

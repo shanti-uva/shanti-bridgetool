@@ -19,6 +19,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.googlecode.ehcache.annotations.Cacheable;
+import com.googlecode.ehcache.annotations.KeyGenerator;
+import com.googlecode.ehcache.annotations.PartialCacheKey;
 
 import edu.virginia.shanti.om.bridge.domain.PermissionMap;
 import edu.virginia.shanti.om.bridge.domain.PermissionSet;
@@ -55,7 +57,7 @@ public class ConfluenceConnector implements RemoteConnector {
 			"REMOVEPAGE", "COMMENT" };
 
 	private Log log = LogFactory.getLog(ConfluenceConnector.class);
-
+	
 	// @Value("#{appConfiguration.adminUser}")
 	@Value("${adminUser}")
 	public String adminUser;
@@ -64,7 +66,7 @@ public class ConfluenceConnector implements RemoteConnector {
 
 	@Value("${adminPassword}")
 	public String adminPassword;
-
+	
 	transient private ConfluenceSoapServiceServiceLocator confLocator;
 
 	transient private SudoSoapServiceLocator sudoLocator;
@@ -101,9 +103,9 @@ public class ConfluenceConnector implements RemoteConnector {
 	}
 
 	@Override
-	@Cacheable(cacheName = "remoteContextChoices")
-	public List<RemoteContextChoice> getContexts(Principal principal,
-			RemoteServer remoteServer, ConfigBean bean) {
+	@Cacheable(cacheName = "remoteContextChoices", keyGenerator=@KeyGenerator(name="StringCacheKeyGenerator"))
+	public List<RemoteContextChoice> getContexts(@PartialCacheKey Principal principal,
+			@PartialCacheKey RemoteServer remoteServer, ConfigBean bean) {
 		
 		if (log.isDebugEnabled()) {
 			log.debug("Someone called getContexts with " + principal + " and "
@@ -123,7 +125,7 @@ public class ConfluenceConnector implements RemoteConnector {
 
 			RemoteSpaceSummary[] spaces = conf.getSpaces(sess);
 
-			spaces = filterSpaces(conf, sess, spaces);
+			spaces = filterSpaces(conf, sess, principal.getName(), spaces);
 
 			List<RemoteContextChoice> list = new LinkedList<RemoteContextChoice>();
 
@@ -164,7 +166,7 @@ public class ConfluenceConnector implements RemoteConnector {
 
 	// filter spaces according to permissions
 	private RemoteSpaceSummary[] filterSpaces(ConfluenceSoapService conf,
-			String sess, RemoteSpaceSummary[] spaces) {
+			String sess, String user, RemoteSpaceSummary[] spaces) {
 		List<RemoteSpaceSummary> newList = new LinkedList<RemoteSpaceSummary>();
 
 		for (RemoteSpaceSummary sum : spaces) {
@@ -173,8 +175,7 @@ public class ConfluenceConnector implements RemoteConnector {
 				try {
 
 					System.err.println("Space summary: " + sum.getKey());
-					String[] permissions = conf.getPermissions(sess,
-							sum.getKey());
+					String[] permissions = getPermissions(conf, sess, user, sum.getKey());
 					System.err.println("Permissions: "
 							+ Arrays.toString(permissions));
 
@@ -201,6 +202,16 @@ public class ConfluenceConnector implements RemoteConnector {
 
 		System.err.println("Returning:  " + newArray);
 		return newArray;
+	}
+	
+	@Cacheable(cacheName = "confluenceSpacePermissions", keyGenerator=@KeyGenerator(name="StringCacheKeyGenerator"))
+	public String[] getPermissions(ConfluenceSoapService conf, String sess, @PartialCacheKey String user,
+		 @PartialCacheKey String key) throws java.rmi.RemoteException,
+			InvalidSessionException, RemoteException {
+		
+		log.info("REMOTE CALL to getPermission using " + sess + ", " + user + " and " + key);
+		return conf.getPermissions(sess,
+				key);
 	}
 
 	/*

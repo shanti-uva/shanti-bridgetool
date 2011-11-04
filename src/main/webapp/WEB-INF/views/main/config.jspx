@@ -35,20 +35,21 @@
 
 			<c:choose>
 				<c:when test="${bridge.configured}">
+					<p><em>This ${config.serviceLabel} Bridge is currently configured and associated with: </em></p>
 					<h2 style="display: inline;">${bridge.remoteContext.contextLabel}
 					</h2>
-					(${bridge.remoteContext.url})
+					<!--  <p>(${bridge.remoteContext.url})</p> -->
 					</c:when>
 				<c:otherwise>
-					<h3>This ${config.serviceLabel} Bridge is currently
-						unconfigured.</h3>
+					<h2>This ${config.serviceLabel} Bridge is currently
+						unconfigured.</h2>
 					<c:choose>
 						<c:when test="${bridge.admin}">
 						</c:when>
 						<c:otherwise>
 							 Please consult with your Instructor or Worksite Administrator.
 						</c:otherwise>
-					</c:choose>
+					</c:choose>				
 				</c:otherwise>
 			</c:choose>
 

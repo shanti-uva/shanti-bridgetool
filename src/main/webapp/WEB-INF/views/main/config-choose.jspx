@@ -25,14 +25,30 @@
 		<div class="submit">
 
 			<c:choose>
+				<c:when test="${bridge.configured}">
+					<c:set var="existing" scope="request" value="Different" />
+					<c:set var="instructions" scope="request" value="" />
+				</c:when>
+				<c:otherwise>
+					<c:set var="existing" scope="request" value="Existing" />
+					<c:set var="instructions" scope="request"
+						value="Select an existing Confluence Space to associate with this Bridge. Or create a new one." />
+				</c:otherwise>
+			</c:choose>
+
+			<c:choose>
 				<c:when test="${bridge.remoteName =='shanti-wiki'}">
 					<p>
-						<button 
-							style="margin-left: 0.2em; margin-right: 0.2em" type="submit"
-							id="chooseButton" name="_eventId_choose"
-							value="Choose an Existing Space" target="_self" onClick="function() { submit(); }">Choose
-							Existing Space</button>
-<!-- 						<script type="text/javascript">
+						<em>${instructions}</em>
+					</p>
+
+					<p>
+						<button style="margin-left: 0.2em; margin-right: 0.2em"
+							type="submit" id="chooseButton" name="_eventId_choose"
+							value="Choose an Existing Space" target="_self"
+							onClick="function() { submit(); }">Choose ${existing}
+							Space</button>
+						<!-- 						<script type="text/javascript">
 							Spring.addDecoration(new Spring.ElementDecoration({
 								type : "submit",
 								name : "_eventId_choose",
@@ -53,7 +69,7 @@
 								value="Clear All Settings">Clear All Settings</button>
 
 							<button style="float: right" id="cancel" type="submit"
-								class="button" name="_eventId_cancel" value="Cancel">Cancel</button>
+								class="button" name="_eventId_cancel" value="Cancel">Done</button>
 						</c:if>
 
 					</p>
@@ -62,12 +78,28 @@
 				<c:when
 					test="${bridge.remoteName =='nowCommentStaging' || bridge.remoteName=='nowComment'}">
 
+					<p>Oy!</p>
+
 					<p>
-						<button dojoType="dojox.form.BusyButton" busyLabel="Retrieving..."
-							style="margin-left: 0.2em; margin-right: 0.2em" type="submit"
-							id="choose" name="_eventId_autochoose"
-							value="Create bridge to NowComment" target="_self">Create
-							Bridge to NowComment</button>
+
+						<c:choose>
+							<c:when test="${!bridge.configured}">
+								<button dojoType="dojox.form.BusyButton"
+									busyLabel="Retrieving..."
+									style="margin-left: 0.2em; margin-right: 0.2em" type="submit"
+									id="choose" name="_eventId_autochoose"
+									value="Create Bridge to NowComment" target="_self">Create
+									Bridge to NowComment</button>
+							</c:when>
+							<c:otherwise>
+								<button style="margin-left: 0.2em; margin-right: 0.2em"
+									id="clear" type="submit" class="button" name="_eventId_clear"
+									value="Clear All Settings">Clear All Settings</button>
+
+								<button id="cancel" type="submit" class="button"
+									name="_eventId_cancel" value="Cancel">Cancel</button>
+							</c:otherwise>
+						</c:choose>
 					</p>
 
 
