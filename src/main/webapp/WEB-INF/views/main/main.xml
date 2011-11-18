@@ -75,10 +75,10 @@
 		<transition to="create" on="create" />
 		<transition to="checkConfig" on="cancel" />
 		<transition to="configChooseType" on="done" />
-		<transition to="editSettings" on="edit" />
+		<!--  <transition to="editSettings" on="edit" /> -->
+		<transition to="save" on="save" />
 		<transition on="clear" to="clearConfirm" validate="false" />
 	</view-state>
-
 
 	<!-- clearing -->
 	<view-state id="clearConfirm" view="main/config-clear-confirm">
@@ -96,4 +96,5 @@
 		<transition to="configChooseType" on="cancel" />
 		<transition to="configChooseType"></transition>
 	</subflow-state>
+	
 </flow>

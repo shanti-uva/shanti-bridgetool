@@ -11,7 +11,7 @@
 		dojo.require("dojox.form.BusyButton");
 
 		dojo.addOnLoad(function() {
-
+			
 		});
 	</script>
 
@@ -20,24 +20,22 @@
 	url(http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojox/form/resources/BusyButton.css)
 	;
 </style>
+	<c:choose>
+		<c:when test="${bridge.configured}">
+			<c:set var="existing" scope="request" value="Different" />
+			<c:set var="instructions" scope="request" value="" />
+		</c:when>
+		<c:otherwise>
+			<c:set var="existing" scope="request" value="Existing" />
+			<c:set var="instructions" scope="request"
+				value="Select an existing Confluence Space to associate with this Bridge. Or create a new one." />
+		</c:otherwise>
+	</c:choose>
 
-	<form:form method="POST" target="_self">
-		<div class="submit">
-
-			<c:choose>
-				<c:when test="${bridge.configured}">
-					<c:set var="existing" scope="request" value="Different" />
-					<c:set var="instructions" scope="request" value="" />
-				</c:when>
-				<c:otherwise>
-					<c:set var="existing" scope="request" value="Existing" />
-					<c:set var="instructions" scope="request"
-						value="Select an existing Confluence Space to associate with this Bridge. Or create a new one." />
-				</c:otherwise>
-			</c:choose>
-
-			<c:choose>
-				<c:when test="${bridge.remoteName =='shanti-wiki'}">
+	<c:choose>
+		<c:when test="${bridge.remoteName =='shanti-wiki'}">
+			<form:form method="POST" modelAttribute="bridge" target="_self">
+				<div class="submit">
 					<p>
 						<em>${instructions}</em>
 					</p>
@@ -73,11 +71,26 @@
 						</c:if>
 
 					</p>
-				</c:when>
+					<p>
 
-				<c:when
-					test="${bridge.remoteName =='nowCommentStaging' || bridge.remoteName=='nowComment'}">
+							<div id="inframe">
+								<label for="inframe">Display inside UVaCollab?</label>
+								<form:checkbox path="inFrame" />
+							</div>
 
+							<div id="submit">
+								<button style="float: right" type="submit" id="save" class="button" name="_eventId_save" value="Save">Save</button>
+							</div>
+ 
+					</p>
+				</div>
+			</form:form>
+		</c:when>
+
+		<c:when
+			test="${bridge.remoteName =='nowCommentStaging' || bridge.remoteName=='nowComment'}">
+			<form:form method="POST" target="_self">
+				<div class="submit">
 					<p>Oy!</p>
 
 					<p>
@@ -101,15 +114,13 @@
 							</c:otherwise>
 						</c:choose>
 					</p>
+				</div>
+			</form:form>
+		</c:when>
+		
+		<c:otherwise>
+			<h3>Unknown service: ${bridge.remoteName}</h3>
+		</c:otherwise>
+	</c:choose>
 
-
-				</c:when>
-				<c:otherwise>
-
-					<h3>Unknown service: ${bridge.remoteName}</h3>
-
-				</c:otherwise>
-			</c:choose>
-		</div>
-	</form:form>
 </div>

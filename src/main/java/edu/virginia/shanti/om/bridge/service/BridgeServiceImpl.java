@@ -250,9 +250,14 @@ public class BridgeServiceImpl implements BridgeService {
 		if (blist.size() == 1) {
 			// let's replace it with the saved one
 			log.info("using existing Bridge " + bridge);
+
+			// TODO: fix this so you don't need to explicitly copy all the properties
+			boolean inframe = bridge.isInFrame();
+			log.info("inframe is set to: " + inframe);
 			bridge = blist.get(0);
 			bridge.setRemoteContext(rc);
 			fixPermissionMap(bridge);
+			bridge.setInFrame(inframe);
 			bridge.persist();
 		} else if (blist.size() == 0) {
 			log.info("persisting new Bridge " + bridge);

@@ -91,7 +91,8 @@ public class Bridge implements Serializable {
         sb.append("PermissionMap: ").append(getPermissionMap()).append(", ");
         sb.append("RemoteContext: ").append(getRemoteContext()).append(", ");
         sb.append("RemoteName: ").append(getRemoteName()).append(", ");
-        sb.append("SiteAlias: ").append(getSiteAlias());
+        sb.append("SiteAlias: ").append(getSiteAlias()).append(", ");
+        sb.append("InFrame: ").append(isInFrame());
         return sb.toString();
     }
 

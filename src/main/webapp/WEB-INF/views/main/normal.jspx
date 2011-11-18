@@ -13,9 +13,18 @@
 			<div class="submit">
 				<spring:message var="edit" code="context_edit" />
 
-				<div style="font-size: 2em">
+			<c:choose>
+				<c:when test="${bridge.inFrame}">
+					<c:set var="target" scope="request" value="_self" />
+				</c:when>
+				<c:otherwise>
+					<c:set var="target" scope="request" value="_blank" />
+				</c:otherwise>
+			</c:choose>
+
+			<div style="font-size: 2em">
 					Visit: <a style="font-size: 1em" href="${bridge.remoteContext.url}"
-						target="_blank">${bridge.remoteContext.contextLabel}</a>
+						target="${target}">${bridge.remoteContext.contextLabel}</a>
 					<c:if test="${bridge.admin}">
 						<button style="float: right; margin-bottom: 2 em" type="submit"
 							id="configure" name="_eventId_showConfig"
