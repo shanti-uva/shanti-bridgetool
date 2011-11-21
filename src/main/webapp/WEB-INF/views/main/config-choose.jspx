@@ -91,7 +91,6 @@
 			test="${bridge.remoteName =='nowCommentStaging' || bridge.remoteName=='nowComment'}">
 			<form:form method="POST" target="_self">
 				<div class="submit">
-					<p>Oy!</p>
 
 					<p>
 
@@ -110,7 +109,7 @@
 									value="Clear All Settings">Clear All Settings</button>
 
 								<button id="cancel" type="submit" class="button"
-									name="_eventId_cancel" value="Cancel">Cancel</button>
+									name="_eventId_cancel" value="Cancel">Done</button>
 							</c:otherwise>
 						</c:choose>
 					</p>
