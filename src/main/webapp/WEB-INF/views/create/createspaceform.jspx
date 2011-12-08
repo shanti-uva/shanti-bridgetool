@@ -24,27 +24,27 @@
 									</c:forEach>
 								</ul>
 							</div>
-						</div></td>
+						</div>
+					</td>
 				</tr>
 			</spring:hasBindErrors>
 
 			<tr>
-				<td>Space Title</td>
-				<td><form:input path="title" />
+				<td><label for="title"><b>Space Title</b></label>
+				<form:input path="title" /></td>
+				<td><b>Specify the title of your new Confluence space.</b><br /> <em>You
+						will want to make it descriptive, but keep it short enough to be
+						easily readable.</em>
 				</td>
-				<td>This the title for your new Confluence space. You will want
-					to make it descriptive, but keep it short enough to be easily
-					readable.</td>
 			</tr>
 
 			<tr>
-				<td>Space Key</td>
-				<td><form:input path="key" />
-				</td>
-				<td>This is a short code to identify your new space in urls.
-					e.g the space key for the Shanti wiki space is SHANTI. So the url
-					to that space is : <b>https://wiki.shanti.virginia.edu/display/SHANTI</b>
-				</td>
+				<td><label for="key"><b>Space Key</b></label>
+				<form:input path="key" /></td>
+				<td><b>Specify the short code to identify your new space in urls.</b><br/>
+					<em>If the space key is XXX, then the URL for your space
+						becomes: https://wiki.shanti.virginia.edu/display/XXX
+				</em></td>
 			</tr>
 
 			<tr>
@@ -54,8 +54,7 @@
 							value="Create">Create</button> <input type="hidden"
 						name="_flowExecutionKey" value="${flowExecutionKey}" />
 						<button type="submit" class="button" name="_eventId_cancel"
-							value="Cancel">Cancel</button> </span>
-				</td>
+							value="Cancel">Cancel</button> </span></td>
 
 			</tr>
 		</table>

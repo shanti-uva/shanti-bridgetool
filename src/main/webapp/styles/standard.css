@@ -109,10 +109,10 @@ table.navigation {
 }
 
 label {
-	width:100px;
+	max-width: 15em;
 	float:left;
 	margin-left: 5px;
-	margin-top: 0px;
+	margin-top: 0.45em;
 }
 
 input {
@@ -366,4 +366,11 @@ fieldset th {
 
 div.tabletitleops {
 	display: none;
+}
+
+.spinner {
+	display: none;
+	padding: 2px 7px;
+	margin-left: 0.3em;
+	font-style: oblique;
 }

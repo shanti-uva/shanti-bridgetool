@@ -39,7 +39,10 @@ public class BridgeServiceAction {
 	public String save(Bridge bridge, RequestContext context) {
 
 		try {
+			
+			log.info("Saving: " + bridge);
 			bridgeService.save(bridge);
+			log.info("Saving (success): " + bridge);
 			return "success";
 		} catch (Exception e) {
 			log.error(e);

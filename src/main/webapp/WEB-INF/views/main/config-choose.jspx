@@ -11,7 +11,7 @@
 		dojo.require("dojox.form.BusyButton");
 
 		dojo.addOnLoad(function() {
-			
+
 		});
 	</script>
 
@@ -32,6 +32,21 @@
 		</c:otherwise>
 	</c:choose>
 
+	<script type="text/javascript">
+		function savesettings(value) {
+			var sub = document.forms[0].action;
+			document.forms[0].action = sub + '&amp;_eventId=save&amp;inFrame='
+					+ value;
+
+			dojo.query(".spinner").style({
+				display : "inline"
+			});
+
+			document.forms[0].submit();
+		}
+	</script>
+
+
 	<c:choose>
 		<c:when test="${bridge.remoteName =='shanti-wiki'}">
 			<form:form method="POST" modelAttribute="bridge" target="_self">
@@ -41,48 +56,43 @@
 					</p>
 
 					<p>
-						<button style="margin-left: 0.2em; margin-right: 0.2em"
-							type="submit" id="chooseButton" name="_eventId_choose"
-							value="Choose an Existing Space" target="_self"
-							onClick="function() { submit(); }">Choose ${existing}
-							Space</button>
-						<!-- 						<script type="text/javascript">
-							Spring.addDecoration(new Spring.ElementDecoration({
-								type : "submit",
-								name : "_eventId_choose",
-								elementId : "chooseButton",
-								widgetType : "dojox.form.BusyButton",
-								widgetAttrs : {
-									busyLabel : "Retrieving...",
-								}
-							}))
-						</script> -->
-						<button style="margin-left: 0.2em; margin-right: 0.2em"
-							id="create" type="submit" class="button" name="_eventId_create"
-							value="Create New Space">Create New Space</button>
-
 						<c:if test="${bridge.configured}">
-							<button style="margin-left: 0.2em; margin-right: 0.2em"
-								id="clear" type="submit" class="button" name="_eventId_clear"
-								value="Clear All Settings">Clear All Settings</button>
-
-							<button style="float: right" id="cancel" type="submit"
-								class="button" name="_eventId_cancel" value="Cancel">Done</button>
-						</c:if>
-
-					</p>
-					<p>
-
 							<div id="inframe">
 								<label for="inframe">Display inside UVaCollab?</label>
-								<form:checkbox path="inFrame" />
+								<form:checkbox path="inFrame"
+									onchange='var checked=this.checked; this.disabled=true; savesettings(checked);' />
+								<span class="spinner">saving...</span>
 							</div>
-
-							<div id="submit">
-								<button style="float: right" type="submit" id="save" class="button" name="_eventId_save" value="Save">Save</button>
-							</div>
- 
+						</c:if>
 					</p>
+
+
+					<p>
+						<c:choose>
+							<c:when test="${!bridge.configured}">
+								<button style="margin-left: 0.2em; margin-right: 0.2em"
+									type="submit" id="chooseButton" name="_eventId_choose"
+									value="Choose an Existing Space" target="_self">Choose
+									${existing} Space</button>
+
+								<button style="margin-left: 0.2em; margin-right: 0.2em"
+									id="create" type="submit" class="button" name="_eventId_create"
+									value="Create New Space">Create New Space</button>
+							</c:when>
+
+
+							<c:otherwise>
+								<button style="margin-left: 0.2em; margin-right: 0.2em"
+									id="clear" type="submit" class="button" name="_eventId_clear"
+									value="Clear This Bridge">Clear This Bridge</button>
+
+								<button style="float: right" id="cancel" type="submit"
+									class="button" name="_eventId_cancel" value="Cancel">Done</button>
+							</c:otherwise>
+						</c:choose>
+
+					</p>
+
 				</div>
 			</form:form>
 		</c:when>
@@ -106,7 +116,7 @@
 							<c:otherwise>
 								<button style="margin-left: 0.2em; margin-right: 0.2em"
 									id="clear" type="submit" class="button" name="_eventId_clear"
-									value="Clear All Settings">Clear All Settings</button>
+									value="Forget This Bridge">Forget This Bridge</button>
 
 								<button id="cancel" type="submit" class="button"
 									name="_eventId_cancel" value="Cancel">Done</button>
@@ -116,7 +126,7 @@
 				</div>
 			</form:form>
 		</c:when>
-		
+
 		<c:otherwise>
 			<h3>Unknown service: ${bridge.remoteName}</h3>
 		</c:otherwise>
