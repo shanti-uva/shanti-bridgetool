@@ -9,6 +9,7 @@
 
 	<jsp:output omit-xml-declaration="yes" />
 
+	<!-- config-cancel-change.jspx -->
 	<div>
 		<c:if test="${bridge.configured}">
 			<form:form target="_self">

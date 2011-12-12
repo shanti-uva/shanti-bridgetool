@@ -7,8 +7,12 @@
 		contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 
+	<!-- choose.jspx -->
+
 	<c:choose>
 		<c:when test="true">
+		
+			<h1>Choose an Existing Space</h1>
 			<div>
 				<p>
 					<form:form method="post" target="_self" modelAttribute="bridge">
@@ -38,7 +42,7 @@
 							name="_flowExecutionKey" value="${flowExecutionKey}" />
 							<button style="margin-left: .3em; margin-right: .3em"
 								type="submit" class="button" name="_eventId_save" value="Choose">Choose</button>
-								<button style="float:right" id="cancel" type="submit" class="button"
+								<button id="cancel" type="submit" class="button"
 					name="_eventId_cancel" value="Cancel">Cancel</button>
 						</span>
 						

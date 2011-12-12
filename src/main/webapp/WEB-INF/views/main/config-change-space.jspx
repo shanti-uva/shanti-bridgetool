@@ -6,6 +6,8 @@
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 
+
+	<!-- config-change-space.jspx -->
 	<form:form target="_self">
 		<button style="margin-left: 0.3em" type="submit" id="configure"
 			name="_eventId_configure" value="Change" target="_self">Change</button>

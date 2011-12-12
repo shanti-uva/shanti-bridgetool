@@ -7,6 +7,12 @@
 	<jsp:directive.page contentType="text/html;charset=UTF-8" />
 	<jsp:output omit-xml-declaration="yes" />
 
+
+	<!-- config-choose.jspx -->
+
+	<c:if test="${!bridge.configured}">
+		<h1>Getting Started</h1>
+	</c:if>
 	<script type="text/javascript">
 		dojo.require("dojox.form.BusyButton");
 
@@ -45,8 +51,6 @@
 			document.forms[0].submit();
 		}
 	</script>
-
-
 	<c:choose>
 		<c:when test="${bridge.remoteName =='shanti-wiki'}">
 			<form:form method="POST" modelAttribute="bridge" target="_self">
@@ -57,12 +61,14 @@
 
 					<p>
 						<c:if test="${bridge.configured}">
-							<div id="inframe">
-								<label for="inframe">Display inside UVaCollab?</label>
-								<form:checkbox path="inFrame"
-									onchange='var checked=this.checked; this.disabled=true; savesettings(checked);' />
-								<span class="spinner">saving...</span>
-							</div>
+							<util:panel title="Settings" id="settings">
+								<div id="inframe">
+									<label for="inframe">Display inside UVaCollab?</label>
+									<form:checkbox path="inFrame"
+										onchange='var checked=this.checked; this.disabled=true; savesettings(checked);' />
+									<span class="spinner">saving...</span>
+								</div>
+							</util:panel>
 						</c:if>
 					</p>
 
