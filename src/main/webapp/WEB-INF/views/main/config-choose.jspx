@@ -120,12 +120,12 @@
 									Bridge to NowComment</button>
 							</c:when>
 							<c:otherwise>
-								<button style="margin-left: 0.2em; margin-right: 0.2em"
+<!-- 								<button style="margin-left: 0.2em; margin-right: 0.2em"
 									id="clear" type="submit" class="button" name="_eventId_clear"
-									value="Forget This Bridge">Forget This Bridge</button>
+									value="Forget This Bridge">Forget This Bridge</button> -->
 
 								<button id="cancel" type="submit" class="button"
-									name="_eventId_cancel" value="Cancel">Done</button>
+									name="_eventId_cancel" value="Cancel">OK</button>
 							</c:otherwise>
 						</c:choose>
 					</p>
