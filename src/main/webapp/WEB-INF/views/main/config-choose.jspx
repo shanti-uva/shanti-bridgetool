@@ -15,6 +15,7 @@
 	</c:if>
 	<script type="text/javascript">
 		dojo.require("dojox.form.BusyButton");
+		dojo.require("dijit");
 
 		dojo.addOnLoad(function() {
 
@@ -39,6 +40,7 @@
 	</c:choose>
 
 	<script type="text/javascript">
+	
 		function savesettings(value) {
 			var sub = document.forms[0].action;
 			document.forms[0].action = sub + '&amp;_eventId=save&amp;inFrame='
@@ -49,6 +51,13 @@
 			});
 
 			document.forms[0].submit();
+		}
+		
+		
+		function pleasewait() {
+			dojo.query(".pleasewait").style({
+				display : "inline"
+			});
 		}
 	</script>
 	<c:choose>
@@ -78,15 +87,14 @@
 							<c:when test="${!bridge.configured}">
 								<button style="margin-left: 0.2em; margin-right: 0.2em"
 									type="submit" id="chooseButton" name="_eventId_choose"
-									value="Choose an Existing Space" target="_self">Choose
-									${existing} Space</button>
-
+									onclick="pleasewait();" value="Choose an Existing Space"
+									target="_self">Choose ${existing} Space</button>
 								<button style="margin-left: 0.2em; margin-right: 0.2em"
 									id="create" type="submit" class="button" name="_eventId_create"
+									onclick="pleasewait();"
 									value="Create New Space">Create New Space</button>
+								<div class="pleasewait"><img src="/BridgeTool/resources/images/spinner.gif" /> Loading...</div>
 							</c:when>
-
-
 							<c:otherwise>
 								<button style="margin-left: 0.2em; margin-right: 0.2em"
 									id="clear" type="submit" class="button" name="_eventId_clear"
@@ -120,7 +128,7 @@
 									Bridge to NowComment</button>
 							</c:when>
 							<c:otherwise>
-<!-- 								<button style="margin-left: 0.2em; margin-right: 0.2em"
+								<!-- 								<button style="margin-left: 0.2em; margin-right: 0.2em"
 									id="clear" type="submit" class="button" name="_eventId_clear"
 									value="Forget This Bridge">Forget This Bridge</button> -->
 

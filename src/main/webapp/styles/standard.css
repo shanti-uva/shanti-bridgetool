@@ -374,3 +374,12 @@ div.tabletitleops {
 	margin-left: 0.3em;
 	font-style: oblique;
 }
+
+.pleasewait {
+	display: none;
+	padding: 2px 7px;
+	margin-left: 0.3em;
+	font-style: oblique;
+}
+
+
