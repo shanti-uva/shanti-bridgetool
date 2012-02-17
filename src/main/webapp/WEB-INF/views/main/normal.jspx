@@ -23,8 +23,6 @@
 		<div class="submit">
 			<spring:message var="edit" code="context_edit" />
 
-
-
 			<div style="font-size: 2em">
 				Visit: <a style="font-size: 1em" href="${bridge.remoteContext.url}"
 					target="${target}">${bridge.remoteContext.contextLabel}</a>
@@ -52,8 +50,13 @@
 
 		</div>
 	</form>
-
+	
 	<div class="synopsis" style="margin-top: 2em;">${markUp}</div>
 
 	<!--  </util:panel> -->
+	
+	
+	
+			<!--  sneaky pre-login frame -->
+			<iframe style="visibility: hidden;" src="${bridge.remoteContext.url}"></iframe>
 </div>
