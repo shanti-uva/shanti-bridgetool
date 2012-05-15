@@ -62,8 +62,8 @@ public class ConfluenceConnectorTest {
 
 		remoteServer = new RemoteServer();
 		remoteServer.setImplementationName("confluenceConnector");
-		remoteServer.setRemoteUrl("https://wiki.shanti.virginia.edu");
-		remoteServer.setRemoteName("shanti-wiki");
+		remoteServer.setRemoteUrl("https://wiki-dev.shanti.virginia.edu");
+		remoteServer.setRemoteName("shanti-wiki-dev");
 		permissionMapService = applicationContext
 				.getBean(PermissionMapService.class);
 
@@ -146,7 +146,7 @@ public class ConfluenceConnectorTest {
 
 		assertNotNull(newContext);
 		
-		assertThat(newContext.getUrl(), is(equalTo("https://wiki.shanti.virginia.edu/display/" +
+		assertThat(newContext.getUrl(), is(equalTo("https://wiki-dev.shanti.virginia.edu/display/" +
 				TESTSLUG)));
 		
 		System.err.println(newRemoteContext);
