@@ -24,7 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ConfluenceSoapServiceIntegrationTest {
 
 	private ConfluenceSoapServiceServiceLocator locator;
-	private String server = "https://wiki.shanti.virginia.edu";
+	private String server = "https://wiki-dev.shanti.virginia.edu";
 	private ConfluenceSoapService confluence;
 	private String session;
 	private SudoSoapServiceLocator sudolocator;
@@ -120,7 +120,7 @@ public class ConfluenceSoapServiceIntegrationTest {
 			
 			if (string.startsWith("~collab")) {
 				System.err.println(string);
-				confluence.removeGroup(session,	string, null);
+				// confluence.removeGroup(session,	string, null);
 			}
 			
 		}	
