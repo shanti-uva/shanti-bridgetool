@@ -19,6 +19,8 @@
 					type="hidden" name="_flowExecutionKey" value="${flowExecutionKey}" />
 					<button type="submit" class="button" name="_eventId_save"
 						value="Save">Save</button>
+						
+					<button type="submit" class="button" name="_eventId_fixperms" value="Fix Permissions">Fix Permissions</button>
 			</span> 
 		</form:form>
 

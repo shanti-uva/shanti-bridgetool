@@ -72,10 +72,20 @@ public class Bridge implements Serializable {
     private PermissionMap permissionMap;
 
     private boolean inFrame;
-
+    
     @ManyToOne(fetch = FetchType.EAGER)
     private SiteAlias siteAlias;
 
+    private String preLoginUrl;
+    
+    public boolean isPreLoginConfigured()  {
+    	if (getPreLoginUrl() != null && !getPreLoginUrl().isEmpty()) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
     @JSON(include=false)
     public boolean isAdmin() {
         if (bridgeToolPermissionEvaluator == null) {

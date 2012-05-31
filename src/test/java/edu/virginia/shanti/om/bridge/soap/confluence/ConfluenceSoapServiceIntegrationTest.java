@@ -148,45 +148,50 @@ public class ConfluenceSoapServiceIntegrationTest {
 	public void getSpacesWithPermissions() throws EntityException,
 			RemoteException {
 
+		int REPEAT = 3;
+		
 		sudo.sudo(session, session, "dfg9w");
 
 		RemoteSpaceSummary[] spaces = confluence.getSpaces(session);
-		
-		getLapTime("overall"); // initialize overall timer
-		getLapTime(); // initialize lap timer
-		int spaceCount = 0;
-		long maxLap = 0, minLap = 0;
-		for (int i = 0; i < spaces.length; i++) {
-			
-			RemoteSpaceSummary remoteSpaceSummary = spaces[i];
-			
-			if ("personal".equals(remoteSpaceSummary.getType()) ) {
-				continue;
+		int x=0;
+		while (x++ < REPEAT) {
+			getLapTime("overall"); // initialize overall timer
+			getLapTime(); // initialize lap timer
+			int spaceCount = 0;
+			long maxLap = 0, minLap = 0;
+			for (int i = 0; i < spaces.length; i++) {
+
+				RemoteSpaceSummary remoteSpaceSummary = spaces[i];
+
+				if ("personal".equals(remoteSpaceSummary.getType())) {
+					continue;
+				}
+				spaceCount++;
+
+				System.err.println("Name = " + remoteSpaceSummary.getName());
+
+				System.err.println("Type = " + remoteSpaceSummary.getType());
+
+				String key = remoteSpaceSummary.getKey();
+
+				String[] permissions = confluence.getPermissions(session, key);
+
+				for (int j = 0; j < permissions.length; j++) {
+					String perm = permissions[j];
+					System.err.println("\t" + perm);
+				}
+				long lap = getLapTime();
+
+				maxLap = (lap > maxLap) ? lap : maxLap;
+				minLap = (lap < minLap || minLap == 0) ? lap : minLap;
+				System.err.println("lap " + spaceCount + ": " + lap);
 			}
-			spaceCount++;
-			
-			System.err.println("Name = " + remoteSpaceSummary.getName());
-			
-			System.err.println("Type = " + remoteSpaceSummary.getType());
-
-			String key = remoteSpaceSummary.getKey();
-
-			String[] permissions = confluence.getPermissions(session, key);
-
-			for (int j = 0; j < permissions.length; j++) {
-				String perm = permissions[j];
-				System.err.println("\t" + perm);
-			}
-			long lap = getLapTime();
-			
-			maxLap = (lap > maxLap)?lap:maxLap;
-			minLap = (lap < minLap || minLap == 0)?lap:minLap;
-			System.err.println("lap " + spaceCount + ": " + lap);
+			// overall
+			long overall = getLapTime("overall");
+			System.err.println("overall time = " + overall);
+			System.err.println("average/max/min = " + (overall / spaceCount)
+					+ "/" + maxLap + "/" + minLap);
 		}
-		 // overall
-		long overall = getLapTime("overall");
-		System.err.println("overall time = " + overall);
-		System.err.println("average/max/min = " + (overall / spaceCount) + "/" + maxLap + "/" + minLap);
 
 
 	}

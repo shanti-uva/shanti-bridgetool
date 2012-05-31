@@ -78,6 +78,7 @@
 		<!--  <transition to="editSettings" on="edit" /> -->
 		<transition to="save" on="save" />
 		<transition on="clear" to="clearConfirm" validate="false" />
+		<transition on="fixperms" to="fixPerms" validate="false" />
 	</view-state>
 
 	<!-- clearing -->
@@ -85,12 +86,17 @@
 		<transition to="clear" on="clear" />
 		<transition to="configChooseType" on="cancel" />
 	</view-state>
-
+	
 	<action-state id="clear">
 		<evaluate expression="bridgeServiceAction.delete(flowRequestContext)" />
 		<transition to="checkConfig" />
 	</action-state>
-	<!-- end clearing -->
+
+	<!-- fix perms -->
+	<action-state id="fixPerms">
+		<evaluate expression="bridgeServiceAction.fixPerms(flowRequestContext)" />
+		<transition to="configChooseType" />
+	</action-state>
 
 	<subflow-state id="create" subflow="create">
 		<transition to="configChooseType" on="cancel" />

@@ -25,6 +25,7 @@
     
     <field:select field="siteAlias" id="c_edu_virginia_shanti_om_bridge_domain_Bridge_siteAlias" itemValue="id" items="${sitealiases}" path="/sitealiases" z="lLOddOPvSDTYifLaNEoFFNwbw1s="/>
     <field:checkbox field="inFrame" id="c_edu_virginia_shanti_om_bridge_domain_Bridge_inFrame" z="BOwUDXsshP1J2meo0PfuK47BY0g="/>
+    <field:input field="preLoginUrl" id="c_edu_virginia_shanti_om_bridge_domain_Bridge_preLoginUrl" z="3d/vGr0xg+gVdK3h+zLrYg5Zsq8="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_edu_virginia_shanti_om_bridge_domain_Bridge" render="${not empty dependencies}" z="4oyyWXHTlTKnBTjbBsdHJ3riNJ4="/>
 </div>

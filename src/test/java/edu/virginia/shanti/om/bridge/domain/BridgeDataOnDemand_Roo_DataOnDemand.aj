@@ -32,6 +32,7 @@ privileged aspect BridgeDataOnDemand_Roo_DataOnDemand {
         setPermissionMap(obj, index);
         setInFrame(obj, index);
         setSiteAlias(obj, index);
+        setPreLoginUrl(obj, index);
         return obj;
     }
     
@@ -78,6 +79,11 @@ privileged aspect BridgeDataOnDemand_Roo_DataOnDemand {
     private void BridgeDataOnDemand.setSiteAlias(Bridge obj, int index) {
         edu.virginia.shanti.om.bridge.domain.SiteAlias siteAlias = null;
         obj.setSiteAlias(siteAlias);
+    }
+    
+    private void BridgeDataOnDemand.setPreLoginUrl(Bridge obj, int index) {
+        java.lang.String preLoginUrl = "preLoginUrl_" + index;
+        obj.setPreLoginUrl(preLoginUrl);
     }
     
     public Bridge BridgeDataOnDemand.getSpecificBridge(int index) {

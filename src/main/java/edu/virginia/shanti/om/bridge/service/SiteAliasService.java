@@ -127,6 +127,8 @@ public class SiteAliasService {
 		// push this into a different service (new one named
 		// SitePropertyService?)
 
+//		System.err.println("SakaiSession = " + sakaisession);
+		
 		String sakaisession = (String) currentUser.getAuthentication()
 				.getCredentials();
 

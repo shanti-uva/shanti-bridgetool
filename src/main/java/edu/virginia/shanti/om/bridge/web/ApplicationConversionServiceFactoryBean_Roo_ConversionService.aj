@@ -33,7 +33,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     
     static class edu.virginia.shanti.om.bridge.web.ApplicationConversionServiceFactoryBean.BridgeConverter implements Converter<Bridge, String>  {
         public String convert(Bridge bridge) {
-        return new StringBuilder().append(bridge.getRemoteName()).append(" ").append(bridge.getLocalContext()).append(" ").append(bridge.getLocalSubContext()).toString();
+        return new StringBuilder().append(bridge.getRemoteName()).append(" ").append(bridge.getLocalContext()).append(" ").append(bridge.getLocalSubContext()).append(" ").append(bridge.getPreLoginUrl()).toString();
         }
         
     }

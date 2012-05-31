@@ -82,7 +82,7 @@ public class NowCommentConnector implements RemoteConnector {
 		log.info("Got siteAlias " + siteAlias + " for "
 				+ config.getLocalContext());
 		choice.setContextId(siteAlias);
-		choice.setContextLabel("NowComment Group: " + displayName);
+		choice.setContextLabel(displayName);
 		choice.setRemoteName(remoteServer.getRemoteName());
 		log.info("remoteServer = " + remoteServer);
 		// https://staging.nowcomment.com/uva?redirect_to_group=~collab:java-basics-fde0:summer2008
@@ -238,11 +238,13 @@ public class NowCommentConnector implements RemoteConnector {
 					summaryBuilder.append(entry.getTitle());
 					summaryBuilder.append("</a>");
 					summaryBuilder.append(" (");
+					if (unreadCount != 0) summaryBuilder.append("<strong>");
 					summaryBuilder.append(unreadCount);
 					summaryBuilder.append(" unread comment");
 					if (unreadCount != 1) {
 						summaryBuilder.append("s");
 					}
+					if (unreadCount != 0) summaryBuilder.append("</strong>");
 					summaryBuilder.append(")");
 					summaryBuilder.append("</li>");
 					summaryBuilder.append("\n");

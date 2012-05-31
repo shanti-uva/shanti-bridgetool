@@ -31,5 +31,6 @@
     
     <field:display field="siteAlias" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_siteAlias" object="${bridge}" z="2SiqpfNW4HdsgoeOJ6gPaDk5950="/>
     <field:display field="inFrame" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_inFrame" object="${bridge}" z="MkJWop1/+wmLhINyvYFxh2vSOdE="/>
+    <field:display field="preLoginUrl" id="s_edu_virginia_shanti_om_bridge_domain_Bridge_preLoginUrl" object="${bridge}" z="rlArjRb9GAP8wJInmHAcRp3d31g="/>
     </page:show>
 </div>

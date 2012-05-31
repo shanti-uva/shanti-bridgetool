@@ -28,6 +28,8 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 //		log.warn("hasPermission called by " + authentication + " on "
 //				+ targetDomainObject + " for permission " + permission);
 
+		long start = System.currentTimeMillis();
+		
 		log.warn("Authorities: " + authentication.getAuthorities());
 
 		Collection<GrantedAuthority> auths = (Collection<GrantedAuthority>) authentication
@@ -55,6 +57,10 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 			}
 			
 		}
+		
+		long finish = System.currentTimeMillis();
+
+		System.err.println("hasPermission() took " + (finish-start));
 
 		return authorized;
 	}

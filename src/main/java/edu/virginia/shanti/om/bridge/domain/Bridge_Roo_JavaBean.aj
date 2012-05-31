@@ -66,4 +66,12 @@ privileged aspect Bridge_Roo_JavaBean {
         this.siteAlias = siteAlias;
     }
     
+    public String Bridge.getPreLoginUrl() {
+        return this.preLoginUrl;
+    }
+    
+    public void Bridge.setPreLoginUrl(String preLoginUrl) {
+        this.preLoginUrl = preLoginUrl;
+    }
+    
 }

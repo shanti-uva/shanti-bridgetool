@@ -39,7 +39,7 @@ public class BridgeServiceAction {
 	public String save(Bridge bridge, RequestContext context) {
 
 		try {
-			
+
 			log.info("Saving: " + bridge);
 			bridgeService.save(bridge);
 			log.info("Saving (success): " + bridge);
@@ -123,7 +123,7 @@ public class BridgeServiceAction {
 			return handleError(e, context);
 		}
 	}
-	
+
 	public String prepareForm(RequestContext context) {
 		try {
 			populateRemoteContexts(context);
@@ -133,7 +133,7 @@ public class BridgeServiceAction {
 			return handleError(e, context);
 		}
 	}
-	
+
 	public String delete(RequestContext context) {
 		try {
 			deleteBridge(context);
@@ -142,7 +142,7 @@ public class BridgeServiceAction {
 			return handleError(e, context);
 		}
 	}
-	
+
 	public String autochoose(RequestContext context) {
 		try {
 			populateRemoteContexts(context);
@@ -154,22 +154,53 @@ public class BridgeServiceAction {
 		}
 	}
 
+	public String fixPerms(RequestContext context) {
+		try {
+			if (context.getFlowScope().contains("config")) {
+				ConfigBean config = (ConfigBean) context.getFlowScope().get(
+						"config");
+				Bridge bridge = bridgeService.getBridge(config);
+
+				if (bridge == null) {
+					bridge = bridgeService.newBridge(config);
+				}
+				context.getFlowScope().put("bridge", bridge);
+
+				remoteServerService.writePermissionMap(bridge.getLocalContext(),
+						bridge.getRemoteContext(), bridge.getPermissionMap());
+				
+				context.getMessageContext().addMessage(
+						new MessageBuilder().error()
+								.defaultText("Permissions were updated.").build());
+				
+			} else {
+				throw new RuntimeException("config is not found in flow scope.");
+			}
+			
+			return "fixperms";
+		} catch (Exception e) {
+			return handleError(e, context);
+		}
+	}
+
 	private void autochooseRemoteContext(RequestContext context) {
 
-		 List<RemoteContextChoice> list = (List<RemoteContextChoice>)context.getFlowScope().get("remoteContexts");
+		List<RemoteContextChoice> list = (List<RemoteContextChoice>) context
+				.getFlowScope().get("remoteContexts");
 
-		 if (list.size() != 1) {
-			 throw new RuntimeException("Wrong number of RemoteContextChoices available.");
-		 }
-		 RemoteContextChoice choice = list.get(0);
-		 Bridge bridge = (Bridge) context.getFlowScope().get("bridge");
-		 
-		 RemoteContext remoteContext = new RemoteContext();
-		 remoteContext.populate(choice);
-		 
-		 bridge.setRemoteContext(remoteContext);
-		
-		 save(bridge,context);	 
+		if (list.size() != 1) {
+			throw new RuntimeException(
+					"Wrong number of RemoteContextChoices available.");
+		}
+		RemoteContextChoice choice = list.get(0);
+		Bridge bridge = (Bridge) context.getFlowScope().get("bridge");
+
+		RemoteContext remoteContext = new RemoteContext();
+		remoteContext.populate(choice);
+
+		bridge.setRemoteContext(remoteContext);
+
+		save(bridge, context);
 	}
 
 	private void deleteBridge(RequestContext context) {
@@ -184,7 +215,7 @@ public class BridgeServiceAction {
 			}
 		} else {
 			throw new RuntimeException("config is not found in flow scope.");
-		}		
+		}
 	}
 
 	private void populateMarkup(RequestContext context) {
@@ -195,7 +226,7 @@ public class BridgeServiceAction {
 				String markUp = bridgeService.getSummaryMarkup(bridge);
 				context.getFlowScope().put("markUp", markUp);
 			} catch (Exception e) {
-				handleError(e,context);				
+				handleError(e, context);
 			}
 		} else {
 			throw new RuntimeException("bridge is not found in flow scope.");
@@ -226,13 +257,13 @@ public class BridgeServiceAction {
 
 	private void populateRemoteContexts(RequestContext context) {
 		ConfigBean config = (ConfigBean) context.getFlowScope().get("config");
-		
+
 		log.warn("Config is " + config);
-		
+
 		if (config == null) {
 			throw new RuntimeException("Config is null!");
 		}
-		
+
 		if (remoteServerService == null) {
 			throw new RuntimeException("RemoteServerService is null!");
 		}
@@ -248,7 +279,7 @@ public class BridgeServiceAction {
 	}
 
 	private String handleError(Exception e, RequestContext context) {
-		
+
 		e.printStackTrace();
 		log.error(e);
 

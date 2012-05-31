@@ -90,6 +90,12 @@ public class ExtensionClient {
 		}
 	}
 
+	/**
+	 * 
+	 * @deprecated Need to refactor away the call the SakaiOperationService (via getSakaiUserIfo)
+	 * @return
+	 * @throws Exception
+	 */
 	public SakaiUserInfo getSakaiUserInfo() throws Exception {
 		if (debug) {
 			log.debug("---ExtensionClient.getSakaiUserInfo()");
@@ -174,6 +180,11 @@ public class ExtensionClient {
 				+ ".itc.virginia.edu" + "/sakai-axis/SakaiSigning.jws";
 	}
 
+	/**
+	 * 
+	 * 
+	 * @deprecated Need to refactor away the call to SakaiOperationService
+	 */
 	private String getSakaiOperationServiceUrl() {
 		return "https://" + getLinktoolPackage().getServerId()
 				+ ".itc.virginia.edu" + "/sakai-axis/SakaiOperationService.jws";

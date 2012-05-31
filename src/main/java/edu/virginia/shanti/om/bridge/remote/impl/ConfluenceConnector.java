@@ -13,6 +13,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.roo.addon.serializable.RooSerializable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -57,7 +58,7 @@ public class ConfluenceConnector implements RemoteConnector {
 			"REMOVEPAGE", "COMMENT" };
 
 	private Log log = LogFactory.getLog(ConfluenceConnector.class);
-	
+
 	// @Value("#{appConfiguration.adminUser}")
 	@Value("${adminUser}")
 	public String adminUser;
@@ -66,13 +67,18 @@ public class ConfluenceConnector implements RemoteConnector {
 
 	@Value("${adminPassword}")
 	public String adminPassword;
-	
+
 	transient private ConfluenceSoapServiceServiceLocator confLocator;
 
 	transient private SudoSoapServiceLocator sudoLocator;
 
 	@Autowired
 	private SiteAliasService siteAliasService;
+
+	@Autowired
+	private ConfluencePermissionsProxy permissionsProxy;
+
+	private ConfluenceSessionCache sessionCache;
 
 	public ConfluenceConnector() {
 		super();
@@ -103,13 +109,14 @@ public class ConfluenceConnector implements RemoteConnector {
 	}
 
 	@Override
-	@Cacheable(cacheName = "remoteContextChoices", keyGenerator=@KeyGenerator(name="StringCacheKeyGenerator"))
-	public List<RemoteContextChoice> getContexts(@PartialCacheKey Principal principal,
+	@Cacheable(cacheName = "remoteContextChoices", keyGenerator = @KeyGenerator(name = "StringCacheKeyGenerator"))
+	public List<RemoteContextChoice> getContexts(
+			@PartialCacheKey Principal principal,
 			@PartialCacheKey RemoteServer remoteServer, ConfigBean bean) {
-		
+
 		if (log.isDebugEnabled()) {
 			log.debug("Someone called getContexts with " + principal + " and "
-			+ remoteServer, new Exception());
+					+ remoteServer, new Exception());
 		}
 
 		try {
@@ -131,7 +138,7 @@ public class ConfluenceConnector implements RemoteConnector {
 
 			for (RemoteSpaceSummary summary : spaces) {
 
-				System.err.println(summary.getKey());
+				log.info(summary.getKey());
 
 				RemoteContextChoice choice = new RemoteContextChoice();
 				choice.setContextId(summary.getKey());
@@ -167,20 +174,20 @@ public class ConfluenceConnector implements RemoteConnector {
 	// filter spaces according to permissions
 	private RemoteSpaceSummary[] filterSpaces(ConfluenceSoapService conf,
 			String sess, String user, RemoteSpaceSummary[] spaces) {
-		List<RemoteSpaceSummary> newList = new LinkedList<RemoteSpaceSummary>();
 
+		List<RemoteSpaceSummary> newList = new LinkedList<RemoteSpaceSummary>();
 		for (RemoteSpaceSummary sum : spaces) {
 			if ("global".equals(sum.getType())) {
 
 				try {
 
-					System.err.println("Space summary: " + sum.getKey());
-					String[] permissions = getPermissions(conf, sess, user, sum.getKey());
-					System.err.println("Permissions: "
-							+ Arrays.toString(permissions));
+					log.info("Space summary: " + sum.getKey());
+					String[] permissions = getPermissions(conf, sess, user,
+							sum.getKey());
+					log.info("Permissions: " + Arrays.toString(permissions));
 
 					if (Arrays.asList(permissions).contains("admin")) {
-						System.err.println("=========> found admin");
+						log.info("=========> found admin");
 						newList.add(sum);
 					}
 
@@ -200,18 +207,16 @@ public class ConfluenceConnector implements RemoteConnector {
 		RemoteSpaceSummary[] newArray = newList
 				.toArray(new RemoteSpaceSummary[newList.size()]);
 
-		System.err.println("Returning:  " + newArray);
+		log.info("Returning:  " + newArray);
 		return newArray;
 	}
-	
-	@Cacheable(cacheName = "confluenceSpacePermissions", keyGenerator=@KeyGenerator(name="StringCacheKeyGenerator"))
-	public String[] getPermissions(ConfluenceSoapService conf, String sess, @PartialCacheKey String user,
-		 @PartialCacheKey String key) throws java.rmi.RemoteException,
-			InvalidSessionException, RemoteException {
-		
-		log.info("REMOTE CALL to getPermission using " + sess + ", " + user + " and " + key);
-		return conf.getPermissions(sess,
-				key);
+
+	public String[] getPermissions(ConfluenceSoapService conf, String sess,
+			@PartialCacheKey String user, @PartialCacheKey String key)
+			throws java.rmi.RemoteException, InvalidSessionException,
+			RemoteException {
+
+		return permissionsProxy.getPermissions(conf, sess, user, key);
 	}
 
 	/*
@@ -243,29 +248,7 @@ public class ConfluenceConnector implements RemoteConnector {
 			newContext.setUrl(newSpace.getUrl());
 			newContext.persist();
 
-			boolean userExists = assureUser(principal);
-
-			if (userExists) {
-				String user = principal.getName();
-				String[] permissions = ALL_PERMISSIONS;
-				boolean success = conf.addPermissionsToSpace(sess, permissions,
-						user, newSpace.getKey());
-
-				if (success) {
-					log.info("Gave user " + user + " all permissions in "
-							+ newSpace.getKey());
-				} else {
-					log.warn("Failed to give user " + user
-							+ " all permissions in " + newSpace.getKey());
-					// throw new RuntimeException("Failed to give user " + user
-					// + " all permissions in " + newSpace.getKey());
-				}
-			} else {
-
-				throw new RuntimeException("User " + principal.getName()
-						+ " does not exist and could not be created!");
-
-			}
+			assurePermissions(principal, conf, sess, newSpace);
 
 			try {
 				conf.logout(sess);
@@ -282,6 +265,35 @@ public class ConfluenceConnector implements RemoteConnector {
 		}
 
 		return newContext;
+	}
+
+	private void assurePermissions(Principal principal,
+			ConfluenceSoapService conf, String sess, RemoteSpace newSpace)
+			throws java.rmi.RemoteException, RemoteException {
+		
+		boolean userExists = assureUser(principal);
+
+		if (userExists) {
+			String user = principal.getName();
+			String[] permissions = ALL_PERMISSIONS;
+			boolean success = conf.addPermissionsToSpace(sess, permissions,
+					user, newSpace.getKey());
+
+			if (success) {
+				log.info("Gave user " + user + " all permissions in "
+						+ newSpace.getKey());
+			} else {
+				log.warn("Failed to give user " + user
+						+ " all permissions in " + newSpace.getKey());
+				// throw new RuntimeException("Failed to give user " + user
+				// + " all permissions in " + newSpace.getKey());
+			}
+		} else {
+
+			throw new RuntimeException("User " + principal.getName()
+					+ " does not exist and could not be created!");
+
+		}
 	}
 
 	protected boolean assureUser(Principal principal) {
@@ -343,21 +355,37 @@ public class ConfluenceConnector implements RemoteConnector {
 	private String login(Principal principal) throws java.rmi.RemoteException,
 			AuthenticationFailedException, RemoteException, ServiceException {
 
-		SudoSoap sudo = getSudoLocator().getsudo();
-		String sess = loginAdmin();
+		String sess = null;
 
-		if (!assureUser(principal)) {
-			throw new RuntimeException("Could not find or create user "
-					+ principal.getName());
+		if (sessionCache != null) {
+			sess = sessionCache.getConfluenceUserSession();
 		}
 
-		if (principal == null) {
-			throw new RuntimeException("Principal cannot be null");
-		}
+		if (sess == null) {
+			System.err.println("Authorities during login(): "
+					+ SecurityContextHolder.getContext().getAuthentication()
+							.getAuthorities());
 
-		sudo.sudo(sess, sess, principal.getName());
-		log.info("Sudo to " + principal.getName() + "successful for sess="
-				+ sess);
+			SudoSoap sudo = getSudoLocator().getsudo();
+			sess = loginAdmin();
+
+			if (!assureUser(principal)) {
+				throw new RuntimeException("Could not find or create user "
+						+ principal.getName());
+			}
+
+			if (principal == null) {
+				throw new RuntimeException("Principal cannot be null");
+			}
+
+			sudo.sudo(sess, sess, principal.getName());
+			log.info("Sudo to " + principal.getName() + "successful for sess="
+					+ sess);
+
+			if (sessionCache != null) {
+				sessionCache.setConfluenceUserSession(sess);
+			}
+		}
 
 		return sess;
 	}
@@ -365,9 +393,12 @@ public class ConfluenceConnector implements RemoteConnector {
 	private String loginAdmin() throws java.rmi.RemoteException,
 			AuthenticationFailedException, RemoteException, ServiceException {
 
+		String sess = null;
+
 		SudoSoap sudo = getSudoLocator().getsudo();
-		String sess = sudo.login(adminUser, adminPassword);
+		sess = sudo.login(adminUser, adminPassword);
 		log.info("Got admin session = " + sess);
+
 		return sess;
 	}
 
@@ -455,10 +486,10 @@ public class ConfluenceConnector implements RemoteConnector {
 				String groupName = (spaceAlias + "/" + roleName).toLowerCase();
 				String[] permissions = remotePermissions.getPermissions();
 
-				System.err.println("remotePerms: "
+				log.info("remotePerms: "
 						+ Arrays.toString(remotePermissions.getPermissions()));
-				System.err.println("groupName: " + groupName);
-				System.err.println("contextId: " + spaceId);
+				log.info("groupName: " + groupName);
+				log.info("contextId: " + spaceId);
 
 				// creating the group can only be done by admin
 				if (!conf.hasGroup(adminSess, groupName)) {
@@ -467,10 +498,15 @@ public class ConfluenceConnector implements RemoteConnector {
 
 				// adding the permissions should be done as the user
 				// so that permissions on the space are respected.
+
+				long start = System.currentTimeMillis();
 				boolean success = conf.addPermissionsToSpace(userSess,
 						permissions, groupName, spaceId);
+				long finish = System.currentTimeMillis();
+				System.err.println("addPermssions() took: " + (finish - start));
 
-				System.err.println("Call returned " + success);
+				log.info("Call addPermissionsToSpace for " + groupName
+						+ " in space " + spaceId + " returned " + success);
 
 				if (!success) {
 					throw new RuntimeException(

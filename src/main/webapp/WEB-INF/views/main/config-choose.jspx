@@ -16,17 +16,13 @@
 	<script type="text/javascript">
 		dojo.require("dojox.form.BusyButton");
 		dojo.require("dijit");
-
-		dojo.addOnLoad(function() {
-
-		});
 	</script>
-
 	<style type="text/css">
 @import
 	url(http://ajax.googleapis.com/ajax/libs/dojo/1.6/dojox/form/resources/BusyButton.css)
 	;
 </style>
+
 	<c:choose>
 		<c:when test="${bridge.configured}">
 			<c:set var="existing" scope="request" value="Different" />
@@ -40,7 +36,6 @@
 	</c:choose>
 
 	<script type="text/javascript">
-	
 		function savesettings(value) {
 			var sub = document.forms[0].action;
 			document.forms[0].action = sub + '&amp;_eventId=save&amp;inFrame='
@@ -52,13 +47,22 @@
 
 			document.forms[0].submit();
 		}
-		
-		
+
 		function pleasewait() {
 			dojo.query(".pleasewait").style({
 				display : "inline"
 			});
 		}
+	</script>
+	
+	<script>
+			dojo.addOnLoad(function() {
+			var fadeArgs = {
+				node : "messages",
+				duration : 5000,
+			};
+			dojo.fadeOut(fadeArgs).play();
+		});
 	</script>
 	<c:choose>
 		<c:when test="${bridge.remoteName =='shanti-wiki'}">
@@ -91,17 +95,41 @@
 									target="_self">Choose ${existing} Space</button>
 								<button style="margin-left: 0.2em; margin-right: 0.2em"
 									id="create" type="submit" class="button" name="_eventId_create"
-									onclick="pleasewait();"
-									value="Create New Space">Create New Space</button>
-								<div class="pleasewait"><img src="/BridgeTool/resources/images/spinner.gif" /> Loading...</div>
+									onclick="pleasewait();" value="Create New Space">Create
+									New Space</button>
+								<div class="pleasewait">
+									<img src="/BridgeTool/resources/images/spinner.gif" />
+									Loading...
+								</div>
 							</c:when>
 							<c:otherwise>
 								<button style="margin-left: 0.2em; margin-right: 0.2em"
 									id="clear" type="submit" class="button" name="_eventId_clear"
 									value="Clear This Bridge">Clear This Bridge</button>
 
+								<button id="fixperms" type="submit" class="button"
+									onclick="pleasewait();" name="_eventId_fixperms"
+									value="Fix Permissions">Fix Permissions</button>
+
 								<button style="float: right" id="cancel" type="submit"
 									class="button" name="_eventId_cancel" value="Cancel">Done</button>
+
+								<div class="pleasewait">
+									<img src="/BridgeTool/resources/images/spinner.gif" />
+									Processing...
+								</div>
+								<c:if
+									test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">
+
+									<div id="messages">
+										<c:forEach
+											items="${flowRequestContext.messageContext.allMessages}"
+											var="message">
+											<div class="error">${message.text}</div>
+										</c:forEach>
+									</div>
+								</c:if>
+
 							</c:otherwise>
 						</c:choose>
 

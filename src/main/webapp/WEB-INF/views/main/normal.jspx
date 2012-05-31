@@ -9,13 +9,31 @@
 	<spring:message var="title" code="webflow_normalstate_title" />
 	<!--  <util:panel id="wiki" title="Wiki"> -->
 
+
+
 	<c:choose>
-		<c:when test="${bridge.inFrame}">
-			<c:set var="target" scope="request" value="_self" />
+		<c:when
+			test="${(bridge.remoteName == 'nowCommentStaging') || (bridge.remoteName=='nowComment')}">
+			<c:set var="remote_service_label" value="NowComment Group" />
+			<c:set var="browse_label" value="Browse Documents on NowComment.com >>" />
+			<c:set var="target" value="_blank" />
 		</c:when>
-		<c:otherwise>
-			<c:set var="target" scope="request" value="_blank" />
-		</c:otherwise>
+		<c:when
+			test="${(bridge.remoteName ==  'shanti-wiki') || (bridge.remoteName == 'shanti-wiki-test')}">
+			<c:set var="remote_service_label" value="Shanti Wiki" />
+			<c:choose>
+				<c:when test="${bridge.inFrame}">
+					<c:set var="browse_label" value="Browse space" />
+					<c:set var="target" value="_self" />
+				</c:when>
+				<c:otherwise>
+					<c:set var="browse_label"
+						value="Browse space on UVa Shanti Wiki >>" />
+					<c:set var="target" value="_blank" />
+
+				</c:otherwise>
+			</c:choose>
+		</c:when>
 	</c:choose>
 
 	<base target="${target}" />
@@ -23,17 +41,28 @@
 		<div class="submit">
 			<spring:message var="edit" code="context_edit" />
 
-			<div style="font-size: 2em">
-				Visit: <a style="font-size: 1em" href="${bridge.remoteContext.url}"
-					target="${target}">${bridge.remoteContext.contextLabel}</a>
-				<c:if test="${bridge.admin}">
-					<c:if
-						test="${(bridge.remoteName !='nowCommentStaging') &amp;&amp; (bridge.remoteName!='nowComment') }">
-						<button style="float: right; margin-bottom: 2 em" type="submit"
-							id="configure" name="_eventId_showConfig"
-							value="${fn:escapeXml(edit)}" target="_self">Configure</button>
-					</c:if>
-				</c:if>
+			<div style="margin-bottom: 1em;">
+				<div>
+					<em>${remote_service_label} ${context_type_label}</em>: <strong><a
+						href="${bridge.remoteContext.url}" target="${target}">${bridge.remoteContext.contextLabel}</a>
+
+
+
+
+						<c:if test="${bridge.admin}">
+							<c:if
+								test="${(bridge.remoteName !='nowCommentStaging') &amp;&amp; (bridge.remoteName!='nowComment') }">
+
+
+
+								<!-- style="background: #dddddd;  border:1px solid #bfbfbf; margin-bottom: 1em; padding: 0 0 0 0;" -->
+								<button style="float: right; margin-bottom: 2 em" type="submit"
+									id="configure" name="_eventId_showConfig"
+									value="${fn:escapeXml(edit)}" target="_self">Configure</button>
+
+							</c:if>
+						</c:if> </strong>
+				</div>
 
 				<c:if
 					test="${fn:length(flowRequestContext.messageContext.allMessages)!=0}">
@@ -47,16 +76,19 @@
 				</c:if>
 
 			</div>
-
 		</div>
-	</form>
-	
-	<div class="synopsis" style="margin-top: 2em;">${markUp}</div>
 
-	<!--  </util:panel> -->
-	
-	
-	
-			<!--  sneaky pre-login frame -->
-			<iframe style="visibility: hidden;" src="${bridge.remoteContext.url}"></iframe>
+		<util:panel id="recent" title="Documents">
+			<div class="synopsis">${markUp}</div>
+
+			<em><a href="${bridge.remoteContext.url}" target="${target}"
+				style="float: right; margin-top: 1em;">${browse_label}</a> </em>
+			<br clear="all" />
+		</util:panel>
+
+
+		<!--  sneaky pre-login frame -->
+		<iframe style="visibility: hidden;" src="${bridge.remoteContext.url}"></iframe>
+
+	</form>
 </div>

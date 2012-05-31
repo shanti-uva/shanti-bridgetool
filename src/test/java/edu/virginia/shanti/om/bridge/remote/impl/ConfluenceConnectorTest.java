@@ -180,7 +180,6 @@ public class ConfluenceConnectorTest {
 		
 		ConfigBean config = new ConfluenceConfigBean();
 		
-		
 		List<RemoteContextChoice> contexts = conf.getContexts(principal,
 				remoteServer, config);
 		RemoteContextChoice choice = contexts.get(0);
