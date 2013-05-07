@@ -98,8 +98,6 @@ public class ExtensionClient {
 
 	/**
 	 * 
-	 * @deprecated Need to refactor away the call the SakaiOperationService (via
-	 *             getSakaiUserIfo)
 	 * @return
 	 * @throws Exception
 	 */
@@ -172,6 +170,7 @@ public class ExtensionClient {
 		// System.err.println(resultRoot.getChild("eid").getText());
 		String eid = resultRoot.getChildText("eid");
 		String email = resultRoot.getChildText("email");
+		
 		String firstName = resultRoot.getChildText("firstName");
 		String lastName = resultRoot.getChildText("lastName");
 		String type = resultRoot.getChildText("type");
@@ -190,16 +189,6 @@ public class ExtensionClient {
 				+ ".itc.virginia.edu" + "/sakai-axis/SakaiSigning.jws";
 	}
 
-	/**
-	 * 
-	 * 
-	 * @deprecated Need to refactor away the call to SakaiOperationService
-	 */
-	private String getSakaiOperationServiceUrl() {
-		return "https://" + getLinktoolPackage().getServerId()
-				+ ".itc.virginia.edu" + "/sakai-axis/SakaiOperationService.jws";
-	}
-
 	public String getDecryptedSakaiSessionId() {
 		return decryptedSakaiSessionId;
 	}
@@ -208,3 +197,4 @@ public class ExtensionClient {
 		this.decryptedSakaiSessionId = decryptedSakaiSessionId;
 	}
 }
+
