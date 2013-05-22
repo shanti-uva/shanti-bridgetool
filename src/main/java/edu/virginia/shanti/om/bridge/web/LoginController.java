@@ -42,9 +42,13 @@ public class LoginController {
 		// System.err.println(" placement = " + placement);
 
 		// Cleaning
-		if (site.contains(",")) {
-			site = site.split(",")[0];
-		}
+		site = clean(site);
+		user = clean(user);
+		placement = clean(placement);
+		role=clean(role);
+		sign=clean(sign);
+		service=clean(service);
+		
 		// sanity check
 		Assert.assertTrue("illegal character in username",
 				user.matches("[\\S]+"));
@@ -65,6 +69,13 @@ public class LoginController {
 		}
 
 		return "redirect:/" + site + "/" + placement + "/" + service + "/main";
+	}
+
+	private String clean(String site) {
+		if (site.contains(",")) {
+			site = site.split(",")[0];
+		}
+		return site;
 	}
 
 }
