@@ -72,7 +72,7 @@ public class LoginController {
 	}
 
 	private String clean(String site) {
-		if (site.contains(",")) {
+		if (site != null && site.contains(",")) {
 			site = site.split(",")[0];
 		}
 		return site;
