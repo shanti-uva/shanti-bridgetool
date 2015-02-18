@@ -324,4 +324,10 @@ public class NowCommentConnector implements RemoteConnector {
 
 	}
 
+	@Override
+	public void removeRemoteContext(Principal principal,
+			RemoteContext newContext) {
+		throw new RuntimeException("not implemented");		
+	}
+
 }

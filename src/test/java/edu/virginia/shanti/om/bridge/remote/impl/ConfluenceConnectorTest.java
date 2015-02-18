@@ -144,14 +144,15 @@ public class ConfluenceConnectorTest {
 		RemoteContext newRemoteContext = conf.createRemoteContext(principal,
 				newContext, config);
 
-		assertNotNull(newContext);
+		assertThat(newContext.getUrl(), is(equalTo("https://tiki.shanti.virginia.edu/display/" +
+				TESTSLUG)));		
 		
-		assertThat(newContext.getUrl(), is(equalTo("https://wiki-dev.shanti.virginia.edu/display/" +
-				TESTSLUG)));
+		assertNotNull(newContext);
+
 		
 		System.err.println(newRemoteContext);
 
-		// conf.removeRemoteContext(principal, newContext);
+		conf.removeRemoteContext(principal, newContext);
 		
 	}
 

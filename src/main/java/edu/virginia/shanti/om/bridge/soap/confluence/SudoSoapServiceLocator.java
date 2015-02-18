@@ -22,7 +22,7 @@ public class SudoSoapServiceLocator extends org.apache.axis.client.Service imple
     }
 
     // Use to get a proxy class for sudo
-    private java.lang.String sudo_address = "https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo";
+    private java.lang.String sudo_address = "https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo";
 
     public java.lang.String getsudoAddress() {
         return sudo_address;
@@ -105,7 +105,7 @@ public class SudoSoapServiceLocator extends org.apache.axis.client.Service imple
     }
 
     public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo", "SudoSoapService");
+        return new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo", "SudoSoapService");
     }
 
     private java.util.HashSet ports = null;
@@ -113,7 +113,7 @@ public class SudoSoapServiceLocator extends org.apache.axis.client.Service imple
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo", "sudo"));
+            ports.add(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo", "sudo"));
         }
         return ports.iterator();
     }
