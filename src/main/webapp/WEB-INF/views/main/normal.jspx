@@ -88,7 +88,7 @@
 
 
 		<!--  sneaky pre-login frame -->
-		<iframe style="visibility: hidden;" src="${bridge.remoteContext.url}"></iframe>
+		<iframe height="0" width="0" style="visibility: hidden;" src="${bridge.remoteContext.url}"></iframe>
 
 	</form>
 </div>
