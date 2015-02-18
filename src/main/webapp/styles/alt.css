@@ -218,6 +218,7 @@ li {
 ul li {
 	margin:0 0 0.25em 0;
 	padding:0;
+	list-style-type: none;
 }
 /* table elements */
 
@@ -359,4 +360,8 @@ fieldset th {
 .flag {
 	height: 11px;
 	width: 16px;
+}
+
+ul.tabs-menu {
+	display: none;
 }

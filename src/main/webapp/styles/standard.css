@@ -217,11 +217,14 @@ a:visited {
 li {
 	padding-top: 5px;
 	text-align: left;
+	
 }
 
 ul li {
 	margin:0 0 0.25em 0;
 	padding:0;
+	list-style-type: none;
+	
 }
 /* table elements */
 
@@ -388,4 +391,7 @@ div.tabletitleops {
 	font-style: oblique;
 }
 
+ul.tabs-menu {
+	display: none;
+}
 
