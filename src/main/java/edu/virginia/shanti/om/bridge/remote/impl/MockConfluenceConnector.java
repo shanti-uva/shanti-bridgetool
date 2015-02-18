@@ -48,7 +48,7 @@ public class MockConfluenceConnector implements RemoteConnector {
 		remoteServer.setRemoteName("MockConfluence");
 		
 		// TODO: refactor to be configurable
-		remoteServer.setRemoteUrl("https://wiki.shanti.virginia.edu");
+		remoteServer.setRemoteUrl("https://tiki.shanti.virginia.edu");
 		contextStore.put(MOCKUSER + ":" + remoteServer.getRemoteName(),
 				createMockContextList(principal, remoteServer));
 		remoteServer.setRemoteName("shanti-wiki");
@@ -123,6 +123,12 @@ public class MockConfluenceConnector implements RemoteConnector {
 		// TODO Auto-generated method stub
 		throw new RuntimeException("not yet implemented");
 		
+	}
+
+	@Override
+	public void removeRemoteContext(Principal principal,
+			RemoteContext newContext) {
+		throw new RuntimeException("removeRemoteContext() is not implemented.");
 	}
 
 }

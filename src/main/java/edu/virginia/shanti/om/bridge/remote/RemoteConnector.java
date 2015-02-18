@@ -46,4 +46,7 @@ public interface RemoteConnector {
 	public void setRemotePermissions(Principal principal, String localContext,
 			RemoteContext remoteContext, PermissionMap permissionMap);
 
+	public void removeRemoteContext(Principal principal,
+			RemoteContext newContext);
+
 }

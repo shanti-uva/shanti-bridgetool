@@ -23,8 +23,8 @@ public class ConfluencePermissionsProxy {
 			String user, String key) throws InvalidSessionException, RemoteException, java.rmi.RemoteException {
 		// TODO Auto-generated method stub
 				log.info("REMOTE CALL to getPermission using " + sess + ", " + user + " and " + key);
-				return conf.getPermissions(sess,
-						key);
+				return conf.getPermissionsForUser(sess,
+						key,user);
 				
 	}
 

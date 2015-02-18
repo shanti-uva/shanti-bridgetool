@@ -43,7 +43,7 @@
 				<form:input path="key" /></td>
 				<td><b>Specify the short code to identify your new space in urls.</b><br/>
 					<em>If the space key is XXX, then the URL for your space
-						becomes: https://wiki.shanti.virginia.edu/display/XXX
+						becomes: https://tiki.shanti.virginia.edu/display/XXX
 				</em></td>
 			</tr>
 

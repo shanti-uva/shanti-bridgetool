@@ -378,7 +378,7 @@ public class ConfluenceConnector implements RemoteConnector {
 				throw new RuntimeException("Principal cannot be null");
 			}
 
-			sudo.sudo(sess, sess, principal.getName());
+//			sudo.sudo(sess, sess, principal.getName());
 			log.info("Sudo to " + principal.getName() + "successful for sess="
 					+ sess);
 
