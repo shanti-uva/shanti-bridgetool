@@ -618,8 +618,8 @@
 			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>axistools-maven-plugin</artifactId> 
 				<version>1.4</version> <dependencies> <dependency> <groupId>axis</groupId> 
 				<artifactId>axis</artifactId> <version>1.4</version> </dependency> </dependencies> 
-				<configuration> <urls> <url>https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1?wsdl</url> 
-				<url>https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo?wsdl</url> <url>https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws?wsdl</url> 
+				<configuration> <urls> <url>https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1?wsdl</url> 
+				<url>https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo?wsdl</url> <url>https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws?wsdl</url> 
 				<url>https://sakai7.itc.virginia.edu/sakai-axis/SakaiLogin.jws?wsdl</url> 
 				</urls> <packageSpace>edu.virginia.shanti.om.bridge.soap.sakai</packageSpace> 
 				<testCases>true</testCases> <serverSide>true</serverSide> <subPackageByFileName>false</subPackageByFileName> 

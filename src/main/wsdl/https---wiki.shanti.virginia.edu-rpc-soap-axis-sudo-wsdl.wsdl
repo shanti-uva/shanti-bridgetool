@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" xmlns:intf="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://user.atlassian.com" xmlns:tns2="http://rpc.confluence.atlassian.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<wsdl:definitions targetNamespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" xmlns:intf="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://user.atlassian.com" xmlns:tns2="http://rpc.confluence.atlassian.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <!--WSDL created by Apache Axis version: 1.2.1
 Built on Jun 14, 2005 (09:15:57 EDT)-->
  <wsdl:types>
@@ -208,13 +208,13 @@ Built on Jun 14, 2005 (09:15:57 EDT)-->
 
          <wsdl:output name="canUseConfluenceResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
 
          </wsdl:output>
 
          <wsdl:fault name="EntityException">
 
-            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="EntityException" namespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="EntityException" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
 
          </wsdl:fault>
 
@@ -232,13 +232,13 @@ Built on Jun 14, 2005 (09:15:57 EDT)-->
 
          <wsdl:output name="sudoResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
 
          </wsdl:output>
 
          <wsdl:fault name="EntityException">
 
-            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="EntityException" namespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="EntityException" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
 
          </wsdl:fault>
 
@@ -256,7 +256,7 @@ Built on Jun 14, 2005 (09:15:57 EDT)-->
 
          <wsdl:output name="whoamiResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
 
          </wsdl:output>
 
@@ -274,19 +274,19 @@ Built on Jun 14, 2005 (09:15:57 EDT)-->
 
          <wsdl:output name="loginResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
 
          </wsdl:output>
 
          <wsdl:fault name="AuthenticationFailedException">
 
-            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="AuthenticationFailedException" namespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="AuthenticationFailedException" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
 
          </wsdl:fault>
 
          <wsdl:fault name="RemoteException">
 
-            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="RemoteException" namespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="RemoteException" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
 
          </wsdl:fault>
 
@@ -304,13 +304,13 @@ Built on Jun 14, 2005 (09:15:57 EDT)-->
 
          <wsdl:output name="logoutResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
 
          </wsdl:output>
 
          <wsdl:fault name="RemoteException">
 
-            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="RemoteException" namespace="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
+            <wsdlsoap:fault encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" name="RemoteException" namespace="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo" use="encoded"/>
 
          </wsdl:fault>
 
@@ -322,7 +322,7 @@ Built on Jun 14, 2005 (09:15:57 EDT)-->
 
       <wsdl:port binding="impl:sudoSoapBinding" name="sudo">
 
-         <wsdlsoap:address location="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo"/>
+         <wsdlsoap:address location="https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo"/>
 
       </wsdl:port>
 

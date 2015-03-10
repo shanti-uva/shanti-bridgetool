@@ -48,7 +48,7 @@ public class MockConfluenceConnector implements RemoteConnector {
 		remoteServer.setRemoteName("MockConfluence");
 		
 		// TODO: refactor to be configurable
-		remoteServer.setRemoteUrl("https://tiki.shanti.virginia.edu");
+		remoteServer.setRemoteUrl("https://wiki.shanti.virginia.edu");
 		contextStore.put(MOCKUSER + ":" + remoteServer.getRemoteName(),
 				createMockContextList(principal, remoteServer));
 		remoteServer.setRemoteName("shanti-wiki");

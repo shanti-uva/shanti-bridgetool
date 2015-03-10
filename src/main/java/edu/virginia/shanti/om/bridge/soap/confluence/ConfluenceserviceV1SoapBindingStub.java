@@ -43,19 +43,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getPermissionsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -70,19 +70,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteSearchResult[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "searchReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -99,13 +99,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in3"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteSearchResult[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "searchReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -124,13 +124,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -149,13 +149,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -172,13 +172,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -189,19 +189,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setName("getGroups");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getGroupsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -214,19 +214,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemotePageSummary[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getChildrenReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -247,19 +247,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -278,19 +278,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -314,19 +314,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -345,13 +345,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -372,13 +372,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -397,13 +397,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -435,13 +435,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.AuthenticationFailedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "AuthenticationFailedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -462,7 +462,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -479,7 +479,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -498,19 +498,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -523,19 +523,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteComment"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteComment"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteComment[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getCommentsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -553,19 +553,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteAttachment"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteAttachment"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteAttachment[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getAttachmentsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -588,7 +588,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -609,7 +609,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -630,7 +630,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -651,19 +651,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -676,25 +676,25 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteContentPermissionSet"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteContentPermissionSet"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteContentPermissionSet[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getContentPermissionSetsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -713,19 +713,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -738,19 +738,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemotePageSummary[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getDescendentsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -763,19 +763,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemotePageSummary[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getAncestorsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -792,7 +792,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -820,7 +820,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -839,19 +839,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -866,19 +866,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteLabel[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getRelatedLabelsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -889,19 +889,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setName("getSpaces");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpaceSummary"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpaceSummary"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpaceSummary[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getSpacesReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -920,25 +920,25 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.AlreadyExistsException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "AlreadyExistsException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -949,19 +949,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setName("getSpaceGroups");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpaceGroup"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpaceGroup"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpaceGroup[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getSpaceGroupsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -980,19 +980,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1017,7 +1017,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1030,19 +1030,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemotePageSummary[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getPagesReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1057,7 +1057,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in3"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteContentPermission"), edu.virginia.shanti.om.bridge.soap.confluence.RemoteContentPermission[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in3"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteContentPermission"), edu.virginia.shanti.om.bridge.soap.confluence.RemoteContentPermission[].class, false, false);
         oper.addParameter(param);
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"));
         oper.setReturnClass(boolean.class);
@@ -1065,19 +1065,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1107,7 +1107,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1126,19 +1126,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1151,13 +1151,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemotePageSummary[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getTopLevelPagesReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1180,7 +1180,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1199,19 +1199,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1230,19 +1230,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1261,25 +1261,25 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.AlreadyExistsException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "AlreadyExistsException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1292,19 +1292,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteLabel[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getRecentlyUsedLabelsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1319,19 +1319,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteLabel[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getRecentlyUsedLabelsInSpaceReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1344,19 +1344,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteLabel[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getMostPopularLabelsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1376,19 +1376,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteLabel[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getMostPopularLabelsInSpaceReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1407,7 +1407,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1422,25 +1422,25 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getPermissionsForUserReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1459,7 +1459,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1478,7 +1478,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1495,19 +1495,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in3"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "int"), int.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteLabel[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getRelatedLabelsInSpaceReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1520,19 +1520,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpace"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpace"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpace[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getSpacesContainingContentWithLabelReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1545,19 +1545,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpace"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpace"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpace[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getSpacesWithLabelReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1576,19 +1576,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in4"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteLabel[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getLabelsByDetailReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1609,7 +1609,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1637,7 +1637,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1660,13 +1660,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1691,7 +1691,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1712,7 +1712,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1735,7 +1735,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1748,25 +1748,25 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getUserGroupsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1779,19 +1779,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageHistory"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageHistory"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemotePageHistory[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getPageHistoryReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1810,19 +1810,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1841,25 +1841,25 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.VersionMismatchException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "VersionMismatchException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1880,25 +1880,25 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.VersionMismatchException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "VersionMismatchException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1916,13 +1916,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpaceSummary"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpaceSummary"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpaceSummary[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getSpacesInGroupReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1941,7 +1941,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1960,25 +1960,25 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.AlreadyExistsException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "AlreadyExistsException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -1999,25 +1999,25 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.AlreadyExistsException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "AlreadyExistsException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2028,13 +2028,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setName("getSpaceLevelPermissions");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getSpaceLevelPermissionsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2057,7 +2057,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2068,7 +2068,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setName("addGlobalPermissions");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"), java.lang.String[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"), java.lang.String[].class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
@@ -2078,13 +2078,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2105,13 +2105,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2128,7 +2128,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2145,7 +2145,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2167,7 +2167,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2188,7 +2188,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2199,7 +2199,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setName("addPermissionsToSpace");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"), java.lang.String[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"), java.lang.String[].class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
@@ -2211,7 +2211,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2234,13 +2234,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2259,19 +2259,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2292,19 +2292,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2325,19 +2325,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2350,19 +2350,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "boolean"), boolean.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"));
         oper.setReturnClass(java.lang.String[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getActiveUsersReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2383,13 +2383,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2410,19 +2410,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2446,19 +2446,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2477,13 +2477,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2502,13 +2502,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2527,13 +2527,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2558,19 +2558,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2593,7 +2593,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2612,7 +2612,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2625,19 +2625,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteBlogEntrySummary"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteBlogEntrySummary"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteBlogEntrySummary[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getBlogEntriesReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2656,25 +2656,25 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.VersionMismatchException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "VersionMismatchException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2693,7 +2693,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2715,7 +2715,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2732,7 +2732,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2743,13 +2743,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setName("getClusterNodeStatuses");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteNodeStatus"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteNodeStatus"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteNodeStatus[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getClusterNodeStatusesReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2768,7 +2768,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2787,7 +2787,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2800,19 +2800,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteLabel[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getLabelsByIdReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2825,19 +2825,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteSearchResult[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getLabelContentByIdReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2850,19 +2850,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteSearchResult[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getLabelContentByNameReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2875,19 +2875,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://beans.soap.rpc.confluence.atlassian.com", "RemoteLabel"), edu.virginia.shanti.om.bridge.soap.confluence.RemoteLabel.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemoteSearchResult[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getLabelContentByObjectReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2908,19 +2908,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2946,19 +2946,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -2979,19 +2979,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3012,19 +3012,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3045,19 +3045,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3078,19 +3078,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3111,19 +3111,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3144,19 +3144,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3173,7 +3173,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3194,7 +3194,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3205,7 +3205,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setName("addAnonymousPermissionsToSpace");
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in0"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
-        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"), java.lang.String[].class, false, false);
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string"), java.lang.String[].class, false, false);
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in2"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, false, false);
         oper.addParameter(param);
@@ -3215,7 +3215,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3241,13 +3241,13 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.NotPermittedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "NotPermittedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3260,19 +3260,19 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
         oper.addParameter(param);
         param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("", "in1"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "long"), long.class, false, false);
         oper.addParameter(param);
-        oper.setReturnType(new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePermission"));
+        oper.setReturnType(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePermission"));
         oper.setReturnClass(edu.virginia.shanti.om.bridge.soap.confluence.RemotePermission[].class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "getPagePermissionsReturn"));
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "InvalidSessionException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.confluence.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -3513,7 +3513,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteAttachment");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteAttachment");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteAttachment[].class;
             cachedSerClasses.add(cls);
@@ -3522,7 +3522,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteBlogEntrySummary");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteBlogEntrySummary");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteBlogEntrySummary[].class;
             cachedSerClasses.add(cls);
@@ -3531,7 +3531,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteComment");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteComment");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteComment[].class;
             cachedSerClasses.add(cls);
@@ -3540,7 +3540,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteContentPermission");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteContentPermission");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteContentPermission[].class;
             cachedSerClasses.add(cls);
@@ -3549,7 +3549,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteContentPermissionSet");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteContentPermissionSet");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteContentPermissionSet[].class;
             cachedSerClasses.add(cls);
@@ -3558,7 +3558,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteLabel");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteLabel[].class;
             cachedSerClasses.add(cls);
@@ -3567,7 +3567,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteNodeStatus");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteNodeStatus");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteNodeStatus[].class;
             cachedSerClasses.add(cls);
@@ -3576,7 +3576,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageHistory");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageHistory");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemotePageHistory[].class;
             cachedSerClasses.add(cls);
@@ -3585,7 +3585,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePageSummary");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemotePageSummary[].class;
             cachedSerClasses.add(cls);
@@ -3594,7 +3594,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePermission");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemotePermission");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemotePermission[].class;
             cachedSerClasses.add(cls);
@@ -3603,7 +3603,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSearchResult");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteSearchResult[].class;
             cachedSerClasses.add(cls);
@@ -3612,7 +3612,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpace");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpace");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpace[].class;
             cachedSerClasses.add(cls);
@@ -3621,7 +3621,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpaceGroup");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpaceGroup");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpaceGroup[].class;
             cachedSerClasses.add(cls);
@@ -3630,7 +3630,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpaceSummary");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_tns2_RemoteSpaceSummary");
             cachedSerQNames.add(qName);
             cls = edu.virginia.shanti.om.bridge.soap.confluence.RemoteSpaceSummary[].class;
             cachedSerClasses.add(cls);
@@ -3639,7 +3639,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_anyType");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_anyType");
             cachedSerQNames.add(qName);
             cls = java.lang.Object[].class;
             cachedSerClasses.add(cls);
@@ -3648,7 +3648,7 @@ public class ConfluenceserviceV1SoapBindingStub extends org.apache.axis.client.S
             cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
             cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("https://tiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string");
+            qName = new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ArrayOf_xsd_string");
             cachedSerQNames.add(qName);
             cls = java.lang.String[].class;
             cachedSerClasses.add(cls);
