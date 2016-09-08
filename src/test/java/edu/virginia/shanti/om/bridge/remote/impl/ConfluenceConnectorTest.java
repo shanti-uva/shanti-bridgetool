@@ -144,7 +144,7 @@ public class ConfluenceConnectorTest {
 		RemoteContext newRemoteContext = conf.createRemoteContext(principal,
 				newContext, config);
 
-		assertThat(newContext.getUrl(), is(equalTo("https://tiki.shanti.virginia.edu/display/" +
+		assertThat(newContext.getUrl(), is(equalTo("https://shanti-app-qa01.virginia.edu/display/" +
 				TESTSLUG)));		
 		
 		assertNotNull(newContext);

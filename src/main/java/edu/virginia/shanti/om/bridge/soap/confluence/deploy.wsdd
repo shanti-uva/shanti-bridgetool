@@ -13,7 +13,7 @@
   <!-- Services from SudoSoapService WSDL service -->
 
   <service name="sudo" provider="java:RPC" style="rpc" use="encoded">
-      <parameter name="wsdlTargetNamespace" value="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo"/>
+      <parameter name="wsdlTargetNamespace" value="https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo"/>
       <parameter name="wsdlServiceElement" value="SudoSoapService"/>
       <parameter name="schemaUnqualified" value="http://rpc.confluence.atlassian.com,http://user.atlassian.com"/>
       <parameter name="wsdlServicePort" value="sudo"/>
@@ -23,13 +23,13 @@
       <operation name="canUseConfluence" qname="operNS:canUseConfluence" xmlns:operNS="http://sudo.confluence.adaptavist.com" returnQName="canUseConfluenceReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="in1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <fault name="EntityException" qname="fns:fault" xmlns:fns="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" class="edu.virginia.shanti.om.bridge.soap.confluence.EntityException" type="tns:EntityException" xmlns:tns="http://user.atlassian.com"/>
+        <fault name="EntityException" qname="fns:fault" xmlns:fns="https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo" class="edu.virginia.shanti.om.bridge.soap.confluence.EntityException" type="tns:EntityException" xmlns:tns="http://user.atlassian.com"/>
       </operation>
       <operation name="sudo" qname="operNS:sudo" xmlns:operNS="http://sudo.confluence.adaptavist.com" soapAction="" >
         <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="in1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="in2" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <fault name="EntityException" qname="fns:fault" xmlns:fns="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" class="edu.virginia.shanti.om.bridge.soap.confluence.EntityException" type="tns:EntityException" xmlns:tns="http://user.atlassian.com"/>
+        <fault name="EntityException" qname="fns:fault" xmlns:fns="https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo" class="edu.virginia.shanti.om.bridge.soap.confluence.EntityException" type="tns:EntityException" xmlns:tns="http://user.atlassian.com"/>
       </operation>
       <operation name="whoami" qname="operNS:whoami" xmlns:operNS="http://sudo.confluence.adaptavist.com" returnQName="whoamiReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
@@ -37,12 +37,12 @@
       <operation name="login" qname="operNS:login" xmlns:operNS="http://rpc.confluence.atlassian.com" returnQName="loginReturn" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="in1" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <fault name="AuthenticationFailedException" qname="fns:fault" xmlns:fns="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" class="edu.virginia.shanti.om.bridge.soap.confluence.AuthenticationFailedException" type="tns:AuthenticationFailedException" xmlns:tns="http://rpc.confluence.atlassian.com"/>
-        <fault name="RemoteException" qname="fns:fault" xmlns:fns="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" class="edu.virginia.shanti.om.bridge.soap.confluence.RemoteException" type="tns:RemoteException" xmlns:tns="http://rpc.confluence.atlassian.com"/>
+        <fault name="AuthenticationFailedException" qname="fns:fault" xmlns:fns="https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo" class="edu.virginia.shanti.om.bridge.soap.confluence.AuthenticationFailedException" type="tns:AuthenticationFailedException" xmlns:tns="http://rpc.confluence.atlassian.com"/>
+        <fault name="RemoteException" qname="fns:fault" xmlns:fns="https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo" class="edu.virginia.shanti.om.bridge.soap.confluence.RemoteException" type="tns:RemoteException" xmlns:tns="http://rpc.confluence.atlassian.com"/>
       </operation>
       <operation name="logout" qname="operNS:logout" xmlns:operNS="http://rpc.confluence.atlassian.com" returnQName="logoutReturn" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="in0" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-        <fault name="RemoteException" qname="fns:fault" xmlns:fns="https://tiki.shanti.virginia.edu/rpc/soap-axis/sudo" class="edu.virginia.shanti.om.bridge.soap.confluence.RemoteException" type="tns:RemoteException" xmlns:tns="http://rpc.confluence.atlassian.com"/>
+        <fault name="RemoteException" qname="fns:fault" xmlns:fns="https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo" class="edu.virginia.shanti.om.bridge.soap.confluence.RemoteException" type="tns:RemoteException" xmlns:tns="http://rpc.confluence.atlassian.com"/>
       </operation>
       <parameter name="allowedMethods" value="whoami logout canUseConfluence login sudo"/>
 

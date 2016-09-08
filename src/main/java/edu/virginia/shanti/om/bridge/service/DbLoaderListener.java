@@ -50,7 +50,7 @@ public class DbLoaderListener implements
 		RemoteServer remoteServer = new RemoteServer();
 		remoteServer.setImplementationName("confluenceConnector");
 		remoteServer.setRemoteName("shanti-wiki");
-		remoteServer.setRemoteUrl("https://tiki.shanti.virginia.edu");
+		remoteServer.setRemoteUrl("https://shanti-app-qa01.shanti.virginia.edu");
 
 		assureRemoteServer(remoteServer);
 
