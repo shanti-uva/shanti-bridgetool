@@ -35,7 +35,7 @@ public class SudoSoapBindingStub extends org.apache.axis.client.Stub implements 
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.sakai.EntityException",
                       new javax.xml.namespace.QName("http://user.atlassian.com", "EntityException"), 
                       true
@@ -54,7 +54,7 @@ public class SudoSoapBindingStub extends org.apache.axis.client.Stub implements 
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.sakai.EntityException",
                       new javax.xml.namespace.QName("http://user.atlassian.com", "EntityException"), 
                       true
@@ -84,13 +84,13 @@ public class SudoSoapBindingStub extends org.apache.axis.client.Stub implements 
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.sakai.AuthenticationFailedException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "AuthenticationFailedException"), 
                       true
                      ));
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.sakai.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true
@@ -107,7 +107,7 @@ public class SudoSoapBindingStub extends org.apache.axis.client.Stub implements 
         oper.setStyle(org.apache.axis.constants.Style.RPC);
         oper.setUse(org.apache.axis.constants.Use.ENCODED);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("https://shanti-app-qa01.virginia.edu/rpc/soap-axis/sudo", "fault"),
+                      new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/sudo", "fault"),
                       "edu.virginia.shanti.om.bridge.soap.sakai.RemoteException",
                       new javax.xml.namespace.QName("http://rpc.confluence.atlassian.com", "RemoteException"), 
                       true

@@ -22,7 +22,7 @@ public class ConfluenceSoapServiceServiceLocator extends org.apache.axis.client.
     }
 
     // Use to get a proxy class for ConfluenceserviceV1
-    private java.lang.String ConfluenceserviceV1_address = "https://shanti-app-qa01.virginia.edu/rpc/soap-axis/confluenceservice-v1";
+    private java.lang.String ConfluenceserviceV1_address = "https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1";
 
     public java.lang.String getConfluenceserviceV1Address() {
         return ConfluenceserviceV1_address;
@@ -105,7 +105,7 @@ public class ConfluenceSoapServiceServiceLocator extends org.apache.axis.client.
     }
 
     public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("https://shanti-app-qa01.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ConfluenceSoapServiceService");
+        return new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "ConfluenceSoapServiceService");
     }
 
     private java.util.HashSet ports = null;
@@ -113,7 +113,7 @@ public class ConfluenceSoapServiceServiceLocator extends org.apache.axis.client.
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("https://shanti-app-qa01.virginia.edu/rpc/soap-axis/confluenceservice-v1", "confluenceservice-v1"));
+            ports.add(new javax.xml.namespace.QName("https://wiki.shanti.virginia.edu/rpc/soap-axis/confluenceservice-v1", "confluenceservice-v1"));
         }
         return ports.iterator();
     }

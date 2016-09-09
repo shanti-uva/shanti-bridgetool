@@ -141,15 +141,21 @@ public class ConfluenceConnectorTest {
 		ConfigBean config = new ConfluenceConfigBean();
 		newContext.setContextId(TESTSLUG);
 		newContext.setContextLabel("Yuji Test Space");
-		RemoteContext newRemoteContext = conf.createRemoteContext(principal,
-				newContext, config);
+		RemoteContext newRemoteContext = null;
+		try {
+			newRemoteContext = conf.createRemoteContext(principal,
+					newContext, config);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		assertThat(newContext.getUrl(), is(equalTo("https://shanti-app-qa01.virginia.edu/display/" +
+
+		assertThat(newContext.getUrl(), is(equalTo("https://wiki.shanti.virginia.edu/display/" +
 				TESTSLUG)));		
 		
 		assertNotNull(newContext);
 
-		
 		System.err.println(newRemoteContext);
 
 		conf.removeRemoteContext(principal, newContext);
