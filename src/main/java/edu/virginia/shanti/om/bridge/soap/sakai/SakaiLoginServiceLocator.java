@@ -105,7 +105,7 @@ public class SakaiLoginServiceLocator extends org.apache.axis.client.Service imp
     }
 
     public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("https://sakai7.itc.virginia.edu/sakai-axis/SakaiLogin.jws", "SakaiLoginService");
+        return new javax.xml.namespace.QName("https://sakai13.itc.virginia.edu/sakai-axis/SakaiLogin.jws", "SakaiLoginService");
     }
 
     private java.util.HashSet ports = null;
@@ -113,7 +113,7 @@ public class SakaiLoginServiceLocator extends org.apache.axis.client.Service imp
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("https://sakai7.itc.virginia.edu/sakai-axis/SakaiLogin.jws", "SakaiLogin"));
+            ports.add(new javax.xml.namespace.QName("https://sakai13.itc.virginia.edu/sakai-axis/SakaiLogin.jws", "SakaiLogin"));
         }
         return ports.iterator();
     }

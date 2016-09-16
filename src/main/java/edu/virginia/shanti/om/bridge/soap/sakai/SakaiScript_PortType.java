@@ -63,6 +63,7 @@ public interface SakaiScript_PortType extends java.rmi.Remote {
     public java.lang.String changeSiteIconUrl(java.lang.String sessionid, java.lang.String siteid, java.lang.String iconurl) throws java.rmi.RemoteException;
     public java.lang.String changeSiteDescription(java.lang.String sessionid, java.lang.String siteid, java.lang.String description) throws java.rmi.RemoteException;
     public java.lang.String setSiteProperty(java.lang.String sessionid, java.lang.String siteid, java.lang.String propname, java.lang.String propvalue) throws java.rmi.RemoteException;
+    public java.lang.String setSitePropertyAlt(java.lang.String sessionid, java.lang.String secret, java.lang.String siteid, java.lang.String propname, java.lang.String propvalue) throws java.rmi.RemoteException;
     public java.lang.String removeSiteProperty(java.lang.String sessionid, java.lang.String siteid, java.lang.String propname) throws java.rmi.RemoteException;
     public boolean checkForRoleInAuthzGroup(java.lang.String sessionid, java.lang.String authzgroupid, java.lang.String roleid) throws java.rmi.RemoteException;
     public java.lang.String searchForUsers(java.lang.String sessionid, java.lang.String criteria, int first, int last) throws java.rmi.RemoteException;

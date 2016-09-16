@@ -227,6 +227,10 @@ public class SakaiScriptSoapBindingImpl implements edu.virginia.shanti.om.bridge
     public java.lang.String setSiteProperty(java.lang.String sessionid, java.lang.String siteid, java.lang.String propname, java.lang.String propvalue) throws java.rmi.RemoteException {
         return null;
     }
+    
+    public java.lang.String setSitePropertyAlt(java.lang.String sessionid, java.lang.String secret, java.lang.String siteid, java.lang.String propname, java.lang.String propvalue) throws java.rmi.RemoteException {
+        return null;
+    }
 
     public java.lang.String removeSiteProperty(java.lang.String sessionid, java.lang.String siteid, java.lang.String propname) throws java.rmi.RemoteException {
         return null;

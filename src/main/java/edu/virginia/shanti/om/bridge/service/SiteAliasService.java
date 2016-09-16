@@ -19,7 +19,6 @@ import edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptServiceLocator;
 import edu.virginia.shanti.om.bridge.soap.sakai.SakaiScript_PortType;
 
 @RooToString
-@RooSerializable
 @Service
 public class SiteAliasService {
 

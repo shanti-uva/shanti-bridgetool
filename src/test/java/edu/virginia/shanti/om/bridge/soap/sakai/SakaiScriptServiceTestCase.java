@@ -7,17 +7,18 @@
 
 package edu.virginia.shanti.om.bridge.soap.sakai;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 public class SakaiScriptServiceTestCase extends junit.framework.TestCase {
     public SakaiScriptServiceTestCase(java.lang.String name) {
         super(name);
-    }
+    } 
     
     public void testNothingYet() {
-    	// fail("Not Yet Implemented"); 	
+    	// fail("Not Yet Implemented"); 
     }
 
     
-    /* 
     public void testSakaiScriptWSDL() throws Exception {
         javax.xml.rpc.ServiceFactory serviceFactory = javax.xml.rpc.ServiceFactory.newInstance();
         java.net.URL url = new java.net.URL(new edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptServiceLocator().getSakaiScriptAddress() + "?WSDL");
@@ -1213,7 +1214,7 @@ public class SakaiScriptServiceTestCase extends junit.framework.TestCase {
         // TBD - validate results
     }
 
-    public void test55SakaiScriptSetSiteProperty() throws Exception {
+    public void test55SakaiScriptSetSitePropertyAlt() throws Exception {
         edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptSoapBindingStub binding;
         try {
             binding = (edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptSoapBindingStub)
@@ -1231,8 +1232,23 @@ public class SakaiScriptServiceTestCase extends junit.framework.TestCase {
 
         // Test operation
         java.lang.String value = null;
-        value = binding.setSiteProperty(new java.lang.String(), new java.lang.String(), new java.lang.String(), new java.lang.String());
-        // TBD - validate results
+        String userSession="282f2fe2-e312-449e-a33d-5965403e7c07";
+		String adminSecret="6gM3hC5QYeGgSqvvdEVPFPafbJy5ahcD";
+		String siteId="7a4fca0e-a128-4146-9524-25d2ce3480b9";
+		String propertyName="scripttest-"+RandomStringUtils.randomAlphanumeric(3);
+		String propertyValue=RandomStringUtils.randomAlphanumeric(10);
+;
+		value = binding.setSitePropertyAlt(userSession, adminSecret, siteId, propertyName, propertyValue);
+     
+		System.out.println("return from SitePropertyAlt():" + value);
+		value = binding.getSiteProperty(userSession, siteId, propertyName);
+		System.out.println("return from getSiteProperty:" + value);
+				assertEquals(" Not expected  return value!",propertyValue,value);
+				binding.setSitePropertyAlt(userSession, adminSecret, siteId, propertyName, null);
+				value = binding.getSiteProperty(userSession, siteId, propertyName);
+				assertNull("property is not null!",value);
+
+
     }
 
     public void test56SakaiScriptRemoveSiteProperty() throws Exception {
@@ -1586,6 +1602,6 @@ public class SakaiScriptServiceTestCase extends junit.framework.TestCase {
         value = binding.getPagesAndToolsForSite(new java.lang.String(), new java.lang.String(), new java.lang.String());
         // TBD - validate results
     }
-    */
+   
 
 }

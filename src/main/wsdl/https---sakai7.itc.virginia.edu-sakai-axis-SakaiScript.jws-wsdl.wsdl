@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" xmlns:intf="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<wsdl:definitions targetNamespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" xmlns:intf="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 <!--WSDL created by Apache Axis version: 1.3
 Built on Oct 05, 2005 (05:23:37 EDT)-->
 
@@ -1793,13 +1793,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="removeUserRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="removeUserResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1811,13 +1811,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getUserIdRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getUserIdResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1829,13 +1829,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getUserTypeRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getUserTypeResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1847,13 +1847,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getSiteTitleRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getSiteTitleResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1865,13 +1865,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="removeAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="removeAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1883,13 +1883,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getSiteDescriptionRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getSiteDescriptionResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1901,13 +1901,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getUserDisplayNameRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getUserDisplayNameResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1919,13 +1919,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getUserDisplayNameRequest1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getUserDisplayNameResponse1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1937,13 +1937,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getUserEmailRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getUserEmailResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1955,13 +1955,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getUserEmailRequest1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getUserEmailResponse1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1973,13 +1973,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="checkForUserRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="checkForUserResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -1991,13 +1991,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="removeSiteRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="removeSiteResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2009,13 +2009,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getSiteSkinRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getSiteSkinResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2027,13 +2027,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addMemberToGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addMemberToGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2045,13 +2045,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addNewUserRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addNewUserResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2063,13 +2063,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addNewUserRequest1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addNewUserResponse1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2081,13 +2081,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getSitePropertyRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getSitePropertyResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2099,13 +2099,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addNewSiteRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addNewSiteResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2117,13 +2117,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="checkSessionRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="checkSessionResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2135,13 +2135,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="changeUserInfoRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="changeUserInfoResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2153,13 +2153,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="changeUserNameRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="changeUserNameResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2171,13 +2171,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="changeUserEmailRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="changeUserEmailResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2189,13 +2189,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="changeUserTypeRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="changeUserTypeResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2207,13 +2207,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="changeUserPasswordRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="changeUserPasswordResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2225,13 +2225,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addGroupToSiteRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addGroupToSiteResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2243,13 +2243,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getGroupsInSiteRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getGroupsInSiteResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2261,13 +2261,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addNewAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addNewAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2279,13 +2279,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addNewRoleToAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addNewRoleToAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2297,13 +2297,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="removeAllRolesFromAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="removeAllRolesFromAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2315,13 +2315,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="removeRoleFromAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="removeRoleFromAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2333,13 +2333,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="allowFunctionForRoleRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="allowFunctionForRoleResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2351,13 +2351,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="disallowAllFunctionsForRoleRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="disallowAllFunctionsForRoleResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2369,13 +2369,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="disallowFunctionForRoleRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="disallowFunctionForRoleResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2387,13 +2387,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="setRoleDescriptionRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="setRoleDescriptionResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2405,13 +2405,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addMemberToAuthzGroupWithRoleRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addMemberToAuthzGroupWithRoleResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2423,13 +2423,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="removeMemberFromAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="removeMemberFromAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2441,13 +2441,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="removeAllMembersFromAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="removeAllMembersFromAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2459,13 +2459,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="setRoleForAuthzGroupMaintenanceRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="setRoleForAuthzGroupMaintenanceResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2477,13 +2477,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addMemberToSiteWithRoleRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addMemberToSiteWithRoleResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2495,13 +2495,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="copySiteRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="copySiteResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2513,13 +2513,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addNewPageToSiteRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addNewPageToSiteResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2531,13 +2531,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addNewPageToSiteRequest1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addNewPageToSiteResponse1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2549,13 +2549,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="removePageFromSiteRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="removePageFromSiteResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2567,13 +2567,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addNewToolToPageRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addNewToolToPageResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2585,13 +2585,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addConfigPropertyToToolRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addConfigPropertyToToolResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2603,13 +2603,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="checkForSiteRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="checkForSiteResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2621,13 +2621,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="checkForMemberInAuthzGroupWithRoleRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="checkForMemberInAuthzGroupWithRoleResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2639,13 +2639,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getSitesUserCanAccessRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getSitesUserCanAccessResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2657,13 +2657,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="isSiteJoinableRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="isSiteJoinableResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2675,13 +2675,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="changeSiteTitleRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="changeSiteTitleResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2693,13 +2693,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="changeSiteSkinRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="changeSiteSkinResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2711,13 +2711,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="changeSiteJoinableRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="changeSiteJoinableResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2729,13 +2729,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="changeSiteIconUrlRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="changeSiteIconUrlResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2747,13 +2747,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="changeSiteDescriptionRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="changeSiteDescriptionResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2765,13 +2765,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="setSitePropertyRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="setSitePropertyResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2783,13 +2783,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="removeSitePropertyRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="removeSitePropertyResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2801,13 +2801,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="checkForRoleInAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="checkForRoleInAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2819,13 +2819,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="searchForUsersRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="searchForUsersResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2837,13 +2837,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="checkForAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="checkForAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2855,13 +2855,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="removeMemberFromSiteRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="removeMemberFromSiteResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2873,13 +2873,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="checkForUserInAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="checkForUserInAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2891,13 +2891,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getUsersInAuthzGroupWithRoleRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getUsersInAuthzGroupWithRoleResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2909,13 +2909,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getUsersInAuthzGroupRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getUsersInAuthzGroupResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2927,13 +2927,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="copyCalendarEventsRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="copyCalendarEventsResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2945,13 +2945,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="addNewToolToAllWorkspacesRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="addNewToolToAllWorkspacesResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2963,13 +2963,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="copyRoleRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="copyRoleResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2981,13 +2981,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="copyRoleRequest1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="copyRoleResponse1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -2999,13 +2999,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getAllUsersRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getAllUsersResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -3017,13 +3017,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getSessionForUserRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getSessionForUserResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -3035,13 +3035,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getPagesAndToolsForSiteRequest">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getPagesAndToolsForSiteResponse">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -3053,13 +3053,13 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
          <wsdl:input name="getPagesAndToolsForSiteRequest1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://package edu.virginia.shanti.om.bridge.soap.sakaiscript" use="encoded"/>
 
          </wsdl:input>
 
          <wsdl:output name="getPagesAndToolsForSiteResponse1">
 
-            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws" use="encoded"/>
 
          </wsdl:output>
 
@@ -3071,7 +3071,7 @@ Built on Oct 05, 2005 (05:23:37 EDT)-->
 
       <wsdl:port binding="impl:SakaiScriptSoapBinding" name="SakaiScript">
 
-         <wsdlsoap:address location="https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws"/>
+         <wsdlsoap:address location="https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws"/>
 
       </wsdl:port>
 

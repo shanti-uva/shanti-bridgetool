@@ -153,7 +153,7 @@ public class SakaiLoginSoapBindingStub extends org.apache.axis.client.Stub imple
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "logout"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://package edu.virginia.shanti.om.bridge.soap.sakaiscript", "logout"));
 
         setRequestHeaders(_call);
         setAttachments(_call);

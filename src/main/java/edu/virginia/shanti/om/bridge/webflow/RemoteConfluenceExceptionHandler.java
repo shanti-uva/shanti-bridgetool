@@ -1,7 +1,5 @@
 package edu.virginia.shanti.om.bridge.webflow;
 
-import java.io.IOException;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.binding.message.MessageBuilder;

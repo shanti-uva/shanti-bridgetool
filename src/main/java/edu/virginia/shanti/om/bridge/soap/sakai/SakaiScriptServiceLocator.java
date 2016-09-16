@@ -22,7 +22,7 @@ public class SakaiScriptServiceLocator extends org.apache.axis.client.Service im
     }
 
     // Use to get a proxy class for SakaiScript
-    private java.lang.String SakaiScript_address = "https://collab.itc.virginia.edu/sakai-axis/SakaiScript.jws";
+    private java.lang.String SakaiScript_address = "https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws";
 
     public java.lang.String getSakaiScriptAddress() {
         return SakaiScript_address;
@@ -105,7 +105,7 @@ public class SakaiScriptServiceLocator extends org.apache.axis.client.Service im
     }
 
     public javax.xml.namespace.QName getServiceName() {
-        return new javax.xml.namespace.QName("https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws", "SakaiScriptService");
+        return new javax.xml.namespace.QName("https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws", "SakaiScriptService");
     }
 
     private java.util.HashSet ports = null;
@@ -113,7 +113,7 @@ public class SakaiScriptServiceLocator extends org.apache.axis.client.Service im
     public java.util.Iterator getPorts() {
         if (ports == null) {
             ports = new java.util.HashSet();
-            ports.add(new javax.xml.namespace.QName("https://sakai7.itc.virginia.edu/sakai-axis/SakaiScript.jws", "SakaiScript"));
+            ports.add(new javax.xml.namespace.QName("https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws", "SakaiScript"));
         }
         return ports.iterator();
     }

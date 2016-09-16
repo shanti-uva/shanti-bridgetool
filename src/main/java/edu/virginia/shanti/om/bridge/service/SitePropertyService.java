@@ -26,14 +26,17 @@ public class SitePropertyService {
 
 	transient private SakaiScriptServiceLocator sakaiScriptServiceLocator = new SakaiScriptServiceLocator();
 
+	 @Autowired
+	 private AdminUser sakaiAdminUser;
+	
 	@Autowired
-	private AdminUser sakaiAdminUser;
+	private CurrentUser currentUser;
 
 	public String getSiteProperty(String siteId, String propertyName) {
 
-		String sakaisession = (String) sakaiAdminUser.getAuthentication()
+		String sakaisession = (String) currentUser.getAuthentication()
 				.getCredentials();
-
+		
 		String[] split = sakaisession.split("\\.");
 		String session = split[0];
 		String server = split[1] + ".itc.virginia.edu";
@@ -56,8 +59,11 @@ public class SitePropertyService {
 
 	public void setSiteProperty(String siteId, String propertyName, String value) {
 
-		String sakaisession = (String) sakaiAdminUser
+		String adminsecret = (String) sakaiAdminUser
 				.getAuthentication().getCredentials();
+		
+		String sakaisession = (String) currentUser
+		.getAuthentication().getCredentials();
 
 		String[] split = sakaisession.split("\\.");
 		String session = split[0];
@@ -67,7 +73,8 @@ public class SitePropertyService {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-axis/SakaiScript.jws"));
-			sakaiScript.setSiteProperty(session, siteId, propertyName, value);
+//			sakaiScript.setSiteProperty(session, siteId, propertyName, value);
+			sakaiScript.setSitePropertyAlt(session, adminsecret, siteId, propertyName, value);
 
 		} catch (ServiceException e) {
 			throw new RuntimeException(e);

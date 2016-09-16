@@ -411,6 +411,8 @@ public class ConfluenceConnector implements RemoteConnector {
 			// Let's do this as admin, so that if the current user hasn't yet
 			// logged into Confluence it won't bomb.
 
+			
+			//  TODO: handle the case where the current user can't read the summary
 			conf = getConfLocator().getConfluenceserviceV1();
 			String sess = loginAdmin();
 
