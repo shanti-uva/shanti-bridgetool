@@ -7,6 +7,8 @@
 
 package edu.virginia.shanti.om.bridge.soap.sakai;
 
+import java.net.URL;
+
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class SakaiScriptServiceTestCase extends junit.framework.TestCase {
@@ -1218,7 +1220,7 @@ public class SakaiScriptServiceTestCase extends junit.framework.TestCase {
         edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptSoapBindingStub binding;
         try {
             binding = (edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptSoapBindingStub)
-                          new edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptServiceLocator().getSakaiScript();
+                          new edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptServiceLocator().getSakaiScript(new URL("https://sakai20.itc.virginia.edu/sakai-axis/SakaiScript.jws"));
         }
         catch (javax.xml.rpc.ServiceException jre) {
             if(jre.getLinkedCause()!=null)
@@ -1232,7 +1234,7 @@ public class SakaiScriptServiceTestCase extends junit.framework.TestCase {
 
         // Test operation
         java.lang.String value = null;
-        String userSession="282f2fe2-e312-449e-a33d-5965403e7c07";
+        String userSession="1c0f9eae-786f-4a31-b7cb-d36586dcd19c";
 		String adminSecret="6gM3hC5QYeGgSqvvdEVPFPafbJy5ahcD";
 		String siteId="7a4fca0e-a128-4146-9524-25d2ce3480b9";
 		String propertyName="scripttest-"+RandomStringUtils.randomAlphanumeric(3);
