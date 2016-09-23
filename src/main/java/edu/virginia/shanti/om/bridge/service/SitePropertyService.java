@@ -6,6 +6,8 @@ import java.rmi.RemoteException;
 
 import javax.xml.rpc.ServiceException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -31,6 +33,8 @@ public class SitePropertyService {
 	
 	@Autowired
 	private CurrentUser currentUser;
+	
+	private Log log = LogFactory.getLog(SitePropertyService.class);
 
 	public String getSiteProperty(String siteId, String propertyName) {
 
@@ -73,7 +77,9 @@ public class SitePropertyService {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-axis/SakaiScript.jws"));
+			
 //			sakaiScript.setSiteProperty(session, siteId, propertyName, value);
+			log.info("session = " + session + " adminsecret = " + adminsecret +  " siteId = " + siteId + " propertyname = " + propertyName + " value = " + value);
 			sakaiScript.setSitePropertyAlt(session, adminsecret, siteId, propertyName, value);
 
 		} catch (ServiceException e) {
