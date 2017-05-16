@@ -14,6 +14,9 @@ import javax.xml.rpc.ServiceException;
 
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
+import org.apache.axis.client.Stub;
+import org.apache.axis.client.Transport;
+import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.logging.Log;
@@ -50,6 +53,7 @@ public class ExtensionClient {
 	}
 
 	public void setLinktoolPackage(LinktoolFormValues linktoolPackage) {
+		log.info(linktoolPackage);
 		this.linktoolPackage = linktoolPackage;
 	}
 
@@ -59,9 +63,15 @@ public class ExtensionClient {
 		try {
 			Service service = new Service();
 			Call call = (Call) service.createCall();
-
+			call.setMaintainSession(true);
 			call.setOperationName("testsign");
 			call.setTargetEndpointAddress(new java.net.URL(getSakaiSigningUrl()));
+			call.setProperty(
+			        org.apache.axis.client.Call.SESSION_MAINTAIN_PROPERTY, 
+			        new Boolean(true));
+			call.setProperty(
+			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
+			        "AFFINITYID=" + getSakaiAffinityID());
 
 			System.err.println("SAKAISIGNING URL = " + getSakaiSigningUrl());
 			System.err.println("keyValueString = "
@@ -94,6 +104,11 @@ public class ExtensionClient {
 			log.warn(e);
 			throw e;
 		}
+	}
+
+	private String getSakaiAffinityID() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/**
@@ -185,8 +200,9 @@ public class ExtensionClient {
 	}
 
 	private String getSakaiSigningUrl() {
-		return "https://" + getLinktoolPackage().getServerId()
-				+ ".itc.virginia.edu" + "/sakai-axis/SakaiSigning.jws";
+//		return "https://" + getLinktoolPackage().getServerId()
+//				+ ".itc.virginia.edu" + "/sakai-axis/SakaiSigning.jws";
+		return getLinktoolPackage().getServerurl() + "/sakai-ws/soap/sakai";
 	}
 
 	public String getDecryptedSakaiSessionId() {
