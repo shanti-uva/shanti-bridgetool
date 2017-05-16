@@ -12,6 +12,7 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.rmi.RemoteException;
 
+import javax.xml.namespace.QName;
 import javax.xml.rpc.ServiceException;
 
 import org.apache.axis.client.Call;
@@ -63,11 +64,11 @@ public class ExtensionClient {
 
 		String authenticateResult = null;
 		try {
-			log.info("SakaiSigningUrl: " + getSakaiSigningUrl());
 			Service service = new Service();
 			Call call = (Call) service.createCall();
 			call.setMaintainSession(true);
-			call.setOperationName("testsign");
+			
+			call.setOperationName(new QName("http://webservices.sakaiproject.org/","testsign"));
 			call.setTargetEndpointAddress(new java.net.URL(getSakaiSigningUrl()));
 			call.setProperty(
 			        org.apache.axis.client.Call.SESSION_MAINTAIN_PROPERTY, 
@@ -80,11 +81,12 @@ public class ExtensionClient {
 			log.info("SAKAISIGNING URL = " + getSakaiSigningUrl());
 			log.info("keyValueString = "
 					+ getLinktoolPackage().getKeyValueString());
-
+			
 			authenticateResult = (String) call
 					.invoke(new Object[] { getLinktoolPackage()
 							.getKeyValueString() });
-
+			
+			
 			log.info("authenticate result = " + authenticateResult);
 
 			if (authenticateResult.equalsIgnoreCase("stale value")) {
