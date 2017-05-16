@@ -7,6 +7,8 @@
 
 package edu.virginia.shanti.om.bridge.soap.sakai;
 
+import org.apache.axis.client.Call;
+
 public class SakaiScriptServiceLocator extends org.apache.axis.client.Service implements edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptService {
 
     public SakaiScriptServiceLocator() {
@@ -22,7 +24,7 @@ public class SakaiScriptServiceLocator extends org.apache.axis.client.Service im
     }
 
     // Use to get a proxy class for SakaiScript
-    private java.lang.String SakaiScript_address = "https://sakai13.itc.virginia.edu/sakai-axis/SakaiScript.jws";
+    private java.lang.String SakaiScript_address = "https://collab-dev.its.virginia.edu/sakai-ws/soap/sakai";
 
     public java.lang.String getSakaiScriptAddress() {
         return SakaiScript_address;
@@ -54,6 +56,7 @@ public class SakaiScriptServiceLocator extends org.apache.axis.client.Service im
         try {
             edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptSoapBindingStub _stub = new edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptSoapBindingStub(portAddress, this);
             _stub.setPortName(getSakaiScriptWSDDServiceName());
+            _stub._setProperty(Call.SESSION_MAINTAIN_PROPERTY, new Boolean(true));
             return _stub;
         }
         catch (org.apache.axis.AxisFault e) {

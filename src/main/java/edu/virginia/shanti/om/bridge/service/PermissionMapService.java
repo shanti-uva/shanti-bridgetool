@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.xml.rpc.ServiceException;
 
+import org.apache.axis.client.Stub;
+import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,17 +86,29 @@ public class PermissionMapService {
 			
 			log.info("sakaisession = " + sakaisession);
 		
-			String[] split = sakaisession.split("\\.");
+			String[] split = sakaisession.split("\\.",2);
 			
 			if (split.length < 2) {
 				throw new RuntimeException ("sakaisession format exception!  Expected server extension. " + sakaisession );
 			}
 			 String session = split[0];
-			 String server = split[1] + ".itc.virginia.edu";
+			 // String server = split[1] + ".itc.virginia.edu";  // this is no longer correct
+			 String server = "collab-dev.its.virginia.edu";   //  HOW DO WE SET THIS PROPERLY?
+			 
+			 log.info("HOW DO WE DETERMINE SERVER?");
+			 log.info("sakaisession = " + sakaisession);
+			 log.info(bridge);
+			 
+			 String lbCookieValue = split[1];
+			 
 			try {
 				SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 						.getSakaiScript(new URL("https://" + server
-								+ "/sakai-axis/SakaiScript.jws"));				
+								+ "/sakai-axis/SakaiScript.jws"));		
+				
+				((Stub)sakaiScript)._setProperty(HTTPConstants.HEADER_COOKIE, "AFFINITYID=" + lbCookieValue);
+				((Stub)sakaiScript)._setProperty(HTTPConstants.HEADER_COOKIE, "JSESSIONID=" + session);
+				
 				LocalContextType siteType;
 				
 				String termEid = sakaiScript.getSiteProperty(session, bridge.getLocalContext(), "term_eid");
