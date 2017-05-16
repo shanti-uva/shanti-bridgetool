@@ -215,7 +215,7 @@ public class ExtensionClient {
 			serverurl = "https://collab-dev.its.virginia.edu";
 			log.error("Couldn't find serverurl from linktool package! Defaulting to " + serverurl);
 		}
-		return  serverurl + "/sakai-ws/soap/sakai";
+		return  serverurl + "/sakai-ws/soap/signing";
 	}
 
 	public String getDecryptedSakaiSessionId() {
