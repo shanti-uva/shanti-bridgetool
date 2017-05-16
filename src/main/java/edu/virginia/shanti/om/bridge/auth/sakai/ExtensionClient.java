@@ -19,6 +19,7 @@ import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 import org.apache.axis.client.Stub;
 import org.apache.axis.client.Transport;
+import org.apache.axis.message.SOAPBodyElement;
 import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -64,29 +65,31 @@ public class ExtensionClient {
 
 		String authenticateResult = null;
 		try {
+			
+			log.info("AFFINITYID = " + getSakaiAffinityID()); 
+			log.info("SAKAISIGNING URL = " + getSakaiSigningUrl());
+			log.info("keyValueString = "
+					+ getLinktoolPackage().getKeyValueString());
+			
+			
 			Service service = new Service();
 			Call call = (Call) service.createCall();
 			call.setMaintainSession(true);
-			
-			call.setOperationName(new QName("http://webservices.sakaiproject.org/","testsign"));
 			call.setTargetEndpointAddress(new java.net.URL(getSakaiSigningUrl()));
-			call.setOperationStyle("document");
+			// call.setOperationName(new QName("http://webservices.sakaiproject.org/","testsign"));
+
+			// call.setOperationStyle("document");
 			call.setProperty(
 			        org.apache.axis.client.Call.SESSION_MAINTAIN_PROPERTY, 
 			        new Boolean(true));
 			call.setProperty(
 			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
 			        "AFFINITYID=" + getSakaiAffinityID());
-
-			log.info("AFFINITYID = " + getSakaiAffinityID()); 
-			log.info("SAKAISIGNING URL = " + getSakaiSigningUrl());
-			log.info("keyValueString = "
-					+ getLinktoolPackage().getKeyValueString());
 			
 			authenticateResult = (String) call
-					.invoke(new Object[] { getLinktoolPackage()
-							.getKeyValueString() });
-			
+					.invoke("http://webservices.sakaiproject.org/","testsign",
+							new Object[] { getLinktoolPackage()
+							.getKeyValueString() });						
 			
 			log.info("authenticate result = " + authenticateResult);
 
