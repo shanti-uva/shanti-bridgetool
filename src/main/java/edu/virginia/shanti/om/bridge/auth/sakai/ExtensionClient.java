@@ -6,8 +6,10 @@ package edu.virginia.shanti.om.bridge.auth.sakai;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.rmi.RemoteException;
 
 import javax.xml.rpc.ServiceException;
@@ -203,7 +205,17 @@ public class ExtensionClient {
 	private String getSakaiSigningUrl() {
 //		return "https://" + getLinktoolPackage().getServerId()
 //				+ ".itc.virginia.edu" + "/sakai-axis/SakaiSigning.jws";
-		return getLinktoolPackage().getServerurl() + "/sakai-ws/soap/sakai";
+		
+		String serverurl;
+		try {
+			serverurl = URLDecoder.decode(getLinktoolPackage().getServerurl(),"UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			serverurl = "https://collab-dev.its.virginia.edu";
+			log.error("Couldn't find serverurl from linktool package! Defaulting to " + serverurl);
+		}
+		return  serverurl + "/sakai-ws/soap/sakai";
 	}
 
 	public String getDecryptedSakaiSessionId() {
