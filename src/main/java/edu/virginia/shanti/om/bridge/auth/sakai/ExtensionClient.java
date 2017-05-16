@@ -76,9 +76,6 @@ public class ExtensionClient {
 			Call call = (Call) service.createCall();
 			call.setMaintainSession(true);
 			call.setTargetEndpointAddress(new java.net.URL(getSakaiSigningUrl()));
-			// call.setOperationName(new QName("http://webservices.sakaiproject.org/","testsign"));
-
-			// call.setOperationStyle("document");
 			call.setProperty(
 			        org.apache.axis.client.Call.SESSION_MAINTAIN_PROPERTY, 
 			        new Boolean(true));
@@ -150,13 +147,31 @@ public class ExtensionClient {
 			try {
 				Service service = new Service();
 				Call call = (Call) service.createCall();
-				call.setOperationName("decryptSession");
 				call.setTargetEndpointAddress(new URL(getSakaiSigningUrl()));
+				call.setMaintainSession(true);
+				call.setProperty(
+				        org.apache.axis.client.Call.SESSION_MAINTAIN_PROPERTY, 
+				        new Boolean(true));
+				call.setProperty(
+				        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
+				        "AFFINITYID=" + getSakaiAffinityID());
+				call.addParameter("esession", 
+						  org.apache.axis.Constants.XSD_STRING,
+						  javax.xml.rpc.ParameterMode.IN);
+				call.setReturnType(org.apache.axis.Constants.XSD_STRING);
+					
 				decryptSessionResult = (String) call
-						.invoke(new Object[] { getLinktoolPackage()
-								.getSession() });
+						.invoke("http://webservices.sakaiproject.org/","decryptSession",
+								new Object[] { getLinktoolPackage()
+								.getKeyValueString() });
+				
 				setDecryptedSakaiSessionId(decryptSessionResult);
 
+				
+				
+				
+				
+				
 			} catch (MalformedURLException e) {
 				throw e;
 			} catch (RemoteException e) {
