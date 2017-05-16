@@ -63,6 +63,7 @@ public class ExtensionClient {
 
 		String authenticateResult = null;
 		try {
+			log.info("SakaiSigningUrl: " + getSakaiSigningUrl());
 			Service service = new Service();
 			Call call = (Call) service.createCall();
 			call.setMaintainSession(true);
