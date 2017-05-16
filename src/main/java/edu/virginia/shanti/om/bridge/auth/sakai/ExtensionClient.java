@@ -162,8 +162,7 @@ public class ExtensionClient {
 					
 				decryptSessionResult = (String) call
 						.invoke("http://webservices.sakaiproject.org/","decryptSession",
-								new Object[] { getLinktoolPackage()
-								.getKeyValueString() });
+								new Object[] { getLinktoolPackage().getSession()});
 				
 				setDecryptedSakaiSessionId(decryptSessionResult);
 
