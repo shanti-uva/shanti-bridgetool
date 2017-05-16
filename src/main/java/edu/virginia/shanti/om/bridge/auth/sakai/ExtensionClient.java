@@ -70,6 +70,7 @@ public class ExtensionClient {
 			
 			call.setOperationName(new QName("http://webservices.sakaiproject.org/","testsign"));
 			call.setTargetEndpointAddress(new java.net.URL(getSakaiSigningUrl()));
+			call.setOperationStyle("document");
 			call.setProperty(
 			        org.apache.axis.client.Call.SESSION_MAINTAIN_PROPERTY, 
 			        new Boolean(true));
