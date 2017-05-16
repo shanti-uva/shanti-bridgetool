@@ -111,7 +111,7 @@ public class ExtensionClient {
 
 	private String getSakaiAffinityID() {
 		// TODO Auto-generated method stub
-		return null;
+		return getLinktoolPackage().getServerId();
 	}
 
 	/**
