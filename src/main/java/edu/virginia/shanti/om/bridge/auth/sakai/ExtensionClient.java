@@ -169,9 +169,6 @@ public class ExtensionClient {
 
 				
 				
-				
-				
-				
 			} catch (MalformedURLException e) {
 				throw e;
 			} catch (RemoteException e) {
