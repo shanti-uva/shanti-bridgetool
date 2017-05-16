@@ -85,7 +85,11 @@ public class ExtensionClient {
 			call.setProperty(
 			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
 			        "AFFINITYID=" + getSakaiAffinityID());
-			
+			call.addParameter("data", 
+					  org.apache.axis.Constants.XSD_STRING,
+					  javax.xml.rpc.ParameterMode.IN);
+			call.setReturnType(org.apache.axis.Constants.XSD_STRING);
+				
 			authenticateResult = (String) call
 					.invoke("http://webservices.sakaiproject.org/","testsign",
 							new Object[] { getLinktoolPackage()
