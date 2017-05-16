@@ -73,15 +73,16 @@ public class ExtensionClient {
 			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
 			        "AFFINITYID=" + getSakaiAffinityID());
 
-			System.err.println("SAKAISIGNING URL = " + getSakaiSigningUrl());
-			System.err.println("keyValueString = "
+			log.info("AFFINITYID = " + getSakaiAffinityID()); 
+			log.info("SAKAISIGNING URL = " + getSakaiSigningUrl());
+			log.info("keyValueString = "
 					+ getLinktoolPackage().getKeyValueString());
 
 			authenticateResult = (String) call
 					.invoke(new Object[] { getLinktoolPackage()
 							.getKeyValueString() });
 
-			System.err.println("authenticate result = " + authenticateResult);
+			log.info("authenticate result = " + authenticateResult);
 
 			if (authenticateResult.equalsIgnoreCase("stale value")) {
 				log.warn("stale value found!");
@@ -153,7 +154,7 @@ public class ExtensionClient {
 		}
 		String getUserInfoResult = null;
 
-		System.err.println("decrypted session id = "
+		log.info("decrypted session id = "
 				+ getDecryptedSakaiSessionId());
 
 		HttpClient client = new HttpClient();
