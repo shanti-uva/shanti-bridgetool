@@ -98,7 +98,7 @@ public class ExtensionClientTest {
 		ExtensionClient ex = new ExtensionClient(linkForm);
 		System.err.println(linkForm);
 		assertTrue(ex.authenticate());
-		String session = ex.getDecryptedSakaiSessionId();
+		String session = ex.getSakaiSessionId();
 		System.err.println("Session: " + session);
 		SakaiUserInfo info = ex.getSakaiUserInfo();
 
