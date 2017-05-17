@@ -37,6 +37,8 @@ import org.jdom.output.XMLOutputter;
 
 public class ExtensionClient {
 
+	private static final String JSESSIONID = "JSESSIONID";
+
 	private static final String AFFINITYID = "AFFINITYID";
 
 	private static final String SAKAI_WS_SOAP_SIGNING_PATH = "/sakai-ws/soap/signing";
@@ -170,6 +172,8 @@ public class ExtensionClient {
 						.invoke("http://webservices.sakaiproject.org/","decryptSession",
 								new Object[] { getLinktoolPackage().getSession()});
 				
+				log.info("return from decryptSession: sakaiSessionId = " + sakaiSessionId);
+				
 				setSakaiSessionId(sakaiSessionId);
 
 				
@@ -190,7 +194,7 @@ public class ExtensionClient {
 		HttpClient client = new HttpClient();
 		HttpState state = new HttpState();		
 		String domain = new URL(URLDecoder.decode(getLinktoolPackage().getServerurl(), "UTF-8")).getHost();
-		Cookie jsessionid = new Cookie(domain, "JSESSIONID", getSakaiSessionId(), "/", 0, false);
+		Cookie jsessionid = new Cookie(domain, JSESSIONID, getSakaiSessionId() + "." + getLinktoolPackage().getServerId() , "/", 0, false);
 		Cookie affinityid = new Cookie(domain, AFFINITYID, getLinktoolPackage().getServerId(), "/", 0, false);
 		log.info("JSESSIONID cookie" + jsessionid.toString() );
 		log.info("AFFINITYID cookie" + affinityid.toString() );
