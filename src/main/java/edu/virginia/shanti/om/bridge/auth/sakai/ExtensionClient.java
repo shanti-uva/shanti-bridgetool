@@ -76,6 +76,7 @@ public class ExtensionClient {
 		try {
 			
 			log.info(AFFINITYID + " = " + getSakaiAffinityId()); 
+			log.info(JSESSIONID + " = " + getSakaiSessionId());
 			log.info("SAKAISIGNING URL = " + getSakaiSigningUrl());
 			log.info("keyValueString = "
 					+ getLinktoolPackage().getKeyValueString());
