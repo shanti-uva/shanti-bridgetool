@@ -37,6 +37,10 @@ import org.jdom.output.XMLOutputter;
 
 public class ExtensionClient {
 
+	private static final String AFFINITYID = "AFFINITYID";
+
+	private static final String SAKAI_WS_SOAP_SIGNING_PATH = "/sakai-ws/soap/signing";
+
 	private LinktoolFormValues linktoolPackage = null;
 
 	private String decryptedSakaiSessionId = null;
@@ -69,7 +73,7 @@ public class ExtensionClient {
 		String authenticateResult = null;
 		try {
 			
-			log.info("AFFINITYID = " + getSakaiAffinityId()); 
+			log.info(AFFINITYID + " = " + getSakaiAffinityId()); 
 			log.info("SAKAISIGNING URL = " + getSakaiSigningUrl());
 			log.info("keyValueString = "
 					+ getLinktoolPackage().getKeyValueString());
@@ -84,7 +88,7 @@ public class ExtensionClient {
 			        new Boolean(true));
 			call.setProperty(
 			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
-			        "AFFINITYID=" + getSakaiAffinityId());
+			        AFFINITYID + "=" + getSakaiAffinityId());
 			call.addParameter("data", 
 					  org.apache.axis.Constants.XSD_STRING,
 					  javax.xml.rpc.ParameterMode.IN);
@@ -156,7 +160,7 @@ public class ExtensionClient {
 				        new Boolean(true));
 				call.setProperty(
 				        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
-				        "AFFINITYID=" + getSakaiAffinityId());
+				        AFFINITYID + "=" + getSakaiAffinityId());
 				call.addParameter("esession", 
 						  org.apache.axis.Constants.XSD_STRING,
 						  javax.xml.rpc.ParameterMode.IN);
@@ -185,9 +189,9 @@ public class ExtensionClient {
 
 		HttpClient client = new HttpClient();
 		HttpState state = new HttpState();		
-		String domain = new URL(getLinktoolPackage().getServerurl()).getHost();
+		String domain = new URL(URLDecoder.decode(getLinktoolPackage().getServerurl(), "UTF-8")).getHost();
 		state.addCookie(new Cookie(domain, "JSESSIONID", getSakaiSessionId(), "/", 0, false));
-		state.addCookie(new Cookie(domain, "AFFINITYID", getLinktoolPackage().getServerId(), "/", 0, false));
+		state.addCookie(new Cookie(domain, AFFINITYID, getLinktoolPackage().getServerId(), "/", 0, false));
 		client.setState(state);
 		
 		GetMethod get = new GetMethod(
@@ -229,15 +233,8 @@ public class ExtensionClient {
 	}
 
 	private String getSakaiSigningUrl() {		
-		String serverurl = "https://collab-dev.its.virginia.edu";
-		try {
-			serverurl = URLDecoder.decode(getLinktoolPackage().getServerurl(),"UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			log.error("Problem parsing serverurl", e);
-			e.printStackTrace();
-			log.error("Couldn't find serverurl from linktool package! Defaulting to " + serverurl);
-		}
-		return  serverurl + "/sakai-ws/soap/signing";
+		String serverurl = getLinktoolPackage().getServerurl();
+		return  serverurl + SAKAI_WS_SOAP_SIGNING_PATH;
 	}
 
 	public String getSakaiSessionId() {

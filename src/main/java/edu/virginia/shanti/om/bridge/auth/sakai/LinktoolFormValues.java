@@ -1,5 +1,7 @@
 package edu.virginia.shanti.om.bridge.auth.sakai;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.HashMap;
 
 /**
@@ -134,7 +136,11 @@ public class LinktoolFormValues extends HashMap<String, String> {
 	 *            String representing the serverurl
 	 */
 	public void setServerurl(String u) {
-		put("serverurl",u);
+		try {
+			put("serverurl",URLDecoder.decode(u, "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	/**
