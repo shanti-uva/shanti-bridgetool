@@ -11,6 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.rmi.RemoteException;
+import java.util.Date;
 
 import javax.xml.namespace.QName;
 import javax.xml.rpc.ServiceException;
@@ -21,7 +22,9 @@ import org.apache.axis.client.Stub;
 import org.apache.axis.client.Transport;
 import org.apache.axis.message.SOAPBodyElement;
 import org.apache.axis.transport.http.HTTPConstants;
+import org.apache.commons.httpclient.Cookie;
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpState;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -66,7 +69,7 @@ public class ExtensionClient {
 		String authenticateResult = null;
 		try {
 			
-			log.info("AFFINITYID = " + getSakaiAffinityID()); 
+			log.info("AFFINITYID = " + getSakaiAffinityId()); 
 			log.info("SAKAISIGNING URL = " + getSakaiSigningUrl());
 			log.info("keyValueString = "
 					+ getLinktoolPackage().getKeyValueString());
@@ -81,7 +84,7 @@ public class ExtensionClient {
 			        new Boolean(true));
 			call.setProperty(
 			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
-			        "AFFINITYID=" + getSakaiAffinityID());
+			        "AFFINITYID=" + getSakaiAffinityId());
 			call.addParameter("data", 
 					  org.apache.axis.Constants.XSD_STRING,
 					  javax.xml.rpc.ParameterMode.IN);
@@ -117,8 +120,7 @@ public class ExtensionClient {
 		}
 	}
 
-	private String getSakaiAffinityID() {
-		// TODO Auto-generated method stub
+	private String getSakaiAffinityId() {
 		return getLinktoolPackage().getServerId();
 	}
 
@@ -140,9 +142,9 @@ public class ExtensionClient {
 			log.warn(e);
 			throw e;
 		}
-		String decryptSessionResult = null;
+		String sakaiSessionId = null;
 
-		if (getDecryptedSakaiSessionId() == null) {
+		if (getSakaiSessionId() == null) {
 			log.warn("calling decryptSession with " + getLinktoolPackage());
 			try {
 				Service service = new Service();
@@ -154,17 +156,17 @@ public class ExtensionClient {
 				        new Boolean(true));
 				call.setProperty(
 				        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
-				        "AFFINITYID=" + getSakaiAffinityID());
+				        "AFFINITYID=" + getSakaiAffinityId());
 				call.addParameter("esession", 
 						  org.apache.axis.Constants.XSD_STRING,
 						  javax.xml.rpc.ParameterMode.IN);
 				call.setReturnType(org.apache.axis.Constants.XSD_STRING);
 					
-				decryptSessionResult = (String) call
+				sakaiSessionId = (String) call
 						.invoke("http://webservices.sakaiproject.org/","decryptSession",
 								new Object[] { getLinktoolPackage().getSession()});
 				
-				setDecryptedSakaiSessionId(decryptSessionResult);
+				setSakaiSessionId(sakaiSessionId);
 
 				
 				
@@ -176,27 +178,30 @@ public class ExtensionClient {
 				throw e;
 			}
 		}
-		String getUserInfoResult = null;
+		String userInfoString = null;
 
 		log.info("decrypted session id = "
-				+ getDecryptedSakaiSessionId());
+				+ getSakaiSessionId());
 
 		HttpClient client = new HttpClient();
-		GetMethod get = new GetMethod("https://"
-				+ getLinktoolPackage().getServerId()
-				+ ".itc.virginia.edu/direct/user/current.xml?sakai.session="
-				+ getDecryptedSakaiSessionId());
+		HttpState state = new HttpState();		
+		String domain = new URL(getLinktoolPackage().getServerurl()).getHost();
+		state.addCookie(new Cookie(domain, "JSESSIONID", getSakaiSessionId(), "/", 0, false));
+		state.addCookie(new Cookie(domain, "AFFINITYID", getLinktoolPackage().getServerId(), "/", 0, false));
+		client.setState(state);
+		
+		GetMethod get = new GetMethod(
+				getLinktoolPackage().getServerurl()
+				+ "/direct/user/current.xml?sakai.session="
+				+ getSakaiSessionId());
 		int ret = client.executeMethod(get);
-
-		// check ret
-
-		getUserInfoResult = get.getResponseBodyAsString();
-
+		log.info("/direct/user/current.xml returned: " + ret);
+		userInfoString = get.getResponseBodyAsString();
 		Document resultDocument = null;
-		StringReader resultReader = new StringReader(getUserInfoResult);
-		SAXBuilder thisSAXBuilder = new SAXBuilder();
+		StringReader resultReader = new StringReader(userInfoString);
+		SAXBuilder saxBuilder = new SAXBuilder();
 		try {
-			resultDocument = thisSAXBuilder.build(resultReader);
+			resultDocument = saxBuilder.build(resultReader);
 		} catch (JDOMException e) {
 			throw e;
 		} catch (IOException e) {
@@ -209,8 +214,7 @@ public class ExtensionClient {
 		// System.err.println(xout.outputString(resultRoot));
 		// System.err.println(resultRoot.getChild("eid").getText());
 		String eid = resultRoot.getChildText("eid");
-		String email = resultRoot.getChildText("email");
-		
+		String email = resultRoot.getChildText("email");	
 		String firstName = resultRoot.getChildText("firstName");
 		String lastName = resultRoot.getChildText("lastName");
 		String type = resultRoot.getChildText("type");
@@ -218,33 +222,29 @@ public class ExtensionClient {
 		String serverId = getLinktoolPackage().getServerId();
 		String serverUrl = getLinktoolPackage().getServerurl();
 		SakaiUserInfo info = new SakaiUserInfo(eid, firstName, lastName,
-				getDecryptedSakaiSessionId(), email, type, siteId, serverUrl,
+				getSakaiSessionId(), email, type, siteId, serverUrl,
 				serverId);
 
 		return info;
 	}
 
-	private String getSakaiSigningUrl() {
-//		return "https://" + getLinktoolPackage().getServerId()
-//				+ ".itc.virginia.edu" + "/sakai-axis/SakaiSigning.jws";
-		
-		String serverurl;
+	private String getSakaiSigningUrl() {		
+		String serverurl = "https://collab-dev.its.virginia.edu";
 		try {
 			serverurl = URLDecoder.decode(getLinktoolPackage().getServerurl(),"UTF-8");
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+			log.error("Problem parsing serverurl", e);
 			e.printStackTrace();
-			serverurl = "https://collab-dev.its.virginia.edu";
 			log.error("Couldn't find serverurl from linktool package! Defaulting to " + serverurl);
 		}
 		return  serverurl + "/sakai-ws/soap/signing";
 	}
 
-	public String getDecryptedSakaiSessionId() {
+	public String getSakaiSessionId() {
 		return decryptedSakaiSessionId;
 	}
 
-	public void setDecryptedSakaiSessionId(String decryptedSakaiSessionId) {
+	public void setSakaiSessionId(String decryptedSakaiSessionId) {
 		this.decryptedSakaiSessionId = decryptedSakaiSessionId;
 	}
 }
