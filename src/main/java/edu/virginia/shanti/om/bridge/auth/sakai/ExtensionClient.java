@@ -190,16 +190,23 @@ public class ExtensionClient {
 		HttpClient client = new HttpClient();
 		HttpState state = new HttpState();		
 		String domain = new URL(URLDecoder.decode(getLinktoolPackage().getServerurl(), "UTF-8")).getHost();
-		state.addCookie(new Cookie(domain, "JSESSIONID", getSakaiSessionId(), "/", 0, false));
-		state.addCookie(new Cookie(domain, AFFINITYID, getLinktoolPackage().getServerId(), "/", 0, false));
+		Cookie jsessionid = new Cookie(domain, "JSESSIONID", getSakaiSessionId(), "/", 0, false);
+		Cookie affinityid = new Cookie(domain, AFFINITYID, getLinktoolPackage().getServerId(), "/", 0, false);
+		log.info("JSESSIONID cookie" + jsessionid.toString() );
+		log.info("AFFINITYID cookie" + affinityid.toString() );
+
+		state.addCookie(jsessionid);
+		state.addCookie(affinityid);
 		client.setState(state);
 		
+		String directUserUrl = getLinktoolPackage().getServerurl()
+		+ "/direct/user/current.xml?sakai.session="
+		+ getSakaiSessionId();
+		
 		GetMethod get = new GetMethod(
-				getLinktoolPackage().getServerurl()
-				+ "/direct/user/current.xml?sakai.session="
-				+ getSakaiSessionId());
+				directUserUrl);
 		int ret = client.executeMethod(get);
-		log.info("/direct/user/current.xml returned: " + ret);
+		log.info(directUserUrl + " returned: " + ret);
 		userInfoString = get.getResponseBodyAsString();
 		Document resultDocument = null;
 		StringReader resultReader = new StringReader(userInfoString);
