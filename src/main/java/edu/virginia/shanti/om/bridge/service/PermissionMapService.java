@@ -8,7 +8,6 @@ import java.util.List;
 import javax.xml.rpc.ServiceException;
 
 import org.apache.axis.client.Stub;
-import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,43 +74,17 @@ public class PermissionMapService {
 			permissionMap = results.get(0);
 			log.error("Found permissionMap " + permissionMap);
 		} else {
-			// TODO Otherwise try looking up by site type! FRICK! how do we know
-			// the site type!!!?
-			String sakaisession = (String) currentUser
-					.getAuthentication().getCredentials();
-			
-			if (sakaisession == null || sakaisession.length()==0) {
-				throw new RuntimeException ("No sakaisession present!");
-			}
-			
-			log.info("sakaisession = " + sakaisession);
-		
-			String[] split = sakaisession.split("\\.",2);
-			
-			if (split.length < 2) {
-				throw new RuntimeException ("sakaisession format exception!  Expected server extension. " + sakaisession );
-			}
-			 String session = split[0];
-			 // String server = split[1] + ".itc.virginia.edu";  // this is no longer correct
-			 String server = "collab-dev.its.virginia.edu";   //  HOW DO WE SET THIS PROPERLY?
-			 
-			 log.info("HOW DO WE DETERMINE SERVER?");
-			 log.info("sakaisession = " + sakaisession);
-			 log.info(bridge);
-			 
-			 String lbCookieValue = split[1];
-			 
+
+			SessionAffinity aff = SessionAffinityUtility.constructSessionAffinity(bridge,currentUser);			 
 			try {
 				SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
-						.getSakaiScript(new URL("https://" + server
-								+ "/sakai-axis/SakaiScript.jws"));		
-				
-				((Stub)sakaiScript)._setProperty(HTTPConstants.HEADER_COOKIE, "AFFINITYID=" + lbCookieValue);
-				((Stub)sakaiScript)._setProperty(HTTPConstants.HEADER_COOKIE, "JSESSIONID=" + session);
-				
+						.getSakaiScript(new URL("https://" + aff.getServer()
+								+ "/sakai-ws/soap/sakai"));	
+		
+				SessionAffinityUtility.setConnectionAffinity(aff, ((Stub)sakaiScript));
+		
 				LocalContextType siteType;
-				
-				String termEid = sakaiScript.getSiteProperty(session, bridge.getLocalContext(), "term_eid");
+				String termEid = sakaiScript.getSiteProperty(aff.getSession(), bridge.getLocalContext(), "term_eid");
 				
 				log.error("Site type check: termEid = " + termEid);
 				
@@ -148,4 +121,8 @@ public class PermissionMapService {
 
 		return permissionMap;
 	}
+
+
+
+
 }

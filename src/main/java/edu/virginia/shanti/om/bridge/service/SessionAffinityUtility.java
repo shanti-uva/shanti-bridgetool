@@ -3,6 +3,8 @@ package edu.virginia.shanti.om.bridge.service;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.apache.axis.client.Stub;
+import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -44,6 +46,20 @@ public class SessionAffinityUtility {
 
 		SessionAffinity aff = new SessionAffinityImpl(server,session,lbCookieValue);
 		return aff;
+	}
+
+	public static void setConnectionAffinity(SessionAffinity aff, Object stub) {
+			if (!(stub instanceof Stub)) {
+				throw new RuntimeException("Could not cast Object to Stub: " + stub.toString());
+			}
+		
+			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE, "AFFINITYID=" + aff.getAffinityId());
+			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE, "JSESSIONID=" + aff.getSession() );
+	}
+	
+	public static void setConnectionAffinity(Bridge bridge, CurrentUser currentUser, Object stub) {
+		SessionAffinity aff = constructSessionAffinity(bridge, currentUser);
+		setConnectionAffinity(aff, stub);
 	}
 
 }
