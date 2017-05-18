@@ -90,8 +90,8 @@ public class ExtensionClient {
 			        org.apache.axis.client.Call.SESSION_MAINTAIN_PROPERTY, 
 			        new Boolean(true));
 			call.setProperty(
-			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
-			        AFFINITYID + "=" + getSakaiAffinityId() + ";JSESSIONID" + "=" + getSakaiSessionId());
+			        org.apache.axis.transport.http.HTTPConstants.HEADER_SET_COOKIE,
+			        AFFINITYID + "=" + getSakaiAffinityId() + ";" +JSESSIONID + "=" + getSakaiSessionId());
 //			call.setProperty(
 //			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
 //			        JSESSIONID + "=" + getSakaiSessionId());
