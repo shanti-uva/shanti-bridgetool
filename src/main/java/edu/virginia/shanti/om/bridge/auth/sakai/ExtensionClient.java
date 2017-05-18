@@ -216,6 +216,7 @@ public class ExtensionClient {
 		int ret = client.executeMethod(get);
 		log.info(directUserUrl + " returned: " + ret);
 		userInfoString = get.getResponseBodyAsString();
+		log.info("USER INFO: " + userInfoString);
 		Document resultDocument = null;
 		StringReader resultReader = new StringReader(userInfoString);
 		SAXBuilder saxBuilder = new SAXBuilder();
