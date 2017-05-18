@@ -133,12 +133,14 @@ public class SiteAliasService {
 
 		String[] split = sakaisession.split("\\.");
 		String session = split[0];
-		String server = split[1] + ".itc.virginia.edu";
+		String server = "collab-dev.itc.virginia.edu";  // TODO:  FIX THIS!
 
 		try {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-ws/soap/sakai"));
+			SessionAffinityUtility.setConnectionAffinity(server, currentUser, sakaiScript);
+			
 			String title = sakaiScript.getSiteTitle(session, siteId);
 			String termEid = sakaiScript.getSiteProperty(session, siteId,
 					"term_eid");

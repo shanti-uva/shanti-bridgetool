@@ -16,6 +16,17 @@ public class SessionAffinityUtility {
 
 	public static 
 	SessionAffinity constructSessionAffinity(Bridge bridge, CurrentUser currentUser) {
+		String server = "collab-dev.its.virginia.edu";
+		try {
+			server = new URL(bridge.getRemoteContext().getUrl()).getHost();
+		} catch (MalformedURLException murle) {
+			log.error(murle.getStackTrace());
+		}
+		return SessionAffinityUtility.constructSessionAffinity(server, currentUser);
+	}
+	
+	public static 
+	SessionAffinity constructSessionAffinity(String server, CurrentUser currentUser) {
 		String sakaisession = (String) currentUser
 				.getAuthentication().getCredentials();
 
@@ -31,15 +42,7 @@ public class SessionAffinityUtility {
 			throw new RuntimeException ("sakaisession format exception!  Expected server extension. " + sakaisession );
 		}
 		String session = split[0];
-		String server = "collab-dev.its.virginia.edu";   //  DEFAULT FALLBACK VALUE
-		try {
-			server = new URL(bridge.getRemoteContext().getUrl()).getHost();
-		} catch (MalformedURLException murle) {
-			log.error(murle.getStackTrace());
-		}
 		String lbCookieValue = split[1];
-
-		log.info(bridge);
 		log.info("server = " + server);
 		log.info("sakaisession = " + session);
 		log.info("affinityid = " + lbCookieValue);
@@ -59,6 +62,11 @@ public class SessionAffinityUtility {
 	
 	public static void setConnectionAffinity(Bridge bridge, CurrentUser currentUser, Object stub) {
 		SessionAffinity aff = constructSessionAffinity(bridge, currentUser);
+		setConnectionAffinity(aff, stub);
+	}
+	
+	public static void setConnectionAffinity(String host, CurrentUser currentUser, Object stub) {
+		SessionAffinity aff = constructSessionAffinity(host, currentUser);
 		setConnectionAffinity(aff, stub);
 	}
 
