@@ -1283,7 +1283,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "removeUser"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "removeUser"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1314,7 +1314,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getUserId"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getUserId"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1345,7 +1345,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getUserType"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getUserType"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1376,7 +1376,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getSiteTitle"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getSiteTitle"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1407,7 +1407,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "removeAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "removeAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1438,7 +1438,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getSiteDescription"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getSiteDescription"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1469,7 +1469,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getUserDisplayName"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getUserDisplayName"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1500,7 +1500,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getUserDisplayName"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getUserDisplayName"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1531,7 +1531,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getUserEmail"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getUserEmail"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1562,7 +1562,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getUserEmail"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getUserEmail"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1593,7 +1593,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "checkForUser"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "checkForUser"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1624,7 +1624,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "removeSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "removeSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1655,7 +1655,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getSiteSkin"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getSiteSkin"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1686,7 +1686,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addMemberToGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addMemberToGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1717,7 +1717,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addNewUser"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addNewUser"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1748,7 +1748,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addNewUser"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addNewUser"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1779,7 +1779,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getSiteProperty"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getSiteProperty"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1810,7 +1810,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addNewSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addNewSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1841,7 +1841,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "checkSession"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "checkSession"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1872,7 +1872,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "changeUserInfo"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "changeUserInfo"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1903,7 +1903,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "changeUserName"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "changeUserName"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1934,7 +1934,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "changeUserEmail"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "changeUserEmail"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1965,7 +1965,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "changeUserType"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "changeUserType"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -1996,7 +1996,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "changeUserPassword"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "changeUserPassword"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2027,7 +2027,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addGroupToSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addGroupToSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2058,7 +2058,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getGroupsInSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getGroupsInSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2089,7 +2089,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addNewAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addNewAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2120,7 +2120,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addNewRoleToAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addNewRoleToAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2151,7 +2151,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "removeAllRolesFromAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "removeAllRolesFromAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2182,7 +2182,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "removeRoleFromAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "removeRoleFromAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2213,7 +2213,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "allowFunctionForRole"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "allowFunctionForRole"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2244,7 +2244,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "disallowAllFunctionsForRole"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "disallowAllFunctionsForRole"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2275,7 +2275,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "disallowFunctionForRole"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "disallowFunctionForRole"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2306,7 +2306,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "setRoleDescription"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "setRoleDescription"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2337,7 +2337,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addMemberToAuthzGroupWithRole"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addMemberToAuthzGroupWithRole"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2368,7 +2368,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "removeMemberFromAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "removeMemberFromAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2399,7 +2399,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "removeAllMembersFromAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "removeAllMembersFromAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2430,7 +2430,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "setRoleForAuthzGroupMaintenance"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "setRoleForAuthzGroupMaintenance"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2461,7 +2461,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addMemberToSiteWithRole"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addMemberToSiteWithRole"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2492,7 +2492,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "copySite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "copySite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2523,7 +2523,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addNewPageToSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addNewPageToSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2554,7 +2554,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addNewPageToSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addNewPageToSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2585,7 +2585,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "removePageFromSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "removePageFromSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2616,7 +2616,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addNewToolToPage"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addNewToolToPage"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2647,7 +2647,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addConfigPropertyToTool"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addConfigPropertyToTool"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2678,7 +2678,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "checkForSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "checkForSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2709,7 +2709,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "checkForMemberInAuthzGroupWithRole"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "checkForMemberInAuthzGroupWithRole"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2740,7 +2740,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getSitesUserCanAccess"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getSitesUserCanAccess"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2771,7 +2771,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "isSiteJoinable"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "isSiteJoinable"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2802,7 +2802,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "changeSiteTitle"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "changeSiteTitle"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2833,7 +2833,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "changeSiteSkin"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "changeSiteSkin"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2864,7 +2864,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "changeSiteJoinable"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "changeSiteJoinable"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2895,7 +2895,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "changeSiteIconUrl"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "changeSiteIconUrl"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2926,7 +2926,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "changeSiteDescription"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "changeSiteDescription"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2957,7 +2957,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "setSiteProperty"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "setSiteProperty"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -2988,7 +2988,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "setSitePropertyAlt"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "setSitePropertyAlt"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3019,7 +3019,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "removeSiteProperty"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "removeSiteProperty"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3050,7 +3050,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "checkForRoleInAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "checkForRoleInAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3081,7 +3081,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "searchForUsers"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "searchForUsers"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3112,7 +3112,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "checkForAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "checkForAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3143,7 +3143,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "removeMemberFromSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "removeMemberFromSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3174,7 +3174,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "checkForUserInAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "checkForUserInAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3205,7 +3205,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getUsersInAuthzGroupWithRole"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getUsersInAuthzGroupWithRole"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3236,7 +3236,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getUsersInAuthzGroup"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getUsersInAuthzGroup"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3267,7 +3267,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "copyCalendarEvents"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "copyCalendarEvents"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3298,7 +3298,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "addNewToolToAllWorkspaces"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "addNewToolToAllWorkspaces"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3329,7 +3329,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "copyRole"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "copyRole"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3360,7 +3360,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "copyRole"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "copyRole"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3391,7 +3391,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getAllUsers"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getAllUsers"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3422,7 +3422,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getSessionForUser"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getSessionForUser"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3453,7 +3453,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getPagesAndToolsForSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getPagesAndToolsForSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
@@ -3484,7 +3484,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://DefaultNamespace", "getPagesAndToolsForSite"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "getPagesAndToolsForSite"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
