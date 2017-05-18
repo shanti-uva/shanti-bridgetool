@@ -56,8 +56,9 @@ public class SessionAffinityUtility {
 				throw new RuntimeException("Could not cast Object to Stub: " + stub.toString());
 			}
 		
-			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE, "AFFINITYID=" + aff.getAffinityId());
-			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE, "JSESSIONID=" + aff.getSession() );
+			log.info("using AFFINITYID: " + aff.getAffinityId());
+			log.info("using JSESSIONID: " + aff.getSession());
+			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE, "AFFINITYID=" + aff.getAffinityId() + ";" + "JSESSIONID=" + aff.getSession());
 	}
 	
 	public static void setConnectionAffinity(Bridge bridge, CurrentUser currentUser, Object stub) {

@@ -91,7 +91,10 @@ public class ExtensionClient {
 			        new Boolean(true));
 			call.setProperty(
 			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
-			        AFFINITYID + "=" + getSakaiAffinityId());
+			        AFFINITYID + "=" + getSakaiAffinityId() + ";JSESSIONID" + "=" + getSakaiSessionId());
+//			call.setProperty(
+//			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
+//			        JSESSIONID + "=" + getSakaiSessionId());
 			call.addParameter("data", 
 					  org.apache.axis.Constants.XSD_STRING,
 					  javax.xml.rpc.ParameterMode.IN);
@@ -197,8 +200,8 @@ public class ExtensionClient {
 		String domain = new URL(URLDecoder.decode(getLinktoolPackage().getServerurl(), "UTF-8")).getHost();
 		Cookie jsessionid = new Cookie(domain, JSESSIONID, getSakaiSessionId() + "." + getLinktoolPackage().getServerId() , "/", 0, false);
 		Cookie affinityid = new Cookie(domain, AFFINITYID, getLinktoolPackage().getServerId(), "/", 0, false);
-		log.info("JSESSIONID cookie" + jsessionid.toString() );
-		log.info("AFFINITYID cookie" + affinityid.toString() );
+		log.info(jsessionid.toString());
+		log.info(affinityid.toString());
 
 		state.addCookie(jsessionid);
 		state.addCookie(affinityid);
