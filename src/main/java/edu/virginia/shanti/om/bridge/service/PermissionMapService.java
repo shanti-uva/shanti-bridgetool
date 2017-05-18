@@ -75,7 +75,7 @@ public class PermissionMapService {
 			log.error("Found permissionMap " + permissionMap);
 		} else {
 
-			SessionAffinity aff = SessionAffinityUtility.constructSessionAffinity(bridge,currentUser);			 
+			SessionAffinity aff = SessionAffinityUtility.constructSessionAffinity(bridge,currentUser);	 
 			try {
 				SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 						.getSakaiScript(new URL("https://" + aff.getServer()

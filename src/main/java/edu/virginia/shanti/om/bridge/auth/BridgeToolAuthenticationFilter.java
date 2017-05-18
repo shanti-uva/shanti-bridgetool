@@ -70,6 +70,8 @@ public class BridgeToolAuthenticationFilter extends
 					String user = sakaiUserInfo.getUserId();
 					String sessionId = sakaiUserInfo.getSakaiSessionId();
 					String serverId = sakaiUserInfo.getServerId();
+					String serverUrl = sakaiUserInfo.getServerUrl();
+					String serviceBaseUrl = sakaiUserInfo.getServiceBaseUrl();
 					String sessionString = sessionId + "." + serverId;
 
 					GrantedAuthority grant = createGrant(request
@@ -80,6 +82,11 @@ public class BridgeToolAuthenticationFilter extends
 
 					log.info("Saving grant " + grant + " for " + user);
 
+					GrantedAuthority serverGrant = createGrant(serviceBaseUrl + ":" + serverUrl);
+					userDetailsService.saveGrant(user, serverGrant);
+					
+					log.info("Saving grant " + serverGrant + " for " + user);
+					
 					if (currentUser != null
 							&& currentUser.getAuthentication() != null) {
 

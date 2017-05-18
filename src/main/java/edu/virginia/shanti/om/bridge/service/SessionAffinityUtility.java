@@ -29,6 +29,11 @@ public class SessionAffinityUtility {
 	SessionAffinity constructSessionAffinity(String server, CurrentUser currentUser) {
 		String sakaisession = (String) currentUser
 				.getAuthentication().getCredentials();
+		
+		log.info("Authentication: " + (String) currentUser
+		.getAuthentication().toString());
+		
+		log.info("Authorities: " + currentUser.getAuthentication().getAuthorities().toString());
 
 		if (sakaisession == null || sakaisession.length()==0) {
 			throw new RuntimeException ("No sakaisession present!");
