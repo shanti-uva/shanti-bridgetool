@@ -199,16 +199,19 @@ public class ExtensionClient {
 		String domain = new URL(URLDecoder.decode(getLinktoolPackage().getServerurl(), "UTF-8")).getHost();
 		Cookie jsessionid = new Cookie(domain, JSESSIONID, getSakaiSessionId() + "." + getLinktoolPackage().getServerId() , "/", 0, false);
 		Cookie affinityid = new Cookie(domain, AFFINITYID, getLinktoolPackage().getServerId(), "/", 0, false);
-		log.info(jsessionid.toString());
-		log.info(affinityid.toString());
+
 
 		state.addCookie(jsessionid);
 		state.addCookie(affinityid);
 		client.setState(state);
+
 		
 		String directUserUrl = getLinktoolPackage().getServerurl()
 		+ "/direct/user/current.xml?sakai.session="
 		+ getSakaiSessionId();
+		
+		log.info("Before call to " + directUserUrl + ": " + jsessionid.toString());
+		log.info("Before call to " + directUserUrl + ": " + affinityid.toString());
 		
 		GetMethod get = new GetMethod(
 				directUserUrl);
