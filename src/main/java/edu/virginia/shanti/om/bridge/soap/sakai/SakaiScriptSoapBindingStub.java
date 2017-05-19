@@ -2961,7 +2961,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {sessionid, siteid, propname, propvalue});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {sessionid,"", siteid, propname, propvalue});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
@@ -2988,7 +2988,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
         _call.setUseSOAPAction(true);
         _call.setSOAPActionURI("");
         _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
-        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "setSitePropertyAlt"));
+        _call.setOperationName(new javax.xml.namespace.QName("http://webservices.sakaiproject.org/", "setSiteProperty"));
 
         setRequestHeaders(_call);
         setAttachments(_call);
