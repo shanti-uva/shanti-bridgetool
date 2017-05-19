@@ -86,8 +86,8 @@ public class SitePropertyService {
 							+ "/sakai-ws/soap/sakai"));
 			SessionAffinityUtility.setConnectionAffinity(server, currentUser, sakaiScript);
 			
-//			sakaiScript.setSiteProperty(session, siteId, propertyName, value);
-			sakaiScript.setSitePropertyAlt(session, adminsecret, siteId, propertyName, value);
+			sakaiScript.setSiteProperty(session, siteId, propertyName, value);
+			// sakaiScript.setSitePropertyAlt(session, adminsecret, siteId, propertyName, value);
 
 		} catch (ServiceException e) {
 			throw new RuntimeException("service failure: " + paramDebug, e);
