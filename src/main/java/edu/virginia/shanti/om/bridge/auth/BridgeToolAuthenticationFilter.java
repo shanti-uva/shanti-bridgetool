@@ -82,7 +82,7 @@ public class BridgeToolAuthenticationFilter extends
 
 					log.info("Saving grant " + grant + " for " + user);
 
-					GrantedAuthority serverGrant = createGrant(serviceBaseUrl + ":" + serverUrl);
+					GrantedAuthority serverGrant = createGrant(sessionString + ":" + serverUrl);
 					userDetailsService.saveGrant(user, serverGrant);
 					
 					log.info("Saving grant " + serverGrant + " for " + user);
