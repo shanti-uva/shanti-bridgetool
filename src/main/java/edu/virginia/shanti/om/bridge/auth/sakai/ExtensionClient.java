@@ -76,7 +76,6 @@ public class ExtensionClient {
 		try {
 			
 			log.info(AFFINITYID + " = " + getSakaiAffinityId()); 
-			log.info(JSESSIONID + " = " + getSakaiSessionId());
 			log.info("SAKAISIGNING URL = " + getSakaiSigningUrl());
 			log.info("keyValueString = "
 					+ getLinktoolPackage().getKeyValueString());
@@ -90,8 +89,8 @@ public class ExtensionClient {
 			        org.apache.axis.client.Call.SESSION_MAINTAIN_PROPERTY, 
 			        new Boolean(true));
 			call.setProperty(
-			        org.apache.axis.transport.http.HTTPConstants.HEADER_SET_COOKIE,
-			        AFFINITYID + "=" + getSakaiAffinityId() + ";" +JSESSIONID + "=" + getSakaiSessionId());
+			        org.apache.axis.transport.http.HTTPConstants.HEADER_SET_COOKIE2,
+			        AFFINITYID + "=" + getSakaiAffinityId());
 //			call.setProperty(
 //			        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
 //			        JSESSIONID + "=" + getSakaiSessionId());
@@ -165,7 +164,7 @@ public class ExtensionClient {
 				        org.apache.axis.client.Call.SESSION_MAINTAIN_PROPERTY, 
 				        new Boolean(true));
 				call.setProperty(
-				        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE,
+				        org.apache.axis.transport.http.HTTPConstants.HEADER_COOKIE2,
 				        AFFINITYID + "=" + getSakaiAffinityId());
 				call.addParameter("esession", 
 						  org.apache.axis.Constants.XSD_STRING,
