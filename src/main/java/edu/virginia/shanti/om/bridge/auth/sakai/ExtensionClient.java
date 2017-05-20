@@ -202,9 +202,9 @@ public class ExtensionClient {
 		log.info("domain = " + domain);
 		
 		String affinityid = getLinktoolPackage().getServerId();
-		Cookie jsessionidCookie = new Cookie(domain, JSESSIONID, getSakaiSessionId() + "." + affinityid, "/", 0, false);
-		Cookie affinityidCookie = new Cookie(domain, AFFINITYID, affinityid, "/", 0, false);
-
+		Cookie jsessionidCookie = new Cookie(domain, JSESSIONID, getSakaiSessionId() + "." + affinityid, "/", null, false);
+		Cookie affinityidCookie = new Cookie(domain, AFFINITYID, affinityid, "/", null, false);
+				
 		state.addCookies(new Cookie[] { jsessionidCookie, affinityidCookie });
 		client.setState(state);
 		
