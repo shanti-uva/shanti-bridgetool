@@ -153,7 +153,7 @@ public class ExtensionClient {
 		}
 		String sakaiSessionId = null;
 
-		if (getSakaiSessionId() == null) {
+//		if (getSakaiSessionId() == null) {
 			log.warn("calling decryptSession with " + getLinktoolPackage());
 			try {
 				Service service = new Service();
@@ -188,7 +188,7 @@ public class ExtensionClient {
 			} catch (ServiceException e) {
 				throw e;
 			}
-		}
+//		}
 		String userInfoString = null;
 
 		log.info("decrypted session id = "
@@ -209,6 +209,7 @@ public class ExtensionClient {
 		+ "/direct/user/current.xml?sakai.session="
 		+ getSakaiSessionId();
 		
+		log.info(state.toString());
 		log.info("Before call to " + directUserUrl + ": " + jsessionid.toString());
 		log.info("Before call to " + directUserUrl + ": " + affinityid.toString());
 		
