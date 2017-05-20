@@ -197,9 +197,11 @@ public class ExtensionClient {
 		HttpClient client = new HttpClient();
 		HttpState state = new HttpState();		
 		String domain = new URL(URLDecoder.decode(getLinktoolPackage().getServerurl(), "UTF-8")).getHost();
+		log.info("domain = " + domain);
+		
 		Cookie jsessionid = new Cookie(domain, JSESSIONID, getSakaiSessionId(), "/", 0, false);
 		Cookie affinityid = new Cookie(domain, AFFINITYID, getLinktoolPackage().getServerId(), "/", 0, false);
-
+	
 		state.addCookie(jsessionid);
 		state.addCookie(affinityid);
 		client.setState(state);
@@ -210,8 +212,8 @@ public class ExtensionClient {
 		+ getSakaiSessionId();
 		
 		log.info(state.toString());
-		log.info("Before call to " + directUserUrl + ": " + jsessionid.toString());
-		log.info("Before call to " + directUserUrl + ": " + affinityid.toString());
+		log.info("Before call to " + directUserUrl + ": " + jsessionid);
+		log.info("Before call to " + directUserUrl + ": " + affinityid);
 		
 		GetMethod get = new GetMethod(
 				directUserUrl);
