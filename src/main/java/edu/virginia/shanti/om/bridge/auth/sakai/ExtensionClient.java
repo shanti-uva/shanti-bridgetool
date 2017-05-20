@@ -201,11 +201,9 @@ public class ExtensionClient {
 		
 		Cookie jsessionid = new Cookie(domain, JSESSIONID, getSakaiSessionId(), "/", 0, false);
 		Cookie affinityid = new Cookie(domain, AFFINITYID, getLinktoolPackage().getServerId(), "/", 0, false);
-	
-		state.addCookie(jsessionid);
-		state.addCookie(affinityid);
-		client.setState(state);
 
+		state.addCookies(new Cookie[] { jsessionid, affinityid });
+		client.setState(state);
 		
 		String directUserUrl = getLinktoolPackage().getServerurl()
 		+ "/direct/user/current.xml?sakai.session="
