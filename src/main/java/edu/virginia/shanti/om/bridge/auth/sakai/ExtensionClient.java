@@ -23,6 +23,7 @@ import org.apache.axis.client.Transport;
 import org.apache.axis.message.SOAPBodyElement;
 import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.httpclient.Cookie;
+import org.apache.commons.httpclient.HostConfiguration;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpState;
 import org.apache.commons.httpclient.methods.GetMethod;
@@ -196,26 +197,31 @@ public class ExtensionClient {
 
 		HttpClient client = new HttpClient();
 		HttpState state = new HttpState();		
-		String domain = new URL(URLDecoder.decode(getLinktoolPackage().getServerurl(), "UTF-8")).getHost();
+		String serverurl = getLinktoolPackage().getServerurl();
+		String domain = new URL(URLDecoder.decode(serverurl, "UTF-8")).getHost();
 		log.info("domain = " + domain);
 		
-		Cookie jsessionid = new Cookie(domain, JSESSIONID, getSakaiSessionId(), "/", 0, false);
-		Cookie affinityid = new Cookie(domain, AFFINITYID, getLinktoolPackage().getServerId(), "/", 0, false);
+		String affinityid = getLinktoolPackage().getServerId();
+		Cookie jsessionidCookie = new Cookie(domain, JSESSIONID, getSakaiSessionId() + "." + affinityid, "/", 0, false);
+		Cookie affinityidCookie = new Cookie(domain, AFFINITYID, affinityid, "/", 0, false);
 
-		state.addCookies(new Cookie[] { jsessionid, affinityid });
+		state.addCookies(new Cookie[] { jsessionidCookie, affinityidCookie });
 		client.setState(state);
 		
-		String directUserUrl = getLinktoolPackage().getServerurl()
+		String directUserUrl = serverurl
 		+ "/direct/user/current.xml?sakai.session="
 		+ getSakaiSessionId();
 		
-		log.info(state.toString());
-		log.info("Before call to " + directUserUrl + ": " + jsessionid);
-		log.info("Before call to " + directUserUrl + ": " + affinityid);
+		log.info("STATE: " + state.toString());
+		log.info("Before call to " + directUserUrl + ": " + jsessionidCookie);
+		log.info("Before call to " + directUserUrl + ": " + affinityidCookie);
 		
 		GetMethod get = new GetMethod(
 				directUserUrl);
-		int ret = client.executeMethod(get);
+		
+		HostConfiguration hostconfig = new HostConfiguration();
+		hostconfig.setHost(getLinktoolPackage().getServerId());
+		int ret = client.executeMethod(hostconfig, get, state);
 		log.info(directUserUrl + " returned: " + ret);
 		userInfoString = get.getResponseBodyAsString();
 		log.info("USER INFO: " + userInfoString);
@@ -241,8 +247,8 @@ public class ExtensionClient {
 		String lastName = resultRoot.getChildText("lastName");
 		String type = resultRoot.getChildText("type");
 		String siteId = getLinktoolPackage().getSite();
-		String serverId = getLinktoolPackage().getServerId();
-		String serverUrl = getLinktoolPackage().getServerurl();
+		String serverId = affinityid;
+		String serverUrl = serverurl;
 		SakaiUserInfo info = new SakaiUserInfo(eid, firstName, lastName,
 				getSakaiSessionId(), email, type, siteId, serverUrl,
 				serverId);
