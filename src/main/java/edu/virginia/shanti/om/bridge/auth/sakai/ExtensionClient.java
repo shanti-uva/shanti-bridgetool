@@ -197,9 +197,8 @@ public class ExtensionClient {
 		HttpClient client = new HttpClient();
 		HttpState state = new HttpState();		
 		String domain = new URL(URLDecoder.decode(getLinktoolPackage().getServerurl(), "UTF-8")).getHost();
-		Cookie jsessionid = new Cookie(domain, JSESSIONID, getSakaiSessionId() + "." + getLinktoolPackage().getServerId() , "/", 0, false);
+		Cookie jsessionid = new Cookie(domain, JSESSIONID, getSakaiSessionId(), "/", 0, false);
 		Cookie affinityid = new Cookie(domain, AFFINITYID, getLinktoolPackage().getServerId(), "/", 0, false);
-
 
 		state.addCookie(jsessionid);
 		state.addCookie(affinityid);
