@@ -133,7 +133,7 @@ public class SiteAliasService {
 
 		String[] split = sakaisession.split("\\.");
 		String session = split[0];
-		String server = "collab-dev.itc.virginia.edu";  // TODO:  FIX THIS!
+		String server = "collab-dev.its.virginia.edu";  // TODO:  FIX THIS!
 
 		try {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator

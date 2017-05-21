@@ -43,12 +43,13 @@ public class SitePropertyService {
 		
 		String[] split = sakaisession.split("\\.");
 		String session = split[0];
-		String server = split[1] + ".itc.virginia.edu";
+		String server = "collab-dev.its.virginia.edu";  // TODO:  grok this!
 
 		try {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-axis/SakaiScript.jws"));
+			SessionAffinityUtility.setConnectionAffinity(server, currentUser, sakaiScript);			
 			return sakaiScript.getSiteProperty(session, siteId, propertyName);
 
 		} catch (ServiceException e) {

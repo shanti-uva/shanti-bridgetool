@@ -2961,7 +2961,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {sessionid,"", siteid, propname, propvalue});
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {sessionid, siteid, propname, propvalue});
 
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
