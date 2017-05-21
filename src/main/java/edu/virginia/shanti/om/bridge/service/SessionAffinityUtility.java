@@ -2,11 +2,14 @@ package edu.virginia.shanti.om.bridge.service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collection;
+import java.util.Iterator;
 
 import org.apache.axis.client.Stub;
 import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.security.core.GrantedAuthority;
 
 import edu.virginia.shanti.om.bridge.domain.Bridge;
 
@@ -34,7 +37,28 @@ public class SessionAffinityUtility {
 		.getAuthentication().toString());
 		
 		log.info("Authorities: " + currentUser.getAuthentication().getAuthorities().toString());
-
+		
+		Collection<GrantedAuthority> authorities = currentUser.getAuthentication().getAuthorities();
+		
+		Iterator<GrantedAuthority> iterator = authorities.iterator();
+		
+		
+		String sessionstring = "";
+		String hostUrl = "";
+		while(iterator.hasNext()) {
+			GrantedAuthority grant = iterator.next();
+			String authority = grant.getAuthority();
+			if (authority.startsWith("sakaisession|")) {
+				String[] parts = authority.split("|");
+				sessionstring = parts[1];
+				hostUrl = parts[2];
+				break;
+			}
+		}
+		
+		log.info("XXX: sessionstring = " + sessionstring);
+		log.info("XXX: hostUrl = " + hostUrl);
+		
 		if (sakaisession == null || sakaisession.length()==0) {
 			throw new RuntimeException ("No sakaisession present!");
 		}

@@ -7,8 +7,21 @@
 
 package edu.virginia.shanti.om.bridge.soap.sakai;
 
+import java.util.Collection;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
+
+import edu.virginia.shanti.om.bridge.service.SessionAffinityUtility;
+
+@Component
 public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub implements edu.virginia.shanti.om.bridge.soap.sakai.SakaiScript_PortType {
-    private java.util.Vector cachedSerClasses = new java.util.Vector();
+	private static Log log = LogFactory.getLog(SakaiScriptSoapBindingStub.class);
+	
+	private java.util.Vector cachedSerClasses = new java.util.Vector();
     private java.util.Vector cachedSerQNames = new java.util.Vector();
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
@@ -1267,6 +1280,13 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
                 java.lang.String key = (java.lang.String) keys.nextElement();
                 _call.setProperty(key, super.cachedProperties.get(key));
             }
+            
+            Collection<GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+            
+            log.info("Creating Call: authorities: " + authorities);
+            log.info("Call property names: " + _call.getPropertyNames());
+            
+            
             return _call;
         }
         catch (java.lang.Throwable _t) {

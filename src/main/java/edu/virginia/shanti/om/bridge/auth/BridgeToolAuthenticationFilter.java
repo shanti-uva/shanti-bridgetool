@@ -82,7 +82,7 @@ public class BridgeToolAuthenticationFilter extends
 
 					log.info("Saving grant " + grant + " for " + user);
 
-					GrantedAuthority serverGrant = createGrant(sessionString + ":" + serverUrl);
+					GrantedAuthority serverGrant = createGrant("sakaisession|" + sessionString + "|" + serverUrl);
 					userDetailsService.saveGrant(user, serverGrant);
 					
 					log.info("Saving grant " + serverGrant + " for " + user);
@@ -106,7 +106,7 @@ public class BridgeToolAuthenticationFilter extends
 									new UsernamePasswordAuthenticationToken(
 											user,
 											sessionString,
-											Arrays.asList(new GrantedAuthority[] { grant })));
+											Arrays.asList(new GrantedAuthority[] { grant,serverGrant })));
 
 				} else {
 					log.warn("failed authentication!");
