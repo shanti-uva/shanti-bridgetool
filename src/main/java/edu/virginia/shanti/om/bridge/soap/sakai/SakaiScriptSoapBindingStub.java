@@ -9,6 +9,9 @@ package edu.virginia.shanti.om.bridge.soap.sakai;
 
 import java.util.Collection;
 
+import javax.xml.rpc.Call;
+
+import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.security.core.GrantedAuthority;
@@ -1283,10 +1286,12 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
             
             Collection<GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
             
-            log.info("Creating Call: authorities: " + authorities);
-            log.info("Call property names: " + _call.getPropertyNames());
+            log.info("Stub Creating Call: authorities: " + authorities);
+            log.info("Stub Call property names: " + _call.getPropertyNames());
             
-            
+            log.info("Stub SESSION_MAINTAIN_PROPERTY: " + this._getProperty(Call.SESSION_MAINTAIN_PROPERTY));
+            log.info("Stub HEADER_COOKIE: " + this._getProperty(HTTPConstants.HEADER_COOKIE));
+            log.info("Stub HEADER_COOKIE: " + this._getProperty(HTTPConstants.HEADER_COOKIE2));
             return _call;
         }
         catch (java.lang.Throwable _t) {
