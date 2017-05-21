@@ -1286,7 +1286,9 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
             
             Collection<GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
             
+            // Why would these be different?  Maybe one isn't necessary?
             _call.setMaintainSession(Boolean.TRUE);
+            _call.setProperty(Call.SESSION_MAINTAIN_PROPERTY,Boolean.TRUE);
             
             log.info("Stub Creating Call: authorities: " + authorities);
             
