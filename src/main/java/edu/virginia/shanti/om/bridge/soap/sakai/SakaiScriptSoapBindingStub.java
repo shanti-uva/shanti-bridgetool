@@ -1287,11 +1287,14 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
             Collection<GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
             
             log.info("Stub Creating Call: authorities: " + authorities);
-            log.info("Stub Call property names: " + _call.getPropertyNames());
+            
+            log.info("Call SESSION_MAINTAIN_PROPERTY: " + _call.getProperty(Call.SESSION_MAINTAIN_PROPERTY));
+            log.info("Call HEADER_COOKIE: " + _call.getProperty(HTTPConstants.HEADER_COOKIE));
+            log.info("Call HEADER_COOKIE2: " + _call.getProperty(HTTPConstants.HEADER_COOKIE2));
             
             log.info("Stub SESSION_MAINTAIN_PROPERTY: " + this._getProperty(Call.SESSION_MAINTAIN_PROPERTY));
             log.info("Stub HEADER_COOKIE: " + this._getProperty(HTTPConstants.HEADER_COOKIE));
-            log.info("Stub HEADER_COOKIE: " + this._getProperty(HTTPConstants.HEADER_COOKIE2));
+            log.info("Stub HEADER_COOKIE2: " + this._getProperty(HTTPConstants.HEADER_COOKIE2));
             return _call;
         }
         catch (java.lang.Throwable _t) {
