@@ -1295,6 +1295,9 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
             log.info("Stub SESSION_MAINTAIN_PROPERTY: " + this._getProperty(Call.SESSION_MAINTAIN_PROPERTY));
             log.info("Stub HEADER_COOKIE: " + this._getProperty(HTTPConstants.HEADER_COOKIE));
             log.info("Stub HEADER_COOKIE2: " + this._getProperty(HTTPConstants.HEADER_COOKIE2));
+            
+            // Force maintain session
+            _call.setMaintainSession(Boolean.TRUE);
             return _call;
         }
         catch (java.lang.Throwable _t) {
