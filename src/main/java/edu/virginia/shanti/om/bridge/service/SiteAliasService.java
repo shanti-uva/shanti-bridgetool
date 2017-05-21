@@ -132,7 +132,7 @@ public class SiteAliasService {
 				.getCredentials();
 
 		String[] split = sakaisession.split("\\.");
-		String session = split[0];
+		String session = sakaisession;
 		String server = "collab-dev.its.virginia.edu";  // TODO:  FIX THIS!
 
 		try {
