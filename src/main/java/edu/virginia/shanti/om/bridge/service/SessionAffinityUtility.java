@@ -49,7 +49,7 @@ public class SessionAffinityUtility {
 			GrantedAuthority grant = iterator.next();
 			String authority = grant.getAuthority();
 			if (authority.startsWith("sakaisession|")) {
-				String[] parts = authority.split("|");
+				String[] parts = authority.split("\\|");
 				sessionstring = parts[1];
 				hostUrl = parts[2];
 				break;
@@ -87,6 +87,7 @@ public class SessionAffinityUtility {
 		
 			log.info("using AFFINITYID: " + aff.getAffinityId());
 			log.info("using JSESSIONID: " + aff.getSession());
+			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE, "AFFINITYID=" + aff.getAffinityId());
 			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE2, "AFFINITYID=" + aff.getAffinityId() + ";" + "JSESSIONID=" + aff.getSession());
 	}
 	

@@ -1292,7 +1292,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
             
             log.info("Stub Creating Call: authorities: " + authorities);
             
-            log.info("Call SESSION_MAINTAIN_PROPERTY: " + _call.getProperty(Call.SESSION_MAINTAIN_PROPERTY));
+            log.info("Call SESSION_MAINTAIN_PROPERTY: " + _call.getProperty(SESSION_MAINTAIN_PROPERTY));
             log.info("Call HEADER_COOKIE: " + _call.getProperty(HTTPConstants.HEADER_COOKIE));
             log.info("Call HEADER_COOKIE2: " + _call.getProperty(HTTPConstants.HEADER_COOKIE2));
             
@@ -1414,6 +1414,10 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
 
         setRequestHeaders(_call);
         setAttachments(_call);
+        
+        log.error("Session Maintain Property: " + _call.getProperty(SESSION_MAINTAIN_PROPERTY));
+        log.error("Call HEADER_COOKIE2: " + _call.getProperty(HTTPConstants.HEADER_COOKIE2));   
+        
  try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {sessionid, siteid});
 
         if (_resp instanceof java.rmi.RemoteException) {
