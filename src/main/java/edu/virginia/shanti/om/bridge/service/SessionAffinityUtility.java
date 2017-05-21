@@ -70,7 +70,7 @@ public class SessionAffinityUtility {
 		if (split.length < 2) {
 			throw new RuntimeException ("sakaisession format exception!  Expected server extension. " + sakaisession );
 		}
-		String session = split[0];
+		String session = sakaisession;
 		String lbCookieValue = split[1];
 		log.info("server = " + server);
 		log.info("sakaisession = " + session);
