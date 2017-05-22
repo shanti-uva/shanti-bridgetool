@@ -2,7 +2,6 @@ package edu.virginia.shanti.om.bridge.service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
@@ -12,8 +11,6 @@ import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.security.core.GrantedAuthority;
-
-import edu.virginia.shanti.om.bridge.domain.Bridge;
 
 public class SessionAffinityUtility {
 
