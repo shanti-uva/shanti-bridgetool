@@ -48,8 +48,8 @@ public class SessionAffinityUtility {
 		while(iterator.hasNext()) {
 			GrantedAuthority grant = iterator.next();
 			String authority = grant.getAuthority();
-			if (authority.startsWith("sakaisession|")) {
-				String[] parts = authority.split("\\|");
+			if (authority.startsWith("sakaisession#")) {
+				String[] parts = authority.split("#");
 				sessionstring = parts[1];
 				hostUrl = parts[2];
 				break;
@@ -70,7 +70,7 @@ public class SessionAffinityUtility {
 		if (split.length < 2) {
 			throw new RuntimeException ("sakaisession format exception!  Expected server extension. " + sakaisession );
 		}
-		String session = sakaisession;
+		String session = split[0];
 		String lbCookieValue = split[1];
 		log.info("server = " + server);
 		log.info("sakaisession = " + session);
