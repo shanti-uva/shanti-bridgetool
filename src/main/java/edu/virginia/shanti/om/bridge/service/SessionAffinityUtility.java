@@ -86,7 +86,7 @@ public class SessionAffinityUtility {
 		String hostUrl = parts[2];
 		
 		String[] ret = new String[] { sessionstring, hostUrl, affinityid };		
-		log.debug("Returning: " + Arrays.toString(ret));		
+		log.info("extractSessionAffinity Returning: " + Arrays.toString(ret));		
 		return ret;
 	}
 
