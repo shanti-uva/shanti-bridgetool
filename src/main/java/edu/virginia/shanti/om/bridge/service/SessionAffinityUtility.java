@@ -2,6 +2,8 @@ package edu.virginia.shanti.om.bridge.service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -21,16 +23,23 @@ public class SessionAffinityUtility {
 	SessionAffinity constructSessionAffinity(CurrentUser currentUser) {
 		String sakaisession = (String) currentUser
 				.getAuthentication().getCredentials();
-		
-		
-		// TODO:  REFACTOR THIS SHIT!
 		String[] ret = extractSessionAffinity(currentUser);
+		String sessionFromUser = ret[0];
 		String sakaiBaseUrl = ret[1];
-		
-		log.info("Return: " +  ret);
-		
+		String affinityFromUser = ret[2];
+		String server = null;
+		try {
+			server = new URL(sakaiBaseUrl).getHost();
+		} catch (MalformedURLException e) {
+			throw new RuntimeException(e);
+		}		
 		if (sakaisession == null || sakaisession.length()==0) {
-			throw new RuntimeException ("No sakaisession present!");
+			// Fall back to sessionFromUser?
+			if (sessionFromUser != null && sessionFromUser.length() != 0) {
+				sakaisession = sessionFromUser;
+			} else {
+				throw new RuntimeException ("No sakaisession found!");
+			}
 		}
 
 		log.info("sakaisession = " + sakaisession);
@@ -41,8 +50,8 @@ public class SessionAffinityUtility {
 			throw new RuntimeException ("sakaisession format exception!  Expected server extension. " + sakaisession );
 		}
 		String session = split[0];
-		String lbCookieValue = split[1];
-		log.info("server = " + sakaiBaseUrl);
+		String lbCookieValue = (split.length==2)?split[1]:affinityFromUser ;
+		log.info("server = " + server);
 		log.info("sakaisession = " + session);
 		log.info("affinityid = " + lbCookieValue);
 
@@ -76,9 +85,11 @@ public class SessionAffinityUtility {
 		
 		String[] parts = grants.split("#");
 		String sessionstring = parts[1];
+		String affinityid = sessionstring.split("\\.")[1];
 		String hostUrl = parts[2];
 		
-		String[] ret = new String[] { sessionstring, hostUrl };
+		String[] ret = new String[] { sessionstring, hostUrl, affinityid };		
+		log.debug("Returning: " + Arrays.toString(ret));		
 		return ret;
 	}
 
