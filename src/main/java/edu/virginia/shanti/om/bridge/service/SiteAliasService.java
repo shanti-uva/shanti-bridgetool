@@ -139,7 +139,7 @@ public class SiteAliasService {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-ws/soap/sakai"));
-			SessionAffinityUtility.setConnectionAffinity(server, currentUser, sakaiScript);
+			SessionAffinityUtility.setConnectionAffinity(currentUser, sakaiScript);
 			
 			String title = sakaiScript.getSiteTitle(session, siteId);
 			String termEid = sakaiScript.getSiteProperty(session, siteId,

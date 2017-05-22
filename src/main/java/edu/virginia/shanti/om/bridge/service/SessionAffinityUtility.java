@@ -16,48 +16,18 @@ import edu.virginia.shanti.om.bridge.domain.Bridge;
 public class SessionAffinityUtility {
 
 	private static Log log = LogFactory.getLog(SessionAffinityUtility.class);
-
-	public static 
-	SessionAffinity constructSessionAffinity(Bridge bridge, CurrentUser currentUser) {
-		String server = "collab-dev.its.virginia.edu";
-		try {
-			server = new URL(bridge.getRemoteContext().getUrl()).getHost();
-		} catch (MalformedURLException murle) {
-			log.error(murle.getStackTrace());
-		}
-		return SessionAffinityUtility.constructSessionAffinity(server, currentUser);
-	}
 	
 	public static 
-	SessionAffinity constructSessionAffinity(String server, CurrentUser currentUser) {
+	SessionAffinity constructSessionAffinity(CurrentUser currentUser) {
 		String sakaisession = (String) currentUser
 				.getAuthentication().getCredentials();
 		
-		log.info("Authentication: " + (String) currentUser
-		.getAuthentication().toString());
 		
-		log.info("Authorities: " + currentUser.getAuthentication().getAuthorities().toString());
+		// TODO:  REFACTOR THIS SHIT!
+		String[] ret = extractSessionAffinity(currentUser);
+		String sakaiBaseUrl = ret[1];
 		
-		Collection<GrantedAuthority> authorities = currentUser.getAuthentication().getAuthorities();
-		
-		Iterator<GrantedAuthority> iterator = authorities.iterator();
-		
-		
-		String sessionstring = "";
-		String hostUrl = "";
-		while(iterator.hasNext()) {
-			GrantedAuthority grant = iterator.next();
-			String authority = grant.getAuthority();
-			if (authority.startsWith("sakaisession#")) {
-				String[] parts = authority.split("#");
-				sessionstring = parts[1];
-				hostUrl = parts[2];
-				break;
-			}
-		}
-		
-		log.info("XXX: sessionstring = " + sessionstring);
-		log.info("XXX: hostUrl = " + hostUrl);
+		log.info("Return: " +  ret);
 		
 		if (sakaisession == null || sakaisession.length()==0) {
 			throw new RuntimeException ("No sakaisession present!");
@@ -72,12 +42,44 @@ public class SessionAffinityUtility {
 		}
 		String session = split[0];
 		String lbCookieValue = split[1];
-		log.info("server = " + server);
+		log.info("server = " + sakaiBaseUrl);
 		log.info("sakaisession = " + session);
 		log.info("affinityid = " + lbCookieValue);
 
-		SessionAffinity aff = new SessionAffinityImpl(server,session,lbCookieValue);
+		SessionAffinity aff = new SessionAffinityImpl(sakaiBaseUrl,session,lbCookieValue);
 		return aff;
+	}
+
+	/**
+	 * @param currentUser
+	 * @return String[]: [ sessionString, sakaiHostUrl ]
+	 */
+	private static String[] extractSessionAffinity(CurrentUser currentUser) {
+		log.info("Authentication: " + (String) currentUser
+		.getAuthentication().toString());
+		
+		log.info("Authorities: " + currentUser.getAuthentication().getAuthorities().toString());
+		
+		Collection<GrantedAuthority> authorities = currentUser.getAuthentication().getAuthorities();
+		
+		Iterator<GrantedAuthority> iterator = authorities.iterator();
+		
+		String grants = null;
+		while(iterator.hasNext()) {
+			GrantedAuthority grant = iterator.next();
+			String authority = grant.getAuthority();
+			if (authority.startsWith("sakaisession#")) {
+				grants = authority;
+				break;
+			}
+		}
+		
+		String[] parts = grants.split("#");
+		String sessionstring = parts[1];
+		String hostUrl = parts[2];
+		
+		String[] ret = new String[] { sessionstring, hostUrl };
+		return ret;
 	}
 
 	public static void setConnectionAffinity(SessionAffinity aff, Object stub) {
@@ -91,14 +93,9 @@ public class SessionAffinityUtility {
 			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE2, "AFFINITYID=" + aff.getAffinityId() + ";" + "JSESSIONID=" + aff.getSession());
 	}
 	
-	public static void setConnectionAffinity(Bridge bridge, CurrentUser currentUser, Object stub) {
-		SessionAffinity aff = constructSessionAffinity(bridge, currentUser);
+	public static void setConnectionAffinity(CurrentUser currentUser, Object stub) {
+		SessionAffinity aff = constructSessionAffinity(currentUser);
 		setConnectionAffinity(aff, stub);
 	}
 	
-	public static void setConnectionAffinity(String host, CurrentUser currentUser, Object stub) {
-		SessionAffinity aff = constructSessionAffinity(host, currentUser);
-		setConnectionAffinity(aff, stub);
-	}
-
 }

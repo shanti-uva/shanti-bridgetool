@@ -49,7 +49,7 @@ public class SitePropertyService {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-axis/SakaiScript.jws"));
-			SessionAffinityUtility.setConnectionAffinity(server, currentUser, sakaiScript);			
+			SessionAffinityUtility.setConnectionAffinity(currentUser, sakaiScript);			
 			return sakaiScript.getSiteProperty(session, siteId, propertyName);
 
 		} catch (ServiceException e) {
@@ -85,7 +85,7 @@ public class SitePropertyService {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-ws/soap/sakai"));
-			SessionAffinityUtility.setConnectionAffinity(server, currentUser, sakaiScript);
+			SessionAffinityUtility.setConnectionAffinity(currentUser, sakaiScript);
 			
 			// sakaiScript.setSiteProperty(session, siteId, propertyName, value);
 			sakaiScript.setSitePropertyAlt(session, adminsecret, siteId, propertyName, value);
