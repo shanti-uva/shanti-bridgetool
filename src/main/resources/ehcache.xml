@@ -20,9 +20,9 @@
         
         
     <!-- longer-lived cache for individual confluence space permissions -->
-    <cache name="confluenceSpacePermissions" eternal="false"
-        maxElementsInMemory="5000" overflowToDisk="false" diskPersistent="true"
-        timeToIdleSeconds="0" timeToLiveSeconds="68000"
+    <cache name="confluenceSpacePermissions" eternal="true"
+        maxElementsInMemory="10000" overflowToDisk="true" diskPersistent="true"
+        timeToIdleSeconds="60" timeToLiveSeconds="68000"
         memoryStoreEvictionPolicy="LRU" />
         
 </ehcache>
