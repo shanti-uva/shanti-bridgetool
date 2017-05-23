@@ -198,6 +198,7 @@ public class ExtensionClient {
 		HttpClient client = new HttpClient();
 		HttpState state = new HttpState();		
 		String serverurl = getLinktoolPackage().getServerurl();
+		log.info("serverurl = " + serverurl);
 		String domain = new URL(URLDecoder.decode(serverurl, "UTF-8")).getHost();
 		log.info("domain = " + domain);
 		
