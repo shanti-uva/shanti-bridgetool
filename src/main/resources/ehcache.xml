@@ -14,15 +14,15 @@
 
 	<!-- short-lived cache for the entire list of remote contexts -->
     <cache name="remoteContextChoices" eternal="false"
-        maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="false"
+        maxElementsInMemory="5000" overflowToDisk="true" diskPersistent="true"
         timeToIdleSeconds="0" timeToLiveSeconds="1200"
         memoryStoreEvictionPolicy="LRU" />
         
         
     <!-- longer-lived cache for individual confluence space permissions -->
     <cache name="confluenceSpacePermissions" eternal="false"
-        maxElementsInMemory="1000" overflowToDisk="false" diskPersistent="true"
-        timeToIdleSeconds="0" timeToLiveSeconds="5500"
+        maxElementsInMemory="5000" overflowToDisk="false" diskPersistent="true"
+        timeToIdleSeconds="0" timeToLiveSeconds="68000"
         memoryStoreEvictionPolicy="LRU" />
         
 </ehcache>
