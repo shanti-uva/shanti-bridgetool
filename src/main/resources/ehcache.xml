@@ -13,9 +13,9 @@
         timeToLiveSeconds="3600" memoryStoreEvictionPolicy="LRU"/>
 
 	<!-- short-lived cache for the entire list of remote contexts -->
-    <cache name="remoteContextChoices" eternal="false"
+    <cache name="remoteContextChoices" eternal="true"
         maxElementsInMemory="5000" overflowToDisk="true" diskPersistent="true"
-        timeToIdleSeconds="0" timeToLiveSeconds="1200"
+        timeToIdleSeconds="60" timeToLiveSeconds="1200"
         memoryStoreEvictionPolicy="LRU" />
         
         

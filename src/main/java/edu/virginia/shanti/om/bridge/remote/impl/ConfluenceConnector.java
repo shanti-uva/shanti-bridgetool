@@ -212,10 +212,9 @@ public class ConfluenceConnector implements RemoteConnector {
 	}
 
 	public String[] getPermissions(ConfluenceSoapService conf, String sess,
-			@PartialCacheKey String user, @PartialCacheKey String key)
+			String user, String key)
 			throws java.rmi.RemoteException, InvalidSessionException,
 			RemoteException {
-
 		return permissionsProxy.getPermissions(conf, sess, user, key);
 	}
 

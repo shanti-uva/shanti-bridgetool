@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.googlecode.ehcache.annotations.Cacheable;
 import com.googlecode.ehcache.annotations.KeyGenerator;
+import com.googlecode.ehcache.annotations.PartialCacheKey;
 
 import edu.virginia.shanti.om.bridge.soap.confluence.ConfluenceSoapService;
 import edu.virginia.shanti.om.bridge.soap.confluence.InvalidSessionException;
@@ -20,8 +21,9 @@ public class ConfluencePermissionsProxy {
 
 	@Cacheable(cacheName = "confluenceSpacePermissions", keyGenerator=@KeyGenerator(name="StringCacheKeyGenerator"))
 	public String[] getPermissions(ConfluenceSoapService conf, String sess,
-			String user, String key) throws InvalidSessionException, RemoteException, java.rmi.RemoteException {
-		// TODO Auto-generated method stub
+			@PartialCacheKey String user, @PartialCacheKey String key) throws InvalidSessionException, RemoteException, java.rmi.RemoteException {
+
+				
 				log.info("REMOTE CALL to getPermission using " + sess + ", " + user + " and " + key);
 				return conf.getPermissionsForUser(sess,
 						key,user);

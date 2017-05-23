@@ -43,13 +43,14 @@ public class SitePropertyService {
 		
 		String[] split = sakaisession.split("\\.");
 		String session = split[0];
-		String server = "collab-dev.its.virginia.edu";  // TODO:  grok this!
+		SessionAffinity aff = SessionAffinityUtility.constructSessionAffinity(currentUser);
+		String server = aff.getServer();
 
 		try {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-axis/SakaiScript.jws"));
-			SessionAffinityUtility.setConnectionAffinity(currentUser, sakaiScript);			
+			SessionAffinityUtility.setConnectionAffinity(aff, sakaiScript);			
 			return sakaiScript.getSiteProperty(session, siteId, propertyName);
 
 		} catch (ServiceException e) {
@@ -72,17 +73,16 @@ public class SitePropertyService {
 
 		String[] split = sakaisession.split("\\.");
 		String session = split[0];
-		String server = "collab-dev.its.virginia.edu";  // TODO:  grok this!
 		SessionAffinity aff = SessionAffinityUtility.constructSessionAffinity(currentUser);
-		
-		String paramDebug = "DEBUG INFO: \nsession = " + session
-				+ "\nserver = " + server
-				+ "\nadminsecret = (" + adminsecret.length() + " chars) "
-				+ "\nsiteId = " + siteId
-				+ "\npropertyname = " + propertyName
-				+ "\nvalue = " + value
-				+ "\nsakaisession = " + sakaisession
-				+ "\naffinity = " + aff;
+		String server = aff.getServer(); 
+		String paramDebug = "DEBUG INFO: \n\tsession = " + session
+				+ "\n\tserver = " + server
+				+ "\n\tadminsecret = (" + adminsecret.length() + " chars) "
+				+ "\n\tsiteId = " + siteId
+				+ "\n\tpropertyname = " + propertyName
+				+ "\n\tvalue = " + value
+				+ "\n\tsakaisession = " + sakaisession
+				+ "\n\taffinity = " + aff;
 		log.info(paramDebug);
 		try {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
