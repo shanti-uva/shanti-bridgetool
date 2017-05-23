@@ -49,10 +49,10 @@ public class SessionAffinityUtility {
 		String session = split[0];
 		String lbCookieValue = (split.length==2)?split[1]:affinityFromUser ;
 		log.info("constructSessionAffinity server = " + server);
-		log.info("constructSessionAffinity sakaisession = " + session);
+		log.info("constructSessionAffinity sakaisession = " + sakaisession);
 		log.info("constructSessionAffinity affinityid = " + lbCookieValue);
 
-		SessionAffinity aff = new SessionAffinityImpl(server,session,lbCookieValue);
+		SessionAffinity aff = new SessionAffinityImpl(server,sakaisession,lbCookieValue);
 		return aff;
 	}
 
