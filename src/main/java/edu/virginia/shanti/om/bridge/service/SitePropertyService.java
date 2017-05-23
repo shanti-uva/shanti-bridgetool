@@ -73,19 +73,22 @@ public class SitePropertyService {
 		String[] split = sakaisession.split("\\.");
 		String session = split[0];
 		String server = "collab-dev.its.virginia.edu";  // TODO:  grok this!
+		SessionAffinity aff = SessionAffinityUtility.constructSessionAffinity(currentUser);
 		
-		String paramDebug = "session = " + session
-				+ " server = " + server
-				+ " adminsecret = (" + adminsecret.length() + " chars) "
-				+ " siteId = " + siteId
-				+ " propertyname = " + propertyName
-				+ " value = " + value;		
+		String paramDebug = "DEBUG INFO: \nsession = " + session
+				+ "\nserver = " + server
+				+ "\nadminsecret = (" + adminsecret.length() + " chars) "
+				+ "\nsiteId = " + siteId
+				+ "\npropertyname = " + propertyName
+				+ "\nvalue = " + value
+				+ "\nsakaisession = " + sakaisession
+				+ "\naffinity = " + aff;
 		log.info(paramDebug);
 		try {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-ws/soap/sakai"));
-			SessionAffinityUtility.setConnectionAffinity(currentUser, sakaiScript);
+			SessionAffinityUtility.setConnectionAffinity(aff, sakaiScript);
 			
 			// sakaiScript.setSiteProperty(session, siteId, propertyName, value);
 			sakaiScript.setSitePropertyAlt(session, adminsecret, siteId, propertyName, value);
