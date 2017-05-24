@@ -9,6 +9,8 @@ package edu.virginia.shanti.om.bridge.soap.sakai;
 
 import java.net.URL;
 
+import javax.xml.namespace.QName;
+
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 
@@ -26,7 +28,14 @@ public class SakaiScriptServiceTestCase extends junit.framework.TestCase {
     public void testSakaiScriptWSDL() throws Exception {
         javax.xml.rpc.ServiceFactory serviceFactory = javax.xml.rpc.ServiceFactory.newInstance();
         java.net.URL url = new java.net.URL(new edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptServiceLocator().getSakaiScriptAddress() + "?WSDL");
-        javax.xml.rpc.Service service = serviceFactory.createService(url, new edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptServiceLocator().getServiceName());
+        System.err.println(url);
+        
+        QName serviceName = new edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptServiceLocator().getServiceName();
+        
+        System.err.println(serviceName);
+        
+		javax.xml.rpc.Service service = serviceFactory.createService(url, serviceName);
+		
         assertTrue(service != null);
     }
 
