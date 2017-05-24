@@ -84,6 +84,9 @@ public class PermissionMapService {
 				SessionAffinityUtility.setConnectionAffinity(aff, ((Stub)sakaiScript));
 		
 				LocalContextType siteType;
+				
+				log.error("session = " + aff.getSession() + " localContext = " + bridge.getLocalContext());
+				
 				String termEid = sakaiScript.getSiteProperty(aff.getSession(), bridge.getLocalContext(), "term_eid");
 				
 				log.error("Site type check: termEid = " + termEid);
