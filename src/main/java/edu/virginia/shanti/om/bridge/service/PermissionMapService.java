@@ -3,6 +3,8 @@ package edu.virginia.shanti.om.bridge.service;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.xml.rpc.ServiceException;
@@ -34,8 +36,13 @@ public class PermissionMapService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public PermissionMap getPermissionMap(LocalContextType type) {
-		List<PermissionMap> results = PermissionMap
+		List<PermissionMap> results;
+		try {  results = PermissionMap
 				.findPermissionMapsByLocalContextType(type).getResultList();
+		} catch (Exception e) {
+			log.warn("Exception thrown from getPermissionMap:  " + e + " treating at empty result!");
+			results = new LinkedList<PermissionMap>();
+		}
 		if (!results.isEmpty()) {
 			return results.get(0);
 		} else {
