@@ -94,7 +94,12 @@ public class PermissionMapService {
 				
 				log.error("session = " + aff.getSession() + " localContext = " + bridge.getLocalContext());
 				
-				String termEid = sakaiScript.getSiteProperty(aff.getSession(), bridge.getLocalContext(), "term_eid");
+				String termEid = null;
+				try {
+					termEid = sakaiScript.getSiteProperty(aff.getSession(), bridge.getLocalContext(), "term_eid");
+				} catch (Exception e) {
+					log.warn(e + "  Ignoring and returning null");
+				}
 				
 				log.error("Site type check: termEid = " + termEid);
 				
@@ -120,8 +125,8 @@ public class PermissionMapService {
 				throw new RuntimeException(e.getMessage(), e);
 			} catch (ServiceException e) {
 				throw new RuntimeException(e.getMessage(), e);
-			} catch (RemoteException e) {
-				throw new RuntimeException(e.getMessage(), e);
+//			} catch (RemoteException e) {
+//				throw new RuntimeException(e.getMessage(), e);
 			}
 
 		}

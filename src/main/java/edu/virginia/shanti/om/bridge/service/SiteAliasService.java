@@ -143,8 +143,13 @@ public class SiteAliasService {
 			SessionAffinityUtility.setConnectionAffinity(aff, sakaiScript);
 			
 			String title = sakaiScript.getSiteTitle(session, siteId);
-			String termEid = sakaiScript.getSiteProperty(session, siteId,
-					"term_eid");
+			String termEid = null;
+			try {
+				termEid = sakaiScript.getSiteProperty(session, siteId,
+						"term_eid");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 			String suggestion = suggestSiteAliasString(title, siteId);
 			suggestion = addTerm(suggestion, termEid);
