@@ -72,8 +72,8 @@ public class SitePropertyService {
 		.getAuthentication().getCredentials();
 
 		String[] split = sakaisession.split("\\.");
-		// String session = split[0];
-		String session = sakaisession;
+		String session = split[0];
+//		String session = sakaisession;
 		SessionAffinity aff = SessionAffinityUtility.constructSessionAffinity(currentUser);
 		String server = aff.getServer(); 
 		String paramDebug = "DEBUG INFO: "
@@ -83,7 +83,6 @@ public class SitePropertyService {
 //				+ "\n\tadminsecret = (" + adminsecret.length() + " chars) "
 				+ "\n\tadminsecret = " + adminsecret
 				+ "\n\tsiteId = " + siteId
-				+ "\n\tpropertyname = " + propertyName
 				+ "\n\tvalue = " + value
 				+ "\n\tsakaisession = " + sakaisession;
 		log.info(paramDebug);

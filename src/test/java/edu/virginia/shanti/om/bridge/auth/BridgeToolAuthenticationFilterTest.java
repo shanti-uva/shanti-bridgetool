@@ -229,11 +229,13 @@ public class BridgeToolAuthenticationFilterTest {
      
 		System.out.println("return from SitePropertyAlt():" + value);
 		value = binding.getSiteProperty(userSession, siteId, propertyName);
+		
 		System.out.println("return from getSiteProperty:" + value);
 				assertEquals(" Not expected  return value!",propertyValue,value);
-				binding.setSitePropertyAlt(userSession, adminSecret, siteId, propertyName, null);
-//				value = binding.getSiteProperty(userSession, siteId, propertyName);
-//				assertNull("property is not null!",value);
+				
+				binding.setSitePropertyAlt(userSession, adminSecret, siteId, propertyName, "");
+				value = binding.getSiteProperty(userSession, siteId, propertyName);
+				assertEquals("property is not null!",value,"");
 
 
     }
