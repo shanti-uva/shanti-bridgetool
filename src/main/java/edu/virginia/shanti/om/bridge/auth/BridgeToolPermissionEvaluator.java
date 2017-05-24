@@ -72,8 +72,9 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 		String[] parts = authority.split("@");
 
 		if (parts.length != 2) {
-			throw new IllegalArgumentException(
-					"authority must include at \'@\' symbol");
+			log.error(
+					"authority must include at \'@\' symbol.  Ignoring.");
+			return false; // short circuit
 		}
 
 		String role = parts[0];

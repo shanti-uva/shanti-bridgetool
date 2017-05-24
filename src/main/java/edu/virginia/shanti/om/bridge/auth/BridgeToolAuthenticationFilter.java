@@ -91,36 +91,7 @@ public class BridgeToolAuthenticationFilter extends
 				String serviceBaseUrl = sakaiUserInfo.getServiceBaseUrl();
 				String sessionString = sessionId + "." + serverId;
 
-				GrantedAuthority grant = createGrant(grantString);
-				userDetailsService.saveGrant(user, grant);
-
-				log.info("Saving grant " + grant + " for " + user);
-
-				GrantedAuthority serverGrant = createGrant("sakaisession#" + sessionString + "#" + serverUrl);
-				userDetailsService.saveGrant(user, serverGrant);
-				
-				log.info("Saving grant " + serverGrant + " for " + user);
-				
-				if (currentUser != null
-						&& currentUser.getAuthentication() != null) {
-
-					Authentication existingAuth = SecurityContextHolder
-							.getContext().getAuthentication();
-					if (existingAuth.getName() != null
-							&& !existingAuth.getName().equals(user)) {
-						log.warn("WARNING! authenticated user from linktool " + user + " is not the same as remote user " + existingAuth.getName());
-					}
-
-				}
-
-				// substitute authentication to add GrantedAuthorities
-				SecurityContextHolder
-						.getContext()
-						.setAuthentication(
-								new UsernamePasswordAuthenticationToken(
-										user,
-										sessionString,
-										Arrays.asList(new GrantedAuthority[] { grant,serverGrant })));
+				populateSecurityContext(grantString, user, serverUrl, sessionString);
 
 			} else {
 				log.warn("failed authentication!");
@@ -134,6 +105,39 @@ public class BridgeToolAuthenticationFilter extends
 			log.warn("authentication error: " + e);
 			SecurityContextHolder.clearContext();
 		}
+	}
+
+	public void populateSecurityContext(String grantString, String user, String serverUrl, String sessionString) {
+		GrantedAuthority grant = createGrant(grantString);
+		userDetailsService.saveGrant(user, grant);
+
+		log.info("Saving grant " + grant + " for " + user);
+
+		GrantedAuthority serverGrant = createGrant("sakaisession#" + sessionString + "#" + serverUrl);
+		userDetailsService.saveGrant(user, serverGrant);
+		
+		log.info("Saving grant " + serverGrant + " for " + user);
+		
+		if (currentUser != null
+				&& currentUser.getAuthentication() != null) {
+
+			Authentication existingAuth = SecurityContextHolder
+					.getContext().getAuthentication();
+			if (existingAuth.getName() != null
+					&& !existingAuth.getName().equals(user)) {
+				log.warn("WARNING! authenticated user from linktool " + user + " is not the same as remote user " + existingAuth.getName());
+			}
+
+		}
+
+		// substitute authentication to add GrantedAuthorities
+		SecurityContextHolder
+				.getContext()
+				.setAuthentication(
+						new UsernamePasswordAuthenticationToken(
+								user,
+								sessionString,
+								Arrays.asList(new GrantedAuthority[] { grant,serverGrant })));
 	}
 
 	private GrantedAuthority createGrant(String role) {
