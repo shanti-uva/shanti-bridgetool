@@ -1307,11 +1307,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
             	String name = (String) pnit.next();
             	log.info("\tCALL Property: " + name + ":\t" + _call.getProperty(name));
             }
-            
-              
-            
-            	
-            
+                 
             	
             
             // Force maintain session
