@@ -6,6 +6,8 @@ import java.rmi.RemoteException;
 
 import javax.xml.rpc.ServiceException;
 
+import org.apache.axis.client.Stub;
+import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,10 +92,34 @@ public class SitePropertyService {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-ws/soap/sakai"));
+			
+			try {
+				log.info("before: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
+				log.info("before: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
+			} catch (Exception e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			
 			SessionAffinityUtility.setConnectionAffinity(aff, sakaiScript);
+
+			try {
+				log.info("after: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
+				log.info("after: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			
 			// sakaiScript.setSiteProperty(session, siteId, propertyName, value);
 			sakaiScript.setSitePropertyAlt(session, adminsecret, siteId, propertyName, value);
+			
+			try {
+				log.info("AFTER CALL: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
+				log.info("AFTER CALL: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
 		} catch (ServiceException e) {
 			throw new RuntimeException("service failure: " + paramDebug, e);

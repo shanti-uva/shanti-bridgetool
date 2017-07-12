@@ -99,10 +99,21 @@ public class SessionAffinityUtility {
 		
 			log.info("using AFFINITYID: " + aff.getAffinityId());
 			log.info("using JSESSIONID: " + aff.getSession());
+	
+			log.info("BEFORE: HEADER_COOKIE: " + ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE));
+			log.info("BEFORE: HEADER_COOKIE2: " + ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE2));
 			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE, "AFFINITYID=" + aff.getAffinityId());
 			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE2, "JSESSIONID=" + aff.getSession());
 			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE2, "AFFINITYID=" + aff.getAffinityId());
+	
+			log.info("AFTER: HEADER_COOKIE: " + ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE));
+			log.info("AFTER: HEADER_COOKIE2: " + ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE2));
+
+	
+	
 	}
+	
+	
 	
 	public static void setConnectionAffinity(CurrentUser currentUser, Object stub) {
 		SessionAffinity aff = constructSessionAffinity(currentUser);
