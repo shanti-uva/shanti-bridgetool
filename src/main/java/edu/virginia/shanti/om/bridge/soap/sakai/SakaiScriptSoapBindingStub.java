@@ -8,9 +8,11 @@
 package edu.virginia.shanti.om.bridge.soap.sakai;
 
 import java.util.Collection;
+import java.util.Iterator;
 
 import javax.xml.rpc.Call;
 
+import org.apache.axis.client.Stub;
 import org.apache.axis.transport.http.HTTPConstants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -1299,6 +1301,18 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
             log.info("Stub SESSION_MAINTAIN_PROPERTY: " + this._getProperty(Call.SESSION_MAINTAIN_PROPERTY));
             log.info("Stub HEADER_COOKIE: " + this._getProperty(HTTPConstants.HEADER_COOKIE));
             log.info("Stub HEADER_COOKIE2: " + this._getProperty(HTTPConstants.HEADER_COOKIE2));
+            
+            
+            for(Iterator pnit = _call.getPropertyNames(); pnit.hasNext();) {
+            	String name = (String) pnit.next();
+            	log.info("\tCALL Property: " + name + ":\t" + _call.getProperty(name));
+            }
+            
+              
+            
+            	
+            
+            	
             
             // Force maintain session
             return _call;
