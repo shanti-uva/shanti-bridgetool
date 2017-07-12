@@ -84,7 +84,7 @@ public class SessionAffinityUtility {
 		
 		String[] parts = grants.split("#");
 		String sessionstring = parts[1];
-		String affinityid = sessionstring.split("\\.")[1];
+		String affinityid = sessionstring.split("\\.",2)[1];
 		String hostUrl = parts[2];
 		
 		String[] ret = new String[] { sessionstring, hostUrl, affinityid };		
