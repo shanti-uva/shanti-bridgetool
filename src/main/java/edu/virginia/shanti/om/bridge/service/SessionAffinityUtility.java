@@ -44,7 +44,7 @@ public class SessionAffinityUtility {
 		String[] split = sakaisession.split("\\.",2);
 
 		if (split.length < 2) {
-			throw new RuntimeException ("sakaisession format exception!  Expected server extension. " + sakaisession );
+			throw new RuntimeException ("sakaisession format exception!  Expected server extension. SakaiSession = \"" + sakaisession + "\"" );
 		}
 		String session = split[0];
 		String lbCookieValue = (split.length==2)?split[1]:affinityFromUser ;
