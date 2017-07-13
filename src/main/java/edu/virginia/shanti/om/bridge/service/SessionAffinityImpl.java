@@ -48,7 +48,7 @@ public class SessionAffinityImpl implements SessionAffinity {
 	}
 
 	public String toString() {
-		return "[ SessionAffinity " + this.session + " | " + this.affinityId + " | " + this.server + " ]";
+		return "[ SessionAffinity session=" + this.session + " | affinityid=" + this.affinityId + " | server=" + this.server + " ]";
 	}
 
 }
