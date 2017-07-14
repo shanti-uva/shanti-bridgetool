@@ -57,6 +57,7 @@ public class SakaiScriptServiceLocator extends org.apache.axis.client.Service im
             edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptSoapBindingStub _stub = new edu.virginia.shanti.om.bridge.soap.sakai.SakaiScriptSoapBindingStub(portAddress, this);
             _stub.setPortName(getSakaiScriptWSDDServiceName());
             _stub._setProperty(Call.SESSION_MAINTAIN_PROPERTY, new Boolean(true));
+            _stub.setMaintainSession(true);
             return _stub;
         }
         catch (org.apache.axis.AxisFault e) {

@@ -92,6 +92,7 @@ public class SitePropertyService {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
 							+ "/sakai-ws/soap/sakai"));
+			((Stub)sakaiScript).setMaintainSession(true);
 			
 			try {
 				log.info("before: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
@@ -124,8 +125,6 @@ public class SitePropertyService {
 		} catch (ServiceException e) {
 			throw new RuntimeException("service failure: " + paramDebug, e);
 		} catch (RemoteException e) {
-			
-			
 			throw new RuntimeException("remote failure: " + e.getMessage() + " "+ paramDebug, e);
 		} catch (MalformedURLException e) {
 			throw new RuntimeException("url problem: " + paramDebug, e);
