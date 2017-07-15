@@ -63,6 +63,7 @@ import java.io.OutputStream;
 import java.lang.Thread.State;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
@@ -196,9 +197,7 @@ public class CustomHttpSender extends BasicHandler {
                 httpClient.setState(state);
             }
             
-            log.info("HttpState: " + State.values());
-            log.info("HEADER_COOKIE: " + getHeader(method,HTTPConstants.HEADER_COOKIE));
-            log.info("HEADER_COOKIE2: " + getHeader(method,HTTPConstants.HEADER_COOKIE2));
+            log.info("HttpState cookies: " + Arrays.toString(httpClient.getState().getCookies()));
 
             int returnCode = httpClient.executeMethod(hostConfiguration, method, null);
 
