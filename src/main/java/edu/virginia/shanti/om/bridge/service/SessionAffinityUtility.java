@@ -103,7 +103,7 @@ public class SessionAffinityUtility {
 			log.info("BEFORE: HEADER_COOKIE: " + ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE));
 			log.info("BEFORE: HEADER_COOKIE2: " + ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE2));
 			((Stub)stub).setMaintainSession(true);
-			String[] cookieDough = { "AFFINITYID=" + aff.getAffinityId(), "JSESSIONID=" + aff.getSession() };
+			String[] cookieDough = { "AFFINITYID=" + aff.getAffinityId(), "JSESSIONID=" + aff.getSession() + "." + aff.getAffinityId() };
 			
 			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE, cookieDough);
 			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE2, cookieDough);
