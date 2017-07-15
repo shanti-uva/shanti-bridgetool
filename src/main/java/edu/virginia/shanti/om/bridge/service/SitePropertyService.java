@@ -94,23 +94,23 @@ public class SitePropertyService {
 							+ "/sakai-ws/soap/sakai"));
 			((Stub)sakaiScript).setMaintainSession(true);
 			
-			try {
-				log.info("before: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
-				log.info("before: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
-			} catch (Exception e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
+//			try {
+//				log.info("before: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
+//				log.info("before: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
+//			} catch (Exception e2) {
+//				// TODO Auto-generated catch block
+//				e2.printStackTrace();
+//			}
 			
 			SessionAffinityUtility.setConnectionAffinity(aff, sakaiScript);
 
-			try {
-				log.info("after: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
-				log.info("after: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+//			try {
+//				log.info("after: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
+//				log.info("after: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
+//			} catch (Exception e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
 			
 			// sakaiScript.setSiteProperty(session, siteId, propertyName, value);
 			sakaiScript.setSitePropertyAlt(session, adminsecret, siteId, propertyName, value);

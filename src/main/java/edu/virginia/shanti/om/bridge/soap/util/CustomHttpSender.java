@@ -391,9 +391,11 @@ public class CustomHttpSender extends BasicHandler {
      */
     private void addCookie(HttpState state, String cookie,String host, String path, boolean secure) {
         int index = cookie.indexOf('=');
-        state.addCookie(new Cookie(host, cookie.substring(0, index),
+        Cookie newCookie = new Cookie(host, cookie.substring(0, index),
                 cookie.substring(index + 1), path,
-                null, secure));
+                null, secure);
+        log.info("adding cookie : " + newCookie.toString() );        		
+        state.addCookie(newCookie);
     }
 
     /**
