@@ -108,8 +108,12 @@ public class SessionAffinityUtility {
 			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE, cookieDough);
 			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE2, cookieDough);
 	
-			log.info("AFTER: HEADER_COOKIE: " + ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE));
-			log.info("AFTER: HEADER_COOKIE2: " + ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE2));
+			String[] h1 = (String[]) ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE);
+			String[] h2 = (String[]) ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE2);
+
+			
+			log.info("AFTER: HEADER_COOKIE: " + Arrays.toString(h1));
+			log.info("AFTER: HEADER_COOKIE2: " + Arrays.toString(h2));
 
 	
 	
