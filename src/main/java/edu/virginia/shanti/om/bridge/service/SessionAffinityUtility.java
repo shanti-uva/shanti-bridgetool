@@ -80,7 +80,7 @@ public class SessionAffinityUtility {
 			}
 		}
 
-		String[] ret = {};
+		String[] ret = {"","",""};
 		if (grants != null) {
 			String[] parts = grants.split("#");
 			String sessionstring = parts[1];
