@@ -5,7 +5,7 @@
     <parameter name="enableNamespacePrefixOptimization" value="false"/>
   </globalConfiguration>
 <!--   <transport name="http" pivot="java:org.apache.axis.transport.http.CommonsHTTPSender" /> -->
-  <transport name="http" pivot="java:edu.virginia.shanti.om.bridge.soap.util.CustomHTTPSender" />
+  <transport name="http" pivot="java:edu.virginia.shanti.om.bridge.soap.util.CustomHttpSender" />
   <transport name="local" pivot="java:org.apache.axis.transport.local.LocalSender" />
   <transport name="java" pivot="java:org.apache.axis.transport.java.JavaSender" />
 </deployment>
