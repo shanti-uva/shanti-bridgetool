@@ -229,7 +229,7 @@ public class CustomHttpSender extends BasicHandler {
 						log.info("sessionid: " + sessionid);
 						log.info("affinityid: " + affinityid);
 
-						addCookie(state, sess, host, path, secure);
+						addCookie(state, sessionid, host, path, secure);
 						addCookie(state, affinityid, host, path, secure);
 						
 					}	
