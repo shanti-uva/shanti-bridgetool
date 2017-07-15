@@ -51,6 +51,8 @@ import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.commons.logging.Log;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import javax.xml.soap.MimeHeader;
 import javax.xml.soap.MimeHeaders;
@@ -64,6 +66,7 @@ import java.lang.Thread.State;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
@@ -196,6 +199,44 @@ public class CustomHttpSender extends BasicHandler {
                 fillHeaders(msgContext, state, HTTPConstants.HEADER_COOKIE2, host, path, secure);
                 httpClient.setState(state);
             }
+            
+            Collection<GrantedAuthority> grants = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+            
+            
+            
+            HttpState state = httpClient.getState();
+            for (Iterator iterator = grants.iterator(); iterator.hasNext();) {
+				GrantedAuthority grant = (GrantedAuthority) iterator.next();
+				log.info("GRANT: " + grant);
+				
+                String host = hostConfiguration.getHost();
+                String path = targetURL.getPath();
+                boolean secure = hostConfiguration.getProtocol().isSecure();
+				
+				if (grant.getAuthority().startsWith("sakaisession")) {
+					String[] s = grant.getAuthority().split("#");
+					String sess, hostUrl;
+					if (s.length > 2) {
+						sess = s[1];
+						hostUrl = s[2];
+//						log.info("session: " + sess);
+//						log.info("hosturl: " + hostUrl);
+						
+						String[] x = sess.split("\\.",2);
+						String affinityid = "AFFINITYID=" + x[1];
+						String sessionid = "JSESSIONID=" + sess;
+						
+						log.info("sessionid: " + sessionid);
+						log.info("affinityid: " + affinityid);
+
+						addCookie(state, sess, host, path, secure);
+						addCookie(state, affinityid, host, path, secure);
+						
+					}	
+				}
+			}
+            
+            
             
             log.info("HttpState cookies: " + Arrays.toString(httpClient.getState().getCookies()));
 
