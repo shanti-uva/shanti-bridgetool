@@ -15,11 +15,9 @@ import org.springframework.security.core.GrantedAuthority;
 public class SessionAffinityUtility {
 
 	private static Log log = LogFactory.getLog(SessionAffinityUtility.class);
-	
-	public static 
-	SessionAffinity constructSessionAffinity(CurrentUser currentUser) {
-		String sakaisession = (String) currentUser
-				.getAuthentication().getCredentials();
+
+	public static SessionAffinity constructSessionAffinity(CurrentUser currentUser) {
+		String sakaisession = (String) currentUser.getAuthentication().getCredentials();
 		String[] ret = extractSessionAffinity(currentUser);
 		String sessionFromUser = ret[0];
 		String sakaiBaseUrl = ret[1];
@@ -29,31 +27,32 @@ public class SessionAffinityUtility {
 			server = new URL(sakaiBaseUrl).getHost();
 		} catch (MalformedURLException e) {
 			throw new RuntimeException(e);
-		}		
-		if (sakaisession == null || sakaisession.length()==0) {
+		}
+		if (sakaisession == null || sakaisession.length() == 0) {
 			// Fall back to sessionFromUser?
 			if (sessionFromUser != null && sessionFromUser.length() != 0) {
 				sakaisession = sessionFromUser;
 			} else {
-				throw new RuntimeException ("No sakaisession found!");
+				throw new RuntimeException("No sakaisession found!");
 			}
 		}
 
 		log.info("sakaisession = " + sakaisession);
 
-		String[] split = sakaisession.split("\\.",2);
+		String[] split = sakaisession.split("\\.", 2);
 
 		if (split.length < 2) {
-			throw new RuntimeException ("sakaisession format exception!  Expected server extension. SakaiSession = \"" + sakaisession + "\"" );
+			throw new RuntimeException("sakaisession format exception!  Expected server extension. SakaiSession = \""
+					+ sakaisession + "\"");
 		}
 		String session = split[0];
-		String lbCookieValue = (split.length==2)?split[1]:affinityFromUser ;
+		String lbCookieValue = (split.length == 2) ? split[1] : affinityFromUser;
 		log.info("constructSessionAffinity server = " + server);
-		log.info("constructSessionAffinity session = " +session);
-		log.info("constructSessionAffinity sakaisession = " +sakaisession);
+		log.info("constructSessionAffinity session = " + session);
+		log.info("constructSessionAffinity sakaisession = " + sakaisession);
 		log.info("constructSessionAffinity affinityid = " + lbCookieValue);
 
-		SessionAffinity aff = new SessionAffinityImpl(server,session,lbCookieValue);
+		SessionAffinity aff = new SessionAffinityImpl(server, session, lbCookieValue);
 		log.info("SessionAffinity: " + aff);
 		return aff;
 	}
@@ -63,17 +62,16 @@ public class SessionAffinityUtility {
 	 * @return String[]: [ sessionString, sakaiHostUrl ]
 	 */
 	private static String[] extractSessionAffinity(CurrentUser currentUser) {
-		log.info("Authentication: " + (String) currentUser
-		.getAuthentication().toString());
-		
+		log.info("Authentication: " + (String) currentUser.getAuthentication().toString());
+
 		log.info("Authorities: " + currentUser.getAuthentication().getAuthorities().toString());
-		
+
 		Collection<GrantedAuthority> authorities = currentUser.getAuthentication().getAuthorities();
-		
+
 		Iterator<GrantedAuthority> iterator = authorities.iterator();
-		
+
 		String grants = null;
-		while(iterator.hasNext()) {
+		while (iterator.hasNext()) {
 			GrantedAuthority grant = iterator.next();
 			String authority = grant.getAuthority();
 			if (authority.startsWith("sakaisession#")) {
@@ -81,49 +79,47 @@ public class SessionAffinityUtility {
 				break;
 			}
 		}
-		
-		String[] parts = grants.split("#");
-		String sessionstring = parts[1];
-		String affinityid = sessionstring.split("\\.",2)[1];
-		String hostUrl = parts[2];
-		
-		String[] ret = new String[] { sessionstring, hostUrl, affinityid };		
-		log.info("extractSessionAffinity Returning: " + Arrays.toString(ret));		
+
+		String[] ret = {};
+		if (grants != null) {
+			String[] parts = grants.split("#");
+			String sessionstring = parts[1];
+			String affinityid = sessionstring.split("\\.", 2)[1];
+			String hostUrl = parts[2];
+			ret = new String[] { sessionstring, hostUrl, affinityid };
+		}
+		log.info("extractSessionAffinity Returning: " + Arrays.toString(ret));
 		return ret;
 	}
 
 	public static void setConnectionAffinity(SessionAffinity aff, Object stub) {
-			if (!(stub instanceof Stub)) {
-				throw new RuntimeException("Could not cast Object to Stub: " + stub.toString());
-			}
-		
-			log.info("using AFFINITYID: " + aff.getAffinityId());
-			log.info("using JSESSIONID: " + aff.getSession());
-	
-			log.info("BEFORE: HEADER_COOKIE: " + ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE));
-			log.info("BEFORE: HEADER_COOKIE2: " + ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE2));
-			((Stub)stub).setMaintainSession(true);
-			String[] cookieDough = { "AFFINITYID=" + aff.getAffinityId(), "JSESSIONID=" + aff.getSession() + "." + aff.getAffinityId() };
-			
-			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE, cookieDough);
-			((Stub)stub)._setProperty(HTTPConstants.HEADER_COOKIE2, cookieDough);
-	
-			String[] h1 = (String[]) ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE);
-			String[] h2 = (String[]) ((Stub)stub)._getProperty(HTTPConstants.HEADER_COOKIE2);
+		if (!(stub instanceof Stub)) {
+			throw new RuntimeException("Could not cast Object to Stub: " + stub.toString());
+		}
 
-			
-			log.info("AFTER: HEADER_COOKIE: " + Arrays.toString(h1));
-			log.info("AFTER: HEADER_COOKIE2: " + Arrays.toString(h2));
+		log.info("using AFFINITYID: " + aff.getAffinityId());
+		log.info("using JSESSIONID: " + aff.getSession());
 
-	
-	
+		log.info("BEFORE: HEADER_COOKIE: " + ((Stub) stub)._getProperty(HTTPConstants.HEADER_COOKIE));
+		log.info("BEFORE: HEADER_COOKIE2: " + ((Stub) stub)._getProperty(HTTPConstants.HEADER_COOKIE2));
+		((Stub) stub).setMaintainSession(true);
+		String[] cookieDough = { "AFFINITYID=" + aff.getAffinityId(),
+				"JSESSIONID=" + aff.getSession() + "." + aff.getAffinityId() };
+
+		((Stub) stub)._setProperty(HTTPConstants.HEADER_COOKIE, cookieDough);
+		((Stub) stub)._setProperty(HTTPConstants.HEADER_COOKIE2, cookieDough);
+
+		String[] h1 = (String[]) ((Stub) stub)._getProperty(HTTPConstants.HEADER_COOKIE);
+		String[] h2 = (String[]) ((Stub) stub)._getProperty(HTTPConstants.HEADER_COOKIE2);
+
+		log.info("AFTER: HEADER_COOKIE: " + Arrays.toString(h1));
+		log.info("AFTER: HEADER_COOKIE2: " + Arrays.toString(h2));
+
 	}
-	
-	
-	
+
 	public static void setConnectionAffinity(CurrentUser currentUser, Object stub) {
 		SessionAffinity aff = constructSessionAffinity(currentUser);
 		setConnectionAffinity(aff, stub);
 	}
-	
+
 }
