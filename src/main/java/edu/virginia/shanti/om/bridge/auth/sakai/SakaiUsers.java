@@ -38,7 +38,7 @@ public class SakaiUsers {
 	// private static SakaiUserInfo currentSakaiUserInfo = null;
 	
 	// add flag for print debugging
-	private static boolean debug = true;
+	private static boolean debug = false;
 	
 	// cindy
 	static {

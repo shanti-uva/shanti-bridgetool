@@ -12,6 +12,8 @@ import java.util.Set;
 import javax.persistence.Enumerated;
 
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.roo.addon.entity.RooEntity;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -19,6 +21,7 @@ import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
 
 import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
+import edu.virginia.shanti.om.bridge.remote.impl.ConfluenceConnector;
 
 @RooJavaBean
 @RooToString
@@ -27,12 +30,11 @@ import edu.virginia.shanti.om.bridge.remote.RemotePermissions;
 public class PermissionSet implements RemotePermissions {
 	
 	private static final long serialVersionUID = -2157472313077361757L;
-
+	
 	private String groupName;
 
 	@Enumerated
     private LocalGroupType localGroupType;
-	
 	
 	// Base implementation to access bean properties
 	
@@ -48,9 +50,6 @@ public class PermissionSet implements RemotePermissions {
 					Boolean.class)) {
 				String propName = propertyDescriptor.getName();
 				String capName = propName.toUpperCase();
-
-				System.err.println(propName + "=" + capName);
-
 				propMap.put(capName, propName);
 			}
 		}

@@ -341,7 +341,7 @@ public class ConfluenceConnector implements RemoteConnector {
 		}
 
 		if (sess == null) {
-			System.err.println("Authorities during login(): "
+			log.error("Authorities during login(): "
 					+ SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 
 			SudoSoap sudo = getSudoLocator().getsudo();
@@ -469,7 +469,7 @@ public class ConfluenceConnector implements RemoteConnector {
 				long start = System.currentTimeMillis();
 				boolean success = conf.addPermissionsToSpace(userSess, permissions, groupName, spaceId);
 				long finish = System.currentTimeMillis();
-				System.err.println("addPermssions() took: " + (finish - start));
+				log.debug("addPermssions() took: " + (finish - start));
 
 				log.debug("Call addPermissionsToSpace for " + groupName + " in space " + spaceId + " returned "
 						+ success);
