@@ -174,12 +174,10 @@ public class ConfluenceConnector implements RemoteConnector {
 
 				try {
 
-					log.debug("Space summary: " + sum.getKey());
 					String[] permissions = getPermissions(conf, sess, user, sum.getKey());
-					log.debug("Permissions: " + Arrays.toString(permissions));
-
+					log.info(sum.getKey() + " Permissions: " + Arrays.toString(permissions));
 					if (Arrays.asList(permissions).contains("admin")) {
-						log.debug("=========> found admin");
+						log.info("=========> found admin");
 						newList.add(sum);
 					}
 
@@ -341,7 +339,7 @@ public class ConfluenceConnector implements RemoteConnector {
 		}
 
 		if (sess == null) {
-			log.error("Authorities during login(): "
+			log.debug("Authorities during login(): "
 					+ SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 
 			SudoSoap sudo = getSudoLocator().getsudo();

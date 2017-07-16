@@ -98,7 +98,7 @@ public class PermissionMapService {
 				try {
 					termEid = sakaiScript.getSiteProperty(aff.getSession(), bridge.getLocalContext(), "term_eid");
 				} catch (Exception e) {
-					log.warn(e + "  Ignoring and returning null");
+					log.debug(e + "  Ignoring and returning null");
 				}
 				
 				log.debug("Site type check: termEid = " + termEid);
