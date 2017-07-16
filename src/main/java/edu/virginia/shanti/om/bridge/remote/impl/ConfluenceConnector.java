@@ -356,7 +356,7 @@ public class ConfluenceConnector implements RemoteConnector {
 			}
 
 			// sudo.sudo(sess, sess, principal.getName());
-			log.info("Sudo to " + principal.getName() + "successful for sess=" + sess);
+			log.debug("Sudo to " + principal.getName() + "successful for sess=" + sess);
 
 			if (sessionCache != null) {
 				sessionCache.setConfluenceUserSession(sess);
@@ -471,7 +471,7 @@ public class ConfluenceConnector implements RemoteConnector {
 				long finish = System.currentTimeMillis();
 				System.err.println("addPermssions() took: " + (finish - start));
 
-				log.info("Call addPermissionsToSpace for " + groupName + " in space " + spaceId + " returned "
+				log.debug("Call addPermissionsToSpace for " + groupName + " in space " + spaceId + " returned "
 						+ success);
 
 				if (!success) {

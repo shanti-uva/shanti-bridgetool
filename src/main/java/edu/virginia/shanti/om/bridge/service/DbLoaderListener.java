@@ -213,7 +213,7 @@ public class DbLoaderListener implements
 		pm2.addPermissionSet(p8);
 		pm2.persist();
 		
-		log.info("populated " + pm2);
+		log.debug("populated " + pm2);
 	}
 
 	private void populateCollaborationPermissions(PermissionMap pm) {
@@ -304,18 +304,18 @@ public class DbLoaderListener implements
 		pm.addPermissionSet(p3);
 		pm.persist();
 		
-		log.info("populated " + pm);
+		log.debug("populated " + pm);
 	}
 
 	private void assureRemoteServer(RemoteServer remoteServer) {
 		if (RemoteServer
 				.findRemoteServersByRemoteName(remoteServer.getRemoteName())
 				.getResultList().size() == 0) {
-			log.info("Loading " + remoteServer.getRemoteName() + ": "
+			log.debug("Loading " + remoteServer.getRemoteName() + ": "
 					+ remoteServer);
 			remoteServer.persist();
 			remoteServer.flush();
-			log.info("Loaded " + remoteServer);
+			log.debug("Loaded " + remoteServer);
 		}
 	}
 }

@@ -79,7 +79,7 @@ public class PermissionMapService {
 				.getResultList();
 		if (!results.isEmpty()) {
 			permissionMap = results.get(0);
-			log.error("Found permissionMap " + permissionMap);
+			log.debug("Found permissionMap " + permissionMap);
 		} else {
 
 			SessionAffinity aff = SessionAffinityUtility.constructSessionAffinity(currentUser);	 
@@ -92,7 +92,7 @@ public class PermissionMapService {
 		
 				LocalContextType siteType;
 				
-				log.error("session = " + aff.getSession() + " localContext = " + bridge.getLocalContext());
+				log.debug("session = " + aff.getSession() + " localContext = " + bridge.getLocalContext());
 				
 				String termEid = null;
 				try {
@@ -101,7 +101,7 @@ public class PermissionMapService {
 					log.warn(e + "  Ignoring and returning null");
 				}
 				
-				log.error("Site type check: termEid = " + termEid);
+				log.debug("Site type check: termEid = " + termEid);
 				
 				// if (sakaiScript.checkForRoleInAuthzGroup(session,
 				//		bridge.getLocalContext(), "Instructor")) {
@@ -112,7 +112,7 @@ public class PermissionMapService {
 					siteType = LocalContextType.COLLABORATION;
 				}
 
-				log.error("SiteType determined to be " + siteType);
+				log.debug("SiteType determined to be " + siteType);
 				
 				results = PermissionMap.findPermissionMapsByLocalContextType(
 						siteType).getResultList();
