@@ -185,9 +185,9 @@ public class BridgeServiceImpl implements BridgeService {
 	@Transactional
 	public void save(Bridge bridge) {
 
-		log.info("Bridge before persisting or merging: " + bridge);
+		log.debug("Bridge before persisting or merging: " + bridge);
 
-		log.info("Bridge getId(): " + bridge.getId());
+		log.debug("Bridge getId(): " + bridge.getId());
 
 		// if (bridge.getId() != null && bridge.getId() != 0) {
 		//
@@ -219,11 +219,11 @@ public class BridgeServiceImpl implements BridgeService {
 
 		if (list.size() == 1) {
 			// let's replace it with the saved one
-			log.info("using existing RemoteContext " + rc);
+			log.debug("using existing RemoteContext " + rc);
 			rc = list.get(0).merge();
 			bridge.setRemoteContext(rc);
 		} else if (list.size() == 0) {
-			log.info("persisting new RemoteContext " + rc);
+			log.debug("persisting new RemoteContext " + rc);
 			rc.persist();
 		} else {
 			throw new RuntimeException(
@@ -249,18 +249,18 @@ public class BridgeServiceImpl implements BridgeService {
 				bridge.getLocalSubContext()).getResultList();
 		if (blist.size() == 1) {
 			// let's replace it with the saved one
-			log.info("using existing Bridge " + bridge);
+			log.debug("using existing Bridge " + bridge);
 
 			// TODO: fix this so you don't need to explicitly copy all the properties
 			boolean inframe = bridge.isInFrame();
-			log.info("inframe is set to: " + inframe);
+			log.debug("inframe is set to: " + inframe);
 			bridge = blist.get(0);
 			bridge.setRemoteContext(rc);
 			fixPermissionMap(bridge);
 			bridge.setInFrame(inframe);
 			bridge.persist();
 		} else if (blist.size() == 0) {
-			log.info("persisting new Bridge " + bridge);
+			log.debug("persisting new Bridge " + bridge);
 			fixPermissionMap(bridge);
 			bridge.persist();
 		} else {

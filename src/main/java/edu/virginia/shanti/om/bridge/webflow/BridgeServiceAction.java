@@ -40,9 +40,9 @@ public class BridgeServiceAction {
 
 		try {
 
-			log.info("Saving: " + bridge);
+			log.debug("Saving: " + bridge);
 			bridgeService.save(bridge);
-			log.info("Saving (success): " + bridge);
+			log.debug("Saving (success): " + bridge);
 			return "success";
 		} catch (Exception e) {
 			log.error(e);
@@ -234,7 +234,7 @@ public class BridgeServiceAction {
 	}
 
 	private void populateBridge(RequestContext context) {
-		log.info("populateBridge called.");
+		log.debug("populateBridge called.");
 		if (context.getFlowScope().contains("config")) {
 			ConfigBean config = (ConfigBean) context.getFlowScope().get(
 					"config");
