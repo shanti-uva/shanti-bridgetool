@@ -24,7 +24,7 @@ public class ConfluencePermissionsProxy {
 			@PartialCacheKey String user, @PartialCacheKey String key) throws InvalidSessionException, RemoteException, java.rmi.RemoteException {
 
 				
-				log.info("REMOTE CALL to getPermission using " + sess + ", " + user + " and " + key);
+				log.debug("REMOTE CALL to getPermission using " + sess + ", " + user + " and " + key);
 				return conf.getPermissionsForUser(sess,
 						key,user);
 				

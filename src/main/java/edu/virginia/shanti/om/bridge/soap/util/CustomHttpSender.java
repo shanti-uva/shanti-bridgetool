@@ -216,7 +216,7 @@ public class CustomHttpSender extends BasicHandler {
 						.getAuthorities();
 				for (Iterator iterator = grants.iterator(); iterator.hasNext();) {
 					GrantedAuthority grant = (GrantedAuthority) iterator.next();
-					log.info("GRANT: " + grant);
+					log.debug("GRANT: " + grant);
 
 					String host = hostConfiguration.getHost();
 					String path = targetURL.getPath();
@@ -228,15 +228,15 @@ public class CustomHttpSender extends BasicHandler {
 						if (s.length > 2) {
 							sess = s[1];
 							hostUrl = s[2];
-							// log.info("session: " + sess);
-							// log.info("hosturl: " + hostUrl);
+							// log.debug("session: " + sess);
+							// log.debug("hosturl: " + hostUrl);
 
 							String[] x = sess.split("\\.", 2);
 							String affinityid = "AFFINITYID=" + x[1];
 							String sessionid = "JSESSIONID=" + sess;
 
-							log.info("sessionid: " + sessionid);
-							log.info("affinityid: " + affinityid);
+							log.debug("sessionid: " + sessionid);
+							log.debug("affinityid: " + affinityid);
 
 							addCookie(state, sessionid, host, path, secure);
 							addCookie(state, affinityid, host, path, secure);
@@ -248,7 +248,7 @@ public class CustomHttpSender extends BasicHandler {
             
             
             
-            log.info("HttpState cookies: " + Arrays.toString(httpClient.getState().getCookies()));
+            log.debug("HttpState cookies: " + Arrays.toString(httpClient.getState().getCookies()));
 
             int returnCode = httpClient.executeMethod(hostConfiguration, method, null);
 
@@ -449,7 +449,7 @@ public class CustomHttpSender extends BasicHandler {
         Cookie newCookie = new Cookie(host, cookie.substring(0, index),
                 cookie.substring(index + 1), path,
                 null, secure);
-        log.info("adding cookie : " + newCookie.toString() );        		
+        log.debug("adding cookie : " + newCookie.toString() );        		
         state.addCookie(newCookie);
     }
 

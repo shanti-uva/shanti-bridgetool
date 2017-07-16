@@ -116,7 +116,7 @@ public class BridgeToolAuthenticationFilter extends
 		GrantedAuthority serverGrant = createGrant("sakaisession#" + sessionString + "#" + serverUrl);
 		// userDetailsService.saveGrant(user, serverGrant);
 		
-		log.info("Saving grant " + serverGrant + " for " + user);
+		log.info("Caching grant " + serverGrant + " for " + user);
 		
 		if (currentUser != null
 				&& currentUser.getAuthentication() != null) {

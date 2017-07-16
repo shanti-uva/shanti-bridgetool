@@ -25,12 +25,12 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 	public boolean hasPermission(Authentication authentication,
 			Object targetDomainObject, Object permission) {
 		// TODO Auto-generated method stub
-//		log.warn("hasPermission called by " + authentication + " on "
+//		log.debug("hasPermission called by " + authentication + " on "
 //				+ targetDomainObject + " for permission " + permission);
 
 		long start = System.currentTimeMillis();
 		
-		log.warn("Authorities: " + authentication.getAuthorities());
+		log.debug("Authorities: " + authentication.getAuthorities());
 
 		Collection<GrantedAuthority> auths = (Collection<GrantedAuthority>) authentication
 				.getAuthorities();
@@ -60,7 +60,7 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 		
 		long finish = System.currentTimeMillis();
 
-		System.err.println("hasPermission() took " + (finish-start));
+		log.debug("hasPermission() took " + (finish-start));
 
 		return authorized;
 	}
@@ -72,8 +72,8 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 		String[] parts = authority.split("@");
 
 		if (parts.length != 2) {
-			log.error(
-					"authority must include at \'@\' symbol.  Ignoring.");
+			log.debug(
+					"authority must include at \'@\' symbol.  Ignoring: " + authority );
 			return false; // short circuit
 		}
 
@@ -83,15 +83,15 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 		boolean isAdminRole = adminRoles.contains(role);
 		boolean isMatchingContext = glc.equals(localContext);
 
-		log.error("Checking localContext " + localContext
+		log.debug("Checking localContext " + localContext
 				+ " is the same as granted local context " + glc + ": "
 				+ isMatchingContext);
-		log.error("Checking role " + role + " is contained in " + adminRoles
+		log.debug("Checking role " + role + " is contained in " + adminRoles
 				+ ": " + isAdminRole);
 
 		boolean check = isMatchingContext && isAdminRole;
 
-		System.err.println("===> Therefore check is: " + check);
+		log.debug("===> Therefore check is: " + check);
 
 		return check;
 
@@ -101,7 +101,7 @@ public class BridgeToolPermissionEvaluator implements PermissionEvaluator {
 	public boolean hasPermission(Authentication authentication,
 			Serializable targetId, String targetType, Object permission) {
 		// TODO Auto-generated method stub
-		log.warn("hasPermission called by " + authentication + " on "
+		log.debug("hasPermission called by " + authentication + " on "
 				+ targetId + " of type " + targetType + " for permission "
 				+ permission);
 		return false;

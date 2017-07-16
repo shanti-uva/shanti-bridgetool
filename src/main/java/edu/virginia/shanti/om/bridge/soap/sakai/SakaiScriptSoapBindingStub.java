@@ -1295,22 +1295,22 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
             _call.setMaintainSession(Boolean.TRUE);
             _call.setProperty(Call.SESSION_MAINTAIN_PROPERTY,Boolean.TRUE);
             
-            log.info("Stub Creating Call: authorities: " + authorities);
+            log.debug("Stub Creating Call: authorities: " + authorities);
             
-            log.info("Call SESSION_MAINTAIN_PROPERTY: " + _call.getProperty(SESSION_MAINTAIN_PROPERTY));
-            log.info("Call HEADER_COOKIE: " + Arrays.toString((String[])_call.getProperty(HTTPConstants.HEADER_COOKIE)));
-            log.info("Call HEADER_COOKIE2: " + Arrays.toString((String[])_call.getProperty(HTTPConstants.HEADER_COOKIE2)));
+            log.debug("Call SESSION_MAINTAIN_PROPERTY: " + _call.getProperty(SESSION_MAINTAIN_PROPERTY));
+            log.debug("Call HEADER_COOKIE: " + Arrays.toString((String[])_call.getProperty(HTTPConstants.HEADER_COOKIE)));
+            log.debug("Call HEADER_COOKIE2: " + Arrays.toString((String[])_call.getProperty(HTTPConstants.HEADER_COOKIE2)));
             
-            log.info("Stub SESSION_MAINTAIN_PROPERTY: " + this._getProperty(Call.SESSION_MAINTAIN_PROPERTY));
-            log.info("Stub HEADER_COOKIE: " + Arrays.toString((String[])this._getProperty(HTTPConstants.HEADER_COOKIE)));
-            log.info("Stub HEADER_COOKIE2: " + Arrays.toString((String[])this._getProperty(HTTPConstants.HEADER_COOKIE2)));
+            log.debug("Stub SESSION_MAINTAIN_PROPERTY: " + this._getProperty(Call.SESSION_MAINTAIN_PROPERTY));
+            log.debug("Stub HEADER_COOKIE: " + Arrays.toString((String[])this._getProperty(HTTPConstants.HEADER_COOKIE)));
+            log.debug("Stub HEADER_COOKIE2: " + Arrays.toString((String[])this._getProperty(HTTPConstants.HEADER_COOKIE2)));
             
             
 //            MessageContext mctx = _call.getMessageContext();
 //            
 //            for (Iterator names = mctx.getAllPropertyNames(); names.hasNext();) {
 //            	String name = (String)names.next();
-//            	log.info("MessageContext Property " + name + ": " + mctx.getProperty(name));	
+//            	log.debug("MessageContext Property " + name + ": " + mctx.getProperty(name));	
 //			}
 //            
 //            
@@ -1318,7 +1318,7 @@ public class SakaiScriptSoapBindingStub extends org.apache.axis.client.Stub impl
 //            
 //            for(Iterator pnit = _call.getPropertyNames(); pnit.hasNext();) {
 //            	String name = (String) pnit.next();
-//            	log.info("\tCALL Property: " + name + ":\t" + _call.getProperty(name));
+//            	log.debug("\tCALL Property: " + name + ":\t" + _call.getProperty(name));
 //            }
 //                 
 //            	

@@ -67,7 +67,7 @@ public class ExtensionClient {
 	}
 
 	public void setLinktoolPackage(LinktoolFormValues linktoolPackage) {
-		log.info(linktoolPackage);
+		log.debug(linktoolPackage);
 		this.linktoolPackage = linktoolPackage;
 	}
 
@@ -76,9 +76,9 @@ public class ExtensionClient {
 		String authenticateResult = null;
 		try {
 			
-			log.info(AFFINITYID + " = " + getSakaiAffinityId()); 
-			log.info("SAKAISIGNING URL = " + getSakaiSigningUrl());
-			log.info("keyValueString = "
+			log.debug(AFFINITYID + " = " + getSakaiAffinityId()); 
+			log.debug("SAKAISIGNING URL = " + getSakaiSigningUrl());
+			log.debug("keyValueString = "
 					+ getLinktoolPackage().getKeyValueString());
 			
 			
@@ -105,7 +105,7 @@ public class ExtensionClient {
 							new Object[] { getLinktoolPackage()
 							.getKeyValueString() });						
 			
-			log.info("authenticate result = " + authenticateResult);
+			log.debug("authenticate result = " + authenticateResult);
 
 			if (authenticateResult.equalsIgnoreCase("stale value")) {
 				log.warn("stale value found!");
@@ -176,7 +176,7 @@ public class ExtensionClient {
 						.invoke("http://webservices.sakaiproject.org/","decryptSession",
 								new Object[] { getLinktoolPackage().getSession()});
 				
-				log.info("return from decryptSession: sakaiSessionId = " + sakaiSessionId);
+				log.debug("return from decryptSession: sakaiSessionId = " + sakaiSessionId);
 				
 				setSakaiSessionId(sakaiSessionId);
 
@@ -192,15 +192,15 @@ public class ExtensionClient {
 //		}
 		String userInfoString = null;
 
-		log.info("decrypted session id = "
+		log.debug("decrypted session id = "
 				+ getSakaiSessionId());
 
 		HttpClient client = new HttpClient();
 		HttpState state = new HttpState();		
 		String serverurl = getLinktoolPackage().getServerurl();
-		log.info("serverurl = " + serverurl);
+		log.debug("serverurl = " + serverurl);
 		String domain = new URL(URLDecoder.decode(serverurl, "UTF-8")).getHost();
-		log.info("domain = " + domain);
+		log.debug("domain = " + domain);
 		
 		String affinityid = getLinktoolPackage().getServerId();
 		Cookie jsessionidCookie = new Cookie(domain, JSESSIONID, getSakaiSessionId() + "." + affinityid, "/", null, false);
@@ -213,9 +213,9 @@ public class ExtensionClient {
 		+ "/direct/user/current.xml?sakai.session="
 		+ getSakaiSessionId();
 		
-		log.info("STATE: " + state.toString());
-		log.info("Before call to " + directUserUrl + ": " + jsessionidCookie);
-		log.info("Before call to " + directUserUrl + ": " + affinityidCookie);
+		log.debug("STATE: " + state.toString());
+		log.debug("Before call to " + directUserUrl + ": " + jsessionidCookie);
+		log.debug("Before call to " + directUserUrl + ": " + affinityidCookie);
 		
 		GetMethod get = new GetMethod(
 				directUserUrl);
@@ -223,9 +223,9 @@ public class ExtensionClient {
 		HostConfiguration hostconfig = new HostConfiguration();
 		hostconfig.setHost(getLinktoolPackage().getServerId());
 		int ret = client.executeMethod(hostconfig, get, state);
-		log.info(directUserUrl + " returned: " + ret);
+		log.debug(directUserUrl + " returned: " + ret);
 		userInfoString = get.getResponseBodyAsString();
-		log.info("USER INFO: " + userInfoString);
+		log.debug("USER INFO: " + userInfoString);
 		Document resultDocument = null;
 		StringReader resultReader = new StringReader(userInfoString);
 		SAXBuilder saxBuilder = new SAXBuilder();

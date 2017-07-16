@@ -37,7 +37,7 @@ public class SessionAffinityUtility {
 			}
 		}
 
-		log.info("sakaisession = " + sakaisession);
+		log.debug("sakaisession = " + sakaisession);
 
 		String[] split = sakaisession.split("\\.", 2);
 
@@ -47,13 +47,13 @@ public class SessionAffinityUtility {
 		}
 		String session = split[0];
 		String lbCookieValue = (split.length == 2) ? split[1] : affinityFromUser;
-		log.info("constructSessionAffinity server = " + server);
-		log.info("constructSessionAffinity session = " + session);
-		log.info("constructSessionAffinity sakaisession = " + sakaisession);
-		log.info("constructSessionAffinity affinityid = " + lbCookieValue);
+		log.debug("constructSessionAffinity server = " + server);
+		log.debug("constructSessionAffinity session = " + session);
+		log.debug("constructSessionAffinity sakaisession = " + sakaisession);
+		log.debug("constructSessionAffinity affinityid = " + lbCookieValue);
 
 		SessionAffinity aff = new SessionAffinityImpl(server, session, lbCookieValue);
-		log.info("SessionAffinity: " + aff);
+		log.debug("SessionAffinity: " + aff);
 		return aff;
 	}
 
@@ -62,9 +62,9 @@ public class SessionAffinityUtility {
 	 * @return String[]: [ sessionString, sakaiHostUrl ]
 	 */
 	private static String[] extractSessionAffinity(CurrentUser currentUser) {
-		log.info("Authentication: " + (String) currentUser.getAuthentication().toString());
+		log.debug("Authentication: " + (String) currentUser.getAuthentication().toString());
 
-		log.info("Authorities: " + currentUser.getAuthentication().getAuthorities().toString());
+		log.debug("Authorities: " + currentUser.getAuthentication().getAuthorities().toString());
 
 		Collection<GrantedAuthority> authorities = currentUser.getAuthentication().getAuthorities();
 
@@ -88,7 +88,7 @@ public class SessionAffinityUtility {
 			String hostUrl = parts[2];
 			ret = new String[] { sessionstring, hostUrl, affinityid };
 		}
-		log.info("extractSessionAffinity Returning: " + Arrays.toString(ret));
+		log.debug("extractSessionAffinity Returning: " + Arrays.toString(ret));
 		return ret;
 	}
 
@@ -97,11 +97,11 @@ public class SessionAffinityUtility {
 			throw new RuntimeException("Could not cast Object to Stub: " + stub.toString());
 		}
 
-		log.info("using AFFINITYID: " + aff.getAffinityId());
-		log.info("using JSESSIONID: " + aff.getSession());
+		log.debug("using AFFINITYID: " + aff.getAffinityId());
+		log.debug("using JSESSIONID: " + aff.getSession());
 
-		log.info("BEFORE: HEADER_COOKIE: " + ((Stub) stub)._getProperty(HTTPConstants.HEADER_COOKIE));
-		log.info("BEFORE: HEADER_COOKIE2: " + ((Stub) stub)._getProperty(HTTPConstants.HEADER_COOKIE2));
+		log.debug("BEFORE: HEADER_COOKIE: " + ((Stub) stub)._getProperty(HTTPConstants.HEADER_COOKIE));
+		log.debug("BEFORE: HEADER_COOKIE2: " + ((Stub) stub)._getProperty(HTTPConstants.HEADER_COOKIE2));
 		((Stub) stub).setMaintainSession(true);
 		String[] cookieDough = { "AFFINITYID=" + aff.getAffinityId(),
 				"JSESSIONID=" + aff.getSession() + "." + aff.getAffinityId() };
@@ -112,8 +112,8 @@ public class SessionAffinityUtility {
 		String[] h1 = (String[]) ((Stub) stub)._getProperty(HTTPConstants.HEADER_COOKIE);
 		String[] h2 = (String[]) ((Stub) stub)._getProperty(HTTPConstants.HEADER_COOKIE2);
 
-		log.info("AFTER: HEADER_COOKIE: " + Arrays.toString(h1));
-		log.info("AFTER: HEADER_COOKIE2: " + Arrays.toString(h2));
+		log.debug("AFTER: HEADER_COOKIE: " + Arrays.toString(h1));
+		log.debug("AFTER: HEADER_COOKIE2: " + Arrays.toString(h2));
 
 	}
 
