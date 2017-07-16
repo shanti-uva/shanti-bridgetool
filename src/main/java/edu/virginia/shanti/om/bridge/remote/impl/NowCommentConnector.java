@@ -79,16 +79,16 @@ public class NowCommentConnector implements RemoteConnector {
 
 		String displayName = grokDisplayName(siteAlias);
 
-		log.info("Got siteAlias " + siteAlias + " for "
+		log.debug("Got siteAlias " + siteAlias + " for "
 				+ config.getLocalContext());
 		choice.setContextId(siteAlias);
 		choice.setContextLabel(displayName);
 		choice.setRemoteName(remoteServer.getRemoteName());
-		log.info("remoteServer = " + remoteServer);
+		log.debug("remoteServer = " + remoteServer);
 		// https://staging.nowcomment.com/uva?redirect_to_group=~collab:java-basics-fde0:summer2008
 		choice.setUrl(remoteServer.getRemoteUrl() + "/uva?redirect_to_group="
 				+ siteAlias);
-		log.info("adding choice = " + choice);
+		log.debug("adding choice = " + choice);
 		choices.add(choice);
 		return choices;
 	}
@@ -116,7 +116,7 @@ public class NowCommentConnector implements RemoteConnector {
 
 		String ctxId = remoteContext.getContextId();
 
-		System.err.println("getSummaryMarkup called with remoteContext = "
+		log.debug("getSummaryMarkup called with remoteContext = "
 				+ remoteContext);
 
 		String remoteSummaryUrl = remoteContext.getUrl();
@@ -136,9 +136,9 @@ public class NowCommentConnector implements RemoteConnector {
 					httpcontext);
 			long finish2 = System.currentTimeMillis();
 
-			System.out.println("summary for " + ctxId + " =\n" + summary);
+			log.debug("summary for " + ctxId + " =\n" + summary);
 
-			System.out.println("PROFILE: fetchSummary took "
+			log.debug("PROFILE: fetchSummary took "
 					+ (finish2 - start2) + " ms");
 
 			return summary;
@@ -164,7 +164,7 @@ public class NowCommentConnector implements RemoteConnector {
 
 		groupId = fetchGroupId(ctxId, targetHost, client, httpcontext);
 
-		System.err.println("Found groupId = " + groupId);
+		log.debug("Found groupId = " + groupId);
 
 		String groupRSS = targetHost.toURI() + "/rss/group/" + groupId
 				+ "/user/" + principal.getName() + "@virginia.edu";
@@ -174,8 +174,8 @@ public class NowCommentConnector implements RemoteConnector {
 		HttpClientParams.setRedirecting(client.getParams(), true);
 		HttpResponse response = client
 				.execute(targetHost, httpget, httpcontext);
-		System.err.println("url = " + groupRSS);
-		System.err.println("status = " + response.getStatusLine());
+		log.debug("url = " + groupRSS);
+		log.debug("status = " + response.getStatusLine());
 
 		int retcode = response.getStatusLine().getStatusCode();
 
@@ -208,21 +208,21 @@ public class NowCommentConnector implements RemoteConnector {
 				summaryBuilder.append("<ul>\n");
 
 				SyndFeed feed = new SyndFeedInput().build(reader);
-				System.out.println("Feed Title: " + feed.getTitle());
+				log.debug("Feed Title: " + feed.getTitle());
 
 				for (Iterator i = feed.getEntries().iterator(); i.hasNext();) {
 					int unreadCount = 0, documentId = 0;
 					SyndEntry entry = (SyndEntry) i.next();
-					System.out.println("\tEntry: " + entry.getTitle());
+					log.debug("\tEntry: " + entry.getTitle());
 
 					String documentUrl = entry.getUri();
-					System.out.println(entry);
+					log.debug(entry);
 
 					List<Element> foreignMarkupList = (List<Element>) entry
 							.getForeignMarkup();
 
 					for (Element x : foreignMarkupList) {
-						System.out.println(">>>" + x.getName() + "="
+						log.debug(">>>" + x.getName() + "="
 								+ x.getText());
 						if ("unread_comments".equals(x.getName())) {
 							unreadCount = Integer.parseInt(x.getValue());
@@ -268,7 +268,7 @@ public class NowCommentConnector implements RemoteConnector {
 		String groupId;
 		String redirectUrl = targetHost.toURI() + "/rss/redirect/" + ctxId;
 
-		System.err.println("redirectUrl = " + redirectUrl);
+		log.debug("redirectUrl = " + redirectUrl);
 
 		HttpGet idGet = new HttpGet(redirectUrl);
 
@@ -281,7 +281,7 @@ public class NowCommentConnector implements RemoteConnector {
 
 		Header redirectHeader = redirectResponse.getFirstHeader("Location");
 		String redirectString = redirectHeader.getValue();
-		System.err.println("redirect = " + redirectString);
+		log.debug("redirect = " + redirectString);
 
 		Pattern pattern = Pattern.compile(".*/groups/(\\d+)");
 		Matcher matcher = pattern.matcher(redirectString);
