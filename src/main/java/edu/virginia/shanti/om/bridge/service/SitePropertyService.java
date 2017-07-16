@@ -87,7 +87,7 @@ public class SitePropertyService {
 				+ "\n\tsiteId = " + siteId
 				+ "\n\tvalue = " + value
 				+ "\n\tsakaisession = " + sakaisession;
-		log.info(paramDebug);
+		log.debug(paramDebug);
 		try {
 			SakaiScript_PortType sakaiScript = sakaiScriptServiceLocator
 					.getSakaiScript(new URL("https://" + server
@@ -95,8 +95,8 @@ public class SitePropertyService {
 			((Stub)sakaiScript).setMaintainSession(true);
 			
 //			try {
-//				log.info("before: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
-//				log.info("before: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
+//				log.debug("before: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
+//				log.debug("before: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
 //			} catch (Exception e2) {
 //				// TODO Auto-generated catch block
 //				e2.printStackTrace();
@@ -105,8 +105,8 @@ public class SitePropertyService {
 			SessionAffinityUtility.setConnectionAffinity(aff, sakaiScript);
 
 //			try {
-//				log.info("after: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
-//				log.info("after: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
+//				log.debug("after: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
+//				log.debug("after: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
 //			} catch (Exception e1) {
 //				// TODO Auto-generated catch block
 //				e1.printStackTrace();
@@ -116,8 +116,8 @@ public class SitePropertyService {
 			sakaiScript.setSitePropertyAlt(session, adminsecret, siteId, propertyName, value);
 			
 			try {
-				log.info("AFTER CALL: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
-				log.info("AFTER CALL: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
+				log.debug("AFTER CALL: HEADER_COOKIE: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE));
+				log.debug("AFTER CALL: HEADER_COOKIE2: " + ((Stub)sakaiScript)._getProperty(HTTPConstants.HEADER_COOKIE2));
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

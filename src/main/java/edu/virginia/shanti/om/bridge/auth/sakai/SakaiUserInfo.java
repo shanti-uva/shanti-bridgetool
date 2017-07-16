@@ -5,6 +5,11 @@ import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import edu.virginia.shanti.om.bridge.auth.BridgeToolAuthenticationFilter;
+
 /**
  * @author ys2n
  * 
@@ -16,11 +21,8 @@ public class SakaiUserInfo extends HashMap<String, String> implements
 	 * 
 	 */
 	private static final long serialVersionUID = -3109820944322381208L;
-
-	/**
-	 * Flag to determine if debug print statements are output.
-	 */
-	private boolean debug = true;
+	
+	private Log log = LogFactory.getLog(SakaiUserInfo.class);
 
 	/**
 	 * @param userId
@@ -37,18 +39,16 @@ public class SakaiUserInfo extends HashMap<String, String> implements
 			String sakaiSessionId, String email, String type,
 			String sakaiSiteId, String serverUrl, String serverId) {
 
-		if (debug) {
-			System.out.println("---SakaiUserInfo.ctor():");
-			System.out.println("      userId: " + userId);
-			System.out.println("      firstName: " + firstName);
-			System.out.println("      lastName: " + lastName);
-			System.out.println("      sakaiSessionId: " + sakaiSessionId);
-			System.out.println("      email: " + email);
-			System.out.println("      type: " + type);
-			System.out.println("	  sakaiSiteId: " + sakaiSiteId);
-			System.out.println("      serverId: " + serverId);
-			System.out.println("      serverUrl: " + serverUrl);
-		}
+			log.debug("---SakaiUserInfo.ctor():");
+			log.debug("      userId: " + userId);
+			log.debug("      firstName: " + firstName);
+			log.debug("      lastName: " + lastName);
+			log.debug("      sakaiSessionId: " + sakaiSessionId);
+			log.debug("      email: " + email);
+			log.debug("      type: " + type);
+			log.debug("	  sakaiSiteId: " + sakaiSiteId);
+			log.debug("      serverId: " + serverId);
+			log.debug("      serverUrl: " + serverUrl);
 		setUserId(userId);
 		setFirstName(firstName);
 		setLastName(lastName);
@@ -133,10 +133,8 @@ public class SakaiUserInfo extends HashMap<String, String> implements
 	}
 
 	public void setSakaiSiteId(String sakaiSiteId) {
-		if (debug) {
-			System.out.println("   SakaiUserInfo.setSakaiSiteId(): "
+		log.debug("   SakaiUserInfo.setSakaiSiteId(): "
 					+ sakaiSiteId);
-		}
 		put("sakaiSiteId", sakaiSiteId);
 	}
 
@@ -163,10 +161,8 @@ public class SakaiUserInfo extends HashMap<String, String> implements
 		if (!realServerUrl.startsWith("http")) {
 			realServerUrl = "https://" + realServerUrl;
 		}
-		if (debug) {
-			System.out.println("   SakaiUserInfo.setServiceBaseUrl() https: "
+		log.debug("   SakaiUserInfo.setServiceBaseUrl() https: "
 					+ realServerUrl);
-		}
 
 		return realServerUrl;
 	}

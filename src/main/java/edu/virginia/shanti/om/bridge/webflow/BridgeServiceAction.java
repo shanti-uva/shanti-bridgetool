@@ -258,7 +258,7 @@ public class BridgeServiceAction {
 	private void populateRemoteContexts(RequestContext context) {
 		ConfigBean config = (ConfigBean) context.getFlowScope().get("config");
 
-		log.warn("Config is " + config);
+		log.debug("Config is " + config);
 
 		if (config == null) {
 			throw new RuntimeException("Config is null!");

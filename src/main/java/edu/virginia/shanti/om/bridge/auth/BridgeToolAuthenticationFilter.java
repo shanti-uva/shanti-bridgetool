@@ -60,7 +60,7 @@ public class BridgeToolAuthenticationFilter extends
 			String queryString = ((HttpServletRequest) request)
 					.getQueryString();
 			
-			log.error("queryString = " + queryString);
+			log.debug("queryString = " + queryString);
 			
 			String grantString = request
 					.getParameter("role")

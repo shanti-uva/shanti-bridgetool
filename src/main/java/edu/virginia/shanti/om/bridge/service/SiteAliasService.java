@@ -4,9 +4,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.xml.rpc.ServiceException;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.roo.addon.serializable.RooSerializable;
 import org.springframework.roo.addon.tostring.RooToString;
@@ -21,7 +24,9 @@ import edu.virginia.shanti.om.bridge.soap.sakai.SakaiScript_PortType;
 @RooToString
 @Service
 public class SiteAliasService {
-
+	
+	private Log log = LogFactory.getLog(SiteAliasService.class);
+			
 	private static final long serialVersionUID = 1304429105643786376L;
 
 	static final String[] newterms = new String[] { "term0", "january", "spring",
@@ -63,7 +68,7 @@ public class SiteAliasService {
 			if (siteAlias == null) {
 				siteAlias = suggestSiteAlias(siteId);
 				siteAlias.persist();
-				System.err.println("generated alias: " + siteAlias);
+				log.debug("generated alias: " + siteAlias);
 			}
 			return siteAlias;
 		} catch (Exception e) {
@@ -126,7 +131,7 @@ public class SiteAliasService {
 		// push this into a different service (new one named
 		// SitePropertyService?)
 
-//		System.err.println("SakaiSession = " + sakaisession);
+//		log.debug("SakaiSession = " + sakaisession);
 		
 		String sakaisession = (String) currentUser.getAuthentication()
 				.getCredentials();
@@ -206,7 +211,7 @@ public class SiteAliasService {
 	}
 
 	public void registerAlias(SiteAlias siteAlias, Bridge bridge) {
-		System.err.println("Registering alias " + siteAlias
+		log.debug("Registering alias " + siteAlias
 				+ " for bridge remoteName: " + bridge.getRemoteName());
 		registerAlias(siteAlias, bridge.getRemoteName());
 	}

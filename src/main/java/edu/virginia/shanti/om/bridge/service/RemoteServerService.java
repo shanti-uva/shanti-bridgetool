@@ -90,7 +90,7 @@ public class RemoteServerService {
 		
 		String configurationName = config.getRemoteService();
 		
-		log.info("getRemoteContexts( " + config +" ) called.");
+		log.debug("getRemoteContexts( " + config +" ) called.");
 		RemoteServer remoteServer = getRemoteServer(configurationName);
 		if (remoteServer == null) {
 			throw new RuntimeException("Remote server \'" + configurationName
@@ -99,7 +99,7 @@ public class RemoteServerService {
 
 		// DEBUG
 
-		log.warn("DEBUG:"
+		log.debug("DEBUG:"
 				+ currentUser.getAuthentication()
 						.getName());
 
@@ -108,7 +108,7 @@ public class RemoteServerService {
 
 	public RemoteContext createRemoteContext(RemoteContext newContext, ConfigBean config) {
 
-		log.info("Trying this config:  " + newContext);
+		log.debug("Trying this config:  " + newContext);
 		RemoteConnector connector = findRemoteConnector(newContext);
 		RemoteContext newRemoteContext = connector.createRemoteContext(
 				currentUser.getAuthentication(), newContext, config);
@@ -126,9 +126,9 @@ public class RemoteServerService {
 
 	public RemoteContext createRemoteContext(ConfluenceSpaceForm spaceForm, ConfigBean config) {
 		RemoteContext rc = new RemoteContext();
-		log.info("populating remote context from spaceForm: " + spaceForm);
+		log.debug("populating remote context from spaceForm: " + spaceForm);
 		rc.populate(spaceForm);
-		log.info("Trying to create remote context: " + rc); 
+		log.debug("Trying to create remote context: " + rc); 
 		return createRemoteContext(rc, config);
 	}
 

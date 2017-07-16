@@ -236,12 +236,12 @@ public class BridgeServiceImpl implements BridgeService {
 		SiteAlias siteAlias = siteAliasService.findSiteAliasBySiteId(bridge
 				.getLocalContext());
 
-		System.err.println("found sitealias " + siteAlias + " for siteId "
+		log.debug("found sitealias " + siteAlias + " for siteId "
 				+ bridge.getLocalContext());
 
 		bridge.setSiteAlias(siteAlias);
 
-		System.err.println("using alias: " + siteAlias);
+		log.debug("using alias: " + siteAlias);
 		siteAliasService.registerAlias(siteAlias, bridge);
 
 		// Update Bridge if it already exists, create if it doesn't
