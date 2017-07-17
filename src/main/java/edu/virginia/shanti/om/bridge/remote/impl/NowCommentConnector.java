@@ -136,7 +136,7 @@ public class NowCommentConnector implements RemoteConnector {
 					httpcontext);
 			long finish2 = System.currentTimeMillis();
 
-			log.debug("summary for " + ctxId + " =\n" + summary);
+			log.trace("summary for " + ctxId + " =\n" + summary);
 
 			log.debug("PROFILE: fetchSummary took "
 					+ (finish2 - start2) + " ms");
@@ -213,16 +213,16 @@ public class NowCommentConnector implements RemoteConnector {
 				for (Iterator i = feed.getEntries().iterator(); i.hasNext();) {
 					int unreadCount = 0, documentId = 0;
 					SyndEntry entry = (SyndEntry) i.next();
-					log.debug("\tEntry: " + entry.getTitle());
+					log.trace("\tEntry: " + entry.getTitle());
 
 					String documentUrl = entry.getUri();
-					log.debug(entry);
+					log.trace(entry);
 
 					List<Element> foreignMarkupList = (List<Element>) entry
 							.getForeignMarkup();
 
 					for (Element x : foreignMarkupList) {
-						log.debug(">>>" + x.getName() + "="
+						log.trace(">>>" + x.getName() + "="
 								+ x.getText());
 						if ("unread_comments".equals(x.getName())) {
 							unreadCount = Integer.parseInt(x.getValue());
